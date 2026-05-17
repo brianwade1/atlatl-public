@@ -33,9 +33,10 @@ def _to_object(action, unitData, mapData):
 class AI(base.AI):
     def __init__(self, role, kwargs={}):
         super().__init__(role,kwargs)
-        self.search_method = kwargs["search"] # fixed, random, greedy, full
-        self.score_is_Q = False# For red, more negative is better
-        self.score_sign = 1 - 2 * (self.role=="red")
+        self.search_method = kwargs["search"] # fixed (order), random (order), greedy, full
+        self.score_is_Q = False
+        # For red, more negative is better
+        self.score_sign = 1 - 2 * (self.role=="red") 
     def unitData_from_state(self, state):
         unitData = unit.UnitData()
         unit.fromPortable(state['units'], unitData, self.mapData)
@@ -88,6 +89,8 @@ class AI(base.AI):
                 best_score = score
                 best_actions = [action]
         return random.choice(best_actions)
+    def best_setup_action(self, game, state, actor):
+        pass
     def best_action_any_unit(self, game, state):
         units = self.all_unmoved_units(state)
         if not units:

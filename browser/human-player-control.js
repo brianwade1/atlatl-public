@@ -3,6 +3,7 @@ var HPC = HumanPlayerControl;
 
 import {Play} from './play.js';
 import {Unit} from './unit.js';
+import {Map} from './map.js';
 import {SVGGui} from './svg-gui.js';
 
 (function() {
@@ -39,7 +40,7 @@ function hexMouseDownHandler(evt) {
         else { // _setup_phase
             // If a hex that is tagged as startup for same faction, move
             if (hex.setup && hex.setup.substr(11) === Play._faction) {
-               sendSetupMove(hex);
+               Play.sendSetupMove(hex);
                mode = Mode.SelectUnit;
             }
         }
@@ -100,7 +101,7 @@ function unitMouseDownHandler(evt) {
         if (Play._setup_phase) {
             let exchangeTarget = Unit.unitIndex[this.id];
             if (Play._faction == exchangeTarget.faction) {
-                sendSetupExchange(exchangeTarget);
+                Play.sendSetupExchange(exchangeTarget);
                 mode = Mode.SelectUnit;
             }
         }

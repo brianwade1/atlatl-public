@@ -79,7 +79,7 @@ def feature(fn, type, mapData, unitData, city_owners={}):
             mat[hex.y_offset, hex.x_offset] = fn(hexId, city_owners)
     return mat
 
-def observation(game, state, flipFactions=False, appendFeatures=[]):
+def observation_np(game, state, flipFactions=False, appendFeatures=[]):
     unitData = UnitData()
     fromPortable(state["units"], unitData, game.mapData)
     phase_indicator = 1.0-0.9**state['status']['phaseCount']
@@ -127,7 +127,44 @@ def observation(game, state, flipFactions=False, appendFeatures=[]):
                         feature(constantFeatureFactory(phase_indicator),"hex",mdat,udat),
                         feature(constantFeatureFactory(-normalized_score),"hex",mdat,udat) # changed
                         ] + appendFeatures )
+    return x
+
+def observation(game, state, flipFactions=False, appendFeatures=[]):
+    x = observation_np(game, state, flipFactions=False, appendFeatures=appendFeatures)
     return torch.tensor(x,dtype=torch.float32)
+
+def zero_map(game, state):
+    udat = UnitData()
+    fromPortable(state["units"], udat, game.mapData)
+    mdat = game.mapData
+    zeros = feature(lambda x: False, "hex", mdat, udat)
+    return zeros
+
+def actor_map(actor_id, game, state):
+    udat = UnitData()
+    fromPortable(state["units"], udat, game.mapData)
+    mdat = game.mapData
+    actor_map = feature(lambda u: u.uniqueId==actor_id,"unit",mdat,udat)
+    return actor_map
+
+def action_maps(actionP, game, state):
+    udat = UnitData()
+    fromPortable(state["units"], udat, game.mapData)
+    mdat = game.mapData
+    if actionP["type"]=="pass":
+        zeros = feature(lambda x: False, "hex", mdat, udat)
+        return (zeros,zeros)
+    elif actionP["type"]=="move":
+        actor_id = actionP["mover"]
+        target_id = actionP["destination"]
+        actor_map = feature(lambda u: u.uniqueId==actor_id,"unit",mdat,udat)
+        target_map = feature(lambda h: h.id==target_id,"hex",mdat,udat)
+    else: # "fire"
+        actor_id = actionP["source"]
+        target_id = actionP["target"]
+        actor_map = feature(lambda u: u.uniqueId==actor_id,"unit",mdat,udat)
+        target_map = feature(lambda h: h.uniqueId==target_id,"unit",mdat,udat)
+    return (actor_map, target_map)
 
 class FadingTrailFeature:
     def __init__(self, observerRole, mapData, newValueWeight): 

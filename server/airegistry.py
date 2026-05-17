@@ -11,6 +11,7 @@ import ai.multigym_ai
 import ai.pass_agg
 import ai.pass_agg_fp
 import ai.pass_agg_fog
+import ai.pass_agg_setup
 import ai.burt_reynolds_lab2
 import ai.burtplus
 import ai.simpleDisengage
@@ -26,6 +27,7 @@ import ai.simpleFireCoordination
 import ai.simpleMovement
 import ai.pass_agg_scoring
 import ai.stomp_scoring
+import ai.pass_agg_setup_fog
 if IMPORT_NEURAL:
     import ai.neural
     import ai.azero
@@ -40,6 +42,8 @@ ai_registry = {
               "pass-agg" : (ai.pass_agg.AI, {}),
               "pass-agg-fp" : (ai.pass_agg_fp.PassAggFpAI, {}),
               "pass-agg-fog" : (ai.pass_agg_fog.AI, {}),
+              "pass-agg-setup" : (ai.pass_agg_setup.AI, {}),
+              "pass-agg-setup-fog" : (ai.pass_agg_setup_fog.AI, {}),
               "dijkstra" : (ai.dijkstra_demo.AI, {}),
 
               "pass-agg-pseudo-q" : (ai.pass_agg_scoring.AI, {"score_is_Q":True, "search":"fixed"}),
@@ -95,3 +99,5 @@ if IMPORT_NEURAL:
     ai_registry["state-eval-gpu"] = (ai.state_eval_gpu.StateEvalGPUAI, {"partialPly":False})
     ai_registry["state-eval-gpu-pp"] = (ai.state_eval_gpu.StateEvalGPUAI, {"partialPly":True})
     ai_registry["pascal"] = (ai.dl_alpha_beta.AI, {"debug":False, "neuralNet":"ai/pass-v-pass-g3", "depthLimit": "1"})
+    ai_registry["ibarra-m3"] = (ai.dl_alpha_beta.AI, {"debug":False, "neuralNet":"ai/A5b_M3", "depthLimit": "1"})
+    ai_registry["ibarra-lx3"] = (ai.dl_alpha_beta.AI, {"debug":False, "neuralNet":"ai/A5b_LX3", "depthLimit": "1"})

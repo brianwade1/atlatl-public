@@ -7,6 +7,8 @@ class UnitData:
     def __init__(self):
         self.unitIndex = {} # id to Unit
         self.occupancy = {} # hex id to Unit list
+    def hexFull(self,hex_id):
+        return hex_id in self.occupancy and len(self.occupancy[hex_id]) + 1 > mobility.stackingLimit
     def units(self):
         return list(self.unitIndex.values())
     def setCanMove(self, value, faction):

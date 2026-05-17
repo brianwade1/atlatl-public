@@ -1,4 +1,4 @@
-import gym_interface
+import gymnasium as gym_interface
 import random
 
 #random.seed(12345)

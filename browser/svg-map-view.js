@@ -3,6 +3,7 @@ export var SVGMapView = {};
 import {Map} from './map.js';
 import {SVGUtil} from './svg-util.js';
 import {SVGSetupMarker} from './svg-setup-marker.js';
+import {SVGCityMarker} from './svg-city-marker.js';
 import {Style} from './style.js';
 import {MapEditorControl} from './map-editor-control.js';
 
@@ -65,6 +66,12 @@ SVGMapView.add = function(param, svg, hexMouseOverHandler, hexMouseDownHandler) 
             SVGSetupMarker.addMarker(hex, hex.setup);
         }
     }       
+
+    SVGCityMarker.init(param);
+    for (let hex of Map.hexes) {
+        if (hex.terrain==="urban")
+            SVGCityMarker.addMarkers(hex);
+    }  
 }
 
 SVGMapView.set_colors = function(colors) {

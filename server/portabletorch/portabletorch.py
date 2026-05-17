@@ -6,9 +6,20 @@ import json
 from os import listdir
 from os.path import isfile, join
 import importlib
+import importlib.util
 import sys
 
+
+def import_from_path(module_name, path):
+    spec = importlib.util.spec_from_file_location(module_name, path)
+    print(f'module_name {module_name} path {path} spec {spec}')
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[module_name] = module
+    spec.loader.exec_module(module)
+    return module
+
 class PortableTorch():
+    cnt = 0 # static
     def __init__(self,model,model_class_name,modelsrc_path,dependence_paths=[],args=[],kwargs={},input_shape=None,output_shape=None,comment=""):
         self.model = model
         self.modelsrc_path = modelsrc_path
@@ -44,21 +55,21 @@ class PortableTorch():
     def load(dirpath):
         # Add to beginning of path so some other file(s)
         #   with the same name isn't loaded instead
-        sys.path.insert(0,dirpath)
 
         fp = open(dirpath+"/info.json","r")
-        str = fp.read()
-        info = json.loads(str)
+        string = fp.read()
+        info = json.loads(string)
 
         deps = []
         allfiles = [f for f in listdir(dirpath) if isfile(join(dirpath, f))]
         for filename in allfiles:
             if filename == info["modelsrc_filename"]:
-                class_module = importlib.import_module(filename[:-3])
-            elif filename[-3:]==".py":
-                dep_name = filename[:-3]
-                importlib.import_module(dep)
-                deps.append(dirpath+"/"+dep)
+                class_module = import_from_path(filename[-3:]+str(PortableTorch.cnt),dirpath+"/"+filename)
+                PortableTorch.cnt += 1
+            #elif filename[-3:]==".py": # Delete??
+            #    dep_name = filename[:-3]
+            #    importlib.import_module(dirpath+"/"+dep)
+            #    deps.append(dirpath+"/"+dep)
             elif filename[-3:]==".pt":
                 weight_filename = filename
         class_ = getattr(class_module, info["model_class_name"])

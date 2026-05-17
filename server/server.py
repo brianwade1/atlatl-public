@@ -82,7 +82,7 @@ def init(args):
         scenario_generator = constructor(**kwargs)
     game_disp = game_dispenser.ScenarioGeneratorGameDispenser(scenario_generator)
 
-    server = GameServer(game_disp, client_functions, open_socket=args.openSocket, verbose=args.v, red_log=args.redReplay, blue_log=args.blueReplay, n_reps=args.nReps)
+    server = GameServer(game_disp, client_functions, open_socket=args.openSocket, verbose=args.v, red_log=args.redReplay, blue_log=args.blueReplay, log_actions=args.logActions, n_reps=args.nReps)
     current_game_access.set_gameserver(server)
     server.run()
 
@@ -112,6 +112,7 @@ if __name__=="__main__":
     parser.add_argument("--blueAI")
     parser.add_argument("--blueReplay")
     parser.add_argument("--redReplay")
+    parser.add_argument("--logActions", action='store_true')
     parser.add_argument("--openSocket", action='store_true')
     parser.add_argument("--exitWhenTerminal", action='store_true')
     parser.add_argument("--scenarioSeed", type=int)

@@ -9,6 +9,7 @@ import {SVGUnitSymbol} from './svg-unit-symbol.js'
 import {SVGSetupMarker} from './svg-setup-marker.js'
 import {SVGGui} from './svg-gui.js'
 import {HumanPlayerControl} from './human-player-control.js'
+import {SVGCityMarker} from './svg-city-marker.js'
 
 (function() { 
 
@@ -18,13 +19,10 @@ const State = Object.freeze(
 
 var _state = State.Disconnected; // Currently unused
 
-var _on_move = false; // Referenced by human-player-control.js
-Play._on_move = _on_move;
-var _setup_phase = false;  // Referenced by human-player-control.js
-Play._setup_phase = _setup_phase;
+Play._on_move = false; // Referenced by human-player-control.js
+Play._setup_phase = false;  // Referenced by human-player-control.js
 var websocket = null;
-var _faction = null; // Referenced by human-player-control.js
-Play._faction = _faction;
+Play._faction = null; // Referenced by human-player-control.js
 var SS_phase = null; // Last known server phase count
 
 function enterStateRoleSelect() {
@@ -82,7 +80,7 @@ function observationHandler(msgO) {
         newPhase(msgO);
     }
 
-    _setup_phase = isSetupPhase(msgO);
+    Play._setup_phase = isSetupPhase(msgO);
 
     // Text field updates
     let span = document.getElementById("onmove");
@@ -108,9 +106,25 @@ function observationHandler(msgO) {
         SVGUnitSymbol.partialObsUpdate(uniqueId, unitObs); 
     }  
     SVGGui.clearMarks(); // Clear setup markers
-  
 
-    Play._on_move = msgO.observation.status.onMove === _faction;  // Defined at top
+    for (const hex_id in msgO.observation.status.cityOwner) {
+        let hex = Map.hexIndex[hex_id];
+        let owner = msgO.observation.status.cityOwner[hex_id];
+        if (owner === "blue") {
+            SVGCityMarker.setVisible(true, hex, "blue");
+            SVGCityMarker.setVisible(false, hex, "red");
+        }
+        else if (owner === "red") {
+            SVGCityMarker.setVisible(false, hex, "blue");
+            SVGCityMarker.setVisible(true, hex, "red");
+        }
+        else {  // owner === "neutral"
+            SVGCityMarker.setVisible(false, hex, "blue");
+            SVGCityMarker.setVisible(false, hex, "red");
+        }
+    }
+  
+    Play._on_move = msgO.observation.status.onMove === Play._faction;  // Defined at top
     if (Play._on_move) enterStateInputMove();
     else enterStateWaiting();
     if (msgO.observation.status.isTerminal) enterStateGameOver();
@@ -146,7 +160,7 @@ function parametersHandler(msgO) {
         x_palette_margin:x_palette_margin,
         y_palette_margin:y_palette_margin
     };
-    SVGCreateView.createUnitPlacementView(param);
+    SVGCreateView.createPlayView(param);
 
     Unit.init();
     Unit.fromPortable2(msgO.parameters.units,HumanPlayerControl.unitMouseDownHandler);
@@ -194,12 +208,12 @@ function sendNextGame() {
 }
 Play.sendNextGame = sendNextGame;
 
-function sendSetupMove(hex) {
+Play.sendSetupMove = function(hex) {
     let msg = {type:"action", action:{type:"setup-move", mover:HumanPlayerControl.selectedUnit.uniqueId, destination:hex.id}};
     websocket.send(JSON.stringify(msg));
 }
 
-function sendSetupExchange(friendlyUnit) {
+Play.sendSetupExchange = function(friendlyUnit) {
     let msg = {type:"action", action:{type:"setup-exchange", mover:HumanPlayerControl.selectedUnit.uniqueId, friendly:friendlyUnit.uniqueId}};
     websocket.send(JSON.stringify(msg));
 }
@@ -207,7 +221,7 @@ function sendSetupExchange(friendlyUnit) {
 function bluePressed(btn) {
     websocket.send('{ "type" : "role-request", "role" : "blue", "auto_next_game" : false }');
     btn.style.backgroundColor = "blue";
-    _faction = "blue";
+    Play._faction = "blue";
     enterStateWaiting();
 }
 Play.bluePressed = bluePressed;
@@ -215,7 +229,7 @@ Play.bluePressed = bluePressed;
 function redPressed(btn) {
     websocket.send('{ "type" : "role-request", "role" : "red", "auto_next_game" : false }');
     btn.style.backgroundColor = "red";
-    _faction = "red";
+    Play._faction = "red";
     enterStateWaiting();
 }
 Play.redPressed = redPressed;

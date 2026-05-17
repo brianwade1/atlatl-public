@@ -413,5 +413,13 @@ import {Style} from './style.js';
         }
     }
 
+    Map.hasSetupHex = function() {
+        for (let h of Map.hexes) {
+            if (h.setup)
+                return true;
+        }
+        return false;
+    }
+
 }());
 

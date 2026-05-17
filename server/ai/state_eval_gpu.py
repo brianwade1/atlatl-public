@@ -1,14 +1,7 @@
 from .base import AI
 
-#import asyncio
-#import websockets
 import json
-#import argparse
-#import random
-#import operator
-#import math
 import collections
-#import hashlib
 
 # This AI has a representation of the map and units, and updates the unit representation as it changes
 import sys
@@ -22,13 +15,6 @@ from game import Game
 import torch
 sys.path.append("portabletorch")
 import portabletorch
-
-#import colorsys
-#import numpy as np
-#import scipy
-#from scipy.sparse import dok_matrix
-#import mobility
-#import combat
 import observation
 from torch.utils.data import DataLoader
 

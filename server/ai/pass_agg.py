@@ -26,7 +26,8 @@ class AI:
         if not self.unitData.units():
             return float('inf')
         for target in self.unitData.units():
-            if target.faction == actor.faction or target.ineffective or not target.hex:                 continue
+            if target.faction == actor.faction or target.ineffective or not target.hex:                 
+                continue
             xB = target.hex.x_grid
             yB = target.hex.y_grid
             dist = map.gridDistance(xA,yA,xB,yB)

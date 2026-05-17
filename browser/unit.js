@@ -16,8 +16,11 @@ import { Combat } from './combat.js';
     Unit.init();
 
     Unit.placeUnits = function() {
+        let setupHexesOnly = false;
+        if ( Map.hasSetupHex() )
+            setupHexesOnly = true;
         for (let unit of Unit.units)
-            unit.placeUnit();
+            unit.placeUnit(setupHexesOnly);
     }
     
     Unit.createSVG = function(unitMouseDownHandler) {
@@ -138,11 +141,13 @@ import { Combat } from './combat.js';
             this.remove();
     }   
     
-    Unit.Unit.prototype.placeUnit = function() {
+    Unit.Unit.prototype.placeUnit = function(setupHexesOnly) {
         for (let hexId in Map.hexIndex) {
             let hex = Map.hexIndex[hexId];
             // Check if hex is empty and marked as a setup hex
-            if ((!Unit.occupancy[hexId] || !Unit.occupancy[hexId].length) && hex.setup && hex.setup.substring(11)==this.faction) {
+            let occupancy_ok = (!Unit.occupancy[hexId] || !Unit.occupancy[hexId].length);
+            let setup_ok = !setupHexesOnly || (hex.setup && hex.setup.substring(11)==this.faction);
+            if ( (occupancy_ok && setup_ok) ) {
                 this.setHex(hex);
                 return;
             }

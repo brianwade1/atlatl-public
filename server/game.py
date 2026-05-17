@@ -29,8 +29,13 @@ class Game:
         map.fromPortable(scenarioPo["map"], self.mapData)
     def initial_state(self):
         state = {}
-        state["status"] = status.Status(self.scenarioPo, self.mapData).toPortable()
         state["units"] = copy.deepcopy( self.scenarioPo["units"] )
+        statusO = status.Status(self.scenarioPo, self.mapData)
+        # Updpate city ownership
+        unitData = UnitData()
+        fromPortable(state['units'], unitData, self.mapData)  
+        statusO.updateCityOwnership(unitData)
+        state["status"] = statusO.toPortable() 
         self._setCanMove(state, "blue", value=True)
         return state
     def players(self):

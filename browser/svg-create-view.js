@@ -5,6 +5,7 @@ import {MapEditorPalette} from "./svg-map-editor-palette.js";
 import {SVGMapView} from './svg-map-view.js';
 import {SVGUtil} from './svg-util.js';
 import {UnitPlacementControl} from './unit-placement-control.js';
+import {HumanPlayerControl} from "./human-player-control.js";
 
 (function() { 
     SVGCreateView.svgNS = 'http://www.w3.org/2000/svg';
@@ -29,6 +30,16 @@ import {UnitPlacementControl} from './unit-placement-control.js';
         document.body.appendChild(SVGCreateView.svg); 
         
         SVGMapView.add(param, SVGCreateView.svg, UnitPlacementControl.hexMouseOverHandler, UnitPlacementControl.hexMouseDownHandler);
+
+        SVGCreateView.svg.addEventListener("mousedown",UnitPlacementControl.svgMouseDownHandler);
+    };
+
+    SVGCreateView.createPlayView = function(param) { 
+        SVGCreateView.param = param;
+        SVGCreateView.svg = SVGUtil.recreateMysvg();
+        document.body.appendChild(SVGCreateView.svg); 
+        
+        SVGMapView.add(param, SVGCreateView.svg, HumanPlayerControl.hexMouseOverHandler, HumanPlayerControl.hexMouseDownHandler);
 
         SVGCreateView.svg.addEventListener("mousedown",UnitPlacementControl.svgMouseDownHandler);
     };

@@ -8,7 +8,7 @@
 
 import server
 import asyncio
-import gym
+import gymnasium as gym
 import map
 import numpy as np
 import ai.gym_ai_surrogate

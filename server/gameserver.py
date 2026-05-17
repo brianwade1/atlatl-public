@@ -89,6 +89,10 @@ def message_handler_factory(game_server):
                 raise Exception(f'Only first player should send messages during the first player turn. Offending message {messageO}')
             if messageO['type']!='action':
                 raise Exception(f'Only action messages should be sent during player turns. Bad message: {messageO}')
+            if gs.log_actions and gs.blue_logfile:
+                gs.log_blue(messageO)
+            if gs.log_actions and gs.red_logfile:
+                gs.log_red(messageO)
             gs.game_state = gs.game.transition(gs.game_state, messageO["action"])
             await gs.send_observations(messageO.get("debug"))
             # go to new state
@@ -109,6 +113,10 @@ def message_handler_factory(game_server):
                 raise Exception(f'Only second player should send messages during the second player turn')
             if messageO['type']!='action':
                 raise Exception(f'Only action messages should be sent during player turns')
+            if gs.log_actions and gs.blue_logfile:
+                gs.log_blue(messageO)
+            if gs.log_actions and gs.red_logfile:
+                gs.log_red(messageO)
             gs.game_state = gs.game.transition(gs.game_state, messageO['action'])
             await gs.send_observations(messageO.get("debug"))
             # go to new state
@@ -138,7 +146,7 @@ def new_client_handler_factory(game_server, request_role_messageO, verbose):
 
 # Server for two player games
 class GameServer:
-    def __init__(self, game_dispenser, client_functions, first_player_role="blue", second_player_role="red", request_role_messageO={"type":"request-role"}, ip="127.0.0.1", port="9999", open_socket=False, n_reps=0, verbose=False, blue_log=None, red_log=None):
+    def __init__(self, game_dispenser, client_functions, first_player_role="blue", second_player_role="red", request_role_messageO={"type":"request-role"}, ip="127.0.0.1", port="9999", open_socket=False, n_reps=0, verbose=False, blue_log=None, red_log=None, log_actions=False):
         self.state = State.ROLE_ASSIGNMENT
         self.game_dispenser = game_dispenser
         self.game = game_dispenser.get_next_game()
@@ -163,6 +171,7 @@ class GameServer:
             self.red_logfile = open(red_log,"w")
             self.red_logfile.write("replayData = [\n")
             self.log_red_param()
+        self.log_actions = log_actions
         def signal_handler(sig, frame):
             print('gameserver received interrupt signal')
             self.close_logs()

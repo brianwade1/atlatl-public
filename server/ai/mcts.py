@@ -58,7 +58,7 @@ class AI:
                 if not self.actionQueue:
                     game = current_game_access.get_current_game()
                     start = time.process_time()
-                    self.actionQueue = mctsearch.uct_search(game, merit_const=self.merit_constant, max_rollouts=self.max_rollouts, init_state=obs, debug=self.debug)
+                    self.im = mctsearch.uct_search(game, merit_const=self.merit_constant, max_rollouts=self.max_rollouts, init_state=obs, debug=self.debug)
                     end = time.process_time()
                     if self.debug:
                         print(f'time/move {end-start} rollouts/sec {self.max_rollouts/(end-start)}')

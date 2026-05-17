@@ -44,13 +44,13 @@ class Status:
             delta_score = self.score_per_blue_kill * dstrength
         self.score += delta_score
         return delta_score
-    def _updateCityOwnership(self, unitData):
+    def updateCityOwnership(self, unitData):
         for hex in self.ownerD:
             if hex in unitData.occupancy and unitData.occupancy[hex]:
                 oneOccupier = unitData.occupancy[hex][0]
                 self.ownerD[hex] = oneOccupier.faction
     def endPhaseDeltaCityScore(self, unitData):
-        self._updateCityOwnership(unitData)
+        self.updateCityOwnership(unitData)
         delta_score = 0
         for city in self.ownerD:
             if self.ownerD[city] == "blue":
