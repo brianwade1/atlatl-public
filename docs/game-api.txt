@@ -1,0 +1,15 @@
+Game API
+initial_state()->state
+players()->[player]
+on_move(state)->player
+is_terminal(state)->boolean
+score(state)->float
+transition(state,action)->state
+is_legal(state,action)->boolean
+legal_actions(state)->[action]  (optional; action space may be infinite)
+observation(state,player)->observation
+max_player()->player
+parameters()->parameters
+
+Agent API
+update(info_set, observation)->info_set

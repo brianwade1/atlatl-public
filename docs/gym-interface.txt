@@ -1,0 +1,46 @@
+-------------------------
+Gym Interface Description
+-------------------------
+
+Normal operation of server
+--------------------------
+
+Normally the server starts, creates AIs and a gameserver, and hands over control to the gameserver.
+
+The gameserver in turn creates a messageserver and a custom message handling callback and turns over control to the messageserver.
+
+The messageserver runs an event handling loop that enables it to service incoming websocket connections and a set of functions as client message (JSON string) handlers, monitoring all channels, and waking up and processing a message from any client when one appears.
+
+
+Operation in support of Gym interface
+-------------------------------------
+
+The gym interface requires two significant functions: reset and step.
+
+A Gym reset is implemented by sending a next-game-request message to the running gameserver, which resets game state and role assignment without recreating the server or AIs. This is distinct from a "reset" during normal operation, which is also requested by a client but handled independently.
+
+A Gym step must take an Gym-format action as an argument (e.g. an integer that indexes into a list of possible actions) and must result in an (observation, reward, dones, infos) tuple. This creates two issues for the system: firstly, actions can only come from an AI, so the selected action must be reformatted and communicated to an AI to be passed through to the server. Secondly, the AI can only insert an action when it is on move, so after each action is taken (and when the system is initialized), the state of the system must be advanced up to the point where it is appropriate for the AI to take another action. This might involve multiple actions taken by other AIs.
+
+
+Implementation details
+----------------------
+
+messageserver.py
+----------------
+Provides clients with a response_fn (maps to ClientWrapper.send_to_server) that can add messages to a client's outbox on the server. 
+
+server.py
+---------
+Defines globals game, server (gameserver) and gym_ai (defined in gym_ai_surrogate.py) that enable gym compatibility.
+  
+mapDimensionsBackdoor(): needed to build a neural net with appropriate architecture
+
+getGymAI(): grants access to AI object as defined in gym_ai_surrogate.py. Used multiple places, listed below.
+
+addMessageRunLoop(): when the gym AI surrogate is asked for an action, it requests a stop to the event loop via a gym-pause message. When the external AI makes an action choice, it is passed to the gameserver via method sendToServer provided by the gym surrogate AI that makes use of the response_fn described above to pass it to the server.
+
+gym_interface.py (the GymEnvironment wrapper):
+   Uses server.py's getGymAI() to access the gym_ai_surrogate.AI object in order to...
+   ...call AI.observation() to provide the initial observation after reset
+   ...call AI.actionMessageDiscrete(action) to convert an external agent's action (in Gymnasium format, usually an integer) to the action message format expected by the gameserver
+   ...call AI.action_result() to return the results of a step in Gymnasium format (observation, reward, done, infos)

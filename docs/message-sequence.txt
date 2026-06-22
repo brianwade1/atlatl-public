@@ -1,0 +1,61 @@
+Message Sequence For Blue
+
+Simplified sequence
+-------------------
+parameters <- S
+role-request -> S
+
+Repeat indefinitely:
+observation <- S
+action -> S (if blue is on move and state is non-terminal)
+
+At any time, any player may:
+reset-request -> S
+S -> reset
+
+At any time, any player may:
+next-game-request -> S 
+Followed by, for all players:
+parameters <- S
+role-request -> S
+
+When on move and emulating a Gym environment:
+gym-pause -> S
+
+
+Old sequence
+------------
+role-request -> S
+role-assigned <- S
+ready-to-start -> S
+phase setup <- S
+
+* zero or more times
+* setup move OR setup exchange -> S
+* observation <- S
+
+end-setup -> S
+phase wait <- S
+waiting -> S
+
+*zero or more times
+* observation <- S
+* waiting -> S
+
+phase move <- S
+
+*zero or more times
+* action move OR action fire*** -> S
+* action fire -> S
+* observation <- S
+
+end-move -> S
+phase wait <- S
+
+*zero or more times
+* observation <- S
+* waiting -> S
+
+Go to phase move message above
+
+***OR action reset, in which case go to role-assigned above
