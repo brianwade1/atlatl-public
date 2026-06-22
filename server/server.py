@@ -2,6 +2,20 @@ from gameserver import GameServer
 from game import Game
 import json
 import random
+import os
+import sys
+
+# Neural AI names require PyTorch/stable-baselines3. Detect them before importing
+# airegistry so the heavy imports are skipped when not needed (~18s startup savings).
+_NEURAL_AI_NAMES = {
+    "neural", "cnn", "hex12", "hex13", "hex14", "hex14dqn", "hex18dqn",
+    "mando-fun-lab3", "alphazero", "dlalphabeta", "state-eval-gpu",
+    "state-eval-gpu-pp", "pascal", "ibarra-m3", "ibarra-lx3",
+}
+if any(name in sys.argv for name in _NEURAL_AI_NAMES) or \
+        "--blueNeuralNet" in sys.argv or "--redNeuralNet" in sys.argv:
+    os.environ["ATLATL_NEURAL"] = "1"
+
 import airegistry
 import argparse
 import scenario

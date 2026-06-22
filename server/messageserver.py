@@ -61,7 +61,7 @@ class ClientWrapper:
         self.from_client.append( message_O )
 
 def serve_function_factory(message_handler, new_client_handler, server, verbose=False):
-    async def serve(websocket, path):
+    async def serve(websocket):
         global SLEEP_TIME
         # More sleep when a web client is present to save on cpu load
         SLEEP_TIME = 0.01
@@ -90,18 +90,24 @@ async def process_function_client(clientw, message_handler, new_client_handler, 
 class MessageServer:
     def __init__(self, client_functions, message_handler, new_client_handler,
                 ip="127.0.0.1", port="9999", openSocket=False, verbose=False):
+        self.loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(self.loop)
         self.clients = []
         self.verbose = verbose
         if openSocket:
-            serve = serve_function_factory(message_handler, new_client_handler, self, verbose)
-            start_wsserver = websockets.serve(serve, ip, port)
-            asyncio.get_event_loop().run_until_complete(start_wsserver)
+            serve_fn = serve_function_factory(message_handler, new_client_handler, self, verbose)
+            # websockets v14+ requires a running event loop when serve() is called.
+            # Schedule it as a task so it runs inside run_forever() where the loop is active.
+            async def _start_ws_server():
+                async with websockets.serve(serve_fn, ip, port):
+                    await asyncio.Future()  # keep server alive until loop stops
+            self.loop.create_task(_start_ws_server())
         for func in client_functions:
             clientw = ClientWrapper("function", func)
             self.clients.append( clientw )
-            asyncio.get_event_loop().create_task(process_function_client(clientw, message_handler, new_client_handler, self, verbose))
+            self.loop.create_task(process_function_client(clientw, message_handler, new_client_handler, self, verbose))
     def run(self):
-        asyncio.get_event_loop().run_forever()
+        self.loop.run_forever()
     async def send(self, message_O, clientw):
         await clientw.send_to_client(message_O, self.verbose)
     async def broadcast(self, message_O):

@@ -46,7 +46,7 @@ class State(Enum):
 
 async def do_exit(gs):
     gs.close_logs()
-    asyncio.get_event_loop().stop()
+    asyncio.get_running_loop().stop()
     await asyncio.sleep(0)
     sys.exit(0)
 

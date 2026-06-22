@@ -1,0 +1,19 @@
+[project]
+name = "atlatl-public"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "hexagdly>=2.0.2",
+    "numpy>=2.4.6",
+    "psutil>=7.2.2",
+    "scipy>=1.17.1",
+    "shimmy>=2.0.1",
+    "stable-baselines3[extra]>=2.9.0",
+    "torch>=2.12.0",
+    "torchaudio>=2.11.0",
+    "torchvision>=0.27.0",
+    "tqdm>=4.68.3",
+    "websockets>=16.0",
+]

@@ -1,0 +1,88 @@
+# Ignore these files and folders
+alpha-zero-general
+
+# Python cache, bytecode, and temporary files
+__pycache__/
+*.py[cod]
+*.pyc
+*.pyo
+*.pyd
+*$py.class
+
+# Virtual environment directories
+.env
+env/
+venv/
+.venv/
+
+# Packaging and build artifacts
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# Test and coverage output
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.pyre/
+.tox/
+.nox/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+.ipynb_checkpoints/
+
+# VS Code workspace and editor files
+.vscode/
+!.vscode/settings.json
+!.vscode/launch.json
+.history/
+*.swp
+*.swo
+*.tmp
+
+# Local assistant/editor config
+.claude/
+
+# macOS and OS artifacts
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
+
+# Tensorboard and RL logs
+tensorboard/
+RL/Log/
+lab*_logs/
+multigym_logs/
+eval_logs*/
+cjds_logs/
+
+# Stable Baselines / model outputs
+model_save.zip
+ppo_save.zip
+
+# Torch / solver generated artifacts
+*.pt
+*.pth
+*.pkl
+dataset.pt
+solution.pkl
+mymodel/
+
+# Generated replay outputs
+/server/replay*.js
+/browser/replay-local*.js
+/browser/generated-replay*.js
+
+# Local scratch outputs
+LLMtest/generated/
+
+# Miscellaneous
+*.bak
+*.cache
+*.temp

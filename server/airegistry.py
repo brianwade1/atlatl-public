@@ -1,4 +1,5 @@
-IMPORT_NEURAL = True
+import os
+IMPORT_NEURAL = os.environ.get("ATLATL_NEURAL", "0") == "1"
 
 import ai.passive
 import ai.random_actor
