@@ -1,8 +1,10 @@
-# Atlatl Repo Guide
+# Atlatl Documentation
 
-Atlatl is an ultra-simple Python-based wargame and combat-modeling framework designed for experimentation with artificial intelligence, reinforcement learning, and human-vs-AI tactical play. The project includes a deterministic combat simulation, browser-based interfaces, scenario creation tools, replay tools, and hooks for Stable Baselines 3 reinforcement learning workflows.
+Atlatl is an ultra-simple Python-based wargame and combat-modeling framework designed for experimentation with artificial intelligence, reinforcement learning, and human-vs-AI tactical play. The project includes a deterministic combat simulation, browser-based interfaces, scenario creation tools, replay tools, and hooks for reinforcement learning workflows, and [Stable-Baselines3](https://stable-baselines3.readthedocs.io/en/master/index.html) trained agents.
 
 This guide is adapted from a slide deck by [Dr. Chris Darkin](https://nps.edu/faculty-profiles/-/cv/cjdarken), a professor at the Naval Postgradute School, who developed the atlatl simulation. This repo is a fork from his original [atlatl](https://github.com/cjdarken/atlatl-public) simulation.
+
+For installation and quick-start workflows see `README.md` in the repo root.
 
 ## Table of Contents
 
@@ -22,6 +24,7 @@ This guide is adapted from a slide deck by [Dr. Chris Darkin](https://nps.edu/fa
 - [Writing an AI](#writing-an-ai)
 - [Useful Code Patterns](#useful-code-patterns)
 - [Reinforcement Learning Support](#reinforcement-learning-support)
+- [Troubleshooting](#troubleshooting)
 - [Reference Tables](#reference-tables)
 
 ## Project Overview
@@ -34,7 +37,7 @@ Key characteristics:
 - Performance is scored using kills, losses, and control of cities.
 - Human users can play through a browser-based interface.
 - AI agents can control one or both sides.
-- Reinforcement learning hooks are provided for [Stable-Baselines3](https://stable-baselines3.readthedocs.io/en/master/index.html).
+- Reinforcement learning hooks and several Stable-Baselines3 workflows.
 - Browser-based replay tools allow review of AI-vs-AI matches.
 
 The name **Atlatl** comes from an Aztecan word for a simple but highly effective military tool used to increase the power and penetration of a spear or dart.
@@ -67,7 +70,7 @@ Atlatl uses a hexagonal grid. See [this link](https://www.redblobgames.com/grids
 The project uses three coordinate systems:
 
 | Coordinate Type | Description |
-|---|---|
+| --- | --- |
 | Offset coordinates | The upper-left hex is `(0, 0)`. The top of the second column is `(1, 0)`. The hex below `(0, 0)` is `(0, 1)`. |
 | Grid coordinates | Integer coordinates corresponding to position on the plane. The spacing in x and y is not the same. |
 | SVG coordinates | Floating-point coordinates used for browser rendering in the SVG element. |
@@ -89,12 +92,12 @@ Important tactical implications:
 Hexes are best interpreted as being somewhat less than 10 km across.
 
 | Terrain | Color | Effect |
-|---|---|---|
+| --- | --- | --- |
 | Clear | White | Good mobility for all unit types. |
 | Water | Blue | Impassible for all unit types. |
 | Rough | Tan | Slower movement; good defense for infantry. |
 | Marsh | Green | Slower movement; poor defense for most unit types. |
-| Key Terrain / Urban | Gray | Good defense for infantry; may contribute to score if held. |
+| City (Urban) | Gray | Good defense for infantry; may contribute to score if held. |
 
 Roads and rivers are not currently modeled.
 
@@ -136,18 +139,18 @@ Scoring is from the perspective of **blue**. Parameters can be adjusted during s
 Default scoring:
 
 | Event | Score |
-|---|---:|
+| --- | ---: |
 | Red strength point killed or made combat ineffective | `+1` |
 | Blue strength point killed or made combat ineffective | `-2` |
-| Key terrain controlled per phase | `24 / num_cities` |
+| City hex controlled per phase | `24 / num_cities` |
 
 Notes:
 
 - Units begin with 100 strength points.
 - If a unit drops below 50 strength, it is removed and all remaining strength is counted as lost.
-- Key terrain hexes start under neither faction’s control.
-- Key terrain control changes only when a unit from the opposing faction enters the key terrain hex.
-- Leaving a key terrain hex does not automatically lose control of that hex.
+- City hexes start under neither faction’s control.
+- City hex control changes only when a unit from the opposing faction enters the city hex.
+- Leaving a city hex does not automatically lose control of it.
 
 ## Software Architecture
 
@@ -164,14 +167,26 @@ The engine can run:
 
 ### JavaScript GUI
 
-The browser directory includes several HTML tools:
+The browser directory includes several HTML tools (all must be served over HTTP — see [Running Atlatl with a Pre-Existing AI](#running-atlatl-with-a-pre-existing-ai)):
 
-- `play.html` — human player interface for live games.
-- `playback.html` — replay viewer for recorded games.
-- `map-editor.html` — terrain and setup-zone editor.
-- `unit-placement.html` — force placement and scenario export tool.
+| Tool | URL | Purpose |
+| --- | --- | --- |
+| `play.html` | `http://localhost:8080/play.html` | Human player interface for live games |
+| `playback.html` | `http://localhost:8080/playback.html` | Replay viewer for recorded games |
+| `map-editor.html` | `http://localhost:8080/map-editor.html` | Terrain and setup-zone editor |
+| `unit-placement.html` | `http://localhost:8080/unit-placement.html` | Force placement and scenario export |
+| `random-scenario.html` | `http://localhost:8080/random-scenario.html` | Random scenario generation |
 
-All use SVG graphics for crisp, scalable rendering and must be served over HTTP (see [Running Atlatl with a Pre-Existing AI](#running-atlatl-with-a-pre-existing-ai)).
+All use SVG graphics for crisp, scalable rendering.
+
+### Ports
+
+Two servers run simultaneously during interactive play:
+
+- **Game server** — WebSocket on `ws://localhost:9999`. The browser and external AIs connect here.
+- **HTTP server** — `http://localhost:8080`. Serves the browser HTML/JS files.
+
+Both must be running for browser-based play. `main.py` starts both automatically; the manual steps are in [Running Atlatl with a Pre-Existing AI](#running-atlatl-with-a-pre-existing-ai).
 
 ### AI Communication
 
@@ -208,13 +223,13 @@ source .venv/bin/activate   # Linux/macOS
 
 ## Quick Test
 
-From the `server` directory, run:
+From the repo root, run:
 
 ```bash
-python server.py city-inf-5 --blueAI pass-agg --redAI pass-agg --nReps 1
+python main.py city-inf-5 --blueAI pass-agg --redAI passive --nReps 1
 ```
 
-This runs a simple AI-vs-AI test using the `city-inf-5` scenario generator and will return the final blue score of the simulation.
+This runs an AI-vs-AI game using the `city-inf-5` scenario generator and prints the final blue score. No browser window is needed because both sides are AIs. If you see a score printed without errors, the setup is working.
 
 ## Running Atlatl
 
@@ -229,7 +244,7 @@ Scenario files end in `.scn` and are located in the `server/scenarios` subdirect
 Common optional arguments:
 
 | Argument | Description |
-|---|---|
+| --- | --- |
 | `-v` | Verbose mode; prints message traffic. |
 | `--redAI REDAI` | AI name to use for red. Omit for a human websocket player. |
 | `--blueAI BLUEAI` | AI name to use for blue. Omit for a human websocket player. |
@@ -245,6 +260,8 @@ Common optional arguments:
 
 ## Running Atlatl with a Pre-Existing AI
 
+> **Shortcut:** `python main.py <scenario> [--redAI NAME] [--blueAI NAME]` (from the repo root) automates the steps below — it opens the HTTP server in a new terminal and prints the URL. The manual steps are here for reference or when you need finer control.
+
 The browser files use ES modules and must be served over HTTP — opening them directly from the filesystem will not work. You will need **two or three terminals**: one for the game server, one for the HTTP server, and (optionally) one for an external AI process.
 
 **Terminal 1 — HTTP server** (run once; leave it running):
@@ -256,6 +273,8 @@ cd browser
 python -m http.server 8080
 ```
 
+**Terminal 2 — Game server** (run for each game):
+
 All game commands below run from the **`server` directory** in a separate terminal. Once the game is spawned, open the browser at `http://localhost:8080/play.html`.
 
 ### Human vs. AI
@@ -263,12 +282,14 @@ All game commands below run from the **`server` directory** in a separate termin
 To play as blue against a pre-existing AI playing red:
 
 ```bash
+cd server
 python server.py YourScenario.scn --redAI pass-agg --openSocket
 ```
 
 For example:
 
 ```bash
+cd server
 python server.py test4.scn --redAI pass-agg --openSocket
 ```
 
@@ -281,6 +302,7 @@ To play as red instead, specify `--blueAI` and select **Red** in the browser.
 Start the server with no AI arguments:
 
 ```bash
+cd server
 python server.py YourScenario.scn --openSocket
 ```
 
@@ -291,6 +313,7 @@ Open `http://localhost:8080/play.html` in one browser tab and select **Blue**. O
 Run both sides as AIs and write the replay directly into the `browser/` directory:
 
 ```bash
+cd server
 python server.py YourScenario.scn --blueAI pass-agg --redAI pass-agg --nReps 1 --blueReplay ../browser/replay.js
 ```
 
@@ -301,12 +324,14 @@ After the game completes, open `http://localhost:8080/playback.html` in a browse
 AIs selected with `--blueAI` / `--redAI` run in-process. Some AI files also support running as a **separate process** that connects over a websocket. Start the server with `--openSocket` but omit that side's AI argument:
 
 ```bash
+cd server
 python server.py YourScenario.scn --openSocket
 ```
 
 Then, in a third terminal, start the external AI from the `server` directory:
 
 ```bash
+cd server
 python ai/passive.py red
 ```
 
@@ -331,6 +356,8 @@ Then:
 3. Optionally click **Random** to experiment with map generation.
 4. Use the palette on the left to paint terrain and setup zones.
 5. Click **Copy JSON to Clipboard**.
+
+Alternatively, open `http://localhost:8080/random-scenario.html` to generate a complete random scenario (map + units) in one step without using the editor.
 
 ### Step 2: Place Units
 
@@ -357,11 +384,11 @@ Existing `.scn` files contain `map` and `unit` fields in the correct format for 
 Atlatl includes several built-in AIs.
 
 | AI | Description |
-|---|---|
+| --- | --- |
 | `passive` | Does nothing. |
 | `shootback` | Does not move, but shoots randomly at targets in range. |
 | `random` | Takes a random legal action. |
-| `field` | If no targets are in range, moves via a potential field algorithm toward opposing forces and key terrain. |
+| `field` | If no targets are in range, moves via a potential field algorithm toward opposing forces and city hexes. |
 | `dijkstra` | Similar to `random`, but demonstrates shortest path planning using Dijkstra’s algorithm. |
 | `pass-agg` | Hand-built AI that is aggressive when the faction's aggregate strength is stronger and defensive otherwise. Intended for `city-inf-5`. |
 | `pass` | Fixed passive posture. |
@@ -375,6 +402,13 @@ Atlatl includes several built-in AIs.
 | `stomp` | Full-ply lookahead to maximize a fictitious differential attrition. |
 | `stomp-pp` | Greedy action-selection version of `stomp`. |
 
+Neural AIs (`neural`, `cnn`, `hex12`, `hex13`, `hex14`, `hex16`, etc.) require PyTorch and are not loaded by default. Enable them by setting the `ATLATL_NEURAL` environment variable before running the server:
+
+```bash
+ATLATL_NEURAL=1 python server.py ...          # Linux/macOS
+$env:ATLATL_NEURAL=1; python server.py ...    # Windows PowerShell
+```
+
 Some AIs use false terrain coloring as a debugging aid. This is visible in replay mode through `playback.html`.
 
 ### `pass-agg` AI Summary
@@ -382,10 +416,10 @@ Some AIs use false terrain coloring as a debugging aid. This is visible in repla
 The `pass-agg` AI:
 
 - Always shoots when possible.
-- If stronger than the opponent, it favors movement toward key terrain and opposing forces.
-- If weaker, it favors movement toward key terrain only.
+- If stronger than the opponent, it favors movement toward city hexes and opposing forces.
+- If weaker, it favors movement toward city hexes only.
 - Strength is determined by summing current unit strengths.
-- Hexes are scored by distance to the nearest key terrain hex, and when aggressive, also by distance to the nearest opposing force.
+- Hexes are scored by distance to the nearest city hex, and when aggressive, also by distance to the nearest opposing force.
 - The minimum-score hex is selected.
 
 ## Saving and Replaying Games
@@ -428,7 +462,7 @@ When on move and emulating a Gym environment:
 ### Message Types
 
 | Message | Contents |
-|---|---|
+| --- | --- |
 | `parameters` | Map, hexes, edges, unused paths, units, and score parameters. |
 | `role-request` | Role requested by a player or AI. |
 | `observation` | Units and status, including score, phase, terminal state, and side on move. |
@@ -506,6 +540,8 @@ Fire action:
 ```
 
 ## Writing an AI
+
+Before writing your own AI, read `server/ai/passive.py` (does nothing — the simplest possible AI) and `server/ai/random_actor.py` (takes a random legal action). These are the shortest complete examples and show the full message-handling pattern.
 
 An Atlatl AI is a Python class named `AI` that lives in a file under `server/ai/`. The minimum interface is:
 
@@ -613,7 +649,7 @@ findFireTargets(unitData) -> [unitObj]
 ```python
 hexIndex = {hexId: hexObject}
 hexes() -> [hexObjects]
-getCityHexes() -> [keyTerrainHexObjects]
+getCityHexes() -> [cityHexObjects]  # urban/city hexes; gray hexes on the map
 getDimensions() -> {width, height}
 toString() -> JSON
 toPortable() -> {...}
@@ -668,9 +704,29 @@ map.hexDistance(hA.x_offset, hA.y_offset, hB.x_offset, hB.y_offset)
 Select an action:
 
 ```python
-# Create a dict with type "action" and the appropriate action parameters.
-# Convert it to JSON with json.dumps().
-# Return the JSON string from AI.process().
+import json
+
+# Move a unit to a hex
+action = {
+    "type": "action",
+    "action": {
+        "type": "move",
+        "mover": unit.uniqueId,       # e.g. "blue 1/1/1"
+        "destination": target_hex.id  # e.g. "hex-3-2"
+    }
+}
+return json.dumps(action)
+
+# Fire at an enemy unit
+action = {
+    "type": "action",
+    "action": {
+        "type": "fire",
+        "source": unit.uniqueId,        # shooter's uniqueId
+        "target": target_unit.uniqueId  # target's uniqueId
+    }
+}
+return json.dumps(action)
 ```
 
 Iterate over all units:
@@ -695,7 +751,7 @@ See server/ai/dijkstra_demo.py:AI.runDijkstra()
 
 ## Reinforcement Learning Support
 
-Atlatl includes support for reinforcement learning workflows through Stable-Baselines3. An overview of how the Gymnasium interface is implemented is in `docs/gym-interface.txt`.
+Atlatl includes support for reinforcement learning. Included in this repo are workflows through [Stable-Baselines3](https://stable-baselines3.readthedocs.io/en/master/index.html). If you are new to reinforcement learning environments, the [Gymnasium documentation](https://gymnasium.farama.org/) is the best starting point. An overview of how the Gymnasium interface is implemented in Atlatl is in `docs/gym-interface.txt`.
 
 ### Gymnasium Compatibility Layer
 
@@ -721,7 +777,7 @@ Channels include:
 - Red strength
 - Unit type features for infantry, mech infantry, armor, and artillery
 - Terrain features for clear, water, rough, urban, marsh, and unused
-- Key terrain ownership for blue and red
+- City hex ownership for blue and red
 - Phase value
 - Normalized score
 - Optional selected-unit image when one unit has been preselected
@@ -820,6 +876,37 @@ Example:
 ```bash
 python server.py test4.scn --blueAI neural --blueNeuralNet ppo_save.zip --redAI passive --nReps 3
 ```
+
+## Troubleshooting
+
+### Browser shows "Not Connected"
+
+The browser must connect over HTTP, not the filesystem. Make sure:
+
+1. The HTTP server is running from the `browser/` directory: `cd browser && python -m http.server 8080`
+2. You opened `http://localhost:8080/play.html`, not a `file://` path.
+3. The game server is running and listening (`--openSocket` is required for browser connections).
+
+### Browser shows 404
+
+The HTTP server is running from the wrong directory. It must be started from `browser/`, not `server/` or the repo root.
+
+### "Not Connected" persists even with the HTTP server running
+
+The browser connects to the game server WebSocket at `ws://localhost:9999`. If the game server exited (e.g., after `--nReps 1` completed), restart it.
+
+### `ModuleNotFoundError` when starting the server
+
+The virtual environment is not active. Run `uv sync` and then activate:
+
+```bash
+source .venv/bin/activate   # Linux/macOS
+.venv\Scripts\activate      # Windows
+```
+
+### Neural AI fails to load
+
+Neural AIs are not imported by default. Set `ATLATL_NEURAL=1` before running (see [Stock AIs](#stock-ais) for the exact syntax).
 
 ## Reference Tables
 
