@@ -1,5 +1,11 @@
+import os
 import sys
-sys.path.append("..")
+from pathlib import Path
+
+SERVER_DIR = Path(__file__).resolve().parents[1]
+if str(SERVER_DIR) not in sys.path:
+    sys.path.insert(0, str(SERVER_DIR))
+os.chdir(SERVER_DIR)
 
 from stable_baselines3 import PPO, DQN
 from stable_baselines3.common.evaluation import evaluate_policy
@@ -10,12 +16,11 @@ from stable_baselines3.common.utils import get_schedule_fn
 from stable_baselines3.dqn.policies import CnnPolicy
 from stable_baselines3.common.callbacks import EvalCallback
 
-import gym
+import gymnasium as gym
 import torch as th
 from torch import nn as nn
 import multigym
 
-from gym import spaces
 import numpy as np
 import random
 

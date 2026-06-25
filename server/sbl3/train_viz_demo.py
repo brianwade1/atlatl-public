@@ -1,16 +1,25 @@
 
+import os
+import sys
+from pathlib import Path
+
+SERVER_DIR = Path(__file__).resolve().parents[1]
+if str(SERVER_DIR) not in sys.path:
+    sys.path.insert(0, str(SERVER_DIR))
+os.chdir(SERVER_DIR)
+
 from stable_baselines3 import PPO
 from stable_baselines3.common.evaluation import evaluate_policy
 from stable_baselines3.common.policies import ActorCriticCnnPolicy
 from stable_baselines3.common.torch_layers import BaseFeaturesExtractor, NatureCNN
 from stable_baselines3.common.utils import get_schedule_fn
+from stable_baselines3.common.callbacks import EvalCallback
 
-import gym
+import gymnasium as gym
 import torch as th
 from torch import nn as nn
 import gym_interface
 
-from gym import spaces
 import numpy as np
 import random
 
@@ -119,7 +128,8 @@ policy = ActorCriticCnnPolicy
 model = PPO(policy, env, clip_range=0.1, policy_kwargs=policy_kwargs, verbose=1)
 # Evaluation is apparently done deterministically (max probability action only)
 #model.learn(total_timesteps=4000000, log_interval=1000, eval_env=env, eval_freq=50000, n_eval_episodes=1000, eval_log_path="cjds_logs") 
-model.learn(total_timesteps=400, log_interval=1000, eval_env=env, eval_freq=50000, n_eval_episodes=1000, eval_log_path="cjds_logs") 
+eval_callback = EvalCallback(env, log_path="cjds_logs", eval_freq=50000, n_eval_episodes=1000, deterministic=True, render=False)
+model.learn(total_timesteps=400, log_interval=1000, callback=eval_callback)
 
 model.save("ppo_save")
 
@@ -129,7 +139,7 @@ N = 100
 pos_reward_counter = 0
 total_reward = 0
 max_reward = float('-inf')
-obs = env.reset()
+obs, info = env.reset()
 #print('initial obs')
 #print(obs)
 # for i in range(N):

@@ -874,7 +874,7 @@ server/ppo_save.zip
 Example:
 
 ```bash
-python server.py test4.scn --blueAI neural --blueNeuralNet ppo_save.zip --redAI passive --nReps 3
+python server.py atomic-city.scn --blueAI neural --blueNeuralNet ppo_save.zip --redAI passive --nReps 3
 ```
 
 ## Troubleshooting

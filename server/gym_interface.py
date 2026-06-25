@@ -25,6 +25,7 @@ class Args:
         self.redNeuralNet = redNeuralNet
         self.blueReplay = blueReplay
         self.redReplay = redReplay
+        self.logActions = False
         self.openSocket = openSocket
         self.exitWhenTerminal = False
         self.scenarioSeed = scenarioSeed
@@ -67,8 +68,9 @@ class GymEnvironment(gym.Env):
         self.observation_space = gym.spaces.Box(low=0.0, high=1.0, shape=(nFeatures, dim[0], dim[1]), dtype=np.float32)
         self.metadata = {'render.modes': ['human']}
         self.reward_range = (-np.inf, np.inf)
-    def reset(self):
-        return server.reset()
+    def reset(self, seed=None, options=None):
+        super().reset(seed=seed)
+        return server.reset(), {}
     def close(self):
         pass
     def render(self):
@@ -78,5 +80,6 @@ class GymEnvironment(gym.Env):
         msg = server.getGymAI().actionMessageDiscrete(action)
         if msg is not None:
             server.addMessageRunLoop(msg)
-        return server.getGymAI().action_result()
+        obs, reward, done, info = server.getGymAI().action_result()
+        return obs, reward, done, False, info
 

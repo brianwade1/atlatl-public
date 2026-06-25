@@ -24,6 +24,7 @@ class Args:
         self.redNeuralNet = redNeuralNet
         self.blueReplay = blueReplay
         self.redReplay = redReplay
+        self.logActions = False
         self.openSocket = openSocket
         self.exitWhenTerminal = False
         self.scenarioSeed = scenarioSeed
@@ -33,6 +34,8 @@ class Args:
         self.redDepthLimit = None
         self.blueSubAIs = json.dumps(blueSubAIs)
         self.redSubAIs = json.dumps(redSubAIs)
+        self.blueSearch = False
+        self.redSearch = False
         
 class GymEnvironment(gym.Env):
     def __init__(self, role="blue", subAIs=["pass","agg"],versusAI="passive", versusNeuralNet=None, scenario="2v1-5x5.scn", saveReplay=False, actions19=True, openSocket=False, verbose=False, scenarioSeed=None, scenarioCycle=0):
@@ -58,8 +61,9 @@ class GymEnvironment(gym.Env):
         self.metadata = {'render.modes': ['human']}
         self.reward_range = (-np.inf, np.inf)
         server.getGymAI().setSubAIs(subAIs)
-    def reset(self):
-        return server.reset()
+    def reset(self, seed=None, options=None):
+        super().reset(seed=seed)
+        return server.reset(), {}
     def close(self):
         pass
     def render(self):
@@ -69,17 +73,19 @@ class GymEnvironment(gym.Env):
         msgD = server.getGymAI().actionMessageDiscrete(action)
         if msgD is not None:
             server.addMessageRunLoop(msgD)
-        return server.getGymAI().action_result()
+        obs, reward, done, info = server.getGymAI().action_result()
+        return obs, reward, done, False, info
     
 if __name__=="__main__":
     env = GymEnvironment()
-    obs = server.reset()
+    obs, info = env.reset()
     terminal = False
     while not terminal:
         #print(f'reset returns {obs}')
         action = env.action_space.sample()
         print(f'sample of action space: {action}')
-        obs, reward, terminal, info = env.step(action)
+        obs, reward, terminated, truncated, info = env.step(action)
+        terminal = terminated or truncated
     print(f'game over {info}')
 
 
