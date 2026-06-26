@@ -47,10 +47,8 @@ damage = 100 × 1.00 × 1.00 × 0.5 = 50
 Red drops from 100 to 50 strength — exactly at the ineffective threshold, so the unit is removed and all 50 remaining points count as killed.
 
 ```text
-score_delta = 50
+score += 50     →  score = 50
 ```
-
-So, the running score is 50 (0 + 50 = 50).
 
 Red then fires back on a blue infantry unit also in clear terrain:
 
@@ -61,18 +59,14 @@ damage = 100 × 1.00 × 1.00 × 0.5 = 50
 Blue drops from 100 to 50 and is also removed.
 
 ```text
-score_delta = 50 × (−1) = -50
+score += 50 × (−1)   →  score = 0
 ```
-
-So, the running score is now 0 (50 - 50 = 0)
 
 The phase ends. Blue holds the one city.
 
 ```text
-score_delta = 24 / 1 = 24
+score += 24 / 1 = 24   →  score = 24
 ```
-
-So, the running score is now 24 (0 + 24 = 24)
 
 The score returned to the RL agent at the end of this step is `24 − 0 = 24` (assuming `last_score` was `0`).
 
