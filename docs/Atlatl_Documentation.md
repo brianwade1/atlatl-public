@@ -379,6 +379,8 @@ server/scenarios/yourfilename.scn
 
 Existing `.scn` files contain `map` and `unit` fields in the correct format for reuse as maps and orders of battle.
 
+> **Tip:** Use the [JSON Viewer](https://jsonviewer.stack.hu/) online tool to inspect and explore OoB, map, placement, and scenario JSON. Paste any JSON blob into the **Text** tab and switch to the **Viewer** tab for a collapsible tree view.
+
 ## Stock AIs
 
 Atlatl includes several built-in AIs.
@@ -435,6 +437,8 @@ After the game completes, open `http://localhost:8080/playback.html` in a browse
 ## AI Message Interface
 
 Atlatl sends JSON messages between the server and clients/AIs. A quick-reference version of the message sequence is in `docs/message-sequence.txt`.
+
+> **Tip:** The [JSON Viewer](https://jsonviewer.stack.hu/) online tool is useful for inspecting game messages. Run the server with `-v` (verbose mode) to print message traffic, then paste any message into the viewer's **Text** tab and switch to **Viewer** for a collapsible tree.
 
 ### Message Sequence for Blue
 
