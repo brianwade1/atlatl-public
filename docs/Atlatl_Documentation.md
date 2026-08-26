@@ -179,6 +179,19 @@ The browser directory includes several HTML tools (all must be served over HTTP 
 
 All use SVG graphics for crisp, scalable rendering.
 
+### Navigating Browser Maps
+
+Browser maps are displayed as SVG graphics. Large fitted maps may be taller than the browser window; use normal browser-page scrolling to reach the bottom of the map.
+
+| Interface | Initial display | **Shift + left-click** behavior |
+| --- | --- | --- |
+| `map-editor.html` | Full map and editing palette | Zooms into the selected area; repeat to restore the full overview |
+| `unit-placement.html` | Full map and units | Zooms into the selected area; repeat to restore the full overview |
+| `random-scenario.html` | Full generated scenario | Zooms into the selected area; repeat to restore the full overview |
+| `play.html` and `playback.html` | Fixed detailed view | Zooms out to show a large map; repeat to zoom in at the pointer |
+
+In the map editor, Shift-clicking does not paint terrain. In the unit-placement and random-scenario tools, it does not select or move units. The browser interfaces do not currently support drag-to-pan or mouse-wheel zoom.
+
 ### Ports
 
 Two servers run simultaneously during interactive play:
@@ -337,8 +350,7 @@ python ai/passive.py red
 
 ### GUI Notes
 
-- For large maps, **Shift + left click** zooms the map out.
-- A second **Shift + left click** zooms in at the mouse location.
+- See [Navigating Browser Maps](#navigating-browser-maps) for scrolling and **Shift + left-click** controls. The initial zoom behavior differs between the scenario-building and gameplay interfaces.
 - Depending on the setup and client state, the phase may need to be ended manually with the **End Phase** button.
 
 ## Creating Scenarios
@@ -352,12 +364,14 @@ Open `http://localhost:8080/map-editor.html` in a browser (requires the HTTP ser
 Then:
 
 1. To start from an existing map, copy the existing JSON to the clipboard, click **Load JSON**, and paste it.
-2. Otherwise, choose the map width and height.
+2. Otherwise, choose the map width and height, then click **Draw Empty Grid**.
 3. Optionally click **Random** to experiment with map generation.
 4. Use the palette on the left to paint terrain and setup zones.
 5. Click **Copy JSON to Clipboard**.
 
-Alternatively, open `http://localhost:8080/random-scenario.html` to generate a complete random scenario (map + units) in one step without using the editor.
+The editor starts with the full map and palette visible. Scroll the browser page for tall maps, or see [Navigating Browser Maps](#navigating-browser-maps) for zoom controls.
+
+Alternatively, open `http://localhost:8080/random-scenario.html`, enter the desired columns and rows, and click **Generate Scenario** to create a complete random scenario (map + units) without using the editor. It uses the same scrolling and zoom controls as the map editor.
 
 ### Step 2: Place Units
 
@@ -370,7 +384,7 @@ Then:
 3. Click **Load OoB JSON** and paste the order of battle.
 4. Place units by clicking units and hexes.
 5. Set time limits and scoring parameters using the text boxes at the top.
-6. Click **Copy Placement JSON to Clipboard**.
+6. Click **Copy Scenario to Clipboard**.
 7. Paste the result into a scenario file such as:
 
 ```text
@@ -378,6 +392,8 @@ server/scenarios/yourfilename.scn
 ```
 
 Existing `.scn` files contain `map` and `unit` fields in the correct format for reuse as maps and orders of battle.
+
+The unit-placement tool starts with the full map visible and refits the view after units are loaded. Scroll the browser page for tall maps, or see [Navigating Browser Maps](#navigating-browser-maps) for zoom controls.
 
 > **Tip:** Use the [JSON Viewer](https://jsonviewer.stack.hu/) online tool to inspect and explore OoB, map, placement, and scenario JSON. Paste any JSON blob into the **Text** tab and switch to the **Viewer** tab for a collapsible tree view.
 
@@ -894,6 +910,10 @@ The browser must connect over HTTP, not the filesystem. Make sure:
 ### Browser shows 404
 
 The HTTP server is running from the wrong directory. It must be started from `browser/`, not `server/` or the repo root.
+
+### Browser does not show recent interface changes
+
+The browser may be displaying cached HTML or JavaScript. Reload the page with `Ctrl+F5` or `Ctrl+Shift+R`. If the problem persists, close the tab, confirm that the HTTP server is running from the current repository's `browser/` directory, and reopen the page.
 
 ### "Not Connected" persists even with the HTTP server running
 

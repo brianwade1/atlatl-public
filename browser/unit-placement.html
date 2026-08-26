@@ -81,6 +81,7 @@ function processMapJSON(str) {
         y_palette_margin:y_palette_margin
     };
     SVGCreateView.createUnitPlacementView(param);
+    UnitPlacementControl.fitMapToContent();
 }
 
 function loadMapJSON() {
@@ -97,6 +98,7 @@ function processOoBJSON(str) {
         Unit.placeUnits();
         Unit.createSVG(UnitPlacementControl.unitMouseDownHandler);
     }
+    UnitPlacementControl.fitMapToContent();
 }
 
 function loadOobJSON() {
@@ -171,6 +173,8 @@ Total city score per phase:
 <input type="text" id="cityScore" value="24" size="2">
 <input type="checkbox" id="fogOfWarId" name="fogOfWarName" value="fogOfWarValue">
   <label for="fogOfWarId"> Fog of War</label>
+<span aria-hidden="true"> &nbsp;|&nbsp; </span>
+<span>Tip: Shift + left-click the map to toggle between the full map and a zoomed-in area.</span>
 <br/>
 
 </body>

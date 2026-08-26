@@ -16,9 +16,22 @@ var Mode = {
 var mode = Mode.SelectUnit;
 var selectedUnit = null;
 
-var viewBoxZoomedIn = true;
+var viewBoxControl = null;
+
+function getViewBoxControl() {
+    if (!viewBoxControl)
+        viewBoxControl = new SVGUtil.ViewBoxControl();
+    return viewBoxControl;
+}
+
+function fitMapToContent() {
+    getViewBoxControl().fitToContent(SVGCreateView.svg);
+}
+UnitPlacementControl.fitMapToContent = fitMapToContent;
 
 function hexMouseDownHandler(evt) {
+    if (evt.shiftKey)
+        return;
     if (mode === Mode.PlaceUnit) {
         let hex = Map.hexIndex[this.id];
         selectedUnit.setHex(hex);
@@ -38,6 +51,8 @@ function edgeMouseOver(evt) {
 UnitPlacementControl.edgeMouseOver = edgeMouseOver;
 
 function unitMouseDownHandler(evt) {
+    if (evt.shiftKey)
+        return;
     if (mode === Mode.SelectUnit) {
         selectedUnit = Unit.unitIndex[this.id];
         SVGUnitSymbol.markSelected(this);
@@ -58,38 +73,8 @@ function unitMouseDownHandler(evt) {
 UnitPlacementControl.unitMouseDownHandler = unitMouseDownHandler;
 
 function svgMouseDownHandler(evt) {
-    if (evt.shiftKey) {
-        const svg = this;
-        const vbox = svg.viewBox.baseVal;
-        if (viewBoxZoomedIn) { 
-            // Zoom out       
-            const bbox = SVGCreateView.svg.getBBox();
-            const bbw = bbox.width + bbox.x;
-            const bbh = bbox.height + bbox.y;
-            if (vbox.width < bbw || vbox.height < bbh) {
-                const c = Math.max( bbw/vbox.width, bbh/vbox.height );
-                vbox.x = 0;
-                vbox.y = 0;
-                vbox.width *= c;
-                vbox.height *= c;
-            }
-            viewBoxZoomedIn = false;
-        }
-        else {
-            // Zoom in centered on mouse
-            const bb = svg.getBoundingClientRect();
-            let x_frac = (evt.x - bb.x)/bb.width;
-            let y_frac = (evt.y - bb.y)/bb.height;
-            let xc_vb = vbox.x + x_frac * vbox.width;
-            let yc_vb = vbox.y + y_frac * vbox.height;
-            vbox.x = xc_vb - SVGUtil.vbZoomedWidth/2;
-            vbox.y = yc_vb - SVGUtil.vbZoomedHeight/2;
-            vbox.width = SVGUtil.vbZoomedWidth;
-            vbox.height = SVGUtil.vbZoomedHeight;
-            viewBoxZoomedIn = true;
-        }
-
-    }
+    if (evt.shiftKey)
+        getViewBoxControl().toggleZoom(this, evt);
 }
 UnitPlacementControl.svgMouseDownHandler = svgMouseDownHandler;
 }())

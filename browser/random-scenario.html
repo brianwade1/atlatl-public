@@ -51,6 +51,7 @@ function generate() {
     Map.randomize();
     Unit.placeUnits();
     Unit.createSVG(UnitPlacementControl.unitMouseDownHandler);
+    UnitPlacementControl.fitMapToContent();
 }
 
 
@@ -146,6 +147,7 @@ window.copy = copy;
 <input id="loadOob" type="button" value="Load OoB JSON" onclick="loadOobJSON();" />
 <input id="generate" type="button" value="Generate Scenario" onclick="generate();" />
 <input id="copy" type="button" value="Copy JSON to Clipboard" onclick="copy();" />
+<span>Tip: Shift + left-click the map to toggle between the full map and a zoomed-in area.</span>
 <br/>
 
 </body>

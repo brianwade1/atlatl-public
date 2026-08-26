@@ -22,6 +22,18 @@ var newEdgeName = "bob";
 var newPathName = "none";
 var newSetupMarkerName = null;
 var lastHexID = null;
+var viewBoxControl = null;
+
+function getViewBoxControl() {
+    if (!viewBoxControl)
+        viewBoxControl = new SVGUtil.ViewBoxControl();
+    return viewBoxControl;
+}
+
+function fitMapToContent(svg) {
+    getViewBoxControl().fitToContent(svg);
+}
+MapEditorControl.fitMapToContent = fitMapToContent;
 
 function ControlState(mode,value) {
     this.mode = mode;
@@ -29,6 +41,11 @@ function ControlState(mode,value) {
 }
 
 function svgMouseDownHandler(evt) {
+    if (evt.shiftKey) {
+        mouse_down = false;
+        getViewBoxControl().toggleZoom(this, evt);
+        return;
+    }
     mouse_down = true;
 }
 MapEditorControl.svgMouseDownHandler = svgMouseDownHandler;
@@ -40,6 +57,8 @@ function svgMouseUpHandler(evt) {
 MapEditorControl.svgMouseUpHandler = svgMouseUpHandler;
 
 function hexMouseDownHandler(evt) {
+    if (evt.shiftKey)
+        return;
     mouse_down = true;
     hexMouseOverHandler.call(this,evt);
 }

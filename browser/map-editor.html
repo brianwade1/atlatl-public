@@ -38,8 +38,9 @@ function draw() {
     };
     
     Map.createHexGrid(rows,cols);
-    
+
     SVGCreateView.createMapEditorView(param);
+    MapEditorControl.fitMapToContent(SVGCreateView.svg);
          
 }
 
@@ -73,6 +74,7 @@ function load() {
             y_palette_margin:y_palette_margin
         };
         SVGCreateView.createMapEditorView(param);
+        MapEditorControl.fitMapToContent(SVGCreateView.svg);
     }
 }
 
@@ -127,6 +129,7 @@ window.save = save;
 <input id="load" type="button" value="Load JSON" onclick="load();" />
 <input id="save" type="button" value="Create SVG" onclick="save();" />
 <a href="" id="link">Right-click to save SVG</a>
+<span>Tip: Shift + left-click the map to toggle between the full map and a zoomed-in area.</span>
 <br/>
 
 </body>

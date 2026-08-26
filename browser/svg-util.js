@@ -17,7 +17,92 @@ import { Style } from './style.js';
 
     SVGUtil.vbZoomedWidth = 100;
     SVGUtil.vbZoomedHeight = 40;
-    
+
+    function setViewBox(vbox, bounds) {
+        vbox.x = bounds.x;
+        vbox.y = bounds.y;
+        vbox.width = bounds.width;
+        vbox.height = bounds.height;
+    }
+
+    SVGUtil.ViewBoxControl = function() {
+        this.viewBoxZoomedIn = true;
+        this.fittedViewBox = null;
+    };
+
+    SVGUtil.ViewBoxControl.prototype.fitToContent = function(svg) {
+        const bbox = svg.getBBox();
+        if (!bbox.width || !bbox.height)
+            return;
+
+        const padding = 1;
+        this.fittedViewBox = {
+            x: bbox.x - padding,
+            y: bbox.y - padding,
+            width: bbox.width + 2 * padding,
+            height: bbox.height + 2 * padding
+        };
+
+        setViewBox(svg.viewBox.baseVal, this.fittedViewBox);
+        svg.style.aspectRatio = `${this.fittedViewBox.width} / ${this.fittedViewBox.height}`;
+        svg.style.height = "auto";
+        svg.style.display = "block";
+        this.viewBoxZoomedIn = false;
+    };
+
+    SVGUtil.ViewBoxControl.prototype.toggleZoom = function(svg, evt) {
+        const vbox = svg.viewBox.baseVal;
+        if (this.viewBoxZoomedIn) {
+            // Zoom out
+            if (this.fittedViewBox) {
+                setViewBox(vbox, this.fittedViewBox);
+            }
+            else {
+                const bbox = svg.getBBox();
+                const bbw = bbox.width + bbox.x;
+                const bbh = bbox.height + bbox.y;
+                if (vbox.width < bbw || vbox.height < bbh) {
+                    const c = Math.max(bbw/vbox.width, bbh/vbox.height);
+                    vbox.x = 0;
+                    vbox.y = 0;
+                    vbox.width *= c;
+                    vbox.height *= c;
+                }
+            }
+            this.viewBoxZoomedIn = false;
+            return;
+        }
+
+        // Zoom in centered on mouse
+        const bb = svg.getBoundingClientRect();
+        const x_frac = (evt.x - bb.x)/bb.width;
+        const y_frac = (evt.y - bb.y)/bb.height;
+        const xc_vb = vbox.x + x_frac * vbox.width;
+        const yc_vb = vbox.y + y_frac * vbox.height;
+        if (this.fittedViewBox) {
+            const scale = Math.min(
+                1,
+                SVGUtil.vbZoomedWidth / this.fittedViewBox.width,
+                SVGUtil.vbZoomedHeight / this.fittedViewBox.height
+            );
+            const zoomedWidth = this.fittedViewBox.width * scale;
+            const zoomedHeight = this.fittedViewBox.height * scale;
+            const maxX = this.fittedViewBox.x + this.fittedViewBox.width - zoomedWidth;
+            const maxY = this.fittedViewBox.y + this.fittedViewBox.height - zoomedHeight;
+            vbox.x = Math.max(this.fittedViewBox.x, Math.min(xc_vb - zoomedWidth/2, maxX));
+            vbox.y = Math.max(this.fittedViewBox.y, Math.min(yc_vb - zoomedHeight/2, maxY));
+            vbox.width = zoomedWidth;
+            vbox.height = zoomedHeight;
+        }
+        else {
+            vbox.x = xc_vb - SVGUtil.vbZoomedWidth/2;
+            vbox.y = yc_vb - SVGUtil.vbZoomedHeight/2;
+            vbox.width = SVGUtil.vbZoomedWidth;
+            vbox.height = SVGUtil.vbZoomedHeight;
+        }
+        this.viewBoxZoomedIn = true;
+    };
+
     function makeSvgElement() {
         let svg = document.createElementNS(SVGCreateView.svgNS, 'svg');
         svg.setAttributeNS(null, 'preserveAspectRatio', 'xMidYMid meet');
