@@ -1,0 +1,89 @@
+{
+  "artifact_type": "map",
+  "option": "Lydian Republic Area of Operations",
+  "description": "The town crossings at Kirov, Belas, and Velin are supplemented by Northwest and Maren bridges on diagonal roads. Drovna and Maren constrain the flanks without making them impassable. This is the recommended baseline.",
+  "grid": {
+    "columns": 20,
+    "rows": 14,
+    "kilometers_per_hex": 10
+  },
+  "atlatl_commit": "94159b455a2dfbf7ab797d176671bb57a87e3b4a",
+  "named_locations": {
+    "Kirov": {
+      "x": 5,
+      "y": 3,
+      "hex_id": "hex-5-3"
+    },
+    "Belas": {
+      "x": 5,
+      "y": 7,
+      "hex_id": "hex-5-7"
+    },
+    "Velin": {
+      "x": 5,
+      "y": 11,
+      "hex_id": "hex-5-11"
+    },
+    "Aradesh": {
+      "x": 12,
+      "y": 6,
+      "hex_id": "hex-12-6"
+    }
+  },
+  "terrain_counts": {
+    "rough": 78,
+    "water": 11,
+    "clear": 147,
+    "urban": 4,
+    "marsh": 40
+  },
+  "terrain_types_used": [
+    "clear",
+    "marsh",
+    "rough",
+    "urban",
+    "water"
+  ],
+  "setup_zones": {
+    "blue": {
+      "columns": {
+        "minimum": 0,
+        "maximum": 14,
+        "inclusive": true
+      },
+      "excluded_terrain": [
+        "water"
+      ],
+      "eligible_hex_count": 199,
+      "note": "Blue may reposition all nine units on any eligible hex from the western map edge through column x=14, inclusive."
+    },
+    "red": {
+      "columns": [
+        18,
+        19
+      ],
+      "eligible_hex_count": 28
+    }
+  },
+  "notes": [
+    "Road/path and river/stream overlays are visual in current Atlatl.",
+    "Water, marsh, rough, urban, and clear fills determine movement effects.",
+    "The vertical Kirov-Belas-Velin road has been removed.",
+    "The completed scenario is ../game/defense_of_the_lydian_republic.scn; it includes 21 units, Blue setup on all non-water hexes through x=14, initial city ownership, and scoring.",
+    "Atlatl has no separate bridge type; bridge crossings are road paths over intentionally traversable river-gap hex edges."
+  ],
+  "bridges": [
+    {
+      "name": "Northwest Bridge",
+      "hex_a": "hex-5-1",
+      "hex_b": "hex-6-2",
+      "path_type": "road"
+    },
+    {
+      "name": "Maren Bridge",
+      "hex_a": "hex-5-9",
+      "hex_b": "hex-6-10",
+      "path_type": "road"
+    }
+  ]
+}
