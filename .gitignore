@@ -86,3 +86,29 @@ LLMtest/generated/
 *.bak
 *.cache
 *.temp
+
+# Microsoft Office Temporary & Lock Files
+
+# Document owner and lock files (e.g., ~$document.docx)
+~$*
+
+# Temporary Microsoft Word template files
+*.tmp
+~$*.doc*
+~$*.dot*
+~$*.docx*
+*.doc*.
+*.docx
+
+# Excel temporary and backup files
+~$*.xls*
+*.xlk
+~$*.xlsx*
+*.xls*
+*.xlsx
+
+# PowerPoint temporary files
+~$*.ppt*
+~$*.pptx*
+*.ppt*
+*.pptx
