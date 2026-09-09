@@ -31,7 +31,7 @@ random.seed(seed)
 numpy.random.seed(seed)
 torch.manual_seed(seed)
 
-env = gym_interface.GymEnvironment(role="blue", versusAI="passive", scenario="2v1-5x5.scn", saveReplay=False, actions19=False, ai="gym", verbose=False)
+env = gym_interface.GymEnvironment(role="blue", versusAI="passive", scenario="atomic-city.scn", saveReplay=False, actions19=False, ai="gym", verbose=False)
 
 model = PPO('MlpPolicy', env, verbose=1)
 model.learn(total_timesteps=4000, log_interval=100)
