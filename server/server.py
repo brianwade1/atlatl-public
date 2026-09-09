@@ -85,7 +85,7 @@ def init(args):
             gym_ai = ai
         client_functions.append(ai.process)
         
-    if args.scenario[-4:]==".scn":
+    if args.scenario.lower().endswith(".scn"):
         scenario_generator = scenario.from_file_factory(args.scenario)
     else:
         constructor, kwargs = scenario_generator_registry[args.scenario]
@@ -120,7 +120,7 @@ def addMessageRunLoop(messageO):
 
 if __name__=="__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("scenario")
+    parser.add_argument("scenario", help="Scenario .scn filename/path, packaged alias, or generator name")
     parser.add_argument('-v', action='store_true')
     parser.add_argument("--redAI")
     parser.add_argument("--blueAI")

@@ -19,6 +19,17 @@ def _dirs():
     return os.path.join(root, 'server'), os.path.join(root, 'browser')
 
 
+def _scenario_arg_for_server(scenario_arg):
+    """Make explicit .scn paths absolute before changing to the server directory."""
+    if not scenario_arg.lower().endswith('.scn'):
+        return scenario_arg
+
+    expanded_arg = os.path.expanduser(scenario_arg)
+    if os.path.isabs(expanded_arg) or os.path.dirname(expanded_arg):
+        return os.path.abspath(expanded_arg)
+    return scenario_arg
+
+
 def _open_browser_server(browser_dir, port):
     """
     Launch a Python HTTP server in a new terminal window to serve the browser UI files.
@@ -58,7 +69,7 @@ def main():
     browser URL, and then runs server.py in the server/ directory as a blocking subprocess.
 
     Inputs (command-line arguments via sys.argv):
-        scenario      = scenario .scn filename or built-in generator name, e.g. 'city-inf-5' (str, positional)
+        scenario      = scenario .scn filename/path, packaged alias, or built-in generator name (str, positional)
         --redAI       = AI agent name for the red side from server/airegistry.py; omit for a human player (str, optional)
         --blueAI      = AI agent name for the blue side from server/airegistry.py; omit for a human player (str, optional)
         --openSocket  = force the WebSocket to open even when both sides are AI-controlled (flag, optional)
@@ -73,7 +84,11 @@ def main():
     parser = argparse.ArgumentParser(
         description='Atlatl launcher — runs a scenario and opens the browser server for human play.'
     )
-    parser.add_argument('scenario', nargs='?', help='Scenario .scn file or generator name')
+    parser.add_argument(
+        'scenario',
+        nargs='?',
+        help='Scenario .scn filename/path, packaged alias, or generator name',
+    )
     parser.add_argument('--redAI',  help='AI name for red  (omit for a human player)')
     parser.add_argument('--blueAI', help='AI name for blue (omit for a human player)')
     parser.add_argument('--openSocket', action='store_true')
@@ -93,7 +108,7 @@ def main():
     human_involved = human_blue or human_red or args.openSocket
 
     # Build the server.py command, forwarding all unrecognised args transparently
-    server_cmd = [sys.executable, 'server.py', args.scenario]
+    server_cmd = [sys.executable, 'server.py', _scenario_arg_for_server(args.scenario)]
     if args.redAI:
         server_cmd += ['--redAI',  args.redAI]
     if args.blueAI:

@@ -1,6 +1,24 @@
 import scenario
+from pathlib import Path
+
+
+PACKAGED_SCENARIO_DIR = Path(__file__).resolve().parent.parent / "scenarios"
+
+
+def packaged_scenario_factory(filename, **_generator_options):
+    """Load a repository-packaged scenario through a stable launcher alias."""
+    return scenario.from_file_factory(PACKAGED_SCENARIO_DIR / filename)
+
 
 scenario_generator_registry = {
+    "lydian-republic" : (
+        packaged_scenario_factory,
+        {'filename': "Lydian_Republic/game/defense_of_the_lydian_republic.scn"},
+    ),
+    "ordan-basin" : (
+        packaged_scenario_factory,
+        {'filename': "Ordan_Basin/game/race_for_the_ordan_basin.scn"},
+    ),
     "clear-inf-6" : (scenario.clear_square_factory, {'size':6, 'min_units':2, 'max_units':4}),
     "clear-inf-5" : (scenario.clear_square_factory, {'size':5, 'min_units':2, 'max_units':4}),
     "city-inf-5" : (scenario.clear_square_factory, {'size':5, 'min_units':2, 'max_units':4, 'num_cities':1}),

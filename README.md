@@ -67,10 +67,18 @@ The server runs one game and prints the final blue score. If you see a number pr
 - `server/` - simulation engine, game server, scenarios, AI registry, AI implementations, Gymnasium interface, training examples
 - `browser/` - browser GUI, map editor, unit placement tool, random scenario tool, replay viewer
 - `docs/` - repo guide, protocol notes, Gymnasium notes, order-of-battle (oob) examples
+- `scenarios/` - self-contained authored scenario packages, including their playable game files
 
 ## Running the server
 
-A **scenario** defines the map, units, and starting conditions. It is either a generator name (like `city-inf-5`) or a `.scn` file in `server/scenarios/`.
+A **scenario** defines the map, units, and starting conditions. The scenario argument may be:
+
+- a built-in generator name, such as `city-inf-5`;
+- a packaged-scenario alias, such as `lydian-republic` or `ordan-basin`;
+- a bare `.scn` filename, which is loaded from `server/scenarios/`; or
+- a relative or absolute path to a `.scn` file anywhere else.
+
+Relative paths passed to `main.py` are resolved from the directory where the command is launched. This lets an authored scenario remain in its package instead of being copied into `server/scenarios/`.
 
 `main.py` provides a launcher from the repository root. It detects which sides have human players, opens a browser server in a new terminal window automatically, and prints the URL to open:
 
@@ -99,6 +107,24 @@ Useful options:
 - `--redNeuralNet` and `--blueNeuralNet` pass model files to neural AIs.
 
 ## Common workflows
+
+### Packaged scenarios
+
+The two repository-packaged scenarios have stable aliases:
+
+```bash
+python main.py lydian-republic
+python main.py ordan-basin
+```
+
+They can also be launched by their paths from the repository root:
+
+```bash
+python main.py scenarios/Lydian_Republic/game/defense_of_the_lydian_republic.scn
+python main.py scenarios/Ordan_Basin/game/race_for_the_ordan_basin.scn
+```
+
+In either form, add `--redAI`, `--blueAI`, or other normal options as needed. The `.scn` files remain in their respective `game/` directories.
 
 ### AI vs AI
 

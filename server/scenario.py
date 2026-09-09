@@ -4,11 +4,36 @@ import json
 import map
 import unit
 import copy
+from pathlib import Path
 
 
-def from_file_factory(filename, scenario_dir="scenarios/"):
-    scenario_S = open(scenario_dir+filename).read()
-    scenarioPo = json.loads(scenario_S)
+DEFAULT_SCENARIO_DIR = Path(__file__).resolve().parent / "scenarios"
+
+
+def resolve_scenario_path(filename, scenario_dir=None):
+    """Resolve a scenario filename without tying it to the process working directory."""
+    scenario_path = Path(filename).expanduser()
+    if scenario_path.is_absolute():
+        return scenario_path
+
+    if scenario_dir is not None:
+        base_dir = Path(scenario_dir).expanduser()
+        if not base_dir.is_absolute():
+            base_dir = Path.cwd() / base_dir
+        return (base_dir / scenario_path).resolve()
+
+    # A path with a directory component is explicit and relative to the caller's
+    # working directory. Bare filenames retain the historical server/scenarios lookup.
+    if scenario_path.parent != Path("."):
+        return (Path.cwd() / scenario_path).resolve()
+
+    return (DEFAULT_SCENARIO_DIR / scenario_path).resolve()
+
+
+def from_file_factory(filename, scenario_dir=None):
+    scenario_path = resolve_scenario_path(filename, scenario_dir)
+    with scenario_path.open(encoding="utf-8") as scenario_file:
+        scenarioPo = json.load(scenario_file)
     def inner():
         return scenarioPo
     return inner  

@@ -252,7 +252,38 @@ General form:
 python server.py <scenario-generator-or-file> <optional-arguments>
 ```
 
-Scenario files end in `.scn` and are located in the `server/scenarios` subdirectory.
+The scenario argument accepts a built-in generator name, a packaged-scenario alias, or a `.scn` file. A bare `.scn` filename is loaded from `server/scenarios`; an explicit relative or absolute path can point anywhere. Relative paths passed to the repository-root `main.py` launcher are resolved from the directory where it is launched.
+
+### Packaged Scenario Aliases and Paths
+
+The repository includes aliases for its two authored scenario packages:
+
+| Alias | Scenario file |
+| --- | --- |
+| `lydian-republic` | `scenarios/Lydian_Republic/game/defense_of_the_lydian_republic.scn` |
+| `ordan-basin` | `scenarios/Ordan_Basin/game/race_for_the_ordan_basin.scn` |
+
+From the repository root, launch either alias directly:
+
+```bash
+python main.py lydian-republic
+python main.py ordan-basin
+```
+
+The equivalent path-based commands are:
+
+```bash
+python main.py scenarios/Lydian_Republic/game/defense_of_the_lydian_republic.scn
+python main.py scenarios/Ordan_Basin/game/race_for_the_ordan_basin.scn
+```
+
+When invoking `server.py` from inside `server/`, make the same paths relative to that directory, for example:
+
+```bash
+python server.py ../scenarios/Lydian_Republic/game/defense_of_the_lydian_republic.scn --openSocket
+```
+
+Aliases and explicit paths load the files in place; no copy under `server/scenarios/` is required.
 
 Common optional arguments:
 
@@ -385,11 +416,19 @@ Then:
 4. Place units by clicking units and hexes.
 5. Set time limits and scoring parameters using the text boxes at the top.
 6. Click **Copy Scenario to Clipboard**.
-7. Paste the result into a scenario file such as:
+7. Paste the result into a scenario file. A standalone scenario can use the traditional location:
 
 ```text
 server/scenarios/yourfilename.scn
 ```
+
+An authored scenario package can instead keep its runtime file alongside its other game data:
+
+```text
+scenarios/your_scenario/game/yourfilename.scn
+```
+
+Launch a packaged file by its path from the repository root, or add a stable alias in `server/scenario_gen_reg.py` when it should be part of the repository's named scenario catalog. The file does not need to be copied into `server/scenarios/`.
 
 Existing `.scn` files contain `map` and `unit` fields in the correct format for reuse as maps and orders of battle.
 
