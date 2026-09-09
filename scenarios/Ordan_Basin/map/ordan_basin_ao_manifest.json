@@ -1,0 +1,109 @@
+{
+  "artifact_type": "map",
+  "option": "Ordan Basin Area of Operations",
+  "description": "The Arven River divides the Ordan Basin and is crossed at the urban centers of Dalen, Novar, and Eren. North Pass and Central Link provide secondary road crossings. The Saren Heights and Mora Hills constrain the northern and southern flanks, while the open central basin supports mobile operations.",
+  "grid": {
+    "columns": 12,
+    "rows": 12,
+    "kilometers_per_hex": 15
+  },
+  "atlatl_commit": "94159b455a2dfbf7ab797d176671bb57a87e3b4a",
+  "named_locations": {
+    "Veyra": {
+      "x": 2,
+      "y": 6,
+      "hex_id": "hex-2-6"
+    },
+    "Dalen": {
+      "x": 5,
+      "y": 3,
+      "hex_id": "hex-5-3"
+    },
+    "Novar": {
+      "x": 5,
+      "y": 7,
+      "hex_id": "hex-5-7"
+    },
+    "Eren": {
+      "x": 4,
+      "y": 9,
+      "hex_id": "hex-4-9"
+    },
+    "Kasar": {
+      "x": 9,
+      "y": 2,
+      "hex_id": "hex-9-2"
+    },
+    "Ruda": {
+      "x": 9,
+      "y": 6,
+      "hex_id": "hex-9-6"
+    },
+    "Selin": {
+      "x": 9,
+      "y": 9,
+      "hex_id": "hex-9-9"
+    }
+  },
+  "terrain_counts": {
+    "rough": 52,
+    "water": 8,
+    "clear": 65,
+    "urban": 7,
+    "marsh": 12
+  },
+  "terrain_types_used": [
+    "clear",
+    "marsh",
+    "rough",
+    "urban",
+    "water"
+  ],
+  "setup_zones": {
+    "blue": {
+      "columns": [
+        0,
+        1
+      ],
+      "eligible_hex_count": 24,
+      "note": "Blue setup occupies the two westernmost columns."
+    },
+    "red": {
+      "columns": [
+        10,
+        11
+      ],
+      "eligible_hex_count": 24,
+      "note": "Red setup occupies the two easternmost columns."
+    }
+  },
+  "notes": [
+    "Water, marsh, rough, urban, and clear fills determine terrain effects in Atlatl.",
+    "Roads are stored as native paths with type road, and every road segment connects adjacent hexes.",
+    "The Arven River is a chain of native water hexes rather than a visual-only overlay.",
+    "The former South Pass road and bridge have been removed; hex 4,10 is water.",
+    "Water hex 5,4 separates Dalen from Central Link, and water hex 5,6 separates Central Link from Novar.",
+    "Atlatl has no separate bridge terrain type; North Pass and Central Link are clear crossing hexes embedded in the river chain and connected by road paths.",
+    "A finalized playable .scn file and scoring model have not yet been produced."
+  ],
+  "bridges": [
+    {
+      "name": "North Pass Bridge",
+      "hex": "hex-5-1",
+      "approach_hexes": [
+        "hex-4-1",
+        "hex-6-1"
+      ],
+      "path_type": "road"
+    },
+    {
+      "name": "Central Link Bridge",
+      "hex": "hex-5-5",
+      "approach_hexes": [
+        "hex-4-6",
+        "hex-6-5"
+      ],
+      "path_type": "road"
+    }
+  ]
+}
