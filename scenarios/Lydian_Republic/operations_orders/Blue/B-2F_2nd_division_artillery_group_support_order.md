@@ -182,6 +182,37 @@ Primary communications use the division fires and coalition networks; alternate 
 
 ## Acknowledgment
 
-Organic leaders acknowledge and backbrief conditional fire priorities, shift triggers, target priorities, displacement routes, protected infrastructure, and degraded-communications procedures.
+Organic leaders acknowledge and backbrief conditional fire priorities, shift triggers, target priorities, displacement routes, protected infrastructure, degraded-communications procedures, and Annex C.
 
 **Authenticated:** Commander, 2nd Division Artillery Group
+
+# Annex C (Operations): Fires Synchronization Matrix
+
+## 1. Purpose
+
+This annex synchronizes the group’s priorities, essential effects, displacement, sustainment, passage support, and reporting with 2nd Multinational Infantry Division OPORD B-20 and RDC Coalition Land Corps OPORD B-00. It does not change the group’s general-support relationship or create an authority, target, route, firing position, crossing, or control measure not established in the base order, approved operational graphics, or a later authenticated order.
+
+## 2. Fires Synchronization Matrix
+
+| Phase / planning window | Priority and next priority | Artillery task and purpose | Shift trigger | Movement and sustainment | Phase-end condition |
+| --- | --- | --- | --- | --- | --- |
+| **Phase I — Establish the Defense**<br>**18–19 May 2030** | **Priority:** 4th Coalition Mechanized Brigade at Kirov, or the sector whose threat can reach decisive terrain soonest.<br>**Next:** The more immediately threatened of the 5th Brigade at Drovna–Northwest Bridge or the 6th Brigade at Maren–Velin. | **Task:** Establish coverage and disrupt the earliest threat while retaining options to shift north, center, or south.<br>**Purpose:** Support the distributed defense without fixing the group to one sector prematurely. | Division direction; threat timing changes; direct threat to a city or crossing; current priority becomes unsupportable; enemy action requires immediate transition. | Cover the initial priority sector, prepare alternate firing areas and lateral routes, confirm travel times, and avoid blocking reinforcement passage. | Positions, coverage, routes, communications, and response estimates are established, or enemy action requires immediate transition. |
+| **Phase II — Deny and Fix**<br>**19–24 May 2030** | **Priority:** The brigade defending the objective or crossing the enemy can reach soonest.<br>**Next:** The competing threatened sector, subject to range and travel time. | **Task:** Disrupt the most dangerous attack, separate enemy echelons on restrictive routes, and suppress threats to Kirov, Velin, the Northwest Bridge, and assigned southern crossings.<br>**Purpose:** Mass limited fires at the threat most capable of defeating the division mission. | Threat timing or direction changes; penetration or imminent crossing loss; authenticated 4th Brigade movement; corps-reserve request; priority becomes unsupportable. | Preserve one feasible displacement route, lateral mobility, ammunition, and range to the current priority; report when one sector cannot be supported without abandoning another. | A decisive penetration or counterattack opportunity develops, corps reserve is requested, Vostian forces culminate, or the division can consolidate. |
+| **Phase III — Counterattack and Restore**<br>**21–26 May 2030** | **Priority:** The authenticated 4th Brigade tactical operation or the 7th Coalition Armored Brigade when designated the corps decisive operation.<br>**Next:** The brigade retaining the city or crossing under the most immediate threat. | **Task:** Isolate the selected penetration and suppress threats to crossing denial, passage, the objective, and counterattack flanks.<br>**Purpose:** Enable restoration of the decisive sector without creating an unsupported opening elsewhere. | Authenticated 4th Brigade movement; corps commits and designates 7th Armored Brigade; immediate crossing threat; decisive action terminates; support becomes infeasible. | Displace toward the selected branch, keep passage routes clear, preserve coverage of essential terrain where feasible, and report every support gap. | The threatened route or crossing is restored and the penetration contained, or further action would fragment the division or exceed support capability. |
+| **Phase IV — Consolidate and Preserve**<br>**25–27 May 2030; continues to mission completion** | **Priority:** The sector facing the most dangerous renewed attack.<br>**Next:** Remaining retained terrain, crossing denial, route security, and recovery. | **Task:** Suppress renewed threats and support terrain retention, handovers, passage readiness, and reconstitution.<br>**Purpose:** Preserve responsive fires across the distributed defense through mission completion. | Renewed attack changes the threatened sector; division changes priority; a new authenticated order is received; current support becomes infeasible. | Reposition in general support, replenish, restore lateral mobility, and retain alternate firing areas and routes to the northern, central, and southern sectors. | The division end state is achieved at 28 May 2030, 0600 local, or a new authenticated order is received. |
+
+## 3. Principal Decision Points
+
+| Decision point | Authority | Required information | Resulting action |
+| --- | --- | --- | --- |
+| **B-2F-DP 1 — Shift to the Threatened Sector** | Division commander | Enemy formation, time to decisive terrain, defending-brigade capability, crossing status, range, route, and ammunition | Shift priority among Kirov, Drovna–Northwest Bridge, or Maren–Velin and report the resulting support gap. |
+| **B-2F-DP 2 — Support 4th Brigade Lateral Action** | Division commander | Authenticated tactical task; Kirov retention or accepted risk; route, travel time, passage, friendly locations, and termination | Shift priority to the 4th Brigade action while preserving the minimum feasible support to retained terrain. |
+| **B-2F-DP 3 — Support Corps Reserve** | Corps commander, coordinated through division | 7th Armored Brigade commitment and decisive-operation designation; selected branch, route, passage, command relationship, limit of advance, and friendly locations | Shift priority to the corps reserve and report the support reduced in other sectors. |
+| **B-2F-DP 4 — Displace** | Artillery group commander within division criteria | Range, counterfire threat, route access, weather, passage traffic, survivability, and next essential task | Move to an alternate firing area while preserving support continuity and keeping reinforcement routes clear. |
+| **B-2F-DP 5 — Recommend Alternate Support** | Artillery group commander; division commander decides | Priority sector cannot be supported or a shift would create an unacceptable gap elsewhere | Division changes priority or maneuver, accepts the gap, or directs another support arrangement. |
+
+## 4. Annex Reports
+
+- Report current priority, essential task, range, route and firing-position status, ammunition concern, displacement, survivability, sector travel time, and next-phase supportability every 12 hours.
+- Immediately report a priority conflict, inability to support, direct threat to a city or crossing, authenticated maneuver commitment, passage conflict, blocked displacement route, or loss of communications.
+- Report any conflict among B-2F, B-20, B-00, the approved operational graphics, or a later authenticated order immediately. The later authenticated order governs.

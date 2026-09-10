@@ -179,6 +179,37 @@ Primary communications use the division fires and coalition networks; alternate 
 
 ## Acknowledgment
 
-Organic leaders acknowledge and backbrief fire priorities, shift triggers, target priorities, displacement criteria, protected infrastructure, and degraded-communications procedures.
+Organic leaders acknowledge and backbrief fire priorities, shift triggers, target priorities, displacement criteria, protected infrastructure, degraded-communications procedures, and Annex C.
 
 **Authenticated:** Commander, 1st Division Artillery Group
+
+# Annex C (Operations): Fires Synchronization Matrix
+
+## 1. Purpose
+
+This annex synchronizes the group’s priorities, essential effects, displacement, sustainment, and reporting with 1st Multinational Armored Division OPORD B-10 and RDC Coalition Land Corps OPORD B-00. It does not change the group’s general-support relationship or create an authority, target, route, firing position, or control measure not established in the base order, approved operational graphics, or a later authenticated order.
+
+## 2. Fires Synchronization Matrix
+
+| Phase / planning window | Priority and next priority | Artillery task and purpose | Shift trigger | Movement and sustainment | Phase-end condition |
+| --- | --- | --- | --- | --- | --- |
+| **Phase I — Establish the Defense**<br>**18–19 May 2030** | **Priority:** 2nd Coalition Mechanized Brigade at Aradesh.<br>**Next:** 3rd Coalition Mechanized Brigade if Belas or the central crossing is directly threatened. | **Task:** Disrupt the initial attack while maintaining coverage of Aradesh, Belas, and reserve approaches.<br>**Purpose:** Establish the central defense without fixing the group to one position or target set. | Division direction; direct threat to Belas or the crossing; current priority becomes unsupportable; enemy action requires immediate transition. | Cover Aradesh while preserving a feasible shift toward Belas or a counterattack route; confirm communications, range, displacement routes, and ammunition posture. | Coverage, routes, communications, and support options are established, or enemy action requires immediate transition. |
+| **Phase II — Deny and Fix**<br>**19–24 May 2030** | **Priority:** 2nd Coalition Mechanized Brigade fixing the central attack.<br>**Next:** 3rd Coalition Mechanized Brigade for direct Belas or crossing defense; prepare to support the 1st Armored Brigade. | **Task:** Disrupt concentrations, separate assault and exploitation forces, and suppress threats to the Aradesh–Belas connection.<br>**Purpose:** Reduce Vostian momentum and preserve conditions for decisive reserve employment. | Belas or crossing directly threatened; authenticated release of 1st Armored Brigade; 7th Armored Brigade designated decisive; priority task completes or becomes unsupportable. | Maintain coverage of Aradesh and Belas, preserve the reserve passage route, and displace before losing range, route access, or survivability. | Reserve-release criteria occur, corps-reserve action begins, Vostian forces culminate, or the division can consolidate without counterattack. |
+| **Phase III — Counterattack and Restore**<br>**21–26 May 2030** | **Priority:** Released 1st Coalition Armored Brigade.<br>**Next:** 7th Coalition Armored Brigade when designated the corps decisive operation; immediate Belas crossing denial may take precedence. | **Task:** Isolate the selected penetration and suppress threats to passage, the objective, counterattack flanks, and termination.<br>**Purpose:** Enable decisive maneuver while preserving Aradesh, Belas, and the central crossing. | Authenticated reserve commitment; corps designates a different decisive operation; immediate crossing threat; counterattack terminates; support becomes infeasible. | Displace to maintain range along the selected counterattack route, avoid blocking passage, and preserve support for termination and consolidation. | The penetration is defeated or contained and the defensive framework restored, or continued action would expose decisive terrain or exceed support capability. |
+| **Phase IV — Consolidate and Preserve**<br>**25–27 May 2030; continues to mission completion** | **Priority:** The most dangerous renewed threat to Aradesh, Belas, or the central crossing.<br>**Next:** Reserve reconstitution, decisive routes, and recovery. | **Task:** Suppress renewed threats and support terrain retention, handovers, and reconstitution.<br>**Purpose:** Preserve responsive fires and the central defensive framework through mission completion. | Renewed attack changes the threatened sector; division changes priority; a new authenticated order is received; current support becomes infeasible. | Reposition in general support, replenish ammunition and fuel, recover mobility, and retain alternate firing and displacement options. | The division end state is achieved at 28 May 2030, 0600 local, or a new authenticated order is received. |
+
+## 3. Principal Decision Points
+
+| Decision point | Authority | Required information | Resulting action |
+| --- | --- | --- | --- |
+| **B-1F-DP 1 — Shift Priority to Belas** | Division commander | Direct threat to Belas or the central crossing; Aradesh support requirement; range, route, and ammunition status | Shift priority to the 3rd Coalition Mechanized Brigade and report the resulting risk to Aradesh. |
+| **B-1F-DP 2 — Support Division Reserve** | Division commander | Authenticated release of 1st Armored Brigade; task, route, passage, flank, objective or blocking area, limit of advance, and friendly locations | Shift priority to the division reserve and protect its passage, decisive action, termination, and consolidation. |
+| **B-1F-DP 3 — Support Corps Reserve** | Corps commander, coordinated through division | 7th Armored Brigade commitment and decisive-operation designation; route, passage, command relationship, limit of advance, and friendly locations | Shift priority to the corps reserve and report the support reduced elsewhere. |
+| **B-1F-DP 4 — Displace** | Artillery group commander within division criteria | Range, counterfire threat, route access, weather, survivability, and next essential task | Move to an alternate firing area while preserving support continuity and avoiding reserve passage. |
+| **B-1F-DP 5 — Recommend Alternate Support** | Artillery group commander; division commander decides | Current priority cannot be supported or a shift would create an unacceptable gap | Division changes priority or maneuver, accepts the gap, or directs another support arrangement. |
+
+## 4. Annex Reports
+
+- Report current priority, essential task, range, route and firing-position status, ammunition concern, displacement, survivability, and next-phase supportability every 12 hours.
+- Immediately report a priority conflict, inability to support, direct threat to Belas or the crossing, reserve commitment, blocked displacement route, or loss of communications.
+- Report any conflict among B-1F, B-10, B-00, the approved operational graphics, or a later authenticated order immediately. The later authenticated order governs.

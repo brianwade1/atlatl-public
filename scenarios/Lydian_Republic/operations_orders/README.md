@@ -18,10 +18,13 @@ Blue and Red orders and operational graphics are normally private to their respe
 | [B-20](Blue/B-20_2nd_multinational_infantry_division_opord.md) | 2nd Multinational Infantry Division | GUARDED PASSAGES | Kirov, Drovna, Maren–Velin, and crossing defense. |
 | [B-2F](Blue/B-2F_2nd_division_artillery_group_support_order.md) | 2nd Division Artillery Group | PASSAGE FIRES | Fires across the northern and southern sectors. |
 
+### Blue Synchronization Aid
+
+- [Blue master synchronization crosswalk](Blue/blue_master_synchronization_crosswalk.md) — side-specific player and staff aid covering the order hierarchy, phases, handoffs, decisions, reserves, and fires. An optional controller may also use it.
+
 ### Blue Operational Graphics
 
-- [PDF briefing set](Blue/Blue_operational_graphics.pdf) — view or distribute the overall scheme and four phase overlays.
-- [Editable PowerPoint source](Blue/Blue_operational_graphics.pptx) — revise or regenerate the briefing graphics.
+- [PDF briefing set](Blue/Blue_operational_graphics.pdf) — the published overall scheme and four phase overlays.
 
 ## Red — Vostian 3rd Field Army
 
@@ -37,15 +40,18 @@ Blue and Red orders and operational graphics are normally private to their respe
 | [R-22](Red/R-22_22nd_mechanized_division_opord.md) | 22nd Mechanized Division | SOUTHERN LOCK | Maren fixing action, Velin attack, and southern guard. |
 | [R-2F](Red/R-2F_12th_corps_artillery_group_support_order.md) | 12th Corps Artillery Group | CENTRAL SPEAR FIRES | Fires supporting the central and southern corps. |
 
+### Red Synchronization Aid
+
+- [Red master synchronization crosswalk](Red/red_master_synchronization_crosswalk.md) — side-specific player and staff aid covering the order hierarchy, phases, handoffs, decisions, reserves, and fires. An optional controller may also use it.
+
 ### Red Operational Graphics
 
-- [PDF briefing set](Red/Red_operational_graphics.pdf) — view or distribute the overall scheme and four phase overlays.
-- [Editable PowerPoint source](Red/Red_operational_graphics.pptx) — revise or regenerate the briefing graphics.
+- [PDF briefing set](Red/Red_operational_graphics.pdf) — the published overall scheme and four phase overlays.
 
 ## Using the Orders
 
 Read each side's products from the senior order down through the applicable subordinate and support orders. The operational graphics provide the overall scheme and phase overlays; the written orders provide task organization, mission, intent, tasks, constraints, decision points, and synchronization.
 
-The orders guide player decisions but do not add automated Atlatl mechanics. Command relationships, reserve-release authority, main-effort and fires-priority shifts, operational phases, weather effects, control measures, and reporting requirements must be observed by the players or adjudicated by a controller.
+The orders guide player decisions but do not add automated Atlatl mechanics. Players observe command relationships, reserve-release authority, main-effort and fires-priority shifts, operational phases, weather effects, control measures, and reporting requirements. An optional controller may assist under procedures agreed before play.
 
 Return to the [scenario landing page](../README.md).

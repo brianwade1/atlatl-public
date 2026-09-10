@@ -55,21 +55,22 @@
         "water"
       ],
       "eligible_hex_count": 199,
-      "note": "Blue may reposition all nine units on any eligible hex from the western map edge through column x=14, inclusive."
+      "note": "In both the standalone map and completed scenario, Blue may reposition all nine units on any non-water hex from the western map edge through column x=14, inclusive."
     },
     "red": {
       "columns": [
         18,
         19
       ],
-      "eligible_hex_count": 28
+      "eligible_hex_count": 28,
+      "note": "The standalone map and completed scenario use the same two-column Red setup zone."
     }
   },
   "notes": [
     "Road/path and river/stream overlays are visual in current Atlatl.",
     "Water, marsh, rough, urban, and clear fills determine movement effects.",
     "The vertical Kirov-Belas-Velin road has been removed.",
-    "The completed scenario is ../game/defense_of_the_lydian_republic.scn; it includes 21 units, Blue setup on all non-water hexes through x=14, initial city ownership, and scoring.",
+    "The completed scenario is ../game/defense_of_the_lydian_republic.scn; it embeds the same setup assignments as the standalone map and adds 21 units, initial city ownership, and scoring.",
     "Atlatl has no separate bridge type; bridge crossings are road paths over intentionally traversable river-gap hex edges."
   ],
   "bridges": [

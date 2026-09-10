@@ -38,7 +38,7 @@
       "terrain": "rough",
       "x_grid": 8,
       "y_grid": 2,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-7-1-9-1",
         "edge-9-1-10-2",
@@ -54,7 +54,7 @@
       "terrain": "rough",
       "x_grid": 11,
       "y_grid": 3,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-10-2-12-2",
         "edge-12-2-13-3",
@@ -70,7 +70,7 @@
       "terrain": "rough",
       "x_grid": 14,
       "y_grid": 2,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-13-1-15-1",
         "edge-15-1-16-2",
@@ -86,7 +86,7 @@
       "terrain": "rough",
       "x_grid": 17,
       "y_grid": 3,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-16-2-18-2",
         "edge-18-2-19-3",
@@ -118,7 +118,7 @@
       "terrain": "rough",
       "x_grid": 23,
       "y_grid": 3,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-22-2-24-2",
         "edge-24-2-25-3",
@@ -134,7 +134,7 @@
       "terrain": "rough",
       "x_grid": 26,
       "y_grid": 2,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-25-1-27-1",
         "edge-27-1-28-2",
@@ -150,7 +150,7 @@
       "terrain": "rough",
       "x_grid": 29,
       "y_grid": 3,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-28-2-30-2",
         "edge-30-2-31-3",
@@ -166,7 +166,7 @@
       "terrain": "rough",
       "x_grid": 32,
       "y_grid": 2,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-31-1-33-1",
         "edge-33-1-34-2",
@@ -182,7 +182,7 @@
       "terrain": "rough",
       "x_grid": 35,
       "y_grid": 3,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-34-2-36-2",
         "edge-36-2-37-3",
@@ -198,7 +198,7 @@
       "terrain": "rough",
       "x_grid": 38,
       "y_grid": 2,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-37-1-39-1",
         "edge-39-1-40-2",
@@ -214,7 +214,7 @@
       "terrain": "rough",
       "x_grid": 41,
       "y_grid": 3,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-40-2-42-2",
         "edge-42-2-43-3",
@@ -230,7 +230,7 @@
       "terrain": "rough",
       "x_grid": 44,
       "y_grid": 2,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-43-1-45-1",
         "edge-45-1-46-2",
@@ -358,7 +358,7 @@
       "terrain": "rough",
       "x_grid": 8,
       "y_grid": 4,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-9-3-7-3",
         "edge-10-4-9-3",
@@ -374,7 +374,7 @@
       "terrain": "rough",
       "x_grid": 11,
       "y_grid": 5,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-12-4-10-4",
         "edge-12-4-13-5",
@@ -390,7 +390,7 @@
       "terrain": "rough",
       "x_grid": 14,
       "y_grid": 4,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-15-3-13-3",
         "edge-16-4-15-3",
@@ -406,7 +406,7 @@
       "terrain": "rough",
       "x_grid": 17,
       "y_grid": 5,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-18-4-16-4",
         "edge-18-4-19-5",
@@ -438,7 +438,7 @@
       "terrain": "rough",
       "x_grid": 23,
       "y_grid": 5,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-24-4-22-4",
         "edge-24-4-25-5",
@@ -454,7 +454,7 @@
       "terrain": "rough",
       "x_grid": 26,
       "y_grid": 4,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-27-3-25-3",
         "edge-28-4-27-3",
@@ -470,7 +470,7 @@
       "terrain": "rough",
       "x_grid": 29,
       "y_grid": 5,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-30-4-28-4",
         "edge-30-4-31-5",
@@ -486,7 +486,7 @@
       "terrain": "rough",
       "x_grid": 32,
       "y_grid": 4,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-33-3-31-3",
         "edge-34-4-33-3",
@@ -502,7 +502,7 @@
       "terrain": "rough",
       "x_grid": 35,
       "y_grid": 5,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-36-4-34-4",
         "edge-36-4-37-5",
@@ -518,7 +518,7 @@
       "terrain": "rough",
       "x_grid": 38,
       "y_grid": 4,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-39-3-37-3",
         "edge-40-4-39-3",
@@ -534,7 +534,7 @@
       "terrain": "rough",
       "x_grid": 41,
       "y_grid": 5,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-42-4-40-4",
         "edge-42-4-43-5",
@@ -550,7 +550,7 @@
       "terrain": "rough",
       "x_grid": 44,
       "y_grid": 4,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-45-3-43-3",
         "edge-46-4-45-3",
@@ -678,7 +678,7 @@
       "terrain": "rough",
       "x_grid": 8,
       "y_grid": 6,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-9-5-7-5",
         "edge-10-6-9-5",
@@ -694,7 +694,7 @@
       "terrain": "rough",
       "x_grid": 11,
       "y_grid": 7,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-12-6-10-6",
         "edge-12-6-13-7",
@@ -710,7 +710,7 @@
       "terrain": "rough",
       "x_grid": 14,
       "y_grid": 6,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-15-5-13-5",
         "edge-16-6-15-5",
@@ -742,7 +742,7 @@
       "terrain": "rough",
       "x_grid": 20,
       "y_grid": 6,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-21-5-19-5",
         "edge-22-6-21-5",
@@ -758,7 +758,7 @@
       "terrain": "rough",
       "x_grid": 23,
       "y_grid": 7,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-24-6-22-6",
         "edge-24-6-25-7",
@@ -774,7 +774,7 @@
       "terrain": "rough",
       "x_grid": 26,
       "y_grid": 6,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-27-5-25-5",
         "edge-28-6-27-5",
@@ -790,7 +790,7 @@
       "terrain": "rough",
       "x_grid": 29,
       "y_grid": 7,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-30-6-28-6",
         "edge-30-6-31-7",
@@ -806,7 +806,7 @@
       "terrain": "rough",
       "x_grid": 32,
       "y_grid": 6,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-33-5-31-5",
         "edge-34-6-33-5",
@@ -822,7 +822,7 @@
       "terrain": "rough",
       "x_grid": 35,
       "y_grid": 7,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-36-6-34-6",
         "edge-36-6-37-7",
@@ -838,7 +838,7 @@
       "terrain": "rough",
       "x_grid": 38,
       "y_grid": 6,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-39-5-37-5",
         "edge-40-6-39-5",
@@ -854,7 +854,7 @@
       "terrain": "rough",
       "x_grid": 41,
       "y_grid": 7,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-42-6-40-6",
         "edge-42-6-43-7",
@@ -870,7 +870,7 @@
       "terrain": "rough",
       "x_grid": 44,
       "y_grid": 6,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-45-5-43-5",
         "edge-46-6-45-5",
@@ -998,7 +998,7 @@
       "terrain": "rough",
       "x_grid": 8,
       "y_grid": 8,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-9-7-7-7",
         "edge-10-8-9-7",
@@ -1014,7 +1014,7 @@
       "terrain": "rough",
       "x_grid": 11,
       "y_grid": 9,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-12-8-10-8",
         "edge-12-8-13-9",
@@ -1030,7 +1030,7 @@
       "terrain": "rough",
       "x_grid": 14,
       "y_grid": 8,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-15-7-13-7",
         "edge-16-8-15-7",
@@ -1046,7 +1046,7 @@
       "terrain": "urban",
       "x_grid": 17,
       "y_grid": 9,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-18-8-16-8",
         "edge-18-8-19-9",
@@ -1062,7 +1062,7 @@
       "terrain": "rough",
       "x_grid": 20,
       "y_grid": 8,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-21-7-19-7",
         "edge-22-8-21-7",
@@ -1078,7 +1078,7 @@
       "terrain": "rough",
       "x_grid": 23,
       "y_grid": 9,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-24-8-22-8",
         "edge-24-8-25-9",
@@ -1094,7 +1094,7 @@
       "terrain": "rough",
       "x_grid": 26,
       "y_grid": 8,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-27-7-25-7",
         "edge-28-8-27-7",
@@ -1110,7 +1110,7 @@
       "terrain": "rough",
       "x_grid": 29,
       "y_grid": 9,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-30-8-28-8",
         "edge-30-8-31-9",
@@ -1126,7 +1126,7 @@
       "terrain": "rough",
       "x_grid": 32,
       "y_grid": 8,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-33-7-31-7",
         "edge-34-8-33-7",
@@ -1142,7 +1142,7 @@
       "terrain": "rough",
       "x_grid": 35,
       "y_grid": 9,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-36-8-34-8",
         "edge-36-8-37-9",
@@ -1158,7 +1158,7 @@
       "terrain": "rough",
       "x_grid": 38,
       "y_grid": 8,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-39-7-37-7",
         "edge-40-8-39-7",
@@ -1174,7 +1174,7 @@
       "terrain": "rough",
       "x_grid": 41,
       "y_grid": 9,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-42-8-40-8",
         "edge-42-8-43-9",
@@ -1190,7 +1190,7 @@
       "terrain": "rough",
       "x_grid": 44,
       "y_grid": 8,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-45-7-43-7",
         "edge-46-8-45-7",
@@ -1318,7 +1318,7 @@
       "terrain": "clear",
       "x_grid": 8,
       "y_grid": 10,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-9-9-7-9",
         "edge-10-10-9-9",
@@ -1334,7 +1334,7 @@
       "terrain": "clear",
       "x_grid": 11,
       "y_grid": 11,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-12-10-10-10",
         "edge-12-10-13-11",
@@ -1350,7 +1350,7 @@
       "terrain": "clear",
       "x_grid": 14,
       "y_grid": 10,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-15-9-13-9",
         "edge-16-10-15-9",
@@ -1382,7 +1382,7 @@
       "terrain": "clear",
       "x_grid": 20,
       "y_grid": 10,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-21-9-19-9",
         "edge-22-10-21-9",
@@ -1398,7 +1398,7 @@
       "terrain": "rough",
       "x_grid": 23,
       "y_grid": 11,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-24-10-22-10",
         "edge-24-10-25-11",
@@ -1414,7 +1414,7 @@
       "terrain": "rough",
       "x_grid": 26,
       "y_grid": 10,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-27-9-25-9",
         "edge-28-10-27-9",
@@ -1430,7 +1430,7 @@
       "terrain": "rough",
       "x_grid": 29,
       "y_grid": 11,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-30-10-28-10",
         "edge-30-10-31-11",
@@ -1446,7 +1446,7 @@
       "terrain": "clear",
       "x_grid": 32,
       "y_grid": 10,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-33-9-31-9",
         "edge-34-10-33-9",
@@ -1462,7 +1462,7 @@
       "terrain": "clear",
       "x_grid": 35,
       "y_grid": 11,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-36-10-34-10",
         "edge-36-10-37-11",
@@ -1478,7 +1478,7 @@
       "terrain": "clear",
       "x_grid": 38,
       "y_grid": 10,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-39-9-37-9",
         "edge-40-10-39-9",
@@ -1494,7 +1494,7 @@
       "terrain": "clear",
       "x_grid": 41,
       "y_grid": 11,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-42-10-40-10",
         "edge-42-10-43-11",
@@ -1510,7 +1510,7 @@
       "terrain": "clear",
       "x_grid": 44,
       "y_grid": 10,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-45-9-43-9",
         "edge-46-10-45-9",
@@ -1638,7 +1638,7 @@
       "terrain": "clear",
       "x_grid": 8,
       "y_grid": 12,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-9-11-7-11",
         "edge-10-12-9-11",
@@ -1654,7 +1654,7 @@
       "terrain": "clear",
       "x_grid": 11,
       "y_grid": 13,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-12-12-10-12",
         "edge-12-12-13-13",
@@ -1670,7 +1670,7 @@
       "terrain": "clear",
       "x_grid": 14,
       "y_grid": 12,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-15-11-13-11",
         "edge-16-12-15-11",
@@ -1702,7 +1702,7 @@
       "terrain": "clear",
       "x_grid": 20,
       "y_grid": 12,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-21-11-19-11",
         "edge-22-12-21-11",
@@ -1718,7 +1718,7 @@
       "terrain": "clear",
       "x_grid": 23,
       "y_grid": 13,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-24-12-22-12",
         "edge-24-12-25-13",
@@ -1734,7 +1734,7 @@
       "terrain": "clear",
       "x_grid": 26,
       "y_grid": 12,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-27-11-25-11",
         "edge-28-12-27-11",
@@ -1750,7 +1750,7 @@
       "terrain": "clear",
       "x_grid": 29,
       "y_grid": 13,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-30-12-28-12",
         "edge-30-12-31-13",
@@ -1766,7 +1766,7 @@
       "terrain": "clear",
       "x_grid": 32,
       "y_grid": 12,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-33-11-31-11",
         "edge-34-12-33-11",
@@ -1782,7 +1782,7 @@
       "terrain": "clear",
       "x_grid": 35,
       "y_grid": 13,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-36-12-34-12",
         "edge-36-12-37-13",
@@ -1798,7 +1798,7 @@
       "terrain": "clear",
       "x_grid": 38,
       "y_grid": 12,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-39-11-37-11",
         "edge-40-12-39-11",
@@ -1814,7 +1814,7 @@
       "terrain": "clear",
       "x_grid": 41,
       "y_grid": 13,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-42-12-40-12",
         "edge-42-12-43-13",
@@ -1830,7 +1830,7 @@
       "terrain": "clear",
       "x_grid": 44,
       "y_grid": 12,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-45-11-43-11",
         "edge-46-12-45-11",
@@ -1958,7 +1958,7 @@
       "terrain": "clear",
       "x_grid": 8,
       "y_grid": 14,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-9-13-7-13",
         "edge-10-14-9-13",
@@ -1974,7 +1974,7 @@
       "terrain": "clear",
       "x_grid": 11,
       "y_grid": 15,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-12-14-10-14",
         "edge-12-14-13-15",
@@ -1990,7 +1990,7 @@
       "terrain": "clear",
       "x_grid": 14,
       "y_grid": 14,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-15-13-13-13",
         "edge-16-14-15-13",
@@ -2022,7 +2022,7 @@
       "terrain": "clear",
       "x_grid": 20,
       "y_grid": 14,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-21-13-19-13",
         "edge-22-14-21-13",
@@ -2038,7 +2038,7 @@
       "terrain": "clear",
       "x_grid": 23,
       "y_grid": 15,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-24-14-22-14",
         "edge-24-14-25-15",
@@ -2054,7 +2054,7 @@
       "terrain": "clear",
       "x_grid": 26,
       "y_grid": 14,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-27-13-25-13",
         "edge-28-14-27-13",
@@ -2070,7 +2070,7 @@
       "terrain": "clear",
       "x_grid": 29,
       "y_grid": 15,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-30-14-28-14",
         "edge-30-14-31-15",
@@ -2086,7 +2086,7 @@
       "terrain": "clear",
       "x_grid": 32,
       "y_grid": 14,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-33-13-31-13",
         "edge-34-14-33-13",
@@ -2102,7 +2102,7 @@
       "terrain": "clear",
       "x_grid": 35,
       "y_grid": 15,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-36-14-34-14",
         "edge-36-14-37-15",
@@ -2118,7 +2118,7 @@
       "terrain": "urban",
       "x_grid": 38,
       "y_grid": 14,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-39-13-37-13",
         "edge-40-14-39-13",
@@ -2134,7 +2134,7 @@
       "terrain": "clear",
       "x_grid": 41,
       "y_grid": 15,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-42-14-40-14",
         "edge-42-14-43-15",
@@ -2150,7 +2150,7 @@
       "terrain": "clear",
       "x_grid": 44,
       "y_grid": 14,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-45-13-43-13",
         "edge-46-14-45-13",
@@ -2278,7 +2278,7 @@
       "terrain": "clear",
       "x_grid": 8,
       "y_grid": 16,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-9-15-7-15",
         "edge-10-16-9-15",
@@ -2294,7 +2294,7 @@
       "terrain": "clear",
       "x_grid": 11,
       "y_grid": 17,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-12-16-10-16",
         "edge-12-16-13-17",
@@ -2310,7 +2310,7 @@
       "terrain": "clear",
       "x_grid": 14,
       "y_grid": 16,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-15-15-13-15",
         "edge-16-16-15-15",
@@ -2326,7 +2326,7 @@
       "terrain": "urban",
       "x_grid": 17,
       "y_grid": 17,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-18-16-16-16",
         "edge-18-16-19-17",
@@ -2342,7 +2342,7 @@
       "terrain": "clear",
       "x_grid": 20,
       "y_grid": 16,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-21-15-19-15",
         "edge-22-16-21-15",
@@ -2358,7 +2358,7 @@
       "terrain": "clear",
       "x_grid": 23,
       "y_grid": 17,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-24-16-22-16",
         "edge-24-16-25-17",
@@ -2374,7 +2374,7 @@
       "terrain": "clear",
       "x_grid": 26,
       "y_grid": 16,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-27-15-25-15",
         "edge-28-16-27-15",
@@ -2390,7 +2390,7 @@
       "terrain": "clear",
       "x_grid": 29,
       "y_grid": 17,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-30-16-28-16",
         "edge-30-16-31-17",
@@ -2406,7 +2406,7 @@
       "terrain": "clear",
       "x_grid": 32,
       "y_grid": 16,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-33-15-31-15",
         "edge-34-16-33-15",
@@ -2422,7 +2422,7 @@
       "terrain": "clear",
       "x_grid": 35,
       "y_grid": 17,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-36-16-34-16",
         "edge-36-16-37-17",
@@ -2438,7 +2438,7 @@
       "terrain": "clear",
       "x_grid": 38,
       "y_grid": 16,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-39-15-37-15",
         "edge-40-16-39-15",
@@ -2454,7 +2454,7 @@
       "terrain": "clear",
       "x_grid": 41,
       "y_grid": 17,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-42-16-40-16",
         "edge-42-16-43-17",
@@ -2470,7 +2470,7 @@
       "terrain": "clear",
       "x_grid": 44,
       "y_grid": 16,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-45-15-43-15",
         "edge-46-16-45-15",
@@ -2598,7 +2598,7 @@
       "terrain": "clear",
       "x_grid": 8,
       "y_grid": 18,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-9-17-7-17",
         "edge-10-18-9-17",
@@ -2614,7 +2614,7 @@
       "terrain": "clear",
       "x_grid": 11,
       "y_grid": 19,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-12-18-10-18",
         "edge-12-18-13-19",
@@ -2630,7 +2630,7 @@
       "terrain": "clear",
       "x_grid": 14,
       "y_grid": 18,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-15-17-13-17",
         "edge-16-18-15-17",
@@ -2646,7 +2646,7 @@
       "terrain": "clear",
       "x_grid": 17,
       "y_grid": 19,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-18-18-16-18",
         "edge-18-18-19-19",
@@ -2678,7 +2678,7 @@
       "terrain": "clear",
       "x_grid": 23,
       "y_grid": 19,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-24-18-22-18",
         "edge-24-18-25-19",
@@ -2694,7 +2694,7 @@
       "terrain": "clear",
       "x_grid": 26,
       "y_grid": 18,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-27-17-25-17",
         "edge-28-18-27-17",
@@ -2710,7 +2710,7 @@
       "terrain": "clear",
       "x_grid": 29,
       "y_grid": 19,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-30-18-28-18",
         "edge-30-18-31-19",
@@ -2726,7 +2726,7 @@
       "terrain": "clear",
       "x_grid": 32,
       "y_grid": 18,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-33-17-31-17",
         "edge-34-18-33-17",
@@ -2742,7 +2742,7 @@
       "terrain": "clear",
       "x_grid": 35,
       "y_grid": 19,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-36-18-34-18",
         "edge-36-18-37-19",
@@ -2758,7 +2758,7 @@
       "terrain": "clear",
       "x_grid": 38,
       "y_grid": 18,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-39-17-37-17",
         "edge-40-18-39-17",
@@ -2774,7 +2774,7 @@
       "terrain": "clear",
       "x_grid": 41,
       "y_grid": 19,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-42-18-40-18",
         "edge-42-18-43-19",
@@ -2790,7 +2790,7 @@
       "terrain": "clear",
       "x_grid": 44,
       "y_grid": 18,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-45-17-43-17",
         "edge-46-18-45-17",
@@ -2918,7 +2918,7 @@
       "terrain": "clear",
       "x_grid": 8,
       "y_grid": 20,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-9-19-7-19",
         "edge-10-20-9-19",
@@ -2934,7 +2934,7 @@
       "terrain": "clear",
       "x_grid": 11,
       "y_grid": 21,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-12-20-10-20",
         "edge-12-20-13-21",
@@ -2950,7 +2950,7 @@
       "terrain": "clear",
       "x_grid": 14,
       "y_grid": 20,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-15-19-13-19",
         "edge-16-20-15-19",
@@ -2966,7 +2966,7 @@
       "terrain": "clear",
       "x_grid": 17,
       "y_grid": 21,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-18-20-16-20",
         "edge-18-20-19-21",
@@ -2998,7 +2998,7 @@
       "terrain": "clear",
       "x_grid": 23,
       "y_grid": 21,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-24-20-22-20",
         "edge-24-20-25-21",
@@ -3014,7 +3014,7 @@
       "terrain": "marsh",
       "x_grid": 26,
       "y_grid": 20,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-27-19-25-19",
         "edge-28-20-27-19",
@@ -3030,7 +3030,7 @@
       "terrain": "marsh",
       "x_grid": 29,
       "y_grid": 21,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-30-20-28-20",
         "edge-30-20-31-21",
@@ -3046,7 +3046,7 @@
       "terrain": "clear",
       "x_grid": 32,
       "y_grid": 20,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-33-19-31-19",
         "edge-34-20-33-19",
@@ -3062,7 +3062,7 @@
       "terrain": "clear",
       "x_grid": 35,
       "y_grid": 21,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-36-20-34-20",
         "edge-36-20-37-21",
@@ -3078,7 +3078,7 @@
       "terrain": "clear",
       "x_grid": 38,
       "y_grid": 20,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-39-19-37-19",
         "edge-40-20-39-19",
@@ -3094,7 +3094,7 @@
       "terrain": "clear",
       "x_grid": 41,
       "y_grid": 21,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-42-20-40-20",
         "edge-42-20-43-21",
@@ -3110,7 +3110,7 @@
       "terrain": "clear",
       "x_grid": 44,
       "y_grid": 20,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-45-19-43-19",
         "edge-46-20-45-19",
@@ -3238,7 +3238,7 @@
       "terrain": "clear",
       "x_grid": 8,
       "y_grid": 22,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-9-21-7-21",
         "edge-10-22-9-21",
@@ -3254,7 +3254,7 @@
       "terrain": "clear",
       "x_grid": 11,
       "y_grid": 23,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-12-22-10-22",
         "edge-12-22-13-23",
@@ -3270,7 +3270,7 @@
       "terrain": "clear",
       "x_grid": 14,
       "y_grid": 22,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-15-21-13-21",
         "edge-16-22-15-21",
@@ -3302,7 +3302,7 @@
       "terrain": "clear",
       "x_grid": 20,
       "y_grid": 22,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-21-21-19-21",
         "edge-22-22-21-21",
@@ -3318,7 +3318,7 @@
       "terrain": "marsh",
       "x_grid": 23,
       "y_grid": 23,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-24-22-22-22",
         "edge-24-22-25-23",
@@ -3334,7 +3334,7 @@
       "terrain": "marsh",
       "x_grid": 26,
       "y_grid": 22,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-27-21-25-21",
         "edge-28-22-27-21",
@@ -3350,7 +3350,7 @@
       "terrain": "marsh",
       "x_grid": 29,
       "y_grid": 23,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-30-22-28-22",
         "edge-30-22-31-23",
@@ -3366,7 +3366,7 @@
       "terrain": "marsh",
       "x_grid": 32,
       "y_grid": 22,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-33-21-31-21",
         "edge-34-22-33-21",
@@ -3382,7 +3382,7 @@
       "terrain": "clear",
       "x_grid": 35,
       "y_grid": 23,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-36-22-34-22",
         "edge-36-22-37-23",
@@ -3398,7 +3398,7 @@
       "terrain": "clear",
       "x_grid": 38,
       "y_grid": 22,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-39-21-37-21",
         "edge-40-22-39-21",
@@ -3414,7 +3414,7 @@
       "terrain": "clear",
       "x_grid": 41,
       "y_grid": 23,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-42-22-40-22",
         "edge-42-22-43-23",
@@ -3430,7 +3430,7 @@
       "terrain": "clear",
       "x_grid": 44,
       "y_grid": 22,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-45-21-43-21",
         "edge-46-22-45-21",
@@ -3558,7 +3558,7 @@
       "terrain": "clear",
       "x_grid": 8,
       "y_grid": 24,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-9-23-7-23",
         "edge-10-24-9-23",
@@ -3574,7 +3574,7 @@
       "terrain": "clear",
       "x_grid": 11,
       "y_grid": 25,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-12-24-10-24",
         "edge-12-24-13-25",
@@ -3590,7 +3590,7 @@
       "terrain": "clear",
       "x_grid": 14,
       "y_grid": 24,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-15-23-13-23",
         "edge-16-24-15-23",
@@ -3606,7 +3606,7 @@
       "terrain": "urban",
       "x_grid": 17,
       "y_grid": 25,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-18-24-16-24",
         "edge-18-24-19-25",
@@ -3622,7 +3622,7 @@
       "terrain": "clear",
       "x_grid": 20,
       "y_grid": 24,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-21-23-19-23",
         "edge-22-24-21-23",
@@ -3638,7 +3638,7 @@
       "terrain": "marsh",
       "x_grid": 23,
       "y_grid": 25,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-24-24-22-24",
         "edge-24-24-25-25",
@@ -3654,7 +3654,7 @@
       "terrain": "marsh",
       "x_grid": 26,
       "y_grid": 24,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-27-23-25-23",
         "edge-28-24-27-23",
@@ -3670,7 +3670,7 @@
       "terrain": "marsh",
       "x_grid": 29,
       "y_grid": 25,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-30-24-28-24",
         "edge-30-24-31-25",
@@ -3686,7 +3686,7 @@
       "terrain": "marsh",
       "x_grid": 32,
       "y_grid": 24,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-33-23-31-23",
         "edge-34-24-33-23",
@@ -3702,7 +3702,7 @@
       "terrain": "clear",
       "x_grid": 35,
       "y_grid": 25,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-36-24-34-24",
         "edge-36-24-37-25",
@@ -3718,7 +3718,7 @@
       "terrain": "clear",
       "x_grid": 38,
       "y_grid": 24,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-39-23-37-23",
         "edge-40-24-39-23",
@@ -3734,7 +3734,7 @@
       "terrain": "clear",
       "x_grid": 41,
       "y_grid": 25,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-42-24-40-24",
         "edge-42-24-43-25",
@@ -3750,7 +3750,7 @@
       "terrain": "clear",
       "x_grid": 44,
       "y_grid": 24,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-45-23-43-23",
         "edge-46-24-45-23",
@@ -3878,7 +3878,7 @@
       "terrain": "clear",
       "x_grid": 8,
       "y_grid": 26,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-9-25-7-25",
         "edge-10-26-9-25",
@@ -3894,7 +3894,7 @@
       "terrain": "clear",
       "x_grid": 11,
       "y_grid": 27,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-12-26-10-26",
         "edge-12-26-13-27",
@@ -3910,7 +3910,7 @@
       "terrain": "clear",
       "x_grid": 14,
       "y_grid": 26,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-15-25-13-25",
         "edge-16-26-15-25",
@@ -3926,7 +3926,7 @@
       "terrain": "clear",
       "x_grid": 17,
       "y_grid": 27,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-18-26-16-26",
         "edge-18-26-19-27",
@@ -3958,7 +3958,7 @@
       "terrain": "marsh",
       "x_grid": 23,
       "y_grid": 27,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-24-26-22-26",
         "edge-24-26-25-27",
@@ -3974,7 +3974,7 @@
       "terrain": "marsh",
       "x_grid": 26,
       "y_grid": 26,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-27-25-25-25",
         "edge-28-26-27-25",
@@ -3990,7 +3990,7 @@
       "terrain": "marsh",
       "x_grid": 29,
       "y_grid": 27,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-30-26-28-26",
         "edge-30-26-31-27",
@@ -4006,7 +4006,7 @@
       "terrain": "marsh",
       "x_grid": 32,
       "y_grid": 26,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-33-25-31-25",
         "edge-34-26-33-25",
@@ -4022,7 +4022,7 @@
       "terrain": "marsh",
       "x_grid": 35,
       "y_grid": 27,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-36-26-34-26",
         "edge-36-26-37-27",
@@ -4038,7 +4038,7 @@
       "terrain": "marsh",
       "x_grid": 38,
       "y_grid": 26,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-39-25-37-25",
         "edge-40-26-39-25",
@@ -4054,7 +4054,7 @@
       "terrain": "marsh",
       "x_grid": 41,
       "y_grid": 27,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-42-26-40-26",
         "edge-42-26-43-27",
@@ -4070,7 +4070,7 @@
       "terrain": "marsh",
       "x_grid": 44,
       "y_grid": 26,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-45-25-43-25",
         "edge-46-26-45-25",
@@ -4198,7 +4198,7 @@
       "terrain": "clear",
       "x_grid": 8,
       "y_grid": 28,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-9-27-7-27",
         "edge-10-28-9-27",
@@ -4214,7 +4214,7 @@
       "terrain": "clear",
       "x_grid": 11,
       "y_grid": 29,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-12-28-10-28",
         "edge-12-28-13-29",
@@ -4230,7 +4230,7 @@
       "terrain": "clear",
       "x_grid": 14,
       "y_grid": 28,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-15-27-13-27",
         "edge-16-28-15-27",
@@ -4246,7 +4246,7 @@
       "terrain": "clear",
       "x_grid": 17,
       "y_grid": 29,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-18-28-16-28",
         "edge-18-28-19-29",
@@ -4278,7 +4278,7 @@
       "terrain": "marsh",
       "x_grid": 23,
       "y_grid": 29,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-24-28-22-28",
         "edge-24-28-25-29",
@@ -4294,7 +4294,7 @@
       "terrain": "marsh",
       "x_grid": 26,
       "y_grid": 28,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-27-27-25-27",
         "edge-28-28-27-27",
@@ -4310,7 +4310,7 @@
       "terrain": "marsh",
       "x_grid": 29,
       "y_grid": 29,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-30-28-28-28",
         "edge-30-28-31-29",
@@ -4326,7 +4326,7 @@
       "terrain": "marsh",
       "x_grid": 32,
       "y_grid": 28,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-33-27-31-27",
         "edge-34-28-33-27",
@@ -4342,7 +4342,7 @@
       "terrain": "marsh",
       "x_grid": 35,
       "y_grid": 29,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-36-28-34-28",
         "edge-36-28-37-29",
@@ -4358,7 +4358,7 @@
       "terrain": "marsh",
       "x_grid": 38,
       "y_grid": 28,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-39-27-37-27",
         "edge-40-28-39-27",
@@ -4374,7 +4374,7 @@
       "terrain": "marsh",
       "x_grid": 41,
       "y_grid": 29,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-42-28-40-28",
         "edge-42-28-43-29",
@@ -4390,7 +4390,7 @@
       "terrain": "marsh",
       "x_grid": 44,
       "y_grid": 28,
-      "setup": null,
+      "setup": "setup-type-blue",
       "edges": [
         "edge-45-27-43-27",
         "edge-46-28-45-27",

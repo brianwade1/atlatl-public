@@ -30,6 +30,8 @@ Atlatl calls each side's activation a **phase**. Consequently, 40 phases produce
 
 ## Setup Zones
 
+The standalone map and completed `.scn` use the same baseline setup assignments. The map JSON is the authoring source for those zones, while the embedded copy in the `.scn` is authoritative during play. Regeneration or synchronization must preserve equality between their per-hex `setup` values.
+
 ### Blue
 
 Blue may reposition its nine units on any non-water hex from the western map edge through column `x=14`, inclusive. Aradesh is at `hex-12-6`; the eastern limit is therefore two columns east of the city. This gives Blue 199 eligible setup hexes and permits a forward defense, a defense in depth, or a rearward defense along the Arel River.
@@ -39,6 +41,8 @@ Blue may reposition its nine units on any non-water hex from the western map edg
 Red may reposition its twelve units in columns `x=18` and `x=19`, providing 28 eligible setup hexes on the eastern map edge.
 
 The scenario includes doctrinally sensible default positions, but these are starting suggestions rather than mandatory dispositions. During the setup sequence, Blue repositions first and ends its setup phase; Red then repositions and ends its setup phase. Regular play begins with Blue.
+
+This asymmetry is intentional. Blue establishes the defense first across its broad setup area; Red, as the attacking force, then observes that defensive disposition and adjusts its setup before regular play begins. Open unit information makes that offensive adjustment an explicit part of the scenario design.
 
 ## Objectives and Scoring
 

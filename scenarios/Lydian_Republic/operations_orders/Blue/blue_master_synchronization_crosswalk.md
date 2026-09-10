@@ -1,19 +1,19 @@
 # Blue Master Synchronization Crosswalk
 
-> **Side-specific product:** For the Blue player, Blue staff, and scenario controller. Do not provide it to the Red player during closed-plan play.
+> **Side-specific product:** For the Blue player and Blue staff. An optional controller may also use it, but controller participation is not required for baseline play. Do not provide it to the Red player during closed-plan play.
 
 ## 1. Purpose and Authority
 
-This crosswalk provides one side-wide view of the RDC Coalition Land Corps plan for **OPERATION LYDIAN BULWARK**. It links the corps tasks in B-00 to the division and fire-support orders, operational phases, retained terrain, passages, main-effort shifts, reserve decisions, fires, handoffs, and controller checks. It summarizes rather than replaces the signed orders.
+This crosswalk provides one side-wide view of the RDC Coalition Land Corps plan for **OPERATION LYDIAN BULWARK**. It links the corps tasks in B-00 to the division and fire-support orders, operational phases, retained terrain, passages, main-effort shifts, reserve decisions, fires, handoffs, and player synchronization checks. It summarizes rather than replaces the signed orders.
 
 Use the following precedence when sources differ:
 
-1. A later authenticated controller ruling or fragmentary order.
+1. A later authenticated fragmentary order or in-play decision by the proper Blue headquarters.
 2. The applicable signed operations or support order.
-3. This master crosswalk.
-4. The operational graphics.
+3. The operational graphics for the location of depicted control measures.
+4. This master crosswalk.
 
-Report a conflict rather than silently choosing the most favorable interpretation. The operations overlay governs the exact locations of boundaries, battle positions, assembly areas, passage points, routes, crossings, objectives, artillery areas, and limits of advance.
+Report a conflict rather than silently choosing the most favorable interpretation. The operations overlay governs the exact locations of boundaries, battle positions, assembly areas, passage points, routes, crossings, objectives, artillery areas, and limits of advance. Baseline play requires no controller. An optional controller may add injects or adjudications only under procedures agreed before play.
 
 ## 2. Shared Operational Baseline
 
@@ -105,9 +105,11 @@ No formation abandons Aradesh, Kirov, Belas, Velin, a designated crossing, a rou
 | **DP 7 - Terminate the Counterattack** | Corps commander, or supported commander within authenticated limits | Penetration status, decisive terrain, LOA, support range, routes, flanks, combat power, renewed threat | Stop offensive action, occupy defensible terrain, consolidate, hand over responsibilities, and begin recovery. |
 | **DP 8 - Reconstitute Reserves and Complete Phase IV** | Corps and division commanders for their respective reserves | Strength, mobility, route access, remaining terrain task, artillery support, renewed threat, corps end-state status | Return the 7th Armored Brigade to corps reserve when directed; re-form the 1st Armored Brigade as division reserve when possible; restore 2nd Division mobility and response options. |
 
-## 9. Controller Synchronization Checks
+## 9. Blue Player Synchronization Checks
 
-- Confirm that all four phases are adjudicated by conditions and authenticated decisions; planning dates alone do not trigger transition.
+In controller-free baseline play, the Blue player or Blue team uses these checks to record decisions and maintain the order hierarchy. An optional controller may use the same list without changing the baseline authorities.
+
+- Confirm that all four phases transition according to conditions and authenticated decisions; planning dates alone do not trigger transition.
 - Treat the three dashed Phase III axes as alternatives. Record the selected branch, main effort, supported division, committed force, route, passage point, fires priority, LOA, and termination criteria.
 - Keep the 7th Coalition Armored Brigade under corps control and uncommitted until an authenticated corps order is issued.
 - Keep the 1st Coalition Armored Brigade in division reserve until authenticated release by the 1st Division commander.

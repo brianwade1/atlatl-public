@@ -41,11 +41,22 @@ Load `lydian_republic_ao.map.json` in `browser/map-editor.html` using **Load JSO
 
 ### Variant authoring
 
-Load the map JSON in `browser/unit-placement.html` using **Load Map JSON**, then load [oob.json](../game/oob.json) if the variant uses the baseline forces. Scenario-specific setup zones and starting locations must be configured or preserved separately.
+Load the map JSON in `browser/unit-placement.html` using **Load Map JSON**, then load [oob.json](../game/oob.json) if the variant uses the baseline forces. The map supplies the baseline setup zones. A variant may preserve them or define an explicit scenario-specific override; starting locations remain scenario-specific.
+
+### Setup-zone baseline
+
+The standalone map and completed scenario use the same setup assignments:
+
+| Side | Eligible setup area | Eligible hexes |
+| --- | --- | ---: |
+| Blue | Any non-water hex from the western map edge through column `x=14`, inclusive | 199 |
+| Red | Columns `x=18` and `x=19` | 28 |
+
+The map JSON is the authoring source for this shared baseline. The embedded copy in the `.scn` is authoritative during play. When either artifact is regenerated, verify that their per-hex `setup` values remain identical.
 
 ### Source and derived artifacts
 
-The map JSON is the canonical source for hex geometry, terrain, roads, rivers, and other geographic features. The completed scenario derives its geography from this source but expands the scenario-specific Blue `setup` assignments and adds initial city ownership, units, default starting positions, and scoring. When the map JSON changes, synchronize the geographic fields while preserving the scenario-specific configuration, then review both visual representations for consistency.
+The map JSON is the canonical source for hex geometry, terrain, roads, rivers, other geographic features, and the baseline setup zones. The completed scenario derives its geography and setup assignments from this source, then adds initial city ownership, units, default starting positions, and scoring. When the map JSON changes, synchronize the geographic and setup fields while preserving the remaining scenario-specific configuration, then review both visual representations for consistency.
 
 The SVG and PNG files are visual products; Atlatl does not load them during play.
 

@@ -47,18 +47,18 @@ Play begins on **18 May 2030 at 0600 local time (H+48)**. The RDC Coalition Land
 | [Game-file guide](game/README.md) | Authoritative runtime configuration, setup, scoring, deployment, and game-file maintenance. |
 | [Order of battle](game/order_of_battle.md) | Formation strengths, roles, and command relationships. |
 | [Map guide](map/README.md) | Authoritative map contents, geography, editing, and synchronization workflow. |
-| [Operations-order index](operations_orders/README.md) | Controller-facing index of both sides' briefing hierarchies, support orders, graphics, and disclosure guidance. |
+| [Operations-order index](operations_orders/README.md) | Side-specific index of both briefing hierarchies, synchronization aids, support orders, PDF graphics, and disclosure guidance. |
 
 ## Player Briefings
 
 For opposed play, Blue and Red operations orders and operational graphics are **side-specific**. Each player should normally use only their assigned side's link below unless the group agrees to open plans; the full operations-order index identifies both sides' plans. The scenario specification, road to war, order of battle, map products, game configuration, and unit information are shared.
 
-| Side | Start here |
-| --- | --- |
-| Blue | [RDC Coalition Land Corps order](operations_orders/Blue/B-00_rdc_coalition_land_corps_opord.md) |
-| Red | [Vostian 3rd Field Army order](operations_orders/Red/R-00_vostian_3rd_field_army_opord.md) |
+| Side | Senior order | Synchronization aid |
+| --- | --- | --- |
+| Blue | [RDC Coalition Land Corps order](operations_orders/Blue/B-00_rdc_coalition_land_corps_opord.md) | [Blue master synchronization crosswalk](operations_orders/Blue/blue_master_synchronization_crosswalk.md) |
+| Red | [Vostian 3rd Field Army order](operations_orders/Red/R-00_vostian_3rd_field_army_opord.md) | [Red master synchronization crosswalk](operations_orders/Red/red_master_synchronization_crosswalk.md) |
 
-Controllers and scenario administrators can use the [operations-order index](operations_orders/README.md) to reach the complete order hierarchy and both sets of graphics.
+Each crosswalk is a side-specific player and staff aid. An optional controller may also use it, but controller participation is not required for baseline play. The [operations-order index](operations_orders/README.md) provides the complete order hierarchy and both PDF briefing sets.
 
 ## Authoring Boundaries
 
