@@ -114,7 +114,7 @@ The filenames vary slightly between packages, but the roles of the files are con
 
 | Material | Purpose |
 | --- | --- |
-| `README.md` | Scenario landing page, overview, documentation index, and player entry points. |
+| `README.md` | Scenario landing page, player and optional-controller quick reference, documentation index, and player entry points. |
 | `scenario*.md` | Design specification covering intent, scale, forces, abstractions, runtime rules, and development status. |
 | `road_to_war*.md` | Shared fictional background and the chronology that leads to the opening situation. |
 
@@ -157,7 +157,7 @@ Remember, no plan survives first contact but to not plan is to plan for failure.
 
 ### Player
 
-1. Read the scenario landing page and road-to-war document.
+1. Use the scenario landing page's quick-reference sections, then read the road-to-war document.
 2. Review the shared order of battle and reference map.
 3. Open only your side's senior order and operational graphics.
 4. Follow links to the subordinate or support orders that apply to your formations.
@@ -165,7 +165,7 @@ Remember, no plan survives first contact but to not plan is to plan for failure.
 
 ### Controller or Facilitator
 
-1. Read the scenario specification and game-file guide.
+1. Use the scenario landing page's quick-reference sections, then read the scenario specification and game-file guide.
 2. Review both sides' complete order hierarchies and graphics.
 3. Use synchronization matrices or crosswalks to track phases, handoffs, decisions, and command requirements.
 4. Adjudicate written requirements that the Atlatl engine does not model.
@@ -209,7 +209,7 @@ When geography changes, update the canonical map first and synchronize only the 
 
 When adding another authored package:
 
-1. Use the structure above and include a complete `.scn` plus a scenario landing page and game-file guide.
+1. Use the structure above and include a complete `.scn`, a scenario landing page with public player/controller reference material, and a game-file guide.
 2. Keep editable sources separate from the complete runtime file and document which artifact owns each kind of information.
 3. Add a stable launcher alias to [`server/scenario_gen_reg.py`](../server/scenario_gen_reg.py).
 4. Add the package to the scenario table in this README.

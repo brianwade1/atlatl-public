@@ -1,14 +1,14 @@
 # Blue Master Synchronization Crosswalk
 
-> **Side-specific product:** For the Blue player, Blue staff, and scenario controller. Do not provide it to the Red player during closed-plan play.
+> **Side-specific product:** For the Blue player and Blue staff. An optional controller may also use it, but controller participation is not required for baseline play. Do not provide it to the Red player during closed-plan play.
 
 ## 1. Purpose and Authority
 
-This crosswalk provides one side-wide view of the Western Compact–Ordan Joint Land Corps plan. It links the corps tasks in B-00 to subordinate orders, operational phases, fires, passages, handoffs, reserve decisions, and controller checks. It summarizes rather than replaces the signed orders.
+This crosswalk provides one side-wide view of the Western Compact–Ordan Joint Land Corps plan. It links the corps tasks in B-00 to subordinate orders, operational phases, fires, passages, handoffs, reserve decisions, and player/controller checks. It summarizes rather than replaces the signed orders.
 
 Use the following precedence when sources differ:
 
-1. A later authenticated controller ruling or fragmentary order.
+1. A later authenticated fragmentary order or in-play decision by the proper Blue headquarters, or a controller ruling under procedures agreed before play.
 2. The applicable signed operations or support order.
 3. This master crosswalk.
 4. The operational graphics.
@@ -101,7 +101,9 @@ No formation abandons an essential retention or security task until the receivin
 | **DP 7 — Disengage guard** | Corps commander; 6th commander within criteria | Delay achieved, Red main body, guard strength, route status, receiving force | Conduct controlled sector disengagement and shift fires. |
 | **DP 8 — Transfer the fight** | Corps commander | Guard clear of BHL; positive contact/liaison; fires and route status | Transfer responsibility to 1st and 3rd Divisions; reconstitute 6th. |
 
-## 9. Controller Synchronization Checks
+## 9. Player/Controller Synchronization Checks
+
+In controller-free baseline play, the Blue player or Blue team uses these checks to record decisions and maintain the order hierarchy. An optional controller may use the same list without changing the baseline authorities.
 
 - Confirm all Blue starts are in `x=0–1`, outside urban hexes, before setup ends.
 - Do not award city points during setup; all seven cities begin neutral.

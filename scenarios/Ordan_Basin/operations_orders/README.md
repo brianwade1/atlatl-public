@@ -24,7 +24,7 @@ All written orders use the common baseline: **12 September 2031**, **18 complete
 
 ### Blue Control Products
 
-- [Blue master synchronization crosswalk](Blue/blue_master_synchronization_crosswalk.md) — side-wide order hierarchy, tasks, phases, handoffs, decisions, and controller checks.
+- [Blue master synchronization crosswalk](Blue/blue_master_synchronization_crosswalk.md) — side-wide order hierarchy, tasks, phases, handoffs, decisions, and player/controller checks.
 - [Blue operational graphics](Blue/Blue_operational_graphics.pdf) — published overall scheme and phase overlays.
 
 ## Red — Karsovian Eastern Army
@@ -43,7 +43,7 @@ All written orders use the common baseline: **12 September 2031**, **18 complete
 
 ### Red Control Products
 
-- [Red master synchronization crosswalk](Red/red_master_synchronization_crosswalk.md) — side-wide order hierarchy, projected turn windows, tasks, handoffs, decisions, and controller checks.
+- [Red master synchronization crosswalk](Red/red_master_synchronization_crosswalk.md) — side-wide order hierarchy, projected turn windows, tasks, handoffs, decisions, and player/controller checks.
 - [Red operational graphics](Red/Red_operational_graphics.pdf) — published overall scheme and phase overlays.
 
 The PDF briefing sets are the only published operational graphics.
@@ -52,6 +52,6 @@ The PDF briefing sets are the only published operational graphics.
 
 Read each side's products from the senior order through the applicable subordinate and support orders, then use the side's master crosswalk to reconcile responsibilities at headquarters seams. The operational graphics show the scheme and phase overlays; the written orders provide task organization, mission, intent, tasks, constraints, decision points, and detailed synchronization matrices.
 
-The orders do not add automated Atlatl mechanics. Command relationships, reserve-release authority, main-effort and fires-priority shifts, operational phases, weather effects, control measures, and reporting requirements must be observed by players or adjudicated by a controller. The crosswalks summarize those relationships but do not supersede the signed orders.
+The orders do not add automated Atlatl mechanics. Players observe command relationships, reserve-release authority, main-effort and fires-priority shifts, operational phases, weather effects, control measures, and reporting requirements. An optional controller may assist under procedures agreed before play. The crosswalks summarize those relationships but do not supersede the signed orders.
 
 Return to the [scenario landing page](../README.md).

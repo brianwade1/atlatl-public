@@ -1,14 +1,14 @@
 # Red Master Synchronization Crosswalk
 
-> **Side-specific product:** For the Red player, Red staff, and scenario controller. Do not provide it to the Blue player during closed-plan play.
+> **Side-specific product:** For the Red player and Red staff. An optional controller may also use it, but controller participation is not required for baseline play. Do not provide it to the Blue player during closed-plan play.
 
 ## 1. Purpose and Authority
 
-This crosswalk provides one side-wide view of the Karsovian Eastern Army plan. It links R-00 to subordinate orders, projected turn windows, task purposes, fires, reserves, decision points, and controller checks. It summarizes rather than replaces the signed orders.
+This crosswalk provides one side-wide view of the Karsovian Eastern Army plan. It links R-00 to subordinate orders, projected turn windows, task purposes, fires, reserves, decision points, and player/controller checks. It summarizes rather than replaces the signed orders.
 
 Use the following precedence when sources differ:
 
-1. A later authenticated controller ruling or fragmentary order.
+1. A later authenticated fragmentary order or in-play decision by the proper Red headquarters, or a controller ruling under procedures agreed before play.
 2. The applicable signed operations or support order.
 3. This master crosswalk.
 4. The operational graphics.
@@ -87,7 +87,9 @@ The 5th Guards Armored Brigade has no separate base order. It begins under direc
 | **DP 5 — Begin Phase IV** | Eastern Army commander | Veyra seized; resistance defeated; Novar/Eren secure; PL Punch guards established | Consolidate, retain objectives, form LOA Block guards, and restore reserve freedom. |
 | **DP 6 — Disengage a guard** | Corps commander within Army criteria | Delay achieved; Blue main body identified; guard strength and route; retain-force readiness | Conduct controlled displacement and transfer responsibility. |
 
-## 8. Controller Synchronization Checks
+## 8. Player/Controller Synchronization Checks
+
+In controller-free baseline play, the Red player or Red team uses these checks to record decisions and maintain the order hierarchy. An optional controller may use the same list without changing the baseline authorities.
 
 - Confirm all Red starts are in `x=10–11`, outside urban hexes, before setup ends.
 - Do not award city points during setup; all seven cities begin neutral.

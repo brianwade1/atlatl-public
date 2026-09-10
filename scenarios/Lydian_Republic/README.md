@@ -4,6 +4,8 @@
 
 This directory contains the complete authored package for **Defense of the Lydian Republic**, an operational-level Atlatl scenario depicting a multinational corps defense against a larger Vostian field army.
 
+This README is also the public player and optional-controller quick reference for baseline play.
+
 ![Lydian Republic area of operations](map/lydian_republic_ao_reference.png)
 
 ## Quick Start
@@ -49,16 +51,61 @@ Play begins on **18 May 2030 at 0600 local time (H+48)**. The RDC Coalition Land
 | [Map guide](map/README.md) | Authoritative map contents, geography, editing, and synchronization workflow. |
 | [Operations-order index](operations_orders/README.md) | Side-specific index of both briefing hierarchies, synchronization aids, support orders, PDF graphics, and disclosure guidance. |
 
-## Player Briefings
+## Player and Optional Controller Reference
 
-For opposed play, Blue and Red operations orders and operational graphics are **side-specific**. Each player should normally use only their assigned side's link below unless the group agrees to open plans; the full operations-order index identifies both sides' plans. The scenario specification, road to war, order of battle, map products, game configuration, and unit information are shared.
+> **Controller-free baseline:** Both players may read this section. A controller may facilitate play under procedures agreed before setup but is not required.
 
-| Side | Senior order | Synchronization aid |
+### Before Play and Disclosure
+
+Use closed plans unless both players agree otherwise. The scenario specification, road to war, order of battle, maps, game guide, and engine-visible unit information are shared. Each side's orders, master crosswalk, and operational graphics are private to that side.
+
+Read the [road to war](road_to_war_defense_of_the_lydian_republic.md), [order of battle](game/order_of_battle.md), and [reference map](map/lydian_republic_ao_reference.png), then open only the assigned side's products:
+
+| Side | Senior order | Synchronization aid | Graphics |
+| --- | --- | --- | --- |
+| Blue | [RDC Coalition Land Corps order](operations_orders/Blue/B-00_rdc_coalition_land_corps_opord.md) | [Blue master crosswalk](operations_orders/Blue/blue_master_synchronization_crosswalk.md) | [Blue graphics](operations_orders/Blue/Blue_operational_graphics.pdf) |
+| Red | [Vostian 3rd Field Army order](operations_orders/Red/R-00_vostian_3rd_field_army_opord.md) | [Red master crosswalk](operations_orders/Red/red_master_synchronization_crosswalk.md) | [Red graphics](operations_orders/Red/Red_operational_graphics.pdf) |
+
+If using a controller or special adjudication, agree on the controller's authority and any unmodeled effects before setup. The [operations-order index](operations_orders/README.md) provides the complete order hierarchy and disclosure guidance.
+
+### Setup Checklist
+
+1. Blue may reposition all nine units on eligible non-water hexes in columns `x=0–14`, inclusive.
+2. After Blue ends setup, Red may reposition all twelve units on eligible hexes in columns `x=18–19`.
+3. Default positions are suggestions. End setup with every unit in its permitted zone and no stacked units.
+4. Red may adjust after observing Blue's defense. This asymmetry and open unit information are intentional.
+5. Setup phases do not count toward the 40 regular player phases and award no city points. Regular play begins with Blue.
+
+### Objectives, Scoring, and End Conditions
+
+| Objective | Hex | Value each regular player phase |
 | --- | --- | --- |
-| Blue | [RDC Coalition Land Corps order](operations_orders/Blue/B-00_rdc_coalition_land_corps_opord.md) | [Blue master synchronization crosswalk](operations_orders/Blue/blue_master_synchronization_crosswalk.md) |
-| Red | [Vostian 3rd Field Army order](operations_orders/Red/R-00_vostian_3rd_field_army_opord.md) | [Red master synchronization crosswalk](operations_orders/Red/red_master_synchronization_crosswalk.md) |
+| Kirov | `hex-5-3` | 15 points |
+| Aradesh | `hex-12-6` | 15 points |
+| Belas | `hex-5-7` | 15 points |
+| Velin | `hex-5-11` | 15 points |
 
-Each crosswalk is a side-specific player and staff aid. An optional controller may also use it, but controller participation is not required for baseline play. The [operations-order index](operations_orders/README.md) provides the complete order hierarchy and both PDF briefing sets.
+All four cities begin under Blue control. At the end of each regular player phase, an occupied city changes to the occupier's faction; an empty city retains its owner. Blue control adds points and Red control subtracts them. Each Blue strength point lost subtracts one point; each Red strength point lost adds one point. A unit reduced below 50 percent strength is removed, and its remaining strength is counted as lost. Play ends after 40 regular player phases even if one side has lost all units. The engine reports a raw score from Blue's perspective but applies no validated victory bands.
+
+### Engine and Player Responsibilities
+
+| Enforced by Atlatl | Enforced by players |
+| --- | --- |
+| Map and unit state; movement and combat procedures; city ownership; player-phase count; raw scoring | Command relationships; reserve-release authority; Operational Phases; main-effort and fires-priority changes; boundaries and control measures; handoffs; weather guidance; reporting requirements |
+
+- A player phase is one side's engine activation. A capitalized **Operational Phase** is a stage of the written plan and changes only when its stated conditions and proper headquarters authority are satisfied.
+- In controller-free play, the player or team controlling the proper headquarters records phase transitions, reserve commitments, handoffs, and accepted risks. No controller approval is required.
+- Do not abandon an assigned city, crossing, route, seam, or guard responsibility until the receiving formation accepts the handoff or the proper headquarters records the risk.
+- Operational graphics are planning products. Translate their control measures into map hexes; they are not an engine overlay.
+- Do not invent combat modifiers for weather, visibility, logistics, intelligence, or other unmodeled capabilities unless both players agreed to an adjudication method before setup.
+
+### Optional Controller and End-of-Game Checklist
+
+- Protect closed-plan information and confirm legal setup without advising either side.
+- Record consequential phase changes, reserve commitments, passages, handoffs, accepted risks, and rulings.
+- Apply the same interpretation to both sides. Resolve conflicts using the signed orders and their stated precedence; do not become an additional commander.
+- Add no reinforcements, capabilities, modifiers, or injects unless authorized by the agreed scenario procedure.
+- At completion, players or the optional controller record the final raw score, city ownership, strength losses, reserve status, narrative objectives, major handoffs, and unresolved order conflicts.
 
 ## Authoring Boundaries
 
