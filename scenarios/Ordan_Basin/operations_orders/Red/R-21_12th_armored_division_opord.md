@@ -10,7 +10,7 @@
 - **Time zone used throughout:** Local Ordan time
 - **Effective:** On receipt
 - **Scenario duration:** 18 turns / 9 days; 12 hours per turn
-- **Parent order:** 9th Maneuver Corps OPORD R-20, OPERATION NORTHERN REACH
+- **Parent order:** 9th Maneuver Corps OPORD R-20, OPERATION CAPITAL CORRIDOR
 - **Role:** Corps supporting effort in Phases I and III–IV; corps main effort in Phase II
 - **References:** R-00; R-20; [scenario specification](../../ordan_basin_scenario.md); [order of battle](../../game/order_of_battle.md); [Ordan Basin AO map](../../map/ordan_basin_ao.map.json); [Red operational graphics](Red_operational_graphics.pdf); [Red master synchronization crosswalk](red_master_synchronization_crosswalk.md)
 

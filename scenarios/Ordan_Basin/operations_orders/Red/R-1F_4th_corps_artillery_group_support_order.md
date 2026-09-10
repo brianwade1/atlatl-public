@@ -10,7 +10,7 @@
 - **Time zone used throughout:** Local Ordan time
 - **Effective:** On receipt
 - **Scenario duration:** 18 turns / 9 days; 12 hours per turn
-- **Parent order:** 4th Maneuver Corps OPORD R-10, OPERATION NORTHERN REACH
+- **Parent order:** 4th Maneuver Corps OPORD R-10, OPERATION NORTHERN HOOK
 - **Tactical mission:** General support to 4th Maneuver Corps in Phases I–II and IV; general support–reinforcing to 4th Maneuver Corps, reinforcing 9th Corps Artillery Group, in Phase III
 - **References:** R-00; R-10; R-11; R-12; R-20; [scenario specification](../../ordan_basin_scenario.md); [order of battle](../../game/order_of_battle.md); [Ordan Basin AO map](../../map/ordan_basin_ao.map.json); [Red operational graphics](Red_operational_graphics.pdf); [Red master synchronization crosswalk](red_master_synchronization_crosswalk.md)
 

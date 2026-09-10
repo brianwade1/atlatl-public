@@ -32,11 +32,11 @@ All written orders use the common baseline: **12 September 2031**, **18 complete
 | Order | Headquarters | Operation | Scope |
 | --- | --- | --- | --- |
 | [R-00](Red/R-00_karsovian_eastern_army_opord.md) | Karsovian Eastern Army | NORTHERN REACH | Army attack, corps sequencing, reserve employment, and consolidation. |
-| [R-10](Red/R-10_4th_maneuver_corps_opord.md) | 4th Maneuver Corps | NORTHERN REACH | Northern main effort against Dalen, North Pass, and Central Link. |
+| [R-10](Red/R-10_4th_maneuver_corps_opord.md) | 4th Maneuver Corps | NORTHERN HOOK | Northern main effort against Dalen, North Pass, and Central Link. |
 | [R-11](Red/R-11_8th_guards_armored_division_opord.md) | 8th Guards Armored Division | NORTH PASS | Kasar and North Pass attacks, crossing retention, and guard. |
 | [R-12](Red/R-12_15th_mechanized_division_opord.md) | 15th Mechanized Division | CENTRAL HOOK | Dalen and Central Link attacks, retention, and guard. |
 | [R-1F](Red/R-1F_4th_corps_artillery_group_support_order.md) | 4th Corps Artillery Group | NORTHERN THUNDER | Fires supporting 4th Corps and reinforcing the Veyra attack. |
-| [R-20](Red/R-20_9th_maneuver_corps_opord.md) | 9th Maneuver Corps | NORTHERN REACH | Novar, Eren, and Veyra attack and retention. |
+| [R-20](Red/R-20_9th_maneuver_corps_opord.md) | 9th Maneuver Corps | CAPITAL CORRIDOR | Novar, Eren, and Veyra attack and retention. |
 | [R-21](Red/R-21_12th_armored_division_opord.md) | 12th Armored Division | SOUTHERN CROSSING | Selin and Eren attacks, crossing retention, and guard. |
 | [R-22](Red/R-22_21st_mechanized_division_opord.md) | 21st Mechanized Division | VEYRA SPEAR | Novar and Veyra attacks, retention, and guard. |
 | [R-2F](Red/R-2F_9th_corps_artillery_group_support_order.md) | 9th Corps Artillery Group | CAPITAL THUNDER | Fires supporting Novar, Eren, and Veyra operations. |
@@ -46,7 +46,7 @@ All written orders use the common baseline: **12 September 2031**, **18 complete
 - [Red master synchronization crosswalk](Red/red_master_synchronization_crosswalk.md) — side-wide order hierarchy, projected turn windows, tasks, handoffs, decisions, and controller checks.
 - [Red operational graphics](Red/Red_operational_graphics.pdf) — published overall scheme and phase overlays.
 
-The repository ignores `.pptx` files. Treat the PDFs as the published graphics unless the project adopts a version-controlled editable format.
+The PDF briefing sets are the only published operational graphics.
 
 ## Using the Orders
 
