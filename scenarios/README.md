@@ -99,11 +99,13 @@ Scenario_Name/
 `-- operations_orders/
     |-- README.md
     |-- Blue/
-        |-- <unit_orders>.md
-        |--Blue_operational_graphics.pdf
+    |   |-- <unit_orders>.md
+    |   |-- blue_master_synchronization_crosswalk.md
+    |   `-- Blue_operational_graphics.pdf
     `-- Red/
         |-- <unit_orders>.md
-        |--Red_operational_graphics.pdf
+        |-- red_master_synchronization_crosswalk.md
+        `-- Red_operational_graphics.pdf
 ```
 
 The filenames vary slightly between packages, but the roles of the files are consistent.
@@ -127,7 +129,7 @@ These documents provide context but are not loaded by the game engine. They are 
 | `order_of_battle.md` | Human-readable formation strengths, roles, represented capabilities, and command relationships. |
 | `README.md` | Authoritative guide to runtime configuration, setup, objectives, scoring, and game-file maintenance. |
 
-The `.scn` file is JSON despite its extension. For normal play, launch it through its alias or path rather than loading the separate map and OOB files. For more realistic wargaming play, players should pay attention to command relationships. In actual combat, units in a given command will operate together. Actual combat is chaotic so command boundaries help separate forces and assign areas or responsibility.
+The `.scn` file is JSON despite its extension. For normal play, launch it through its alias or path rather than loading the separate map and OOB files. For more realistic wargaming play, players should pay attention to command relationships. In actual combat, units in a given command will operate together. Actual combat is chaotic, so command boundaries help separate forces and assign areas of responsibility.
 
 ### `map/`
 
@@ -143,11 +145,11 @@ Atlatl loads map data embedded in the `.scn`; it does not load the SVG or PNG pr
 
 ### `operations_orders/`
 
-The `Blue/` and `Red/` directories contain side-specific orders, support orders, and operational graphics. Start with the senior headquarters order (labeled *-00_) identified by the package's operations-order index, then read the applicable subordinate and fires-support orders. Each scenario also includes side-wide master synchronization crosswalks which provides a consolidated view of how the higher headquarters and subordinate formations execute the operation across each phase.
+The `Blue/` and `Red/` directories contain side-specific orders, support orders, master synchronization crosswalks, and operational graphics. Start with the senior headquarters order (whose identifier ends in `-00`) identified by the package's operations-order index, then read the applicable subordinate and fire-support orders. Each side's master synchronization crosswalk provides a consolidated view of how the higher headquarters and subordinate formations execute the operation across each phase.
 
 For opposed play, players should normally read only their assigned side's orders, crosswalks, and operational graphics unless the group agrees to open plans. Controllers and scenario administrators may use both sides' material.
 
-The orders guide player decisions but do not add automated mechanics. Players or a controller must enforce command relationships, reserve-release authority, operational phases, control measures, fires priorities, weather effects, and reporting requirements. PDFs are the published operational graphics; editable PowerPoint sources are ignored by the repository and are not guaranteed to be present.
+The orders guide player decisions but do not add automated mechanics. Players enforce command relationships, reserve-release authority, operational phases, control measures, fires priorities, weather effects, and reporting requirements. An optional controller may assist under procedures agreed before play. PDF briefing sets are the only published operational graphics.
 
 Remember, no plan survives first contact but to not plan is to plan for failure. The red and blue plans provide a starting point for players, but players should react to the evolving situation and make adjustments to the plan as play evolves. As players make these adjustments, keep in mind the overall political and military objectives as well as the command relationships of the forces they control.
 
