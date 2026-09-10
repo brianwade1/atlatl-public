@@ -6,11 +6,11 @@
 
 - **Issuing headquarters:** Karsovian Eastern Army
 - **Place of issue:** Eastern Army Main Command Post, Karsovian forward support area
-- **Date-time group:** 12 September 2030, 0600 local
+- **Date-time group:** 12 September 2031, 0600 local
 - **Time zone used throughout:** Local Ordan time
 - **Effective:** On receipt
-- **Scenario duration:** 20 turns / 10 days; 12 hours per turn
-- **References:** `ordan_basin_scenario.md`; `order_of_battle.md`; Ordan Basin Area of Operations map; approved Red operational graphics and task-purpose crosswalk
+- **Scenario duration:** 18 turns / 9 days; 12 hours per turn
+- **References:** [scenario specification](../../ordan_basin_scenario.md); [order of battle](../../game/order_of_battle.md); [Ordan Basin AO map](../../map/ordan_basin_ao.map.json); [Red operational graphics](Red_operational_graphics.pdf); [Red master synchronization crosswalk](red_master_synchronization_crosswalk.md)
 
 ### Task Organization
 
@@ -45,7 +45,7 @@ Eastern Army exercises operational control over the 4th and 9th Maneuver Corps a
 
 The Eastern Army area of interest extends from Karsovia’s western military districts through the eastern approaches to Kasar, Ruda, and Selin; across the Ordan Basin and Arven River crossing network; and west through Veyra to the Lestaran approaches. It includes the Saren Heights, Mora Hills, southeastern marshlands, all routes capable of supporting Blue reinforcement or counterattack, and the political and logistical systems that sustain the elected Ordan government.
 
-Events outside the immediate area that may affect the operation include the arrival of additional Western Compact formations from Lestara, changes in support for the Ruda emergency council, disruption of Karsovian lines of communication, and intervention by non-playable air, cyber, or diplomatic capabilities through scenario control. No additional playable Eastern Army formation is expected during the 10-day operation unless introduced by scenario control.
+Events outside the immediate area that may affect the operation include the arrival of additional Western Compact formations from Lestara, changes in support for the Ruda emergency council, disruption of Karsovian lines of communication, and intervention by non-playable air, cyber, or diplomatic capabilities through scenario control. No additional playable Eastern Army formation is expected during the 9-day operation unless introduced by scenario control.
 
 ### b. Area of Operations
 
@@ -130,14 +130,14 @@ None at operation start. Cross-attachment of brigades between corps requires Eas
 
 - All represented Arven crossings begin trafficable. A change in bridge status requires a confirmed game effect or scenario-control ruling.
 - The Ruda, Kasar, and Selin eastern routes remain available for initial sustainment and movement.
-- No additional playable Karsovian formation arrives during the 20-turn operation.
+- No additional playable Karsovian formation arrives during the 18-turn operation.
 - The 5th Guards Armored Brigade can reposition near Novar after the Phase I Ruda operation without losing its ability to support either corps, provided the central route remains open.
 - Seizure of Veyra does not by itself end the operation; the Army must retain the city, Novar, and the crossing network while guarding along LOA Block.
 - Phase timelines are planning estimates. Conditions, not turn numbers, govern transition.
 
 ## 2. Mission
 
-Beginning 12 September 2030 at 0600 local, the **Karsovian Eastern Army attacks west through the Ordan Basin to seize the North Pass Bridge, Central Link Bridge, Novar, Eren, and Veyra; retains Veyra and the crossing network; and establishes guards along LOA Block in order to control the basin’s political and transportation centers, preserve operational mobility across the Arven River, and prevent a Western Compact–Ordan counterattack from restoring the elected government’s control.**
+Beginning 12 September 2031 at 0600 local, the **Karsovian Eastern Army attacks west through the Ordan Basin to seize the North Pass Bridge, Central Link Bridge, Novar, Eren, and Veyra; retains Veyra and the crossing network; and establishes guards along LOA Block in order to control the basin’s political and transportation centers, preserve operational mobility across the Arven River, and prevent a Western Compact–Ordan counterattack from restoring the elected government’s control.**
 
 ## 3. Execution
 
@@ -192,7 +192,7 @@ This phase ends when Veyra is seized; organized resistance in and around the cit
 
 #### (4) Phase IV — Consolidate, Retain, and Guard
 
-**Projected Turns 16–20.** The 9th Maneuver Corps remains the Army main effort for consolidation of Veyra and Novar. Both corps establish guards along LOA Block, retain the seized cities and Arven crossings, restore routes, and prepare to defeat a Blue counterattack. Guard forces maintain contact, identify the enemy main effort, delay as required, and displace before they become decisively engaged beyond the commander’s intent. The 5th Guards Armored Brigade remains the only Eastern Army mobile reserve and is not committed to routine terrain-holding tasks.
+**Projected Turns 16–18.** The 9th Maneuver Corps remains the Army main effort for consolidation of Veyra and Novar. Both corps establish guards along LOA Block, retain the seized cities and Arven crossings, restore routes, and prepare to defeat a Blue counterattack. Guard forces maintain contact, identify the enemy main effort, delay as required, and displace before they become decisively engaged beyond the commander’s intent. The 5th Guards Armored Brigade remains the only Eastern Army mobile reserve and is not committed to routine terrain-holding tasks.
 
 The operation ends when Veyra and the crossing network remain under Eastern Army control through scenario completion, Blue counterattack forces have been detected and delayed west of LOA Block, and the Army retains a mobile response capability.
 
@@ -412,7 +412,7 @@ This annex synchronizes maneuver, fires, reserve, sustainment, command relations
 | **I — Secure eastern basin and initial objectives**<br>Projected Turns 1–5 | **Army main effort.** 15th Division seizes Dalen; 8th Division secures Kasar and fixes North Pass Bridge. | Seize Novar, secure Selin, and fix Eren; preserve routes for the next phase. | Secure Ruda; transfer local security; reposition near Novar and resume Army reserve. | Priority 4th Corps/15th Division, then 9th Corps/Novar effort. Counterfire and isolate objectives. | Open three east–west corridors; prioritize Dalen and Novar attacks; restore reserve readiness. | Dalen and Novar seized; Kasar, Ruda, Selin secured; North Pass and Eren fixed; corps postured. |
 | **II — Seize remaining crossings**<br>Projected Turns 6–10 | **Army main effort.** 15th Division seizes Central Link Bridge; 8th Division seizes North Pass Bridge. | 12th Division seizes Eren; 211th guards at PL Push; 212th isolates Veyra; 213th guards the corps boundary from PL Push to the Arven and delays reinforcement of Eren; Novar lacks a retain force. | Remain uncommitted near Novar; priority to 4th Corps, then 9th Corps. | Priority Central Link, North Pass, then Eren; support 213th guard against reinforcing forces. | Emphasize Eren route and pre-position west of Novar; protect reserve mobility despite the Novar gap. | All three principal bridge objectives seized and trafficable; Veyra isolated; boundary guards established; 9th Corps postured to restore Novar and attack Veyra. |
 | **III — Restore Novar and seize Veyra**<br>Projected Turns 11–15 | Advance to PL Punch; 82nd establishes northern guard while 81st retains North Pass; 15th Division establishes central guard; 4th Artillery reinforces 9th Artillery. | **Army main effort.** 213th restores and retains Novar; once the route is confirmed, 212th seizes Veyra; 211th and 121st guard the flanks; 122nd retains Eren. | Remain uncommitted; priority to 9th Corps; prepare to counter Blue reserve or exploit success. | Support Novar restoration, then priority 21st Division/212th Brigade at Veyra; coordinate cross-boundary fires and counterfire. | Restore Novar route before the Veyra commitment unless Army accepts the isolation risk; preserve reserve mobility. | Veyra seized; resistance defeated; Novar/Eren secure; 8th, 15th, 12th Divisions established at PL Punch. |
-| **IV — Consolidate, retain, and guard**<br>Projected Turns 16–20 | Retain Dalen, North Pass, and Central Link; guard northern LOA Block. | **Army main effort.** Retain Veyra, Novar, Eren; guard central and southern LOA Block. | Sole Army mobile reserve; counterattack or reinforce only on Army order. | Priority guard in contact/disengaging, threatened retain force, then committed reserve. | Support guard withdrawal, route repair, crossing defense, reserve movement, and reconstitution. | Veyra and crossings retained; Blue detected and delayed; routes intact; Army retains mobile response. |
+| **IV — Consolidate, retain, and guard**<br>Projected Turns 16–18 | Retain Dalen, North Pass, and Central Link; guard northern LOA Block. | **Army main effort.** Retain Veyra, Novar, Eren; guard central and southern LOA Block. | Sole Army mobile reserve; counterattack or reinforce only on Army order. | Priority guard in contact/disengaging, threatened retain force, then committed reserve. | Support guard withdrawal, route repair, crossing defense, reserve movement, and reconstitution. | Veyra and crossings retained; Blue detected and delayed; routes intact; Army retains mobile response. |
 
 ## 3. Subordinate Maneuver Task Matrix
 

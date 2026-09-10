@@ -6,13 +6,13 @@
 
 - **Issuing headquarters:** 9th Corps Artillery Group
 - **Place of issue:** Artillery Command Post, Ruda eastern support area
-- **Date-time group:** 12 September 2030, 0600 local
+- **Date-time group:** 12 September 2031, 0600 local
 - **Time zone used throughout:** Local Ordan time
 - **Effective:** On receipt
-- **Scenario duration:** 20 turns / 10 days; 12 hours per turn
+- **Scenario duration:** 18 turns / 9 days; 12 hours per turn
 - **Parent order:** 9th Maneuver Corps OPORD R-20, OPERATION NORTHERN REACH
 - **Tactical mission:** General support to 9th Maneuver Corps throughout all phases
-- **References:** R-00; R-20; R-21; R-22; R-1F; `ordan_basin_scenario.md`; `order_of_battle.md`; Ordan Basin Area of Operations map; approved Red operational graphics
+- **References:** R-00; R-20; R-21; R-22; R-1F; [scenario specification](../../ordan_basin_scenario.md); [order of battle](../../game/order_of_battle.md); [Ordan Basin AO map](../../map/ordan_basin_ao.map.json); [Red operational graphics](Red_operational_graphics.pdf); [Red master synchronization crosswalk](red_master_synchronization_crosswalk.md)
 
 ### Task Organization
 
@@ -84,7 +84,7 @@ None. Phase III reinforcing fires do not attach the 4th Corps Artillery Group to
 
 ## 2. Mission
 
-Beginning 12 September 2030 at 0600 local, the **9th Corps Artillery Group provides general support to 9th Maneuver Corps; masses fires to enable the initial seizure and Phase III restoration of Novar, seizure of Eren, isolation and seizure of Veyra, and the subsequent guard and defense of retained objectives; and integrates reinforcing fires from 4th Corps Artillery during Phase III in order to secure the corps crossing network, enable capture of Orda’s political center, and preserve 9th Corps freedom of action against Blue counterattack.**
+Beginning 12 September 2031 at 0600 local, the **9th Corps Artillery Group provides general support to 9th Maneuver Corps; masses fires to enable the initial seizure and Phase III restoration of Novar, seizure of Eren, isolation and seizure of Veyra, and the subsequent guard and defense of retained objectives; and integrates reinforcing fires from 4th Corps Artillery during Phase III in order to secure the corps crossing network, enable capture of Orda’s political center, and preserve 9th Corps freedom of action against Blue counterattack.**
 
 ## 3. Execution
 
@@ -116,7 +116,7 @@ Concentrate the corps’ limited artillery effects at each decisive action, culm
 - Phase III reinforcing fires were integrated without transferring command of the 4th Corps group.
 - The central and southern guards could gain time and disengage under supporting fires.
 - The crossings and Novar–Veyra route were not lost for lack of reported artillery support.
-- The group remains mobile, survivable, supplied, and capable of supporting the corps through Turn 20.
+- The group remains mobile, survivable, supplied, and capable of supporting the corps through Turn 18.
 
 Stable artillery task identifiers:
 
@@ -157,7 +157,7 @@ The phase ends when Veyra is seized, organized resistance is defeated, Novar and
 
 #### (4) Phase IV — Support Guards and Retained Objectives
 
-**Projected Turns 16–20. Tactical mission: General support.** Priority is the guard formation in contact or disengaging, then the formation defending the most threatened retained city or crossing, then the 5th Guards Armored Brigade if committed in the corps area.
+**Projected Turns 16–18. Tactical mission: General support.** Priority is the guard formation in contact or disengaging, then the formation defending the most threatened retained city or crossing, then the 5th Guards Armored Brigade if committed in the corps area.
 
 The group disrupts Blue counterattack forces, supports guard delay and displacement, conducts counterfire, and protects Veyra, Novar, Eren, and the corps routes. It occupies survivable position areas able to range the central and southern portions of LOA Block while preserving an eastward displacement and ammunition route.
 
@@ -287,7 +287,7 @@ Organic leaders acknowledge and backbrief the tactical mission, priorities by ph
 | **I — Novar, Selin, Eren fix**<br>Turns 1–5 | General support, 9th Corps | 21st/213th at Novar; then 12th/122nd at Selin and 121st at Eren | Isolate Novar; suppress defenders; support Selin; fix Eren; counterfire | Initial Ruda–Selin position area; keep both routes open; prepare displacement | Novar seized; Selin/Ruda secure; Eren fixed; Phase II coverage established |
 | **II — Eren and Veyra isolation**<br>Turns 6–10 | General support, 9th Corps | 12th/121st at Eren, including threats detected by 213th guard; then 21st/212th and 211th | Suppress/obscure Eren; interdict Ordan Basin and Mora reinforcements; isolate Veyra | Novar/Eren approach areas; monitor unsecured Novar; displace by echelon | Eren seized/trafficable; Veyra isolated; guards effective; 213th postured for Novar |
 | **III — Restore Novar and seize Veyra**<br>Turns 11–15 | General support, 9th Corps; receives reinforcing fires | 21st/213th restoring Novar; then 21st/212th at Veyra; cover guards and crossings | Suppress/isolate Novar; restore route; isolate Veyra; suppress defenders; counterfire | Novar then Veyra support areas; integrate reinforcing fires; preserve ammunition and route | Novar restored; Veyra seized; guards established; crossings secure |
-| **IV — Guard and retain**<br>Turns 16–20 | General support, 9th Corps | Guard in contact/disengaging; threatened retain force; committed Army reserve | Disrupt counterattack; support disengagement; defend retained objectives; counterfire | Survivable retained-objective position area; LOA Block coverage; eastward route | Guards delay/disengage; objectives retained; group remains capable |
+| **IV — Guard and retain**<br>Turns 16–18 | General support, 9th Corps | Guard in contact/disengaging; threatened retain force; committed Army reserve | Disrupt counterattack; support disengagement; defend retained objectives; counterfire | Survivable retained-objective position area; LOA Block coverage; eastward route | Guards delay/disengage; objectives retained; group remains capable |
 
 ## Essential Fire-Support Task Matrix
 

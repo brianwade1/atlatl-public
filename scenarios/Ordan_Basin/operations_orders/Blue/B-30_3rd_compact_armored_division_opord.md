@@ -6,13 +6,13 @@
 
 - **Issuing headquarters:** 3rd Compact Armored Division
 - **Place of issue:** Division Main Command Post, AA Axe
-- **Date-time group:** 12 September 2030, 0600 local
+- **Date-time group:** 12 September 2031, 0600 local
 - **Time zone used throughout:** Local Ordan time
 - **Effective:** On receipt
 - **Scenario duration:** 18 turns / 9 days; 12 hours per turn
 - **Parent order:** WCO JLC OPORD B-00, OPERATION STEADFAST ACCORD
 - **Supported corps tasks:** B-C2, B-C3, B-C5, B-C6
-- **References:** B-00; `blue_master_synchronization_crosswalk.md`; `ordan_basin_scenario.md`; `ordan_basin_order_of_battle.md`; Ordan Basin Area of Operations map; approved Blue operational graphics
+- **References:** B-00; [Blue master synchronization crosswalk](blue_master_synchronization_crosswalk.md); [scenario specification](../../ordan_basin_scenario.md); [order of battle](../../game/order_of_battle.md); [Ordan Basin AO map](../../map/ordan_basin_ao.map.json); [Blue operational graphics](Blue_operational_graphics.pdf)
 
 ### Task Organization
 
@@ -30,7 +30,7 @@ The division exercises operational control over its three maneuver brigades. The
 
 ### a. Area of Interest
 
-The division area of interest extends from AA Axe and Route Blue east through North Pass Bridge, Dalen, Central Link Bridge, and OBJ South to Kasar and the northern approaches to Ruda. It includes the Saren Heights, the boundary with the 1st Ordan Mechanized Division, PP South, the battle-handover line, and the 6th Division's passage and subsequent eastern operation.
+The division area of interest extends from AA Axe and Route Blue east through North Pass Bridge, Dalen, and Central Link Bridge to Kasar and the northern approaches to Ruda. It includes the Saren Heights, the boundary with the 1st Ordan Mechanized Division, PP South, the battle-handover line, and the 6th Division's passage and subsequent eastern operation.
 
 The division must monitor Red forces capable of attacking the northern and central crossings, interdicting PP South, or counterattacking the 6th Division during passage. Red action at Novar may also threaten the division southern boundary and the western approach to PP South.
 
@@ -41,10 +41,10 @@ The division must monitor Red forces capable of attacking the northern and centr
 - **North Pass Bridge and Saren Heights:** Restrictive terrain channels movement onto the bridge and northern road. The heights conceal infantry and artillery observers and can support an attack against the northern flank.
 - **Dalen:** A principal crossing and road junction. Control of Dalen blocks a direct Red approach and supports movement between the northern and central crossing positions.
 - **Central Link Bridge:** A separate crossing south of Dalen. It must be retained independently; occupation of Dalen alone does not control the bridge.
-- **OBJ South and PP South:** The southern crossing in the division sector is decisive to the corps passage plan. Congestion, bridge damage, or enemy interdiction here can delay the 6th Division and expose both divisions.
+- **Central Link Bridge and PP South:** PP South is the designated passage lane through Central Link Bridge. Congestion, bridge damage, or enemy interdiction there can delay the 6th Division and expose both divisions.
 - **Arven River:** The river canalizes Red attacks and Blue sustainment. Crossing positions must have depth, observation, and routes that do not block the passing force.
 - **Western woods:** Wooded terrain conceals movement toward Dalen and PP South but limits observation and increases the importance of liaison and traffic control.
-- **Road network:** Route Blue connects the division to corps support and reserve areas. The Dalen and OBJ South routes must support simultaneous crossing defense, artillery displacement, and the 6th Division passage.
+- **Road network:** Route Blue connects the division to corps support and reserve areas. The Dalen and Central Link Bridge routes must support simultaneous crossing defense, artillery displacement, and the 6th Division passage.
 
 #### (2) Weather and Light
 
@@ -54,7 +54,7 @@ Plan for the early-autumn conditions described in B-00. Fog, smoke, rain, or dar
 
 #### (1) Composition and Disposition
 
-The principal threat is the Karsovian 4th Maneuver Corps, consisting of the 8th Guards Armored Division, 15th Mechanized Division, and 4th Corps Artillery Group. It is oriented generally on Kasar, Dalen, North Pass Bridge, and the northern-central basin. Red infantry may secure the Saren flank while armored and mechanized brigades attack Dalen or OBJ South.
+The principal threat is the Karsovian 4th Maneuver Corps, consisting of the 8th Guards Armored Division, 15th Mechanized Division, and 4th Corps Artillery Group. It is oriented generally on Kasar, Dalen, North Pass Bridge, and the northern-central basin. Red infantry may secure the Saren flank while armored and mechanized brigades attack Dalen or Central Link Bridge.
 
 The 5th Guards Armored Brigade may reinforce the 4th Corps, attack PP South during the passage, or exploit a penetration. Elements of the 9th Maneuver Corps may threaten the southern boundary through Ruda and Novar.
 
@@ -66,11 +66,11 @@ Red is limited by the river obstacle, restrictive terrain in the north, and the 
 
 #### (3) Most Likely Course of Action
 
-The 4th Maneuver Corps defends Kasar with part of the 15th Mechanized Division while attacking toward Dalen and North Pass Bridge. A mechanized force probes OBJ South and attempts to disrupt PP South. Artillery fires on bridge approaches and passage routes. Red then commits armor against whichever crossing appears least secure.
+The 4th Maneuver Corps defends Kasar with part of the 15th Mechanized Division while attacking toward Dalen and North Pass Bridge. A mechanized force probes Central Link Bridge and attempts to disrupt PP South. Artillery fires on bridge approaches and passage routes. Red then commits armor against whichever crossing appears least secure.
 
 #### (4) Most Dangerous Course of Action
 
-Red accepts risk at North Pass and Dalen, masses armored and mechanized combat power with army-reserve support against OBJ South, and attacks during the 6th Division passage. Artillery closes the passage lane while a supporting attack from the Novar direction threatens the division boundary. Success could isolate the 6th Division east of the Arven and collapse the corps maneuver plan.
+Red accepts risk at North Pass and Dalen, masses armored and mechanized combat power with army-reserve support against Central Link Bridge, and attacks during the 6th Division passage. Artillery closes the passage lane while a supporting attack from the Novar direction threatens the division boundary. Success could isolate the 6th Division east of the Arven and collapse the corps maneuver plan.
 
 ### d. Friendly Forces
 
@@ -84,7 +84,7 @@ The 3rd Division is the corps main effort in Phase I. Corps expects it to seize 
 
 - **1st Ordan Mechanized Division:** Supporting effort south of the division boundary. It secures Veyra and seizes and retains Novar and Eren.
 - **6th Compact Mechanized Division:** Follows and supports the division in Phase I and passes at PP South in Phase II before attacking Kasar.
-- **7th Coalition Armored Brigade:** Corps reserve. It has initial priority to the 3rd Division and may reinforce OBJ South, counterattack a penetration, or secure PP South on corps order.
+- **7th Coalition Armored Brigade:** Corps reserve. It has initial priority to the 3rd Division and may reinforce Central Link Bridge, counterattack a penetration, or secure PP South on corps order.
 - **Ordan authorities:** Assist movement control and civil coordination west of the Arven where conditions permit.
 
 ### e. Civil Considerations
@@ -98,14 +98,14 @@ None. The 7th Coalition Armored Brigade remains under corps control unless a cor
 ### g. Assumptions
 
 - The assigned crossings are trafficable at operation start.
-- PP South can support the 6th Division after OBJ South is secured and the passage lane is established.
+- PP South can support the 6th Division after Central Link Bridge is secured and the passage lane is established.
 - The 1st Division secures the boundary south of the division sector.
 - The division receives no additional playable formation unless directed by corps or introduced by scenario event.
 - The 6th Division provides its passage plan, order of march, and support requirements before movement.
 
 ## 2. Mission
 
-Beginning 12 September 2030 at 0600 local, the **3rd Compact Armored Division attacks from AA Axe along Axis Green to seize OBJ North/North Pass Bridge, OBJ Dalen/Central Link Bridge, and OBJ South and its crossing; establishes and controls PP South for the 6th Division's forward passage; and retains the assigned crossing network in order to deny Red penetration west of the Arven and enable the corps attack into the eastern basin.**
+Beginning 12 September 2031 at 0600 local, the **3rd Compact Armored Division attacks from AA Axe along Axis Green to seize North Pass Bridge, Dalen, and Central Link Bridge; establishes and controls PP South for the 6th Division's forward passage; and retains the assigned crossing network in order to deny Red penetration west of the Arven and enable the corps attack into the eastern basin.**
 
 ## 3. Execution
 
@@ -117,9 +117,9 @@ Secure the crossing network required to deny Red access west of the Arven and in
 
 #### Key Tasks
 
-- Seize and retain OBJ North/North Pass Bridge.
-- Seize and retain OBJ Dalen and Central Link Bridge.
-- Seize and retain OBJ South and establish PP South.
+- Seize and retain North Pass Bridge.
+- Seize and retain Dalen.
+- Seize and retain Central Link Bridge and establish PP South.
 - Protect and control the 6th Division's forward passage.
 - Transfer responsibility east of the BHL without fratricide or loss of fire support.
 - Maintain the crossing defense after passage and receive the Phase V fight.
@@ -129,26 +129,26 @@ Secure the crossing network required to deny Red access west of the Arven and in
 
 - **Enemy:** Red cannot use the assigned crossings or disrupt the corps passage; forces attacking the division crossing network are defeated, blocked, or contained east of the river.
 - **Friendly:** All three brigades remain coherent; the 6th Division has passed at PP South; and the division can maintain the crossing defense and receive withdrawing guard forces.
-- **Terrain:** OBJ North/North Pass Bridge, OBJ Dalen/Central Link Bridge, OBJ South, PP South, and the western approaches remain under Blue control.
+- **Terrain:** North Pass Bridge, Dalen, Central Link Bridge, PP South, and the western approaches remain under Blue control.
 - **Civil:** Crossing infrastructure remains usable and civilian movement does not prevent military passage or sustainment.
 
 ### b. Concept of Operations
 
 #### (1) Overall Concept
 
-The division attacks on three related crossing objectives in Phase I. The 31st Coalition Armored Brigade is the division main effort and seizes OBJ South to open PP South. The 32nd Coalition Mechanized Brigade seizes OBJ North and North Pass Bridge. The 33rd Coalition Mechanized Brigade seizes OBJ Dalen and Central Link Bridge. Division artillery provides general support with priority to the 31st, then 33rd, then 32nd Brigade.
+The division attacks on three related crossing objectives in Phase I. The 31st Coalition Armored Brigade is the division main effort and seizes Central Link Bridge to open PP South. The 32nd Coalition Mechanized Brigade seizes North Pass Bridge. The 33rd Coalition Mechanized Brigade seizes Dalen. Division artillery provides general support with priority to the 31st, then 33rd, then 32nd Brigade.
 
 In Phase II, the division transitions to crossing defense and passage support. The 31st Brigade controls PP South while the 6th Division passes. The division transfers responsibility east of the BHL but retains the bridge and western approach. After passage completion, all brigades retain their assigned crossing sectors through Phases III-V. In Phase V, the division establishes the northern and central portions of the corps defense and receives or supports withdrawing 6th Division guard forces.
 
 #### (2) Phase I - Seize the Crossing Network
 
-The 31st Brigade attacks to seize OBJ South and its crossing and establishes local security for PP South. The 32nd Brigade attacks to seize OBJ North and North Pass Bridge. The 33rd Brigade attacks to seize Dalen and Central Link Bridge. The 3rd Division Artillery Group suppresses crossing defenders, obscures exposed approaches, conducts counterfire, and protects bridge seizure.
+The 31st Brigade attacks to seize Central Link Bridge and establishes local security for PP South. The 32nd Brigade attacks to seize North Pass Bridge. The 33rd Brigade attacks to seize Dalen. The 3rd Division Artillery Group suppresses crossing defenders, obscures exposed approaches, conducts counterfire, and protects bridge seizure.
 
 Phase I ends when all objectives are controlled; PP South is trafficable and secure; passage-control measures are established; and the 6th Division is prepared to pass.
 
 #### (3) Phase II - Facilitate the Forward Passage
 
-The division retains all assigned crossings. The 31st Brigade controls PP South, secures the passage area, and coordinates movement with the 6th Division. The 32nd and 33rd Brigades retain OBJ North and OBJ Dalen/Central Link Bridge and prevent Red from shifting against the passage. Division artillery protects PP South and, on corps order, provides reinforcing fires for the 6th Division's Kasar attack.
+The division retains all assigned crossings. The 31st Brigade controls PP South, secures the passage area, and coordinates movement with the 6th Division. The 32nd and 33rd Brigades retain North Pass Bridge and Dalen and prevent Red from shifting against the passage. Division artillery protects PP South and, on corps order, provides reinforcing fires for the 6th Division's Kasar attack.
 
 Phase II passage duties end when the designated 6th Division rear element clears PP South and both divisions report completion. The division continues crossing defense without interruption.
 
@@ -166,17 +166,17 @@ Phase IV ends when Guard Line Steel and PL Bronze are in effect, the 6th Divisio
 
 #### (6) Phase V - Establish the Northern and Central Corps Defense
 
-The division retains OBJ North, OBJ Dalen/Central Link Bridge, OBJ South, and PP South while establishing defense in depth west of the river. It receives or supports the 63rd Coalition Mechanized Brigade and other designated guard elements withdrawing from north of PL Bronze. The division does not move forward in a manner that obstructs guard-force routes or becomes intermingled before handover.
+The division retains North Pass Bridge, Dalen, Central Link Bridge, and PP South while establishing defense in depth west of the river. It receives or supports the 63rd Coalition Mechanized Brigade and other designated guard elements withdrawing from north of PL Bronze. The division does not move forward in a manner that obstructs guard-force routes or becomes intermingled before handover.
 
 The phase continues through scenario end or until the corps directs a subsequent operation.
 
 ### c. Scheme of Maneuver
 
-The 31st Brigade is the Phase I main effort. It seizes OBJ South and establishes a secure passage area with enough depth to prevent direct fires or a local counterattack from closing PP South. During Phase II it controls the passage lane and retains the bridge and western approach after the battle handover. After passage completion it remains responsible for OBJ South and prepares to receive the Phase V fight.
+The 31st Brigade is the Phase I main effort. It seizes Central Link Bridge and establishes a secure passage area with enough depth to prevent direct fires or a local counterattack from closing PP South. During Phase II it controls the passage lane and retains the bridge and western approach after the battle handover. After passage completion it remains responsible for Central Link Bridge and prepares to receive the Phase V fight.
 
-The 32nd Brigade seizes and retains OBJ North and North Pass Bridge. It blocks the most dangerous Saren route and maintains observation of northern bypasses. It may displace from nonessential terrain before isolation but does not abandon the bridge without division approval or an immediate survival action under degraded communications.
+The 32nd Brigade seizes and retains North Pass Bridge. It blocks the most dangerous Saren route and maintains observation of northern bypasses. It may displace from nonessential terrain before isolation but does not abandon the bridge without division approval or an immediate survival action under degraded communications.
 
-The 33rd Brigade seizes and retains Dalen and Central Link Bridge as separate terrain requirements. It secures the route between the crossings, maintains contact with the 31st and 32nd Brigades, and prevents a Red force from using Dalen to turn PP South.
+The 33rd Brigade seizes and retains Dalen and both approaches to its urban crossing. It secures the route between the crossings, maintains contact with the 31st and 32nd Brigades, and prevents a Red force from using Dalen to turn PP South.
 
 The division has no uncommitted organic maneuver counter after Phase I. It requests the corps reserve before a penetration exceeds the defending brigade's ability to retain its crossing. Cross-leveling a brigade between crossing sectors requires a handover or explicit acceptance of risk by the division commander.
 
@@ -190,22 +190,22 @@ Essential fire-support tasks are to suppress and obscure crossing defenses; cond
 
 #### (1) 31st Coalition Armored Brigade - Phase I Main Effort
 
-- Attack to seize OBJ South and its crossing. **Purpose:** Open PP South and accomplish the division decisive operation.
+- Attack to seize Central Link Bridge. **Purpose:** Open PP South and accomplish the division decisive operation.
 - Establish and control the immediate passage area in Phase II. **Purpose:** Enable the 6th Division's forward passage without loss of momentum.
-- Retain OBJ South, the bridge, and western approach after battle handover. **Purpose:** Keep the corps line of communication open and deny Red passage west.
+- Retain Central Link Bridge and its western approach after battle handover. **Purpose:** Keep the corps line of communication open and deny Red passage west.
 - Prepare to receive Phase V guard forces. **Purpose:** Transfer the fight while preserving the crossing defense.
 
 #### (2) 32nd Coalition Mechanized Brigade - Northern Supporting Effort
 
-- Attack to seize OBJ North and North Pass Bridge. **Purpose:** Deny Red the northern crossing and secure the division flank.
+- Attack to seize North Pass Bridge. **Purpose:** Deny Red the northern crossing and secure the division flank.
 - Retain the bridge and block the most dangerous Saren approach in Phases II-V. **Purpose:** Prevent a northern turning movement.
 - Maintain observation and report bypass, artillery, or reinforcement indicators. **Purpose:** Provide time for fires or corps-reserve commitment.
 - Prepare to receive designated northern guard elements in Phase V. **Purpose:** Preserve the guard and transfer the fight.
 
 #### (3) 33rd Coalition Mechanized Brigade - Central Supporting Effort
 
-- Attack to seize Dalen and Central Link Bridge. **Purpose:** Deny Red the central crossing pair and protect PP South from the north.
-- Retain Dalen and Central Link Bridge as separate terrain responsibilities. **Purpose:** Prevent Red from controlling one crossing through occupation of the other.
+- Attack to seize Dalen and both crossing approaches. **Purpose:** Deny Red the Dalen crossing and protect PP South from the north.
+- Retain Dalen and its approaches. **Purpose:** Prevent Red from turning the Dalen position or shifting south against PP South.
 - Secure routes and contact among the division brigades and with the 1st Division. **Purpose:** Preserve division cohesion and lateral support.
 - Prepare to receive designated Phase V guard elements. **Purpose:** Enable orderly battle handover.
 
@@ -220,7 +220,7 @@ Essential fire-support tasks are to suppress and obscure crossing defenses; cond
 
 #### (1) Effective Time and Phase Control
 
-- This order is effective on receipt. Phase I begins 12 September 2030 at 0600 local.
+- This order is effective on receipt. Phase I begins 12 September 2031 at 0600 local.
 - Corps controls phase transitions. The division continues crossing responsibilities through every transition.
 - Brigade boundaries and objectives are as shown on the approved overlay.
 
@@ -228,7 +228,7 @@ Essential fire-support tasks are to suppress and obscure crossing defenses; cond
 
 **Before passage**
 
-- The 31st Brigade secures OBJ South, the bridge, and immediate passage area.
+- The 31st Brigade secures the Central Link bridge hex, both approaches, and the immediate passage area.
 - Division headquarters establishes passage control, movement windows, recognition procedures, traffic priorities, straggler control, recovery, and local security.
 - The 6th Division provides order of march, movement tables, vehicle density, artillery displacement requirements, liaison, and alternate-crossing proposals.
 - The 3rd Division Artillery Group and 6th Division Artillery Group coordinate targets, fire-support boundaries, and continuous coverage.
@@ -251,7 +251,7 @@ Essential fire-support tasks are to suppress and obscure crossing defenses; cond
 
 **PIR**
 
-1. Which Red formation is oriented on OBJ South or PP South?
+1. Which Red formation is oriented on Central Link Bridge or PP South?
 2. Is Red massing artillery or maneuver forces to disrupt the passage?
 3. Is the 5th Guards Armored Brigade moving toward Kasar, Ruda, or the crossing network?
 4. Is Red attempting a northern bypass through the Saren Heights or a southern attack through Novar?
@@ -304,7 +304,7 @@ Division support flows from the western Ordan support area through AA Axe and Ro
 
 ### b. Priorities of Support
 
-1. 31st Brigade during seizure and passage control at OBJ South.
+1. 31st Brigade during seizure and passage control at Central Link Bridge.
 2. Brigade defending the crossing under the most immediate threat.
 3. 3rd Division Artillery Group supporting passage or the decisive defense.
 4. 6th Division passage traffic under the corps movement plan.
@@ -390,17 +390,17 @@ This annex synchronizes the tasks and purposes of the 31st, 32nd, and 33rd Coali
 
 | Phase | 31st Armored Brigade | 32nd Mechanized Brigade | 33rd Mechanized Brigade | 3rd Division Artillery Group | Division decision and end condition |
 | --- | --- | --- | --- | --- | --- |
-| **I - Seize crossing network** | **Task:** Attack to seize OBJ South and establish PP South.<br>**Purpose:** Open the decisive passage for the 6th Division.<br>**Role:** **Main effort.** | **Task:** Attack to seize OBJ North/North Pass Bridge.<br>**Purpose:** Deny the northern crossing and secure the division flank. | **Task:** Attack to seize OBJ Dalen and Central Link Bridge.<br>**Purpose:** Deny the central crossing pair and protect PP South. | GS division; priority 31st, 33rd, 32nd. Suppress, obscure, counterfire, and protect bridge seizure. | Ends when objectives are controlled; PP South trafficable and secure; passage control established; 6th Division ready to pass. |
-| **II - Passage and Kasar attack** | Retain OBJ South; control PP South and passage lane; secure bridge and western approach. | Retain OBJ North and block the Saren approach. | Retain Dalen/Central Link Bridge and protect the passage from the north. | GS division; protect PP South and crossings; provide reinforcing fires to 6th Division on corps order. | Passage ends when designated 6th Division rear element clears and both divisions confirm completion. Crossing defense continues. |
-| **III - Retain during Ruda attack** | Retain OBJ South and keep PP South open. | Retain OBJ North/North Pass Bridge. | Retain Dalen/Central Link Bridge and division seam. | GS division; priority to threatened crossing; cross-boundary fires on corps order. | Continue terrain tasks; corps transitions when Ruda force is defeated and 6th Division is postured for Selin. |
-| **IV - Retain and prepare reception** | Retain OBJ South; establish reception and route plan. | Retain OBJ North; prepare northern guard-force reception. | Retain Dalen/Central Link Bridge; prepare central reception and seam security. | GS division; protect crossings and prepare disengagement and reception fires. | Ends when GL Steel/PL Bronze are effective and division is prepared to receive the fight. |
-| **V - Northern/central corps defense** | Retain OBJ South and PP South; receive designated guard elements. | Retain OBJ North and receive northern guard elements. | Retain Dalen/Central Link Bridge and receive designated guard elements. | GS division; priority to disengaging guard, then crossing threatened by Red main body. | Guard fight transfers; crossings remain controlled; division maintains coherent defense. |
+| **I - Seize crossing network** | **Task:** Attack to seize Central Link Bridge and establish PP South.<br>**Purpose:** Open the decisive passage for the 6th Division.<br>**Role:** **Main effort.** | **Task:** Attack to seize North Pass Bridge.<br>**Purpose:** Deny the northern crossing and secure the division flank. | **Task:** Attack to seize Dalen and its approaches.<br>**Purpose:** Deny the Dalen crossing and protect PP South. | GS division; priority 31st, 33rd, 32nd. Suppress, obscure, counterfire, and protect bridge seizure. | Ends when objectives are controlled; PP South trafficable and secure; passage control established; 6th Division ready to pass. |
+| **II - Passage and Kasar attack** | Retain Central Link Bridge; control PP South and passage lane; secure bridge and western approach. | Retain North Pass Bridge and block the Saren approach. | Retain Dalen and protect the passage from the north. | GS division; protect PP South and crossings; provide reinforcing fires to 6th Division on corps order. | Passage ends when designated 6th Division rear element clears and both divisions confirm completion. Crossing defense continues. |
+| **III - Retain during Ruda attack** | Retain Central Link Bridge and keep PP South open. | Retain North Pass Bridge. | Retain Dalen and division seam. | GS division; priority to threatened crossing; cross-boundary fires on corps order. | Continue terrain tasks; corps transitions when Ruda force is defeated and 6th Division is postured for Selin. |
+| **IV - Retain and prepare reception** | Retain Central Link Bridge; establish reception and route plan. | Retain North Pass Bridge; prepare northern guard-force reception. | Retain Dalen; prepare central reception and seam security. | GS division; protect crossings and prepare disengagement and reception fires. | Ends when GL Steel/PL Bronze are effective and division is prepared to receive the fight. |
+| **V - Northern/central corps defense** | Retain Central Link Bridge and PP South; receive designated guard elements. | Retain North Pass Bridge and receive northern guard elements. | Retain Dalen and receive designated guard elements. | GS division; priority to disengaging guard, then crossing threatened by Red main body. | Guard fight transfers; crossings remain controlled; division maintains coherent defense. |
 
 ## 4. Principal Decision Points
 
 | Decision point | Authority | Required information | Resulting action |
 | --- | --- | --- | --- |
-| **DP 1 - Open PP South** | Division commander | OBJ South controlled; bridge trafficable; local security; route and fires status | Declare passage point open and authorize movement under corps timing. |
+| **DP 1 - Open PP South** | Division commander | Central Link Bridge controlled; bridge trafficable; local security; route and fires status | Declare passage point open and authorize movement under corps timing. |
 | **DP 2 - Battle Handover East of BHL** | 3rd and 6th Division commanders | 6th lead across BHL; communications; fires; enemy situation | Transfer responsibility east of BHL while 3rd Division retains bridge and west approach. |
 | **DP 3 - Passage Complete** | Division commander with 6th Division confirmation | Designated rear element clear; route status; stragglers/recovery | End passage-control surge and continue crossing defense. |
 | **DP 4 - Request Corps Reserve** | Division commander | Crossing risk, defender capability, Red force fixed, routes/fires/sustainment | Request a specified block, counterattack, or reinforcement mission under B-00. |

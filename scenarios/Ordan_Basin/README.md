@@ -1,73 +1,74 @@
 # The Race for the Ordan Basin
 
-An operational-level, entirely fictional ground-combat scenario for [Atlatl](https://github.com/brianwade1/atlatl-public). A political crisis in the nonaligned Republic of Orda triggers competing Western Compact and Karsovian interventions. Both forces enter from opposite sides of the country and race to control the Arven River crossings, rival political centers, and the road network that connects them.
+> **Scenario status:** Entirely fictional. All countries, political events, military organizations, and geographic locations in this scenario are invented for research and educational use.
 
-![Ordan Basin area of operations](ordan_basin_ao_overview.png)
+This directory contains the complete authored package for **The Race for the Ordan Basin**, an operational-level Atlatl scenario depicting competing Western Compact and Karsovian interventions during an Ordan constitutional crisis.
 
-## Scenario Summary
-
-| Item | Description |
-| --- | --- |
-| Start | 12 September 2031, 0600 local time |
-| Duration | 18 turns / 9 days; two 12-hour turns per day |
-| Scale | Approximately 15 km per hex on a 12 × 12 map |
-| Blue | Western Compact–Ordan Joint Land Corps |
-| Red | Karsovian Eastern Army |
-| Playable units | 13 counters per side; brigade-sized formations and artillery groups |
-| Core challenge | Secure the crossings and transportation network without dispersing the force or exposing a political center |
-
-Blue begins closer to several central objectives and fields one additional artillery group, but its Ordan formations are understrength. Red possesses a 90-point aggregate strength advantage and one additional mechanized brigade, but must advance from the eastern edge while maintaining secure lines of communication. The result is a meeting engagement in which tempo, concentration, bridge control, and reserve timing drive the outcome.
-
-## Central Operational Problem
-
-Can Blue preserve the elected government in Veyra and prevent a Karsovian territorial fait accompli before Red secures the central basin? Both commanders must decide which river crossings are indispensable, where to accept risk, whether to use the restrictive northern and southern pass routes, and when to commit their armored reserve.
-
-## Package Contents
-
-| File | Purpose |
-| --- | --- |
-| [`ordan_basin_scenario.md`](ordan_basin_scenario.md) | Scenario overview, strategic setting, operational problem, player objectives, and victory framework |
-| [`ordan_basin_order_of_battle.md`](ordan_basin_order_of_battle.md) | Command structure, playable formations, strengths, suggested setup hexes, and balance notes |
-| [`ordan_basin_oob.json`](ordan_basin_oob.json) | Reusable Atlatl-compatible unit data with placement fields intentionally unset |
-| [`ordan_basin_ao_overview.svg`](ordan_basin_ao_overview.svg) / [`PNG`](ordan_basin_ao_overview.png) | General political and operational reference map |
-| [`ordan_basin_atlatl_map.svg`](ordan_basin_atlatl_map.svg) / [`PNG`](ordan_basin_atlatl_map.png) | Matching 12 × 12 native hex map |
-| [`ordan_basin.map.json`](ordan_basin.map.json) | Atlatl map-editor data with terrain, water hexes, river-bank edges, setup zones, and road paths |
-| [`ordan_basin_map_notes.md`](ordan_basin_map_notes.md) | Map crosswalk, key-hex index, and terrain interpretation |
-| [`generate_ordan_basin_maps.py`](generate_ordan_basin_maps.py) | Reproducible source for the overview map, game map, and map JSON |
-| [`ordan_basin_scenario_package.zip`](ordan_basin_scenario_package.zip) | Downloadable starter package containing the current scenario assets |
-
-## Map Framework
-
-The general AO map and the native Atlatl map depict the same geography. The **Arven River** is represented by connected `water` hexes, with three principal urban crossings at **Dalen**, **Novar**, and **Eren**. Secondary crossings at **North Pass**, **Central Link**, and **South Pass** create additional maneuver options. The **Saren Heights** and **Mora Hills** restrict off-road movement, while the open central basin favors armored and mechanized operations.
-
-Roads are stored as native Atlatl `path` objects. Each road segment connects adjacent hexes and follows the hex geometry rather than an abstract overlay. The network uses irregular lateral connectors and off-map continuation routes instead of a rigid grid.
-
-## Force Balance
-
-| Side | Armor | Mechanized | Infantry | Artillery | Counters | Nominal strength |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| Blue | 3 | 5 | 2 | 3 | 13 | 1,210 |
-| Red | 3 | 6 | 2 | 2 | 13 | 1,300 |
-
-The sides are counter-balanced but deliberately asymmetric. Blue's four Ordan formations begin at 75–80 percent strength; all Western Compact and Karsovian formations begin at full strength. Headquarters, reconnaissance, engineers, air defense, logistics, aviation, and other enabling capabilities are incorporated into parent formations or represented through scenario rules rather than separate counters.
+![Ordan Basin area of operations](map/ordan_basin_ao_reference.png)
 
 ## Quick Start
 
-1. Review [`ordan_basin_scenario.md`](ordan_basin_scenario.md) for the political context, operational problem, and objectives.
-2. Load [`ordan_basin.map.json`](ordan_basin.map.json) in the Atlatl map editor or unit-placement tool.
-3. Import [`ordan_basin_oob.json`](ordan_basin_oob.json).
-4. Place units using the recommended coordinates in [`ordan_basin_order_of_battle.md`](ordan_basin_order_of_battle.md).
-5. Apply the current 18-turn duration and preliminary victory framework, then adjust scoring and terrain effects during playtesting.
+From the repository root, launch the scenario by its stable alias:
 
-## Authoring Notes
+```bash
+python main.py ordan-basin
+```
 
-- The map JSON is the machine-readable source for Atlatl terrain, river, road, and setup data.
-- The SVG files are editable visual masters; the PNG files are high-resolution previews.
-- The OOB JSON intentionally leaves `hex` as `null` and `canMove` as `false`, matching the reusable placement convention. Starting positions belong in the scenario setup or eventual `.scn` file.
-- Changes to geography should be made in `generate_ordan_basin_maps.py`, then propagated to the SVG, PNG, and map JSON outputs.
-- Duration, terrain modifiers, reinforcement timing, casualty scoring, and final objective values remain preliminary until playtesting is complete.
+The scenario can also be launched directly from its package path:
 
-## Current Status
+```bash
+python main.py scenarios/Ordan_Basin/game/race_for_the_ordan_basin.scn
+```
 
-The scenario overview, order of battle, OOB JSON, aligned maps, and map JSON are available. The package is suitable for setup and initial playtesting. A fully playable `.scn` file and finalized scoring model remain to be developed after the first balance tests.
+The `.scn` file does not need to be copied into `server/scenarios/`. Blue repositions first, Red repositions second, and regular play begins with Blue.
 
+The `.scn` file contains everything required for normal play. The standalone map and order-of-battle files are authoring sources for editing and variant creation.
+
+## Scenario Overview
+
+Play begins on **12 September 2031 at 0600 local time**. The Western Compact–Ordan Joint Land Corps and Karsovian Eastern Army enter from opposite map edges and race for seven initially neutral cities, five Arven River crossings, and the basin's transportation network.
+
+| Element | Baseline |
+| --- | --- |
+| Blue | Western Compact–Ordan Joint Land Corps; 13 counters; 1,210 current strength |
+| Red | Karsovian Eastern Army; 13 counters; 1,300 current strength |
+| Duration | 18 complete Blue/Red turns; 36 player phases; 9 days |
+| Playable-unit scale | Maneuver brigades and artillery groups |
+| Scored objectives | Veyra, Dalen, Novar, Eren, Kasar, Ruda, and Selin |
+| Initial city ownership | Neutral for all seven cities |
+| Unit information | Open; fog of war disabled |
+| Default deployment | All playable units outside cities in opposing edge setup zones |
+| Status | Complete playable baseline; balance validation pending |
+
+## Documentation Guide
+
+| Document | Use it for |
+| --- | --- |
+| [Scenario specification](ordan_basin_scenario.md) | Design intent, scope, forces, abstractions, runtime rules, and development status. |
+| [Road to war](road_to_war_race_for_the_ordan_basin.md) | Political background, escalation, and the transition to the 12 September meeting engagement. |
+| [Game-file guide](game/README.md) | Authoritative runtime configuration, setup, scoring, deployment, and game-file maintenance. |
+| [Order of battle](game/order_of_battle.md) | Formation strengths, roles, command relationships, and represented capabilities. |
+| [Map guide](map/README.md) | Authoritative map contents, geography, editing, and synchronization workflow. |
+| [Operations-order index](operations_orders/README.md) | Controller-facing index of both briefing hierarchies, master crosswalks, support orders, graphics, and disclosure guidance. |
+
+## Player Briefings
+
+For opposed play, Blue and Red operations orders, master synchronization crosswalks, and operational graphics are **side-specific**. Each player should normally use only the assigned side's link unless the group agrees to open plans. Unit information in the engine is open, but that does not make the opposing plan open.
+
+| Side | Start here | Controller aid |
+| --- | --- | --- |
+| Blue | [Western Compact–Ordan Joint Land Corps order](operations_orders/Blue/B-00_wco_joint_land_corps_opord.md) | [Blue master synchronization crosswalk](operations_orders/Blue/blue_master_synchronization_crosswalk.md) |
+| Red | [Karsovian Eastern Army order](operations_orders/Red/R-00_karsovian_eastern_army_opord.md) | [Red master synchronization crosswalk](operations_orders/Red/red_master_synchronization_crosswalk.md) |
+
+Controllers and scenario administrators can use the [operations-order index](operations_orders/README.md) to reach the complete hierarchy and both sets of graphics.
+
+## Authoring Boundaries
+
+| Source | Owns |
+| --- | --- |
+| [`race_for_the_ordan_basin.scn`](game/race_for_the_ordan_basin.scn) | Playable runtime state, including units, default positions, setup sequence, ownership, duration, and scoring. |
+| [`ordan_basin_ao.map.json`](map/ordan_basin_ao.map.json) | Canonical hex geometry, terrain, roads, river representation, setup zones, and open-information flag. |
+| [`oob.json`](game/oob.json) | Reusable 26-counter placement OOB with intentionally unset locations. |
+| [Written orders](operations_orders/README.md) | Player-enforced command relationships, phases, priorities, control measures, and reporting requirements. |
+
+When geography changes, synchronize it from the map source into the completed scenario without overwriting scenario-specific runtime state. Detailed procedures belong in the [map](map/README.md) and [game-file](game/README.md) guides.

@@ -1,123 +1,198 @@
 # The Race for the Ordan Basin
 
-## Scenario Overview
+## Scenario Specification
 
-> **Fictional scenario:** All states, organizations, units, leaders, and geographic locations in this scenario are invented for research and educational use.
+> **Scenario status:** Entirely fictional. All countries, political events, military organizations, and geographic locations described in this document are invented for research and educational use.
 
-## Scenario at a Glance
+## 1. Scenario Scope and Start Conditions
 
-| Item | Description |
-| --- | --- |
-| Conflict | Karsovian intervention in the Republic of Orda |
-| Start | 12 September 2031, 0600 local time |
-| Duration | 18 turns / 9 days; two 12-hour turns per day |
-| Scale | Operational; approximately 15 km per hex |
-| Map | 12 × 12 flat-top hexes; approximately 180 × 150 km |
-| Playable formations | Brigade-sized maneuver formations and artillery groups |
-| Blue | Western Compact–Ordan Joint Land Corps |
-| Red | Karsovian Eastern Army |
-| Central problem | A meeting engagement and race for the Arven River crossings, the rival political centers, and the basin transportation network |
+Play begins on **12 September 2031 at 0600 local time**. The scenario covers the next **nine days** in **18 complete turns of 12 hours each** and focuses on brigade-level ground operations in the Ordan Basin.
 
-## Strategic Setting
+The Republic of Orda is a formally nonaligned state between the Western Compact and the Karsovian Federation. For decades, Orda balanced Karsovian energy and trade against Western investment and technology while prohibiting permanent foreign bases. That arrangement collapses after a disputed presidential election produces rival governments in Veyra and Ruda, fragments the Ordan armed forces, and gives both neighboring blocs a local authority willing to request intervention.
 
-The Republic of Orda is a formally nonaligned state between the Western Compact and the larger Karsovian Federation. For decades, Orda balanced commercial ties with both blocs while avoiding permanent military alignment. That arrangement collapses after a disputed national election. The incumbent government attempts to invalidate a narrow opposition victory, demonstrations spread, elements of the armed forces defect, and competing political authorities emerge.
+The elected government remains in **Veyra** and requests Western Compact assistance. The Emergency National Council forms in **Ruda**, disputes the election, and asks Karsovia to restore order. The Western Compact continues to recognize Veyra; Karsovia recognizes Ruda. Both interventions are presented as limited stabilization missions, and neither side initially declares war on the other.
 
-The elected government consolidates in **Veyra**, the national capital, and requests Western Compact assistance. An emergency council forms in **Ruda**, claims that the election was illegitimate, and asks Karsovia to restore order. Both outside powers publicly describe their deployments as temporary stabilization missions. Within forty-eight hours, Karsovian forces cross Orda's eastern frontier while Western Compact formations enter from neighboring Lestara in the west.
+Karsovian forces cross Orda's eastern frontier while Western Compact formations enter from Lestara in the west. Neither intervention force controls the basin's cities or Arven River crossings when play begins. The playable formations enter from opposing edge setup zones and race to create a defensible political and military position before diplomacy freezes the conflict.
 
-The scenario begins before either intervention force has secured the central basin. Loyal Ordan units are understrength and dispersed. Western Compact and Karsovian formations are arriving from separate assembly areas. The side that first controls the basin's bridges, cities, and road junctions will be able to concentrate faster, isolate opposing formations, and shape the political settlement.
+## 2. The Belligerents
 
-## Operational Problem
+### Blue: Western Compact–Ordan Joint Land Corps
 
-Neither side possesses enough combat power to control the entire area of operations. Both must choose where to concentrate, which approaches to accept risk on, and when to commit their armored reserve.
+Blue represents the Western Compact–Ordan Joint Land Corps operating at the request of the Veyra government. It controls the understrength 1st Ordan Mechanized Division, the 3rd Compact Armored Division, the 6th Compact Mechanized Division, and the 7th Coalition Armored Brigade as corps reserve.
 
-Blue begins nearer several central objectives and has an additional artillery formation, but its Ordan units are weakened by defections and disrupted mobilization. Red enters with a modest advantage in aggregate strength and mechanized combat power, but it must advance from the eastern edge while protecting multiple lines of communication. This creates a fluid opening in which movement, bridge control, and force preservation matter as much as destroying enemy formations.
+The loyal Ordan division has lost personnel, equipment, and cohesion during the constitutional crisis. Compact formations are more capable but have only just entered from Lestara and possess no prepared positions in the basin. The Joint Land Corps must protect the recognized government while deciding how much force to devote to the capital, the principal crossings, the flanking routes, and a mobile reserve.
 
-## Area of Operations
+### Red: Karsovian Eastern Army
 
-The **Ordan Basin** is an open agricultural region bounded by the **Saren Heights** in the north and the **Mora Hills** in the south. The central plains favor armored and mechanized maneuver. Wooded and marshy areas west of Dalen and southeast of Ruda interrupt the open terrain, conceal movement, and restrict mobility. The high ground along the northern and southern edges channels forces onto the roads.
+Red represents the Karsovian Eastern Army operating at the request of the Ruda Emergency National Council. It controls the 4th and 9th Maneuver Corps, four subordinate divisions, two corps artillery groups, and the 5th Guards Armored Brigade as army reserve.
 
-The **Arven River** runs from the northern highlands through the center of the basin before turning southwest. In Atlatl it is represented by a connected chain of `water` hexes and is a major obstacle to heavy formations. Six routes cross it:
+Red has a modest advantage in aggregate strength and mechanized combat power. It must enter from the eastern edge, however, and advance before it can control the political centers or crossings. The 4th Maneuver Corps is oriented on the northern and central routes, while the 9th Maneuver Corps is oriented on the central and southern routes.
 
-- **Dalen**, the northern principal crossing.
-- **Novar**, the central crossing and most important road-and-rail junction.
-- **Eren**, the southern principal crossing.
-- **North Pass Bridge**, a secondary route through the Saren Heights.
-- **Central Link Bridge**, a diagonal connector between the northern and central routes.
-- **South Pass Bridge**, a secondary route through the Mora Hills.
+## 3. Political Rationale and Strategic Objectives
 
-The principal east–west roads pass through Dalen, Novar, and Eren. Irregular secondary roads connect Veyra and the western approaches to the crossings, then connect them to Kasar, Ruda, Selin, and the Karsovian frontier. The northern and southern pass roads continue off the map and provide longer flanking routes. Every game-map road segment follows adjacent hexes.
+| Side | Political rationale | Strategic interest | Military requirement |
+| --- | --- | --- | --- |
+| Western Compact and Veyra government | Defend the certified election result and assist Orda's internationally recognized government at its request. | Preserve Ordan sovereignty, prevent partition, and demonstrate that coercion cannot overturn the constitutional process. | Secure Veyra and the basin transportation network, deny Red a continuous corridor to the Arven, and preserve mobile combat power. |
+| Karsovia and Ruda council | Protect eastern Ordan communities and support the council's claim that the election was illegitimate. | Establish a Karsovian-aligned government, prevent further Western military access, and create leverage before international mediation succeeds. | Secure the eastern routes, seize central and western political objectives, retain Arven crossings, and defeat Blue counterattacks. |
 
-### Key Locations
+### 3.1 Blue Objectives
+
+The Western Compact–Ordan Joint Land Corps must:
+
+1. Secure Veyra and preserve access to the western map edge.
+2. Gain and retain Novar and at least one additional principal crossing at Dalen or Eren.
+3. Deny Red a continuous, defensible corridor from the eastern map edge to the Arven River.
+4. Prevent Red from isolating Veyra from both the northern and southern road networks.
+5. Preserve sufficient mobile combat power to counterattack, reinforce a threatened crossing, or protect the recognized government.
+
+### 3.2 Red Objectives
+
+The Karsovian Eastern Army must:
+
+1. Establish secure routes from the eastern map edge through Kasar, Ruda, and Selin.
+2. Gain and retain Novar and at least one additional principal crossing at Dalen or Eren.
+3. Isolate and seize Veyra or render the Veyra government's position militarily untenable.
+4. Maintain a defensible corridor between captured political objectives and the eastern map edge.
+5. Preserve the army reserve and enough maneuver strength to defeat Blue counterattacks.
+
+All seven cities are engine-scored objectives. The North Pass and Central Link crossings, road network, continuous lines of communication, and narrative political conditions are operational objectives defined in the orders rather than separate scored locations.
+
+## 4. Area of Operations
+
+The playable map is a **12-column by 12-row** flat-top hex grid at approximately **15 kilometers per hex**, representing an operational area of roughly 180 kilometers east–west by 150 kilometers north–south. Lestara lies beyond the western edge; Karsovia lies beyond the eastern edge.
+
+### The Central Ordan Basin
+
+Open agricultural terrain around Veyra, Novar, and Ruda favors armored and mechanized movement. The east–west transportation network converges on Novar, making that crossing and junction the geographic center of the contest. Wooded, broken, and marshy areas interrupt the open ground and create local opportunities for delay and concealment.
+
+### The Saren Heights
+
+Rough highlands constrain the northern approaches. Dalen provides the principal northern crossing, while the North Pass Bridge at `hex-5-1` offers a secondary route through restrictive terrain. Kasar at `hex-9-2` is the northeastern staging and logistics hub.
+
+### The Mora Hills
+
+Rough terrain and marshes constrain the southern approaches. Eren provides the principal southern crossing, and Selin at `hex-9-9` supports the southeastern approach. There is **no South Pass crossing**; `hex-4-10` is water and no through-road crosses the river there.
+
+### The Arven River Belt
+
+The Arven River is represented by a connected chain of native `water` hexes. Five routes cross it:
+
+- Dalen at `hex-5-3`.
+- Novar at `hex-5-7`.
+- Eren at `hex-4-9`.
+- North Pass Bridge at `hex-5-1`.
+- Central Link Bridge at `hex-5-5`.
+
+Dalen, Novar, and Eren are urban crossing hexes. North Pass and Central Link are clear crossing hexes connected by roads. Atlatl has no separate bridge terrain type.
+
+### Political and Transportation Centers
 
 | Location | Hex | Operational significance |
 | --- | --- | --- |
-| Veyra | `2,6` | National capital and seat of the Blue-recognized government |
-| Dalen | `5,3` | Northern principal crossing and gateway to the Saren approaches |
-| Novar | `5,6` | Central crossing and decisive transportation junction |
-| Eren | `4,9` | Southern principal crossing and gateway to the Mora route |
-| Ruda | `9,6` | Seat of the Red-recognized emergency council and principal eastern hub |
-| Kasar | `9,2` | Northeastern staging and logistics center |
-| Selin | `9,9` | Southeastern staging area and alternate approach to Eren |
-| North Pass Bridge | `6,1` | Secondary northern crossing through restrictive terrain |
-| Central Link Bridge | `5,4` | Secondary diagonal crossing linking the Dalen and Novar routes |
-| South Pass Bridge | `4,10` | Secondary southern crossing through restrictive terrain |
+| Veyra | `hex-2-6` | National capital and seat of the Blue-recognized government. |
+| Dalen | `hex-5-3` | Northern principal crossing and gateway to the Saren approaches. |
+| Novar | `hex-5-7` | Central crossing and decisive transportation junction. |
+| Eren | `hex-4-9` | Southern principal crossing and gateway to the Mora route. |
+| Kasar | `hex-9-2` | Northeastern staging, logistics, and route hub. |
+| Ruda | `hex-9-6` | Seat of the Red-recognized council and principal eastern junction. |
+| Selin | `hex-9-9` | Southeastern staging hub and alternate approach to Eren. |
 
-## Blue Situation
+## 5. Forces Represented
 
-The **Western Compact–Ordan Joint Land Corps** recognizes and supports the elected government in Veyra. The loyal **1st Ordan Mechanized Division** is understrength and dispersed between the capital and the three principal crossings. The **3rd Compact Armored Division** and **6th Compact Mechanized Division** are entering from the west. The corps retains the **7th Coalition Armored Brigade** as its mobile reserve.
+The playable order of battle contains **26 counters: 13 Blue and 13 Red**. Headquarters appear in the command hierarchy and mission orders but are not playable counters.
 
-Blue's objective is to **secure the elected Ordan government and the central transportation network in order to preserve Ordan sovereignty and deny Karsovia the ability to partition the country**.
+### Western Compact–Ordan Joint Land Corps — 13 counters
 
-Blue must:
+- **1st Ordan Mechanized Division:** one mechanized brigade, two infantry brigades, and one artillery group.
+- **3rd Compact Armored Division:** one armored brigade, two mechanized brigades, and one artillery group.
+- **6th Compact Mechanized Division:** one armored brigade, two mechanized brigades, and one artillery group.
+- **Corps reserve:** the 7th Coalition Armored Brigade.
 
-- Retain Veyra and its western lines of communication.
-- Secure at least two of the three principal crossings at Dalen, Novar, and Eren.
-- Prevent Red from establishing a continuous occupied corridor from Ruda to the Arven River.
-- Preserve sufficient mobile combat power to defeat a Red drive on Veyra.
+Blue begins with **1,210 current strength points**. Its four Ordan counters begin at 75–80 strength because of defections and disrupted mobilization; its nine Compact counters begin at 100.
 
-Blue has **13 playable counters**: three armored brigades, five mechanized brigades, two infantry brigades, and three artillery groups. Its nominal starting strength is **1,210 points**.
+### Karsovian Eastern Army — 13 counters
 
-## Red Situation
+- **4th Maneuver Corps:** the 8th Guards Armored Division, 15th Mechanized Division, and 4th Corps Artillery Group.
+- **9th Maneuver Corps:** the 12th Armored Division, 21st Mechanized Division, and 9th Corps Artillery Group.
+- **Army reserve:** the 5th Guards Armored Brigade.
 
-The **Karsovian Eastern Army** recognizes the Ruda emergency council and claims that Western intervention threatens Orda's eastern population. The army is entering along three broad approaches centered on Kasar, Ruda, and Selin. Its **4th Maneuver Corps** is oriented toward the northern and central routes, while its **9th Maneuver Corps** is oriented toward the central and southern routes. The **5th Guards Armored Brigade** serves as the army reserve.
+Red begins with **1,300 current strength points**. Every Red counter begins at 100 strength. The scenario uses the native Atlatl unit types `armor`, `mechinf`, `infantry`, and `artillery`. Detailed roles and relationships are defined in the [order of battle](game/order_of_battle.md) and side-specific operations orders.
 
-Red's objective is to **seize the central and eastern Ordan Basin in order to establish the Ruda council as the effective national government and compel international acceptance of a Karsovian-aligned Orda**.
+## 6. Initial Operational Situation
 
-Red must:
+At 0600 on 12 September, neither side has established a coherent basin-wide posture. All seven cities begin **neutral**, including the political seats at Veyra and Ruda. Their narrative allegiance does not confer engine control. Local police, civil authorities, and fragmented security elements are below the scenario's playable scale and do not count as Blue or Red occupation.
 
-- Secure Ruda and the eastern approaches.
-- Seize Novar and at least one additional principal crossing.
-- Isolate Veyra from the northern and southern road networks.
-- Maintain a defensible corridor between the Karsovian frontier and the political objectives it captures.
+Every playable formation starts outside an urban hex in its side's edge setup zone:
 
-Red has **13 playable counters**: three armored brigades, six mechanized brigades, two infantry brigades, and two artillery groups. Its nominal starting strength is **1,300 points**.
+- Blue places 13 units on eligible non-water hexes in columns `x=0` and `x=1`.
+- Red places 13 units on eligible non-water hexes in columns `x=10` and `x=11`.
+- Each side has 24 eligible setup hexes.
+- Blue completes setup first, followed by Red. Regular play begins with Blue.
 
-## Initial Operational Situation
+The supplied default positions are legal, unstacked entry dispositions rather than established defenses. Players may reposition their forces within their eligible zones during setup. Blue must decide whether to mass for Novar, cover both flanks, or retain depth for Veyra. Red must decide whether to challenge the entire river line, concentrate on the center, or use the Saren and Mora approaches to stretch Blue.
 
-At 0600 on 12 September, neither side has achieved a coherent basin-wide posture. Ordan infantry holds Dalen and Eren, while an Ordan mechanized brigade and artillery group protect Veyra. Western Compact lead formations are entering through the western road network and can reinforce the river rapidly, but concentrating on one route may expose another crossing or the capital.
+## 7. Game Scale and Duration
 
-Karsovian formations are entering from the east on multiple axes. Red can challenge all three principal crossings, concentrate on Novar, or use the northern and southern pass roads to stretch Blue's defense. Moving too broadly, however, risks dividing the Eastern Army before it can defeat Blue's arriving divisions.
+| Element | Current representation |
+| --- | --- |
+| Ground scale | Approximately 15 kilometers per hex |
+| Map | 12 columns × 12 rows |
+| Time scale | 12 hours per complete Blue/Red turn |
+| Scenario duration | 36 player phases; 18 complete turns; 9 days |
+| Playable-unit scale | Maneuver brigades and artillery groups |
+| Forces | 13 Blue; 13 Red; 26 total |
+| Unit information | Open; all units are visible |
+| Initial city ownership | Neutral for all seven cities |
 
-The opening turns are therefore a race for advantageous terrain. As opposing lead formations meet near the crossings, the scenario transitions from movement to a contested fight for bridgeheads, junctions, and operational freedom of action.
+Atlatl calls each side's activation a **player phase**. Thirty-six regular player phases therefore produce 18 complete two-sided turns. The Blue and Red setup activations neither count toward the 36 player phases nor award city-control points. Regular play runs from 12 September 2031 at 0600 through 21 September 2031 at 0600.
 
-## Victory Framework
+The engine term is distinct from the capitalized **Operational Phases** used in the operations orders. Red uses projected turn windows within the 18-turn horizon. Blue's phases are conditions-based and need not occupy equal numbers of turns.
 
-The scenario rewards political control, access to the transportation network, continuous ground lines of communication, and preservation of the field force. Casualties matter, but destruction of enemy units alone should not determine the outcome.
+## 8. Objectives and Scoring
 
-- **Blue decisive victory:** Retain Veyra, control Novar and at least one other principal crossing, and prevent a continuous Red corridor to the Arven River.
-- **Red decisive victory:** Control Novar and at least one other principal crossing, isolate or capture Veyra, and maintain a continuous corridor to the eastern map edge.
-- **Marginal victory:** Control a majority of the key objectives while retaining an effective field force and a viable line of communication.
-- **Draw:** Both governments and opposing bridgeheads survive, leaving Orda effectively partitioned.
+| Scored location | Hex |
+| --- | --- |
+| Kasar | `hex-9-2` |
+| Dalen | `hex-5-3` |
+| Veyra | `hex-2-6` |
+| Novar | `hex-5-7` |
+| Ruda | `hex-9-6` |
+| Eren | `hex-4-9` |
+| Selin | `hex-9-9` |
 
-Final objective values, casualty scoring, terrain modifiers, and any reinforcement schedule remain subject to playtesting and should be encoded in the playable `.scn` file once validated.
+All seven cities begin neutral. At the end of each regular player phase, an occupied urban hex changes to the occupier's faction; an empty city retains its existing owner. The scenario's `cityScore` of 70 is divided equally among the seven cities. Each Blue-controlled city therefore adds 10 points and each Red-controlled city subtracts 10 points at the end of the player phase. A neutral city contributes no points.
 
-## Scenario Design Focus
+The engine maintains one score from Blue's perspective: higher scores favor Blue and lower scores favor Red. Each Blue strength point lost subtracts one point, while each Red strength point lost adds one point. A unit that falls below 50 percent strength becomes combat ineffective and is removed; its remaining strength is counted as lost. The scenario does not end early if either side loses all units and terminates after 36 regular player phases.
 
-The Race for the Ordan Basin is designed to explore:
+Atlatl reports the final raw score but does not apply scenario-specific victory bands. Until repeated playtesting supports thresholds, compare scores across matched games and also assess the narrative objectives in Section 3. Holding all seven cities for all 36 scored phases would produce 2,520 points, compared with 1,210 initial Blue strength and 1,300 initial Red strength; city-score balance and opening tempo therefore require deliberate validation.
 
-- Meeting-engagement decisions at operational scale.
-- The relationship between mobility, key terrain, and political objectives.
-- Risk allocation across multiple crossings and flanking routes.
-- Timing the commitment of a mobile reserve.
-- Balancing rapid territorial gains against force preservation and secure lines of communication.
+## 9. Atlatl Representation and Abstractions
 
+The completed scenario directly models the hex map, terrain fills, units, strength, edge setup zones, movement and combat, open unit information, neutral city ownership, duration, and scoring. Other operational detail is conveyed through the narrative, player decisions, and side-specific orders.
+
+- Headquarters, command relationships, main-effort designations, reserve-release authority, operational phases, boundaries, and reporting requirements are not enforced by the engine.
+- Airpower, air defense, engineers, reconnaissance, electronic warfare, cyber effects, logistics, aviation, and medical support are incorporated into parent formations or represented through controller adjudication.
+- Local police, civil-defense groups, government guards, defectors, and other forces below brigade scale are narrative actors rather than playable counters.
+- Roads and river edges are visual overlays. Clear, rough, marsh, urban, and water terrain fills provide the implemented movement costs and combat terrain multipliers.
+- Fog of war is disabled, so terrain does not restrict unit visibility. Narrative concealment and intelligence uncertainty require player judgment or adjudication.
+- Atlatl has no separate bridge type; crossings are represented by traversable urban or clear hexes within the river chain.
+- Weather, light, political restrictions, and the legitimacy of the competing governments guide player decisions but are not automated mechanics.
+- The scenario file gives every city the same initial engine status—neutral—even though Veyra and Ruda have different political significance in the narrative.
+
+## 10. Design Intent and Development Status
+
+### 10.1 Central Operational Problem
+
+The scenario is a meeting engagement and race for positional advantage. Both commanders have enough combat power to contest several axes but not enough to dominate the entire map without accepting risk. Success depends on concentration, crossing control, continuous routes, timely commitment of the armored reserve, and the ability to convert early movement into a defensible political outcome.
+
+Equal counter counts do not mean equal forces. Blue has more artillery and proximity to Veyra but includes four weakened Ordan formations. Red has greater starting strength and more mechanized brigades but must move farther to threaten the capital and crossings. Neutral objectives and open information are intended to emphasize operational choices rather than inherited territorial score or hidden-unit discovery.
+
+### 10.2 Current Status
+
+- **Review baseline:** validated on 9 September 2026 against Atlatl commit `94159b455a2dfbf7ab797d176671bb57a87e3b4a`.
+- The `.scn` file is a complete playable baseline with the canonical map, 26 units, legal edge-zone defaults, neutral city ownership, open unit information, 36 player phases, and scoring.
+- The standalone map JSON owns geography; the completed scenario embeds that geography and adds runtime state.
+- The placement OOB preserves the reusable 26-counter force with intentionally unset locations.
+- Blue and Red operations orders, master synchronization crosswalks, support orders, and operational graphics are available as player and controller products.
+- Runtime completeness does not establish competitive balance. Record crossing times, city-control duration, losses, reserve commitment, and final score during matched playtests before defining victory bands or changing `cityScore`.
+- Detailed control measures and staff procedures remain player-enforced or controller-adjudicated and do not prevent normal Atlatl play.

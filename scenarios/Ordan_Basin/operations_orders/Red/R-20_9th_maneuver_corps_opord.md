@@ -6,13 +6,13 @@
 
 - **Issuing headquarters:** 9th Maneuver Corps
 - **Place of issue:** Corps Main Command Post, Ruda eastern approach
-- **Date-time group:** 12 September 2030, 0600 local
+- **Date-time group:** 12 September 2031, 0600 local
 - **Time zone used throughout:** Local Ordan time
 - **Effective:** On receipt
-- **Scenario duration:** 20 turns / 10 days; 12 hours per turn
+- **Scenario duration:** 18 turns / 9 days; 12 hours per turn
 - **Parent order:** Karsovian Eastern Army OPORD R-00, OPERATION NORTHERN REACH
 - **Role:** Eastern Army supporting effort during Phases I–II; Army main effort during Phases III–IV
-- **References:** R-00; `ordan_basin_scenario.md`; `order_of_battle.md`; Ordan Basin Area of Operations map; approved Red operational graphics
+- **References:** R-00; [scenario specification](../../ordan_basin_scenario.md); [order of battle](../../game/order_of_battle.md); [Ordan Basin AO map](../../map/ordan_basin_ao.map.json); [Red operational graphics](Red_operational_graphics.pdf); [Red master synchronization crosswalk](red_master_synchronization_crosswalk.md)
 
 ### Task Organization
 
@@ -97,7 +97,7 @@ None at operation start. Cross-attachment of brigades requires Eastern Army appr
 
 ## 2. Mission
 
-Beginning 12 September 2030 at 0600 local, the **9th Maneuver Corps secures Selin and initially seizes Novar; seizes Eren while guarding its northern boundary and accepting a temporary Novar security gap; restores Novar and attacks to seize Veyra; and then retains Veyra, Novar, and Eren while guarding along the central and southern portions of LOA Block in order to capture Orda’s political center, secure the Eastern Army’s central and southern mobility corridors, and prevent Blue from restoring control of the basin.**
+Beginning 12 September 2031 at 0600 local, the **9th Maneuver Corps secures Selin and initially seizes Novar; seizes Eren while guarding its northern boundary and accepting a temporary Novar security gap; restores Novar and attacks to seize Veyra; and then retains Veyra, Novar, and Eren while guarding along the central and southern portions of LOA Block in order to capture Orda’s political center, secure the Eastern Army’s central and southern mobility corridors, and prevent Blue from restoring control of the basin.**
 
 ## 3. Execution
 
@@ -164,7 +164,7 @@ This phase ends on Army order when Veyra is seized, organized resistance is defe
 
 #### (4) Phase IV — Retain Veyra and the Crossings; Guard LOA Block
 
-**Projected Turns 16–20.** The 21st Division remains the corps main effort. The 212th Brigade retains Veyra; the 213th retains Novar; and the 211th guards the central portion of LOA Block to protect Veyra and the corps center. The 12th Division retains Eren with the 122nd Brigade and guards the southern portion of LOA Block with the 121st Brigade. Guards maintain contact, identify the Blue main body, delay as required, and displace before losing freedom of maneuver. The 5th Guards Armored Brigade remains the sole Army mobile reserve.
+**Projected Turns 16–18.** The 21st Division remains the corps main effort. The 212th Brigade retains Veyra; the 213th retains Novar; and the 211th guards the central portion of LOA Block to protect Veyra and the corps center. The 12th Division retains Eren with the 122nd Brigade and guards the southern portion of LOA Block with the 121st Brigade. Guards maintain contact, identify the Blue main body, delay as required, and displace before losing freedom of maneuver. The 5th Guards Armored Brigade remains the sole Army mobile reserve.
 
 The corps end state is achieved when Veyra, Novar, and Eren remain controlled through scenario completion, guards have provided warning and delay, and the corps retains protected routes and a viable response to counterattack.
 
@@ -337,7 +337,7 @@ This annex synchronizes division maneuver, fires, sustainment, command relations
 | **I — Secure Selin, seize Novar, fix Eren**<br>Turns 1–5 | Supporting effort. 122nd seizes Selin then follows/supports 121st; 121st fixes Eren. | **Corps main effort.** 213th seizes Novar; 212th follows/supports; 211th fixes/blocks west and protects north. | GS; priority 21st/213th at Novar, then 12th at Selin/Eren. | Open Ruda–Novar and Selin–Eren routes; coordinate Army reserve without redirecting it. | Novar seized; Selin/Ruda secured; Eren fixed; divisions postured. |
 | **II — Seize Eren and isolate Veyra**<br>Turns 6–10 | **Corps main effort.** 121st seizes Eren; 122nd follows/supports and secures approaches. | 211th guards at PL Push; 212th blocks Veyra approaches; 213th guards the corps boundary from PL Push to the Arven and delays reinforcement of Eren; Novar lacks a retain force. | GS; priority 12th/121st at Eren, including threats detected by 213th; then 21st isolation tasks. | Pre-position west of Novar; emphasize Eren route; monitor Novar; preserve guard displacement routes. | Eren seized/trafficable; Veyra isolated; guards achieve required delay; 213th postured to restore Novar. |
 | **III — Restore Novar and seize Veyra**<br>Turns 11–15 | Supporting effort. 121st advances to PL Punch and guards south; 122nd retains Eren. | **Corps and Army main effort.** 213th restores and retains Novar; after route confirmation, 212th seizes Veyra; 211th advances to PL Punch and guards attack. | GS; support Novar restoration, then priority 21st/212th at Veyra; integrate reinforcing fires. | Restore Novar route before Veyra commitment unless Army accepts risk; manage artillery and reserve traffic. | Veyra seized; resistance defeated; Novar/Eren secure; PL Punch guards established. |
-| **IV — Retain and guard**<br>Turns 16–20 | 121st guards southern LOA Block; 122nd retains Eren. | **Corps and Army main effort.** 211th guards central LOA Block; 212th retains Veyra; 213th retains Novar. | GS; priority guard in contact/disengaging, threatened retain force, committed Army reserve. | Support guard displacement, retained objectives, route repair, and reconstitution. | Veyra/Novar/Eren retained; guards provide warning/delay; corps remains coherent. |
+| **IV — Retain and guard**<br>Turns 16–18 | 121st guards southern LOA Block; 122nd retains Eren. | **Corps and Army main effort.** 211th guards central LOA Block; 212th retains Veyra; 213th retains Novar. | GS; priority guard in contact/disengaging, threatened retain force, committed Army reserve. | Support guard displacement, retained objectives, route repair, and reconstitution. | Veyra/Novar/Eren retained; guards provide warning/delay; corps remains coherent. |
 
 ## 3. Principal Decision Matrix
 

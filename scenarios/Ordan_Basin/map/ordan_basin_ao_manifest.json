@@ -84,7 +84,7 @@
     "The former South Pass road and bridge have been removed; hex 4,10 is water.",
     "Water hex 5,4 separates Dalen from Central Link, and water hex 5,6 separates Central Link from Novar.",
     "Atlatl has no separate bridge terrain type; North Pass and Central Link are clear crossing hexes embedded in the river chain and connected by road paths.",
-    "A finalized playable .scn file and scoring model have not yet been produced."
+    "The completed scenario uses open unit information and neutral initial ownership for all seven cities."
   ],
   "bridges": [
     {

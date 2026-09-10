@@ -6,13 +6,13 @@
 
 - **Issuing headquarters:** 21st Mechanized Division
 - **Place of issue:** Division Main Command Post, Ruda–Novar approach
-- **Date-time group:** 12 September 2030, 0600 local
+- **Date-time group:** 12 September 2031, 0600 local
 - **Time zone used throughout:** Local Ordan time
 - **Effective:** On receipt
-- **Scenario duration:** 20 turns / 10 days; 12 hours per turn
+- **Scenario duration:** 18 turns / 9 days; 12 hours per turn
 - **Parent order:** 9th Maneuver Corps OPORD R-20, OPERATION NORTHERN REACH
 - **Role:** Corps main effort during Phases I and III–IV; supporting effort during Phase II
-- **References:** R-00; R-20; `ordan_basin_scenario.md`; `order_of_battle.md`; Ordan Basin Area of Operations map; approved Red operational graphics
+- **References:** R-00; R-20; [scenario specification](../../ordan_basin_scenario.md); [order of battle](../../game/order_of_battle.md); [Ordan Basin AO map](../../map/ordan_basin_ao.map.json); [Red operational graphics](Red_operational_graphics.pdf); [Red master synchronization crosswalk](red_master_synchronization_crosswalk.md)
 
 ### Task Organization
 
@@ -90,7 +90,7 @@ None. Reinforcing fires do not transfer the 4th Corps Artillery Group to divisio
 
 ## 2. Mission
 
-Beginning 12 September 2030 at 0600 local, the **21st Mechanized Division attacks to seize Novar; conducts security operations at PL Push and along the corps boundary while accepting a temporary Novar security gap; restores and retains Novar; attacks to seize and retain Veyra; and guards along the central portion of LOA Block in order to secure 9th Corps’ central Arven crossing, protect the attack on Eren, capture Orda’s decisive political center, and prevent Blue from restoring control of the basin.**
+Beginning 12 September 2031 at 0600 local, the **21st Mechanized Division attacks to seize Novar; conducts security operations at PL Push and along the corps boundary while accepting a temporary Novar security gap; restores and retains Novar; attacks to seize and retain Veyra; and guards along the central portion of LOA Block in order to secure 9th Corps’ central Arven crossing, protect the attack on Eren, capture Orda’s decisive political center, and prevent Blue from restoring control of the basin.**
 
 ## 3. Execution
 
@@ -156,7 +156,7 @@ The phase ends on corps and Army order when Veyra is seized, organized resistanc
 
 #### (4) Phase IV — Retain Veyra and Novar; Guard LOA Block
 
-**Projected Turns 16–20.** The 212th Brigade remains the division main effort and retains Veyra, including essential government and transportation sites. The 213th Brigade retains Novar and the central crossing. The 211th Brigade guards along the central portion of LOA Block, maintains contact, identifies the Blue main body, delays as required, and displaces before becoming decisively engaged. Priority may shift temporarily to the 211th when in contact or disengaging without changing the division’s essential focus on retaining Veyra.
+**Projected Turns 16–18.** The 212th Brigade remains the division main effort and retains Veyra, including essential government and transportation sites. The 213th Brigade retains Novar and the central crossing. The 211th Brigade guards along the central portion of LOA Block, maintains contact, identifies the Blue main body, delays as required, and displaces before becoming decisively engaged. Priority may shift temporarily to the 211th when in contact or disengaging without changing the division’s essential focus on retaining Veyra.
 
 The division end state is achieved when Veyra and Novar remain controlled, the guard has provided required warning and delay, and the division maintains a protected route and coherent force.
 
@@ -304,7 +304,7 @@ Brigade commanders acknowledge and backbrief phase tasks, main-effort changes, N
 | **I — Seize Novar**<br>Turns 1–5 | Fix/block west of Novar; protect northern flank and boundary. | Follow/support 213th; preserve force for Veyra. | **Main effort:** attack to seize Novar, crossing, and junction. | Priority 213th; suppress/isolate Novar, interdict Veyra route, counterfire; open crossing. | Novar seized/trafficable; route open; boundaries secure; division postured. |
 | **II — Isolate Veyra and guard Eren approach**<br>Turns 6–10 | Advance to PL Push; establish guard west; develop Blue forces. | **Main effort:** block Veyra approaches and isolate objective. | Guard from PL Push to Arven along corps boundary; find and delay reinforcement of Eren; leave Novar without retain force. | Support 213th against Eren reinforcements within corps priority; support 212th isolation and 211th guard; pre-position west of Novar. | Veyra isolated; both guards achieve required effects; Eren secure; 213th postured to restore Novar. |
 | **III — Restore Novar and seize Veyra**<br>Turns 11–15 | Advance to PL Punch; guard Veyra attack. | **Main effort:** after Novar route restoration, attack to seize Veyra and defeat resistance. | Attack to seize Novar if occupied or reoccupy if vacant; confirm crossing/route; retain city. | Support Novar restoration, then priority 212th; integrate reinforcing fires; isolate Veyra and protect flanks. | Novar route restored; Veyra seized; resistance defeated; guard established. |
-| **IV — Retain and guard**<br>Turns 16–20 | Guard central LOA Block; delay and displace. | **Main effort:** retain Veyra and essential sites. | Retain Novar, crossing, and route. | Priority guard in contact/disengaging, then threatened retain force; support handover. | Required warning/delay achieved; Veyra/Novar retained; division coherent. |
+| **IV — Retain and guard**<br>Turns 16–18 | Guard central LOA Block; delay and displace. | **Main effort:** retain Veyra and essential sites. | Retain Novar, crossing, and route. | Priority guard in contact/disengaging, then threatened retain force; support handover. | Required warning/delay achieved; Veyra/Novar retained; division coherent. |
 
 ## Principal Decision Matrix
 

@@ -6,7 +6,7 @@
 
 - **Issuing headquarters:** 6th Division Artillery Group
 - **Place of issue:** Artillery Group Command Post, AA Axe
-- **Date-time group:** 12 September 2030, 0600 local
+- **Date-time group:** 12 September 2031, 0600 local
 - **Time zone used throughout:** Local Ordan time
 - **Effective:** On receipt
 - **Scenario duration:** 18 turns / 9 days; 12 hours per turn
@@ -14,7 +14,7 @@
 - **Higher order:** WCO JLC OPORD B-00, OPERATION STEADFAST ACCORD
 - **Support relationship:** General support to 6th Compact Mechanized Division
 - **Supported corps tasks:** B-C3, B-C4, B-C5, B-C6
-- **References:** `ordan_basin_scenario.md`; `ordan_basin_order_of_battle.md`; `blue_master_synchronization_crosswalk.md`; Ordan Basin Area of Operations map; `Blue_operational_graphics.pdf`
+- **References:** [scenario specification](../../ordan_basin_scenario.md); [order of battle](../../game/order_of_battle.md); [Blue master synchronization crosswalk](blue_master_synchronization_crosswalk.md); [Ordan Basin AO map](../../map/ordan_basin_ao.map.json); [Blue operational graphics](Blue_operational_graphics.pdf)
 
 ### Task Organization
 
@@ -64,7 +64,7 @@ Kasar, Ruda, Selin, bridge approaches, and connecting routes contain civilians a
 
 ## 2. Mission
 
-Beginning 12 September 2030 at 0600 local, the **6th Division Artillery Group provides general support to the 6th Compact Mechanized Division, protects the forward passage at PP South, isolates and suppresses Red forces sequentially at Kasar, Ruda, and Selin, conducts counterfire, disrupts the Phase V counterattack east of Guard Line Steel, and supports guard disengagement and battle handover in order to enable destruction of the designated Red forces while preserving the division's freedom to withdraw and continue operations.**
+Beginning 12 September 2031 at 0600 local, the **6th Division Artillery Group provides general support to the 6th Compact Mechanized Division, protects the forward passage at PP South, isolates and suppresses Red forces sequentially at Kasar, Ruda, and Selin, conducts counterfire, disrupts the Phase V counterattack east of Guard Line Steel, and supports guard disengagement and battle handover in order to enable destruction of the designated Red forces while preserving the division's freedom to withdraw and continue operations.**
 
 ## 3. Execution
 

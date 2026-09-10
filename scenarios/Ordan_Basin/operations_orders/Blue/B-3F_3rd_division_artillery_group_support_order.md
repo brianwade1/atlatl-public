@@ -6,7 +6,7 @@
 
 - **Issuing headquarters:** 3rd Division Artillery Group
 - **Place of issue:** Artillery Group Command Post, AA Axe
-- **Date-time group:** 12 September 2030, 0600 local
+- **Date-time group:** 12 September 2031, 0600 local
 - **Time zone used throughout:** Local Ordan time
 - **Effective:** On receipt
 - **Scenario duration:** 18 turns / 9 days; 12 hours per turn
@@ -14,7 +14,7 @@
 - **Higher order:** WCO JLC OPORD B-00, OPERATION STEADFAST ACCORD
 - **Support relationship:** General support to 3rd Compact Armored Division
 - **Supported corps tasks:** B-C2, B-C3, B-C5, B-C6
-- **References:** `ordan_basin_scenario.md`; `ordan_basin_order_of_battle.md`; `blue_master_synchronization_crosswalk.md`; Ordan Basin Area of Operations map; `Blue_operational_graphics.pdf`
+- **References:** [scenario specification](../../ordan_basin_scenario.md); [order of battle](../../game/order_of_battle.md); [Blue master synchronization crosswalk](blue_master_synchronization_crosswalk.md); [Ordan Basin AO map](../../map/ordan_basin_ao.map.json); [Blue operational graphics](Blue_operational_graphics.pdf)
 
 ### Task Organization
 
@@ -24,13 +24,13 @@ The group is represented as one aggregate artillery formation with an initial At
 
 ### a. Area of Interest
 
-The area of interest includes Red assembly and artillery areas east of OBJ North, Dalen, Central Link Bridge, and OBJ South; the Saren Heights and northern bypass approaches; Kasar and routes affecting PP South; the seam with the 1st Ordan Mechanized Division; and the northern and central Phase V battle-handover areas. It includes threats capable of interdicting the 6th Division's passage or severing its line of communication through OBJ South.
+The area of interest includes Red assembly and artillery areas east of North Pass Bridge, Dalen, and Central Link Bridge; the Saren Heights and northern bypass approaches; Kasar and routes affecting PP South; the seam with the 1st Ordan Mechanized Division; and the northern and central Phase V battle-handover areas. It includes threats capable of interdicting the 6th Division's passage or severing its line of communication through Central Link Bridge.
 
 ### b. Area of Operations
 
 #### (1) Terrain
 
-The Arven River and its crossing network dominate the division area. North Pass Bridge, Dalen, Central Link Bridge, OBJ South, and the PP South route are separate operational responsibilities. The Saren Heights restrict movement and observation while channeling Red forces toward the northern crossing. Open basin terrain east of Dalen and OBJ South favors observation and long-range fires but exposes firing positions to counterfire.
+The Arven River and its crossing network dominate the division area. North Pass Bridge, Dalen, and Central Link Bridge are separate operational responsibilities; PP South is the designated passage lane through Central Link Bridge. The Saren Heights restrict movement and observation while channeling Red forces toward the northern crossing. Open basin terrain east of Dalen and Central Link Bridge favors observation and long-range fires but exposes firing positions to counterfire.
 
 PP South and Route Blue must simultaneously support the 6th Division's passage, artillery displacement, recovery, sustainment, and the 3rd Division's crossing defense. Congestion or loss of the route can interrupt fires and isolate forces east of the river. The group must protect the passage without abandoning the northern and central crossings; as one aggregate Atlatl formation, it cannot provide full simultaneous support to widely separated actions.
 
@@ -42,11 +42,11 @@ Plan for early-autumn conditions with cool mornings, generally trafficable groun
 
 The Karsovian 4th Maneuver Corps can contest the northern and central crossings, mass artillery against PP South, and counterattack from the Kasar area. Red may use the 5th Guards Armored Brigade to strike the passage, exploit a lost crossing, or threaten the 6th Division's line of communication. High-value threats are Red artillery engaging PP South, maneuver formations capable of reaching a crossing or passage lane, concentrations in the Saren approaches, forces threatening the division seam, and units pursuing the Phase V guard.
 
-Red's most likely course is to pressure the crossing network while using artillery to disrupt passage and sustainment. Its most dangerous course is a coordinated artillery and armored attack against OBJ South during the 6th Division passage, supported by a diversion in the north, designed to trap the passing division east of the Arven.
+Red's most likely course is to pressure the crossing network while using artillery to disrupt passage and sustainment. Its most dangerous course is a coordinated artillery and armored attack against Central Link Bridge during the 6th Division passage, supported by a diversion in the north, designed to trap the passing division east of the Arven.
 
 ### d. Friendly Forces
 
-The 3rd Compact Armored Division is the corps main effort in Phase I. The 31st Coalition Armored Brigade seizes OBJ South and opens PP South; the 32nd Coalition Mechanized Brigade seizes OBJ North and North Pass Bridge; and the 33rd Coalition Mechanized Brigade seizes Dalen and Central Link Bridge. The division retains the crossing network through Phase V.
+The 3rd Compact Armored Division is the corps main effort in Phase I. The 31st Coalition Armored Brigade seizes Central Link Bridge and opens PP South; the 32nd Coalition Mechanized Brigade seizes North Pass Bridge; and the 33rd Coalition Mechanized Brigade seizes Dalen. The division retains the crossing network through Phase V.
 
 In Phase II, the 3rd Division is the stationary force and controls PP South while the 6th Compact Mechanized Division passes. The 6th Division assumes responsibility east of the BHL when its lead brigade crosses, communications and fires are established, and both division commanders confirm handover. The 3rd Division retains the bridge and western approach. In Phase V, the division receives withdrawing guard elements, principally the 63rd Brigade north of PL Bronze and any designated central elements, then assumes responsibility for the Red force entering its engagement area.
 
@@ -65,7 +65,7 @@ Dalen, bridge approaches, settlements near the crossing network, and the road sy
 
 ## 2. Mission
 
-Beginning 12 September 2030 at 0600 local, the **3rd Division Artillery Group provides general support to the 3rd Compact Armored Division, suppresses and obscures Red crossing defenses, conducts counterfire, protects PP South and the 6th Division's forward passage, disrupts Red mass against the retained crossings, and supports Phase V guard disengagement and battle handover in order to enable seizure and retention of the northern and central Arven crossing network and preserve the corps line of communication.**
+Beginning 12 September 2031 at 0600 local, the **3rd Division Artillery Group provides general support to the 3rd Compact Armored Division, suppresses and obscures Red crossing defenses, conducts counterfire, protects PP South and the 6th Division's forward passage, disrupts Red mass against the retained crossings, and supports Phase V guard disengagement and battle handover in order to enable seizure and retention of the northern and central Arven crossing network and preserve the corps line of communication.**
 
 ## 3. Execution
 
@@ -73,7 +73,7 @@ Beginning 12 September 2030 at 0600 local, the **3rd Division Artillery Group pr
 
 **Purpose:** Preserve continuous, massed, and survivable fires across the crossing network while enabling the corps main effort to pass through PP South.
 
-**Key tasks:** Support seizure of every assigned crossing; give decisive Phase I support to OBJ South; protect PP South and the passage lane; coordinate continuous coverage with 6th Division Artillery; retain the ability to defeat Red mass against a crossing; support the 63rd Brigade's Phase V disengagement north of PL Bronze; transfer fires without a gap at battle handover; preserve mobility and ammunition.
+**Key tasks:** Support seizure of every assigned crossing; give decisive Phase I support to Central Link Bridge; protect PP South and the passage lane; coordinate continuous coverage with 6th Division Artillery; retain the ability to defeat Red mass against a crossing; support the 63rd Brigade's Phase V disengagement north of PL Bronze; transfer fires without a gap at battle handover; preserve mobility and ammunition.
 
 **End state:** The crossing network and PP South remain under Blue control; the 6th Division completes its passage without an artillery-coverage gap; Red cannot mass effectively against an assigned crossing; guard elements disengage in order; the fight transfers to the crossing defense; and the group remains capable through scenario end.
 
@@ -81,7 +81,7 @@ Beginning 12 September 2030 at 0600 local, the **3rd Division Artillery Group pr
 
 #### (1) Phase I - Seize the Crossing Network
 
-Provide general support with priority to the 31st, then 33rd, then 32nd Brigade. Suppress and obscure crossing defenses, conduct counterfire, and protect the approaches to OBJ South, Dalen/Central Link Bridge, and OBJ North/North Pass Bridge. Mass first on the division decisive operation at OBJ South while maintaining responsive support to the other seizure forces. This phase ends when all assigned crossing sites are controlled, OBJ South and PP South are trafficable and secure, passage control is established, and the 6th Division is ready to pass.
+Provide general support with priority to the 31st, then 33rd, then 32nd Brigade. Suppress and obscure crossing defenses, conduct counterfire, and protect the approaches to Central Link Bridge, Dalen, and North Pass Bridge. Mass first on the division decisive operation at Central Link Bridge while maintaining responsive support to the other seizure forces. This phase ends when all assigned crossing sites are controlled, Central Link Bridge and PP South are trafficable and secure, passage control is established, and the 6th Division is ready to pass.
 
 #### (2) Phase II - Protect PP South and Facilitate Passage
 
@@ -115,7 +115,7 @@ The division commander directs priority shifts. The group recommends a shift whe
 
 | Task | Phase | Action and target | Purpose | Effect / measure |
 | --- | --- | --- | --- | --- |
-| **B-3F-EFST 1** | I | Suppress and obscure Red forces defending the assigned crossings; conduct counterfire | Enable seizure of OBJ South, Dalen/Central Link Bridge, and OBJ North/North Pass Bridge | Blue controls the crossing sites and PP South is trafficable |
+| **B-3F-EFST 1** | I | Suppress and obscure Red forces defending the assigned crossings; conduct counterfire | Enable seizure of Central Link Bridge, Dalen, and North Pass Bridge | Blue controls the crossing sites and PP South is trafficable |
 | **B-3F-EFST 2** | II | Suppress Red forces and artillery threatening PP South and the passage lane | Enable the 6th Division to pass without loss of momentum | Lead force crosses BHL, artillery coverage remains continuous, and designated rear element clears PP South |
 | **B-3F-EFST 3** | II-IV | Disrupt Red formations massing against an assigned crossing or the division seam | Preserve the crossing network and corps line of communication | Red cannot assemble an unopposed crossing attack; defending brigade retains freedom of action |
 | **B-3F-EFST 4** | II-IV | Provide reinforcing or cross-boundary fires on corps order | Support the 6th Division main effort without uncovering PP South | Approved target receives fires while immediate crossing-defense requirements remain supportable |
@@ -125,14 +125,14 @@ The division commander directs priority shifts. The group recommends a shift whe
 #### (3) Target Priorities
 
 1. Red artillery engaging PP South, a crossing, or a guard-withdrawal route.
-2. Armored or mechanized forces able to reach OBJ South or cut the passage lane.
+2. Armored or mechanized forces able to reach Central Link Bridge or cut the passage lane.
 3. Formations massing against North Pass Bridge, Dalen, or Central Link Bridge.
 4. Forces threatening the 63rd Brigade's disengagement, BHL, or division seam.
 5. Command and sustainment nodes whose disruption directly supports a current essential task.
 
 ### d. Scheme of Movement and Survivability
 
-- Occupy setup-designated firing positions that cover OBJ South and the crossing network while retaining lateral and westward displacement routes.
+- Occupy setup-designated firing positions that cover Central Link Bridge and the crossing network while retaining lateral and westward displacement routes.
 - Coordinate all movement with division passage control; artillery will not enter or cross PP South outside an approved window.
 - During the forward passage, 3rd Division Artillery remains positioned to protect PP South while 6th Division Artillery displaces by echelon.
 - During Phase V, displace only in coordination with reception and withdrawal traffic. Do not create opposing flow through PP South.
@@ -156,7 +156,7 @@ Before passage, confirm fire-support boundaries, planned targets, clearance auth
 
 #### (2) Fire-Support Triggers
 
-- Mass on OBJ South when the 31st Brigade begins the decisive crossing seizure or Red can prevent it.
+- Mass on Central Link Bridge when the 31st Brigade begins the decisive crossing seizure or Red can prevent it.
 - Shift within the crossing network when a Red force can attack an assigned crossing before the defending brigade can defeat it.
 - Execute reinforcing or cross-boundary fires only on authenticated corps or division order and when PP South remains supportable.
 - Begin Phase V guard support when the 63rd Brigade enters the northern/central handover area or reports disengagement fires are required.
@@ -188,7 +188,7 @@ Sustainment preserves continuous fires across the crossing network while prevent
 
 ### b. Priorities
 
-1. Phase I crossing seizure and counterfire, especially OBJ South.
+1. Phase I crossing seizure and counterfire, especially Central Link Bridge.
 2. PP South and passage protection.
 3. The assigned crossing under immediate threat.
 4. Phase V guard disengagement and battle handover.
@@ -229,7 +229,7 @@ This annex synchronizes the group's priorities, essential tasks, movement, susta
 
 | Phase | Supported maneuver | Priority and essential effects | Movement and sustainment | Decision / end condition |
 | --- | --- | --- | --- | --- |
-| **I - Seize crossings** | 31st seizes OBJ South; 33rd seizes Dalen/Central Link; 32nd seizes OBJ North | Priority 31st, 33rd, 32nd. Suppress and obscure defenders; counterfire | Cover crossing network; retain lateral and westward routes; build passage stocks | End when crossings are controlled and PP South is open |
+| **I - Seize crossings** | 31st seizes Central Link Bridge; 33rd seizes Dalen; 32nd seizes North Pass Bridge | Priority 31st, 33rd, 32nd. Suppress and obscure defenders; counterfire | Cover crossing network; retain lateral and westward routes; build passage stocks | End when crossings are controlled and PP South is open |
 | **II - Facilitate passage** | 31st controls PP South; 6th Division passes; other brigades retain | Priority PP South and immediate crossing defense; cross-boundary fires on corps order | Keep passage lane clear; coordinate coverage handoffs with 6th Artillery | Passage surge ends when designated rear element clears and both divisions confirm; crossing defense continues |
 | **III - Retain during Ruda attack** | All brigades retain crossing responsibilities | Priority to threatened crossing; planned cross-boundary fires on order | Preserve route, ammunition, survivability, and PP South coverage | Continue until corps authorizes Phase IV |
 | **IV - Prepare reception** | Crossing defense continues; division prepares handover | Protect crossings; prepare northern/central disengagement and reception fires | Establish Phase V liaison and deconflict westward artillery echeloning | End when GL Steel/PL Bronze are effective and reception is ready |
@@ -239,7 +239,7 @@ This annex synchronizes the group's priorities, essential tasks, movement, susta
 
 | Decision point | Authority | Required information | Resulting action |
 | --- | --- | --- | --- |
-| **B-3F-DP 1 - Mass on OBJ South** | Division commander | 31st Brigade attack, Red defenders and artillery, support range | Give Phase I decisive priority to the 31st Brigade |
+| **B-3F-DP 1 - Mass on Central Link Bridge** | Division commander | 31st Brigade attack, Red defenders and artillery, support range | Give Phase I decisive priority to the 31st Brigade |
 | **B-3F-DP 2 - Begin Coverage Handoff** | Artillery group commanders under division passage plan | PP South open, 6th artillery echelon moving, communications, targets, range | Transfer selected target responsibility while 3rd Artillery protects PP South |
 | **B-3F-DP 3 - Execute Cross-Boundary Fires** | Corps or division commander | Target, current crossing threat, ammunition, range, clearance | Support approved 6th Division target without abandoning crossing defense |
 | **B-3F-DP 4 - Support Guard Disengagement** | Division commander under corps Phase V | Guard contact, BHL, routes, Red main body, 63rd liaison | Shift priority to designated northern/central guard element |

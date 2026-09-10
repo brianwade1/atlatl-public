@@ -6,13 +6,13 @@
 
 - **Issuing headquarters:** 8th Guards Armored Division
 - **Place of issue:** Division Main Command Post, Kasar eastern approach
-- **Date-time group:** 12 September 2030, 0600 local
+- **Date-time group:** 12 September 2031, 0600 local
 - **Time zone used throughout:** Local Ordan time
 - **Effective:** On receipt
-- **Scenario duration:** 20 turns / 10 days; 12 hours per turn
+- **Scenario duration:** 18 turns / 9 days; 12 hours per turn
 - **Parent order:** 4th Maneuver Corps OPORD R-10, OPERATION NORTHERN REACH
 - **Role:** Corps supporting effort; northern crossing and flank force
-- **References:** R-00; R-10; `ordan_basin_scenario.md`; `order_of_battle.md`; Ordan Basin Area of Operations map; approved Red operational graphics
+- **References:** R-00; R-10; [scenario specification](../../ordan_basin_scenario.md); [order of battle](../../game/order_of_battle.md); [Ordan Basin AO map](../../map/ordan_basin_ao.map.json); [Red operational graphics](Red_operational_graphics.pdf); [Red master synchronization crosswalk](red_master_synchronization_crosswalk.md)
 
 ### Task Organization
 
@@ -84,7 +84,7 @@ None. Fires support does not change the task organization.
 
 ## 2. Mission
 
-Beginning 12 September 2030 at 0600 local, the **8th Guards Armored Division attacks to secure Kasar, fixes and then seizes North Pass Bridge, advances to PL Punch, and subsequently retains North Pass Bridge while guarding along the northern portion of LOA Block in order to open the northern Arven crossing, protect 4th Corps’ northern flank, and prevent Blue interference with the Eastern Army attack on Veyra.**
+Beginning 12 September 2031 at 0600 local, the **8th Guards Armored Division attacks to secure Kasar, fixes and then seizes North Pass Bridge, advances to PL Punch, and subsequently retains North Pass Bridge while guarding along the northern portion of LOA Block in order to open the northern Arven crossing, protect 4th Corps’ northern flank, and prevent Blue interference with the Eastern Army attack on Veyra.**
 
 ## 3. Execution
 
@@ -147,7 +147,7 @@ The phase ends on corps order when the division is established at PL Punch, Nort
 
 #### (4) Phase IV — Guard LOA Block and Retain North Pass
 
-**Projected Turns 16–20.** The 82nd Brigade remains the division main effort and continues the guard along the northern portion of LOA Block. It maintains contact, identifies the Blue main body, delays as required, and displaces before becoming decisively engaged. The 81st Brigade continues to retain North Pass Bridge and prepares to reinforce the guard, block a penetration, or cover the 82nd Brigade’s disengagement on division order.
+**Projected Turns 16–18.** The 82nd Brigade remains the division main effort and continues the guard along the northern portion of LOA Block. It maintains contact, identifies the Blue main body, delays as required, and displaces before becoming decisively engaged. The 81st Brigade continues to retain North Pass Bridge and prepares to reinforce the guard, block a penetration, or cover the 82nd Brigade’s disengagement on division order.
 
 The division end state is achieved when the guard has provided required warning and delay, North Pass Bridge remains controlled, and both brigades retain freedom to continue the defense.
 
@@ -277,7 +277,7 @@ Brigade commanders acknowledge and backbrief the phase tasks, main-effort change
 | **I — Secure Kasar and fix North Pass**<br>Turns 1–5 | Fix North Pass defenders; develop obstacles, artillery, and western approach. | **Main effort:** seize Kasar; transfer security; reposition to follow/support 81st. | Fires support Kasar as required and fix North Pass; open and stock northern route. | Kasar secure; route open; North Pass fixed; brigades postured. |
 | **II — Seize North Pass**<br>Turns 6–10 | **Main effort:** attack to seize bridge and western approach. | Follow/support; secure approaches and route; prevent isolation. | Priority 81st; suppress/obscure, isolate bridge, counterfire; control bridge traffic. | Approaches secure; bridge trafficable; counterattack contained; division postured. |
 | **III — Advance to PL Punch**<br>Turns 11–15 | Retain North Pass and route; prepare to reinforce, block, or cover disengagement. | **Main effort:** movement to contact; develop situation; establish northern guard. | Priority 82nd within corps allocation; preserve fires for North Pass; sustain across the crossing. | 82nd guard established at PL Punch; bridge/route retained; Phase IV posture ready. |
-| **IV — Guard and retain**<br>Turns 16–20 | Retain North Pass; prepare to reinforce, block, or cover disengagement. | **Main effort:** guard northern LOA Block; delay and displace. | Priority guard in contact/disengaging, then crossing defense; preserve withdrawal route. | Required warning/delay achieved; bridge retained; both brigades mission capable. |
+| **IV — Guard and retain**<br>Turns 16–18 | Retain North Pass; prepare to reinforce, block, or cover disengagement. | **Main effort:** guard northern LOA Block; delay and displace. | Priority guard in contact/disengaging, then crossing defense; preserve withdrawal route. | Required warning/delay achieved; bridge retained; both brigades mission capable. |
 
 ## Principal Decision Matrix
 

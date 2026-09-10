@@ -6,13 +6,13 @@
 
 - **Issuing headquarters:** 15th Mechanized Division
 - **Place of issue:** Division Main Command Post, Kasar–Dalen approach
-- **Date-time group:** 12 September 2030, 0600 local
+- **Date-time group:** 12 September 2031, 0600 local
 - **Time zone used throughout:** Local Ordan time
 - **Effective:** On receipt
-- **Scenario duration:** 20 turns / 10 days; 12 hours per turn
+- **Scenario duration:** 18 turns / 9 days; 12 hours per turn
 - **Parent order:** 4th Maneuver Corps OPORD R-10, OPERATION NORTHERN REACH
 - **Role:** 4th Corps main effort throughout the operation
-- **References:** R-00; R-10; `ordan_basin_scenario.md`; `order_of_battle.md`; Ordan Basin Area of Operations map; approved Red operational graphics
+- **References:** R-00; R-10; [scenario specification](../../ordan_basin_scenario.md); [order of battle](../../game/order_of_battle.md); [Ordan Basin AO map](../../map/ordan_basin_ao.map.json); [Red operational graphics](Red_operational_graphics.pdf); [Red master synchronization crosswalk](red_master_synchronization_crosswalk.md)
 
 ### Task Organization
 
@@ -88,7 +88,7 @@ None. Corps fires support does not change the task organization.
 
 ## 2. Mission
 
-Beginning 12 September 2030 at 0600 local, the **15th Mechanized Division attacks to seize and retain Dalen and Central Link Bridge, advances to PL Punch, and subsequently guards along the central-northern portion of LOA Block while securing the corps boundary in order to create the Eastern Army’s northern hook, protect 9th Corps’ attack on Veyra, and preserve the 4th Corps central crossing and line of communication.**
+Beginning 12 September 2031 at 0600 local, the **15th Mechanized Division attacks to seize and retain Dalen and Central Link Bridge, advances to PL Punch, and subsequently guards along the central-northern portion of LOA Block while securing the corps boundary in order to create the Eastern Army’s northern hook, protect 9th Corps’ attack on Veyra, and preserve the 4th Corps central crossing and line of communication.**
 
 ## 3. Execution
 
@@ -151,7 +151,7 @@ The phase ends on corps order when the division is established at PL Punch, Veyr
 
 #### (4) Phase IV — Guard LOA Block and Retain Dalen and Central Link
 
-**Projected Turns 16–20.** The 151st Brigade remains the division main effort and guards along the central portion of LOA Block. It maintains contact, identifies the Blue main body, delays as required, and displaces before becoming decisively engaged. The 152nd Brigade retains Central Link Bridge and secures both approaches. The 153rd Brigade retains Dalen and the route connecting Dalen, Central Link, and the eastern support area.
+**Projected Turns 16–18.** The 151st Brigade remains the division main effort and guards along the central portion of LOA Block. It maintains contact, identifies the Blue main body, delays as required, and displaces before becoming decisively engaged. The 152nd Brigade retains Central Link Bridge and secures both approaches. The 153rd Brigade retains Dalen and the route connecting Dalen, Central Link, and the eastern support area.
 
 The division end state is achieved when the guard provides required warning and delay, Dalen and Central Link remain controlled, the corps boundary remains secure, and the division preserves freedom for follow-on operations.
 
@@ -297,7 +297,7 @@ Brigade commanders acknowledge and backbrief phase tasks, 151st Brigade main-eff
 | **I — Seize Dalen**<br>Turns 1–5 | **Main effort:** attack to seize Dalen. | Follow/support; then block Central Link approaches. | Secure Dalen after seizure; prepare to retain city and route. | Priority 151st; isolate Dalen, interdict bridge direction, counterfire; open Dalen support pivot. | Dalen secure; route open; Central Link interference blocked; brigades postured. |
 | **II — Seize Central Link**<br>Turns 6–10 | **Main effort:** attack from Dalen to seize bridge. | Follow/support; secure approaches; prepare to retain crossing. | Block north against Saren threat; guard 151st flank; prepared to reorient west. | Priority 151st; suppress/obscure bridge, interdict reserves, counterfire; control approach traffic. | Approaches secure; bridge trafficable; Dalen/seams secure; division postured. |
 | **III — Advance to PL Punch**<br>Turns 11–15 | **Main effort:** movement to contact; establish central guard protecting Veyra attack. | Secure Central Link and route; follow/support as directed. | Retain Dalen and eastern line of communication. | Support guard establishment within corps allocation; preserve crossing and route sustainment. | PL Punch security established; Veyra seized; Dalen/Central Link secure. |
-| **IV — Guard and retain**<br>Turns 16–20 | **Main effort:** guard central LOA Block; delay and displace. | Retain Central Link Bridge and approaches. | Retain Dalen and connecting route. | Priority guard in contact/disengaging, then threatened retain force; preserve withdrawal route. | Required warning/delay achieved; Dalen/bridge retained; seams secure. |
+| **IV — Guard and retain**<br>Turns 16–18 | **Main effort:** guard central LOA Block; delay and displace. | Retain Central Link Bridge and approaches. | Retain Dalen and connecting route. | Priority guard in contact/disengaging, then threatened retain force; preserve withdrawal route. | Required warning/delay achieved; Dalen/bridge retained; seams secure. |
 
 ## Principal Decision Matrix
 

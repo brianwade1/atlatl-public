@@ -6,13 +6,13 @@
 
 - **Issuing headquarters:** 4th Maneuver Corps
 - **Place of issue:** Corps Main Command Post, Kasar eastern approach
-- **Date-time group:** 12 September 2030, 0600 local
+- **Date-time group:** 12 September 2031, 0600 local
 - **Time zone used throughout:** Local Ordan time
 - **Effective:** On receipt
-- **Scenario duration:** 20 turns / 10 days; 12 hours per turn
+- **Scenario duration:** 18 turns / 9 days; 12 hours per turn
 - **Parent order:** Karsovian Eastern Army OPORD R-00, OPERATION NORTHERN REACH
 - **Role:** Eastern Army main effort during Phases I–II; supporting effort during Phases III–IV
-- **References:** R-00; `ordan_basin_scenario.md`; `order_of_battle.md`; Ordan Basin Area of Operations map; approved Red operational graphics
+- **References:** R-00; [scenario specification](../../ordan_basin_scenario.md); [order of battle](../../game/order_of_battle.md); [Ordan Basin AO map](../../map/ordan_basin_ao.map.json); [Red operational graphics](Red_operational_graphics.pdf); [Red master synchronization crosswalk](red_master_synchronization_crosswalk.md)
 
 ### Task Organization
 
@@ -94,7 +94,7 @@ None at operation start. Cross-attachment of brigades requires Eastern Army appr
 
 ## 2. Mission
 
-Beginning 12 September 2030 at 0600 local, the **4th Maneuver Corps attacks through the northern and central-northern Ordan Basin to seize Dalen, North Pass Bridge, and Central Link Bridge; advances to PL Punch; and then retains the northern crossing network while guarding along the northern portion of LOA Block in order to create the Eastern Army’s northern hook, protect 9th Corps’ attack on Veyra, and preserve operational mobility across the Arven River.**
+Beginning 12 September 2031 at 0600 local, the **4th Maneuver Corps attacks through the northern and central-northern Ordan Basin to seize Dalen, North Pass Bridge, and Central Link Bridge; advances to PL Punch; and then retains the northern crossing network while guarding along the northern portion of LOA Block in order to create the Eastern Army’s northern hook, protect 9th Corps’ attack on Veyra, and preserve operational mobility across the Arven River.**
 
 ## 3. Execution
 
@@ -158,7 +158,7 @@ This phase ends on Army order when Veyra is seized, organized resistance is defe
 
 #### (4) Phase IV — Retain the Crossings and Guard LOA Block
 
-**Projected Turns 16–20.** The 15th Division remains the corps main effort. It retains Dalen and Central Link Bridge and guards the central portion of the corps frontage. The 8th Division retains North Pass Bridge and guards the northern portion of LOA Block. Guards identify the Blue main body, delay it as required, and displace along preplanned routes before losing freedom of maneuver. The artillery group resumes exclusive priority to parent-corps tasks.
+**Projected Turns 16–18.** The 15th Division remains the corps main effort. It retains Dalen and Central Link Bridge and guards the central portion of the corps frontage. The 8th Division retains North Pass Bridge and guards the northern portion of LOA Block. Guards identify the Blue main body, delay it as required, and displace along preplanned routes before losing freedom of maneuver. The artillery group resumes exclusive priority to parent-corps tasks.
 
 The corps end state is achieved when assigned objectives remain controlled through scenario completion, guards have provided warning and delay, and both divisions remain capable of receiving or defeating a Blue counterattack.
 
@@ -323,7 +323,7 @@ This annex synchronizes division maneuver, fires, sustainment, command relations
 | **I — Secure Kasar and seize Dalen**<br>Turns 1–5 | **Supporting effort.** 82nd seizes Kasar, then repositions to follow/support 81st; 81st fixes North Pass. | **Corps main effort.** 151st seizes Dalen; 152nd follows/supports then blocks Central Link approaches; 153rd secures Dalen. | GS; priority 15th/151st, then 8th/82nd and 81st. Isolate objectives and counterfire. | Open Kasar and Dalen routes; prevent congestion; prepare both crossing attacks. | Dalen seized; Kasar secured; North Pass fixed; routes open; divisions postured. |
 | **II — Seize remaining crossings**<br>Turns 6–10 | 81st seizes North Pass; 82nd follows/supports and secures approaches. | **Corps main effort.** 151st seizes Central Link; 152nd supports and secures approaches; 153rd blocks north and guards flank, prepared west. | GS; priority 15th/151st, then 8th/81st. Suppress bridges, interdict reserves, counterfire. | Crossing control, bridge trafficability, alternate routes, artillery displacement. | Both bridges seized/trafficable; approaches and seam secure; corps ready for PL Punch. |
 | **III — Advance and isolate Veyra**<br>Turns 11–15 | 82nd is division main effort: move to contact to PL Punch and establish northern guard; 81st retains North Pass. | **Corps main effort.** Move to contact to PL Punch; establish central guard; retain Dalen/Central Link; protect 9th Corps seam. | GS to corps and reinforce 9th Artillery; reinforcing priority to the 212th Brigade at Veyra. | Preserve crossing routes; coordinate cross-boundary fires; report guard readiness. | Veyra seized; resistance defeated; both divisions at PL Punch; objectives secure. |
-| **IV — Retain and guard**<br>Turns 16–20 | 82nd guards northern LOA Block; 81st retains North Pass and prepares to reinforce. | **Corps main effort.** 151st guards central LOA Block; 152nd retains Central Link; 153rd retains Dalen. | GS; priority guard in contact/disengaging, threatened crossing, committed Army reserve. | Support guard displacement, bridge defense, route repair, and reconstitution. | Crossings and Dalen retained; guards provide warning/delay; corps remains coherent. |
+| **IV — Retain and guard**<br>Turns 16–18 | 82nd guards northern LOA Block; 81st retains North Pass and prepares to reinforce. | **Corps main effort.** 151st guards central LOA Block; 152nd retains Central Link; 153rd retains Dalen. | GS; priority guard in contact/disengaging, threatened crossing, committed Army reserve. | Support guard displacement, bridge defense, route repair, and reconstitution. | Crossings and Dalen retained; guards provide warning/delay; corps remains coherent. |
 
 ## 3. Principal Decision Matrix
 

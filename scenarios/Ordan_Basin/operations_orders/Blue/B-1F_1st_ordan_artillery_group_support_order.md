@@ -6,7 +6,7 @@
 
 - **Issuing headquarters:** 1st Ordan Artillery Group
 - **Place of issue:** Artillery Group Command Post, Veyra support area
-- **Date-time group:** 12 September 2030, 0600 local
+- **Date-time group:** 12 September 2031, 0600 local
 - **Time zone used throughout:** Local Ordan time
 - **Effective:** On receipt
 - **Scenario duration:** 18 turns / 9 days; 12 hours per turn
@@ -14,7 +14,7 @@
 - **Higher order:** WCO JLC OPORD B-00, OPERATION STEADFAST ACCORD
 - **Support relationship:** General support to 1st Ordan Mechanized Division
 - **Supported corps tasks:** B-C1, B-C2, B-C5, B-C6
-- **References:** `ordan_basin_scenario.md`; `ordan_basin_order_of_battle.md`; `blue_master_synchronization_crosswalk.md`; Ordan Basin Area of Operations map; `Blue_operational_graphics.pdf`
+- **References:** [scenario specification](../../ordan_basin_scenario.md); [order of battle](../../game/order_of_battle.md); [Blue master synchronization crosswalk](blue_master_synchronization_crosswalk.md); [Ordan Basin AO map](../../map/ordan_basin_ao.map.json); [Blue operational graphics](Blue_operational_graphics.pdf)
 
 ### Task Organization
 
@@ -63,7 +63,7 @@ Veyra, Novar, Eren, bridge approaches, and connecting roads contain civilians an
 
 ## 2. Mission
 
-Beginning 12 September 2030 at 0600 local, the **1st Ordan Artillery Group provides general support to the 1st Ordan Mechanized Division, suppresses Red forces defending the southern Arven crossings, disrupts Red crossing and turning attempts, conducts counterfire, protects division reserve movement, and supports the Phase V guard disengagement and battle handover in order to enable the division to secure Veyra, retain Novar and Eren, and deny Red penetration into the western Ordan support area.**
+Beginning 12 September 2031 at 0600 local, the **1st Ordan Artillery Group provides general support to the 1st Ordan Mechanized Division, suppresses Red forces defending the southern Arven crossings, disrupts Red crossing and turning attempts, conducts counterfire, protects division reserve movement, and supports the Phase V guard disengagement and battle handover in order to enable the division to secure Veyra, retain Novar and Eren, and deny Red penetration into the western Ordan support area.**
 
 ## 3. Execution
 

@@ -6,13 +6,13 @@
 
 - **Issuing headquarters:** 6th Compact Mechanized Division
 - **Place of issue:** Division Main Command Post, AA Axe
-- **Date-time group:** 12 September 2030, 0600 local
+- **Date-time group:** 12 September 2031, 0600 local
 - **Time zone used throughout:** Local Ordan time
 - **Effective:** On receipt
 - **Scenario duration:** 18 turns / 9 days; 12 hours per turn
 - **Parent order:** WCO JLC OPORD B-00, OPERATION STEADFAST ACCORD
 - **Supported corps tasks:** B-C3, B-C4, B-C5, B-C6
-- **References:** B-00; `blue_master_synchronization_crosswalk.md`; `ordan_basin_scenario.md`; `ordan_basin_order_of_battle.md`; Ordan Basin Area of Operations map; approved Blue operational graphics
+- **References:** B-00; [Blue master synchronization crosswalk](blue_master_synchronization_crosswalk.md); [scenario specification](../../ordan_basin_scenario.md); [order of battle](../../game/order_of_battle.md); [Ordan Basin AO map](../../map/ordan_basin_ao.map.json); [Blue operational graphics](Blue_operational_graphics.pdf)
 
 ### Task Organization
 
@@ -94,7 +94,7 @@ The corps purpose is to deny Karsovia the position required to partition Orda or
 
 #### (2) Adjacent and Supporting Units
 
-- **3rd Compact Armored Division:** Seizes and retains OBJ North, OBJ Dalen/Central Link Bridge, and OBJ South. It controls PP South and supports this division's passage.
+- **3rd Compact Armored Division:** Seizes and retains North Pass Bridge, Dalen, and Central Link Bridge. It controls PP South and supports this division's passage.
 - **1st Ordan Mechanized Division:** Secures Veyra and retains Novar and Eren. It establishes the southern portion of the Phase V corps defense.
 - **7th Coalition Armored Brigade:** Corps reserve. It may reinforce the division, secure PP South or a withdrawal route, or counterattack a Red penetration on corps order.
 - **3rd Division Artillery Group:** Remains in general support of the 3rd Division and may provide reinforcing or cross-boundary fires on corps order.
@@ -117,7 +117,7 @@ None. Supporting fires from another division do not change command relationships
 
 ## 2. Mission
 
-Beginning 12 September 2030 at 0600 local, the **6th Compact Mechanized Division follows and supports the 3rd Compact Armored Division, conducts a forward passage at PP South, attacks along Axes Black, Blue, and Brown to destroy Red forces sequentially at Kasar, Ruda, and Selin, and then guards along Guard Line Steel in order to disrupt the Karsovian Eastern Army, provide warning and delay, and preserve the corps defense of the Arven crossings.**
+Beginning 12 September 2031 at 0600 local, the **6th Compact Mechanized Division follows and supports the 3rd Compact Armored Division, conducts a forward passage at PP South, attacks along Axes Black, Blue, and Brown to destroy Red forces sequentially at Kasar, Ruda, and Selin, and then guards along Guard Line Steel in order to disrupt the Karsovian Eastern Army, provide warning and delay, and preserve the corps defense of the Arven crossings.**
 
 ## 3. Execution
 
@@ -157,7 +157,7 @@ Tempo, isolation, and handover are central to the operation. The division avoids
 
 The division moves from AA Axe behind the 3rd Division. The 61st Brigade prepares to lead the passage and Phase II attack. The 62nd Brigade follows prepared to support the Kasar attack. The 63rd Brigade remains positioned to become the Phase II reserve and secure the passage lane if required. The 6th Division Artillery Group displaces with the division and coordinates continuous coverage with 3rd Division Artillery.
 
-Phase I ends when OBJ South and PP South are secure and trafficable, passage control is established, and the division is postured in the approved order of march.
+Phase I ends when Central Link Bridge and PP South are secure and trafficable, passage control is established, and the division is postured in the approved order of march.
 
 #### (3) Phase II - Destroy Red Forces at Kasar
 
@@ -248,7 +248,7 @@ The group coordinates with 3rd Division Artillery before the passage and with 1s
 
 #### (1) Effective Time and Phase Control
 
-- This order is effective on receipt. Phase I begins 12 September 2030 at 0600 local.
+- This order is effective on receipt. Phase I begins 12 September 2031 at 0600 local.
 - Corps controls phase transitions. The division commander recommends transition when the stated conditions are met.
 - A brigade continues its current essential task until the receiving brigade confirms handover.
 

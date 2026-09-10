@@ -6,13 +6,13 @@
 
 - **Issuing headquarters:** 4th Corps Artillery Group
 - **Place of issue:** Artillery Command Post, Kasar eastern support area
-- **Date-time group:** 12 September 2030, 0600 local
+- **Date-time group:** 12 September 2031, 0600 local
 - **Time zone used throughout:** Local Ordan time
 - **Effective:** On receipt
-- **Scenario duration:** 20 turns / 10 days; 12 hours per turn
+- **Scenario duration:** 18 turns / 9 days; 12 hours per turn
 - **Parent order:** 4th Maneuver Corps OPORD R-10, OPERATION NORTHERN REACH
 - **Tactical mission:** General support to 4th Maneuver Corps in Phases I–II and IV; general support–reinforcing to 4th Maneuver Corps, reinforcing 9th Corps Artillery Group, in Phase III
-- **References:** R-00; R-10; R-11; R-12; R-20; `ordan_basin_scenario.md`; `order_of_battle.md`; Ordan Basin Area of Operations map; approved Red operational graphics
+- **References:** R-00; R-10; R-11; R-12; R-20; [scenario specification](../../ordan_basin_scenario.md); [order of battle](../../game/order_of_battle.md); [Ordan Basin AO map](../../map/ordan_basin_ao.map.json); [Red operational graphics](Red_operational_graphics.pdf); [Red master synchronization crosswalk](red_master_synchronization_crosswalk.md)
 
 ### Task Organization
 
@@ -83,7 +83,7 @@ None. The Phase III reinforcing mission does not attach or detach the group.
 
 ## 2. Mission
 
-Beginning 12 September 2030 at 0600 local, the **4th Corps Artillery Group provides general support to 4th Maneuver Corps; masses fires to enable seizure of Dalen, Central Link Bridge, and North Pass Bridge; changes to a general support–reinforcing mission during Phase III to reinforce 9th Corps Artillery for the attack on Veyra while preserving required coverage of 4th Corps; and then supports the northern guards and crossing defense in order to enable the northern hook, isolate the Veyra fight, and preserve 4th Corps freedom of action.**
+Beginning 12 September 2031 at 0600 local, the **4th Corps Artillery Group provides general support to 4th Maneuver Corps; masses fires to enable seizure of Dalen, Central Link Bridge, and North Pass Bridge; changes to a general support–reinforcing mission during Phase III to reinforce 9th Corps Artillery for the attack on Veyra while preserving required coverage of 4th Corps; and then supports the northern guards and crossing defense in order to enable the northern hook, isolate the Veyra fight, and preserve 4th Corps freedom of action.**
 
 ## 3. Execution
 
@@ -111,7 +111,7 @@ Concentrate the group’s limited effects at the corps decisive action, then ext
 - Each 4th Corps decisive action received timely massed fires.
 - 9th Corps received coordinated reinforcing fires for Veyra without transfer of command.
 - Dalen, North Pass, Central Link, guard routes, and corps seams were not lost for lack of reported artillery support.
-- The group remains mobile, survivable, supplied, and capable of supporting the corps through Turn 20.
+- The group remains mobile, survivable, supplied, and capable of supporting the corps through Turn 18.
 
 Stable artillery task identifiers:
 
@@ -152,7 +152,7 @@ The phase ends when Veyra is seized, organized resistance is defeated, 4th Corps
 
 #### (4) Phase IV — Support Guards and Crossing Defense
 
-**Projected Turns 16–20. Tactical mission: General support.** The group returns to general support without the reinforcing requirement. Priority is the guard formation in contact or disengaging, then the formation defending the most threatened retained crossing, then the 5th Guards Armored Brigade if committed in the corps area.
+**Projected Turns 16–18. Tactical mission: General support.** The group returns to general support without the reinforcing requirement. Priority is the guard formation in contact or disengaging, then the formation defending the most threatened retained crossing, then the 5th Guards Armored Brigade if committed in the corps area.
 
 The group disrupts Blue counterattack forces, supports guard displacement and battle handover, conducts counterfire, and preserves crossings and routes. It occupies survivable position areas able to cover LOA Block and the crossing network while retaining an eastward displacement route.
 
@@ -279,7 +279,7 @@ Organic leaders acknowledge and backbrief tactical missions by phase, priority o
 | **I — Kasar and Dalen**<br>Turns 1–5 | General support, 4th Corps | 15th/151st at Dalen; then 8th/82nd at Kasar and 81st at North Pass | Isolate Dalen; suppress defenders; support Kasar; fix North Pass; counterfire | Initial eastern position area; open Kasar/Dalen routes; prepare displacement | Dalen/Kasar secure; North Pass fixed; Phase II coverage established |
 | **II — Crossing attacks**<br>Turns 6–10 | General support, 4th Corps | 15th/151st at Central Link; then 8th/81st at North Pass | Suppress/obscure crossings; isolate western approaches; interdict reserves; counterfire | Dalen/bridgehead position areas; displace by echelon; preserve route capacity | Both bridges seized/trafficable; GSR posture ready |
 | **III — Veyra**<br>Turns 11–15 | General support–reinforcing; reinforce 9th Corps Artillery | Reinforcing priority 21st/212th; minimum coverage to 4th Corps guards/crossings | Isolate Veyra; suppress defenders; disrupt reserves; protect guards and seams | Position for Veyra range and northern coverage; preserve ammunition and return route | Veyra seized; 4th Corps guards established; reinforcing mission terminated or ready to terminate |
-| **IV — Guard and retain**<br>Turns 16–20 | General support, 4th Corps | Guard in contact/disengaging; threatened crossing; committed Army reserve | Disrupt counterattack; support disengagement; defend crossings; counterfire | Survivable crossing-defense position area; eastward route; reconstitute | Guards delay/disengage; crossings retained; group remains capable |
+| **IV — Guard and retain**<br>Turns 16–18 | General support, 4th Corps | Guard in contact/disengaging; threatened crossing; committed Army reserve | Disrupt counterattack; support disengagement; defend crossings; counterfire | Survivable crossing-defense position area; eastward route; reconstitute | Guards delay/disengage; crossings retained; group remains capable |
 
 ## Essential Fire-Support Task Matrix
 

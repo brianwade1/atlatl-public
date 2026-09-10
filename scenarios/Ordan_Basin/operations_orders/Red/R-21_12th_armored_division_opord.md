@@ -6,13 +6,13 @@
 
 - **Issuing headquarters:** 12th Armored Division
 - **Place of issue:** Division Main Command Post, Selin eastern approach
-- **Date-time group:** 12 September 2030, 0600 local
+- **Date-time group:** 12 September 2031, 0600 local
 - **Time zone used throughout:** Local Ordan time
 - **Effective:** On receipt
-- **Scenario duration:** 20 turns / 10 days; 12 hours per turn
+- **Scenario duration:** 18 turns / 9 days; 12 hours per turn
 - **Parent order:** 9th Maneuver Corps OPORD R-20, OPERATION NORTHERN REACH
 - **Role:** Corps supporting effort in Phases I and III–IV; corps main effort in Phase II
-- **References:** R-00; R-20; `ordan_basin_scenario.md`; `order_of_battle.md`; Ordan Basin Area of Operations map; approved Red operational graphics
+- **References:** R-00; R-20; [scenario specification](../../ordan_basin_scenario.md); [order of battle](../../game/order_of_battle.md); [Ordan Basin AO map](../../map/ordan_basin_ao.map.json); [Red operational graphics](Red_operational_graphics.pdf); [Red master synchronization crosswalk](red_master_synchronization_crosswalk.md)
 
 ### Task Organization
 
@@ -88,7 +88,7 @@ None. Corps fires support does not change the division task organization.
 
 ## 2. Mission
 
-Beginning 12 September 2030 at 0600 local, the **12th Armored Division attacks to secure Selin, fixes and then seizes Eren, advances from PL Push to PL Punch, and subsequently retains Eren while guarding along the southern portion of LOA Block in order to open 9th Corps’ southern Arven crossing, protect the attack on Veyra, and deny Blue access to the corps southern flank and line of communication.**
+Beginning 12 September 2031 at 0600 local, the **12th Armored Division attacks to secure Selin, fixes and then seizes Eren, advances from PL Push to PL Punch, and subsequently retains Eren while guarding along the southern portion of LOA Block in order to open 9th Corps’ southern Arven crossing, protect the attack on Veyra, and deny Blue access to the corps southern flank and line of communication.**
 
 ## 3. Execution
 
@@ -150,7 +150,7 @@ The phase ends on corps order when Veyra is seized and organized resistance defe
 
 #### (4) Phase IV — Guard LOA Block and Retain Eren
 
-**Projected Turns 16–20.** The 121st Brigade remains the division main effort and guards along the southern portion of LOA Block. It maintains contact, identifies the Blue main body, delays as required, and displaces before becoming decisively engaged. The 122nd Brigade retains Eren and prepares to reinforce the guard, block a penetration, or cover the 121st’s disengagement on division order.
+**Projected Turns 16–18.** The 121st Brigade remains the division main effort and guards along the southern portion of LOA Block. It maintains contact, identifies the Blue main body, delays as required, and displaces before becoming decisively engaged. The 122nd Brigade retains Eren and prepares to reinforce the guard, block a penetration, or cover the 121st’s disengagement on division order.
 
 The division end state is achieved when the guard has provided required warning and delay, Eren remains controlled, and both brigades preserve freedom for continued defense.
 
@@ -285,7 +285,7 @@ Brigade commanders acknowledge and backbrief phase tasks, main-effort changes, E
 | **I — Secure Selin and fix Eren**<br>Turns 1–5 | Fix Eren defenders; develop obstacles, artillery, and approaches. | **Main effort:** seize Selin; transfer security; reposition to follow/support 121st. | Support Selin as required and fix Eren; open and stock southern route. | Selin secure; route open; Eren fixed; brigades postured. |
 | **II — Seize Eren**<br>Turns 6–10 | **Main effort:** attack to seize crossing and western approach. | Follow/support; secure approaches and route; prepare to retain Eren. | Corps priority 121st; suppress/obscure, isolate crossing, counterfire; control traffic. | Approaches secure; crossing trafficable; counterattack contained; handover ready. |
 | **III — Advance to PL Punch**<br>Turns 11–15 | **Main effort:** movement to contact; establish southern guard protecting Veyra attack. | Retain Eren and secure division route; prepare guard handover. | Support guard within corps allocation; preserve Eren fires and sustainment. | Veyra seized; 121st at PL Punch; Eren retained; Phase IV posture ready. |
-| **IV — Guard and retain**<br>Turns 16–20 | **Main effort:** guard southern LOA Block; delay and displace. | Retain Eren; prepare to reinforce, block, or cover disengagement. | Priority guard in contact/disengaging, then crossing defense; preserve withdrawal route. | Required warning/delay achieved; Eren retained; both brigades mission capable. |
+| **IV — Guard and retain**<br>Turns 16–18 | **Main effort:** guard southern LOA Block; delay and displace. | Retain Eren; prepare to reinforce, block, or cover disengagement. | Priority guard in contact/disengaging, then crossing defense; preserve withdrawal route. | Required warning/delay achieved; Eren retained; both brigades mission capable. |
 
 ## Principal Decision Matrix
 

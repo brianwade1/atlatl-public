@@ -1,73 +1,63 @@
-# Ordan Basin Area of Operations Maps
+# Ordan Basin Area of Operations Map
 
-This folder contains the operational reference map and native Atlatl map for the **Race for the Ordan Basin** scenario. The maps depict the same fictional geography at different levels of abstraction: the reference map supports planning and mission graphics, while the Atlatl map provides the authoritative hex-based terrain and road network used for play.
+This folder contains the machine-readable map, visual previews, and metadata for **The Race for the Ordan Basin**. This guide is the authoritative reference for named geography and geographic editing. See the [scenario landing page](../README.md) for player entry points and the [game-file guide](../game/README.md) for runtime state.
 
-## Map Files
+## Map Framework
 
-| File | Purpose |
-| --- | --- |
-| `ordan_basin_ao_reference.svg` | Editable, grid-free operational reference map for planning, orders, overlays, and mission graphics |
-| `ordan_basin_ao_reference.png` | High-resolution preview of the operational reference map |
-| `ordan_basin_ao_atlatl.svg` | Editable visual master of the 12 × 12 native Atlatl hex map |
-| `ordan_basin_ao_atlatl.png` | High-resolution preview of the Atlatl map |
-| `ordan_basin_ao.map.json` | Map data for Atlatl's map editor or unit-placement tool |
+- Ground scale: approximately 15 km per hex
+- Grid: 12 × 12 flat-top hexes
+- Operational area: approximately 180 × 150 km
+- Blue setup: 24 eligible hexes in columns `x=0` and `x=1`
+- Red setup: 24 eligible hexes in columns `x=10` and `x=11`
+- Unit information: open; `fogOfWar` is `false`
+- Major terrain: Saren Heights, central Ordan Basin, Mora Hills, marshes, and the Arven River
+- Terrain totals: 65 clear, 52 rough, 12 marsh, 8 water, and 7 urban hexes
 
-## Relationship Between the Maps
-
-| Operational feature | Atlatl representation |
-| --- | --- |
-| Approximately 180 × 150 km area of operations | 12 × 12 flat-top, offset-column grid at approximately 15 km per hex |
-| Arven River | Connected chain of native `water` hexes running generally north to southwest |
-| Saren Heights | `rough` terrain along the northern map edge |
-| Mora Hills | `rough` terrain along the southern map edge |
-| Wooded areas | Native `marsh` hexes, shown in green |
-| Cities and major junctions | Native `urban` hexes, shown in gray |
-| Road network | Native `paths` with `type: "road"`; every segment connects adjacent hexes |
-
-The reference map uses the same restrained terrain palette and visual style as the Lydian Republic scenario. It omits the hex grid and coordinate labels, but its terrain, cities, river crossings, and roads correspond to the native Atlatl map.
-
-## Key Hexes
+## Named Locations
 
 | Location | Hex | Function |
 | --- | --- | --- |
-| Veyra | 2,6 | Capital and major Blue political objective |
-| Dalen | 5,3 | Northern urban crossing and objective |
-| Novar | 5,7 | Central urban crossing and principal transportation junction |
-| Eren | 4,9 | Southern urban crossing and objective |
-| Kasar | 9,2 | Northeastern transportation hub |
-| Ruda | 9,6 | Eastern political center and north–south road junction |
-| Selin | 9,9 | Southeastern transportation hub |
-| North Pass Bridge | 5,1 | Secondary crossing through the Saren Heights |
-| Central Link Bridge | 5,5 | Secondary crossing on the diagonal connector between the northern and central routes |
+| Veyra | `hex-2-6` | Capital and major Blue political objective. |
+| Dalen | `hex-5-3` | Northern principal crossing and scored city. |
+| Novar | `hex-5-7` | Central principal crossing and transportation junction. |
+| Eren | `hex-4-9` | Southern principal crossing and scored city. |
+| Kasar | `hex-9-2` | Northeastern transportation and staging hub. |
+| Ruda | `hex-9-6` | Eastern political center and north–south road junction. |
+| Selin | `hex-9-9` | Southeastern staging hub and alternate Eren approach. |
+| North Pass Bridge | `hex-5-1` | Secondary crossing through the Saren Heights. |
+| Central Link Bridge | `hex-5-5` | Secondary diagonal crossing between the northern and central routes. |
 
-## Central Link Separation
+There is **no South Pass crossing** in the canonical map. `hex-4-10` is water and no through-road crosses the Arven River in the Mora Hills.
 
-The Central Link Bridge is deliberately separated from both Dalen and Novar by water terrain:
+## Package Contents
+
+- [Map JSON](ordan_basin_ao.map.json) — canonical machine-readable source for hex geometry, terrain, roads, river edges, setup zones, and unit visibility.
+- [Atlatl SVG](ordan_basin_ao_atlatl.svg) and [PNG](ordan_basin_ao_atlatl.png) — exact hex-grid preview using native Atlatl terrain categories.
+- [Reference SVG](ordan_basin_ao_reference.svg) and [PNG](ordan_basin_ao_reference.png) — grid-free planning map for orders, overlays, and mission graphics.
+- [Map manifest](ordan_basin_ao_manifest.json) — grid dimensions, named locations, terrain and setup-zone counts, bridge metadata, source commit, and design notes.
+
+The image files are visual products; Atlatl does not load them during play.
+
+## River and Road Representation
+
+The Arven River is a connected chain of native `water` hexes with river-edge data. Dalen, Novar, and Eren are traversable urban crossing hexes. North Pass and Central Link are clear crossing hexes embedded in the river chain and connected to road paths. Atlatl has no separate bridge terrain type.
+
+All 62 road segments are native `path` objects with `type: "road"`, and every segment joins adjacent hexes. Central Link is separated from both neighboring cities by water:
 
 | North-to-south sequence | Hex | Terrain |
 | --- | --- | --- |
-| Dalen | 5,3 | Urban |
-| Intervening river hex | 5,4 | Water |
-| Central Link Bridge | 5,5 | Clear crossing |
-| Intervening river hex | 5,6 | Water |
-| Novar | 5,7 | Urban |
+| Dalen | `hex-5-3` | Urban crossing |
+| Intervening river hex | `hex-5-4` | Water |
+| Central Link Bridge | `hex-5-5` | Clear crossing |
+| Intervening river hex | `hex-5-6` | Water |
+| Novar | `hex-5-7` | Urban crossing |
 
-This spacing prevents a unit occupying the Central Link Bridge from attacking either city directly from the bridge hex. Novar and its east–west road have been shifted one hex south to preserve the transportation network.
+This spacing prevents a unit on Central Link from attacking either city directly from the bridge hex.
 
-## Terrain and Road Notes
+## Editing and Synchronization
 
-- **Clear:** Normal open terrain for movement and combat.
-- **Rough:** High ground in the Saren Heights and Mora Hills; apply the movement or defensive effects defined by the scenario rules.
-- **Marsh:** Green wooded or broken terrain represented with Atlatl's native `marsh` category.
-- **Water:** The Arven River is represented by native `water` hexes rather than a visual overlay.
-- **Urban:** Cities and major junctions use native `urban` terrain.
-- **Roads:** All roads follow valid center-to-center hex connections and are stored as native Atlatl road paths.
+Load [ordan_basin_ao.map.json](ordan_basin_ao.map.json) in [`browser/map-editor.html`](../../../browser/map-editor.html) using **Load JSON**. Use [`browser/unit-placement.html`](../../../browser/unit-placement.html) only for deployment editing or variant authoring.
 
-The former far-southern **South Pass road and bridge have been removed**. Hex `4,10` is therefore a water hex, and there is no through-road crossing the Arven River in the Mora Hills.
+The map JSON is the geographic source of truth. The manifest summarizes it, and the visual maps depict it. The completed [scenario](../game/race_for_the_ordan_basin.scn) embeds the same geography while adding units, default positions, neutral city ownership, duration, and scoring. When map geography or visibility changes, synchronize only the corresponding map fields into the `.scn` so scenario-specific runtime state remains intact.
 
-## Using the Map in Atlatl
-
-1. Load `ordan_basin_ao.map.json` in Atlatl's map editor or unit-placement tool.
-2. Use the JSON terrain and road data as authoritative for adjudication.
-3. Use `ordan_basin_ao_atlatl.svg` or `.png` as the visual reference for hex coordinates.
-4. Use `ordan_basin_ao_reference.svg` or `.png` for operational planning products and mission graphics.
+For formations and command relationships, use the [order of battle](../game/order_of_battle.md). For design intent and abstractions, use the [scenario specification](../ordan_basin_scenario.md).

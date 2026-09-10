@@ -6,11 +6,11 @@
 
 - **Issuing headquarters:** Western Compact-Ordan Joint Land Corps (WCO JLC)
 - **Place of issue:** Corps Main Command Post, western Ordan support area
-- **Date-time group:** 12 September 2030, 0600 local
+- **Date-time group:** 12 September 2031, 0600 local
 - **Time zone used throughout:** Local Ordan time
 - **Effective:** On receipt
 - **Scenario duration:** 18 turns / 9 days; 12 hours per turn
-- **References:** `ordan_basin_scenario.md`; `ordan_basin_order_of_battle.md`; `blue_master_synchronization_crosswalk.md`; Ordan Basin Area of Operations map; `Blue_operational_graphics.pdf`
+- **References:** [scenario specification](../../ordan_basin_scenario.md); [order of battle](../../game/order_of_battle.md); [Blue master synchronization crosswalk](blue_master_synchronization_crosswalk.md); [Ordan Basin AO map](../../map/ordan_basin_ao.map.json); [Blue operational graphics](Blue_operational_graphics.pdf)
 
 ### Task Organization
 
@@ -49,7 +49,7 @@ Events outside the immediate area that may affect the operation include arrival 
 #### (1) Terrain
 
 - **Ordan Basin:** Open agricultural terrain favors rapid armored and mechanized movement, long-range observation, and artillery employment. The same openness exposes formations that advance without flank security or suppression.
-- **Arven River:** The river is the principal operational obstacle. Heavy formations depend on the represented crossing sites at North Pass Bridge, Dalen, Central Link Bridge, OBJ South, Novar, and Eren. Loss or blockage of a crossing can separate the corps, delay the 6th Division's passage, and restrict sustainment.
+- **Arven River:** The river is the principal operational obstacle. Heavy formations depend on the five represented crossing sites at North Pass Bridge, Dalen, Central Link Bridge, Novar, and Eren. Loss or blockage of a crossing can separate the corps, delay the 6th Division's passage, and restrict sustainment.
 - **Saren Heights:** Rough northern terrain limits cross-country movement and channels forces toward North Pass Bridge and the Dalen route. It favors dismounted defense, concealment, and attacks against exposed flanks.
 - **Mora Hills:** Rough terrain along the southern edge channels movement through Eren and the limited Mora approaches. A force using the southern route may threaten the corps flank but risks isolation from the basin road network.
 - **Western woods and southeastern marsh:** Wooded terrain west of Dalen and Novar conceals movement and complicates observation. Marsh southeast of Ruda restricts heavy maneuver and channels movement onto the Ruda-Selin road network.
@@ -128,8 +128,8 @@ None at the start of the operation. Cross-attachment of maneuver brigades requir
 
 ### g. Assumptions
 
-- All six represented Arven crossing sites begin trafficable. A change in bridge status requires scenario-control confirmation or a game effect.
-- The 6th Division can use PP South after the 3rd Division secures OBJ South and establishes passage control.
+- All five represented Arven crossing sites—Dalen, Novar, Eren, North Pass, and Central Link—begin trafficable. A change in crossing status requires scenario-control confirmation or a game effect.
+- PP South is the designated forward-passage lane through Central Link Bridge. The 6th Division can use it after the 3rd Division secures the bridge and establishes passage control.
 - No additional playable Blue formation arrives during the scenario.
 - Blue retains legal authority to operate throughout Ordan territory but not to conduct a general attack into Karsovia.
 - The elected government remains in Veyra unless a scenario event states otherwise.
@@ -137,7 +137,7 @@ None at the start of the operation. Cross-attachment of maneuver brigades requir
 
 ## 2. Mission
 
-Beginning 12 September 2030 at 0600 local, the **Western Compact-Ordan Joint Land Corps attacks to seize and retain the designated Arven River crossings; passes the 6th Compact Mechanized Division through PP South; destroys Red forces sequentially at Kasar, Ruda, and Selin; and then establishes a defense in depth at the Arven crossings while guarding along Guard Line Steel in order to secure the elected Ordan government, prevent a Karsovian corridor to the Arven River, and preserve Ordan sovereignty.**
+Beginning 12 September 2031 at 0600 local, the **Western Compact-Ordan Joint Land Corps attacks to seize and retain the designated Arven River crossings; passes the 6th Compact Mechanized Division through PP South; destroys Red forces sequentially at Kasar, Ruda, and Selin; and then establishes a defense in depth at the Arven crossings while guarding along Guard Line Steel in order to secure the elected Ordan government, prevent a Karsovian corridor to the Arven River, and preserve Ordan sovereignty.**
 
 ## 3. Execution
 
@@ -188,11 +188,11 @@ Phase transitions are conditions based. Estimated turn windows are planning aids
 
 #### (2) Phase I - Seize the Arven Crossings
 
-This phase begins at scenario start. The 3rd Compact Armored Division, the corps main effort, attacks from AA Axe along Axis Green. It seizes OBJ North and North Pass Bridge, OBJ Dalen and Central Link Bridge, and OBJ South and its crossing. The 31st Coalition Armored Brigade is the division main effort because seizure of OBJ South opens PP South for the 6th Division.
+This phase begins at scenario start. The 3rd Compact Armored Division, the corps main effort, attacks from AA Axe along Axis Green. It seizes North Pass Bridge, Dalen, and Central Link Bridge. The 31st Coalition Armored Brigade is the division main effort because seizure of Central Link Bridge opens PP South for the 6th Division.
 
 The 1st Ordan Mechanized Division attacks from AA Hammer along Axis White to secure Veyra and seize OBJ Novar and OBJ Eren. The 6th Division follows and supports the 3rd Division from AA Axe, preserves its combat power, and prepares for forward passage. The 7th Coalition Armored Brigade remains concentrated as corps reserve with initial priority to the 3rd Division.
 
-**Phase I ends** when Blue controls the designated crossing sites; OBJ South and PP South are trafficable and secure; the 3rd Division has established passage control; and the 6th Division is postured to pass.
+**Phase I ends** when Blue controls the designated crossing sites; Central Link Bridge and PP South are trafficable and secure; the 3rd Division has established passage control; and the 6th Division is postured to pass.
 
 #### (3) Phase II - Destroy Red Forces at Kasar
 
@@ -228,9 +228,9 @@ The division retains the 11th Ordan Mechanized Brigade as its mobile reserve aft
 
 #### (2) 3rd Compact Armored Division
 
-The 3rd Division is the corps main effort in Phase I. Attack from AA Axe along Axis Green to seize OBJ North and North Pass Bridge, OBJ Dalen and Central Link Bridge, and OBJ South and its crossing. Establish and control PP South, support the 6th Division's forward passage, and transfer responsibility east of the BHL in Phase II. Retain the assigned crossings for the remainder of the operation. In Phase V, establish the northern portion of the corps defense and prepare to receive or support withdrawing 6th Division forces.
+The 3rd Division is the corps main effort in Phase I. Attack from AA Axe along Axis Green to seize North Pass Bridge, Dalen, and Central Link Bridge. Establish and control PP South, support the 6th Division's forward passage, and transfer responsibility east of the BHL in Phase II. Retain the assigned crossings for the remainder of the operation. In Phase V, establish the northern portion of the corps defense and prepare to receive or support withdrawing 6th Division forces.
 
-The 3rd Division retains responsibility for OBJ South, the bridge, and the western approach after the 6th Division assumes responsibility east of the BHL. Its passage-support requirement ends only when the designated 6th Division rear element clears the passage and both division headquarters confirm completion.
+The 3rd Division retains responsibility for Central Link Bridge, the bridge, and the western approach after the 6th Division assumes responsibility east of the BHL. Its passage-support requirement ends only when the designated 6th Division rear element clears the passage and both division headquarters confirm completion.
 
 #### (3) 6th Compact Mechanized Division
 
@@ -244,7 +244,7 @@ Remain concentrated and uncommitted under corps control. Maintain current route,
 
 Be prepared to:
 
-- reinforce seizure or defense of OBJ South and PP South;
+- reinforce seizure or defense of Central Link Bridge and PP South;
 - counterattack a Red penetration threatening an Arven crossing or Veyra;
 - reinforce the 6th Division to complete destruction of the designated Red force;
 - secure a route required for the 6th Division's passage or withdrawal;
@@ -259,7 +259,7 @@ Division artillery groups remain in general support of their parent divisions. C
 
 #### Phase I
 
-- **3rd Division Artillery Group:** Priority among 3rd Division brigades is 31st, 33rd, then 32nd. Suppress crossing defenders, obscure exposed approaches, conduct counterfire, and protect seizure of OBJ South and PP South.
+- **3rd Division Artillery Group:** Priority among 3rd Division brigades is 31st, 33rd, then 32nd. Suppress crossing defenders, obscure exposed approaches, conduct counterfire, and protect seizure of Central Link Bridge and PP South.
 - **1st Ordan Artillery Group:** Priority is 13th, 12th, then 11th Brigade. Suppress defenders and protect seizure of Novar and Eren.
 - **6th Division Artillery Group:** Displace with the division and remain prepared to support the passage after coordination with 3rd Division Artillery.
 
@@ -301,7 +301,7 @@ Across all phases, priority of corps-controlled collection, counterfire coordina
 #### (2) 3rd Compact Armored Division
 
 - Execute B-C2, B-C3, B-C5, and B-C6 within the northern and central corps sectors.
-- Seize and retain OBJ North/North Pass Bridge, OBJ Dalen/Central Link Bridge, and OBJ South and its crossing.
+- Seize and retain North Pass Bridge, Dalen, and Central Link Bridge.
 - Establish, control, and protect PP South and the passage lane.
 - Transfer responsibility east of the BHL to the 6th Division under the passage conditions in paragraph 3.f.
 - Establish the northern portion of the Phase V corps defense.
@@ -347,7 +347,7 @@ Across all phases, priority of corps-controlled collection, counterfire coordina
 
 #### (1) Time and Phase Control
 
-- This order is effective on receipt. Operations begin 12 September 2030 at 0600 local.
+- This order is effective on receipt. Operations begin 12 September 2031 at 0600 local.
 - The corps commander retains phase-transition authority.
 - Conditions, not elapsed turns alone, govern phase transitions.
 - A subordinate commander may recommend transition at any time but continues the current essential task until the receiving formation confirms handover or the corps directs otherwise.
@@ -417,7 +417,7 @@ Preferred employment is a concentrated counterattack against an exposed Red forc
 
 #### (7) Decision Points
 
-- **DP 1 - Begin Phase II:** OBJ South and PP South secure; 6th Division postured to pass.
+- **DP 1 - Begin Phase II:** Central Link Bridge and PP South secure; 6th Division postured to pass.
 - **DP 2 - Commit Corps Reserve:** An essential crossing or Veyra is threatened, the 6th Division requires reinforcement to complete the decisive operation, or a Red force is fixed and vulnerable to concentrated counterattack.
 - **DP 3 - Begin Phase III:** Kasar force destroyed or combat ineffective; routes open; attack force postured toward Ruda.
 - **DP 4 - Begin Phase IV:** Ruda force destroyed or combat ineffective; rear security transferred; attack force postured toward Selin.
@@ -588,9 +588,9 @@ This annex synchronizes subordinate tasks, purposes, main-effort transitions, fi
 
 | Phase | 1st Ordan Mechanized Division | 3rd Compact Armored Division | 6th Compact Mechanized Division | 7th Coalition Armored Brigade | Fires and sustainment | End condition |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| **I - Seize the Arven crossings** | **Task:** Attack from AA Hammer along Axis White to secure Veyra and seize Novar and Eren.<br>**Purpose:** Secure the elected government and deny Red the central-southern crossings.<br>**Role:** Supporting effort. | **Task:** Attack from AA Axe along Axis Green to seize OBJ North/North Pass Bridge, OBJ Dalen/Central Link Bridge, and OBJ South and its crossing; establish PP South.<br>**Purpose:** Deny Red the northern and central crossings and open the passage for the 6th Division.<br>**Role:** **Corps main effort.** | **Task:** Follow and support the 3rd Division; prepare to pass at PP South.<br>**Purpose:** Preserve the corps exploitation force and posture it for the Kasar attack. | Remain uncommitted; priority to 3rd Division. Be prepared to reinforce OBJ South, counterattack a crossing penetration, or secure PP South. | Priority of fires and support to 3rd Division. 3rd Artillery suppresses crossing defenders and protects PP South; 1st Artillery supports Novar/Eren; 6th Artillery displaces with its division. | Crossings controlled; OBJ South and PP South trafficable and secure; passage control established; 6th Division ready to pass. |
+| **I - Seize the Arven crossings** | **Task:** Attack from AA Hammer along Axis White to secure Veyra and seize Novar and Eren.<br>**Purpose:** Secure the elected government and deny Red the central-southern crossings.<br>**Role:** Supporting effort. | **Task:** Attack from AA Axe along Axis Green to seize North Pass Bridge, Dalen, and Central Link Bridge; establish PP South.<br>**Purpose:** Deny Red the northern and central crossings and open the passage for the 6th Division.<br>**Role:** **Corps main effort.** | **Task:** Follow and support the 3rd Division; prepare to pass at PP South.<br>**Purpose:** Preserve the corps exploitation force and posture it for the Kasar attack. | Remain uncommitted; priority to 3rd Division. Be prepared to reinforce Central Link Bridge, counterattack a crossing penetration, or secure PP South. | Priority of fires and support to 3rd Division. 3rd Artillery suppresses crossing defenders and protects PP South; 1st Artillery supports Novar/Eren; 6th Artillery displaces with its division. | Crossings controlled; Central Link Bridge and PP South trafficable and secure; passage control established; 6th Division ready to pass. |
 | **II - Destroy Red forces at Kasar** | **Task:** Retain Veyra, Novar, and Eren.<br>**Purpose:** Secure the southern crossing sector and western lines of communication. | **Task:** Retain assigned crossings, control PP South, facilitate passage, and transfer responsibility east of the BHL.<br>**Purpose:** Preserve the crossing network and introduce the 6th Division without loss of momentum. | **Task:** Pass at PP South, accept battle handover, and attack along Axis Black to destroy Red forces at Kasar; remain north of PL Gold.<br>**Purpose:** Break the northern Red defense and posture for Ruda.<br>**Role:** **Corps main effort; 61st Brigade division main effort.** | Remain uncommitted; priority to 6th Division. Be prepared to reinforce the Kasar attack, secure PP South, or counterattack a Red penetration. | Priority to 6th Division and 61st Brigade. Protect passage, isolate Kasar, and conduct counterfire. Sustainment follows the passage movement table. | Kasar force destroyed or combat ineffective; routes open; 63rd Brigade provides temporary security; 61st and 62nd postured toward Ruda. |
-| **III - Destroy Red forces at Ruda** | **Task:** Retain Veyra, Novar, and Eren.<br>**Purpose:** Deny Red access west of the Arven and protect the southern flank. | **Task:** Retain OBJ North/North Pass Bridge, OBJ Dalen/Central Link Bridge, and OBJ South and its crossing.<br>**Purpose:** Preserve the crossing network and PP South. | **Task:** Attack along Axis Blue to destroy Red forces at Ruda; remain north of PL Silver.<br>**Purpose:** Defeat the central Red defense and posture for Selin.<br>**Role:** **Corps main effort; 62nd Brigade division main effort.** | Remain uncommitted; priority to 6th Division. Be prepared to exploit destruction of the Ruda force, counterattack toward Kasar, or reinforce PP South. | Priority to 6th Division and 62nd Brigade. Isolate Ruda, interdict reinforcement from Selin, displace artillery by echelon, and build support for Phase IV. | Ruda force destroyed or combat ineffective; rear secure; 61st ready to accept corridor security; 62nd and 63rd postured toward Selin. |
+| **III - Destroy Red forces at Ruda** | **Task:** Retain Veyra, Novar, and Eren.<br>**Purpose:** Deny Red access west of the Arven and protect the southern flank. | **Task:** Retain North Pass Bridge, Dalen, and Central Link Bridge.<br>**Purpose:** Preserve the crossing network and PP South. | **Task:** Attack along Axis Blue to destroy Red forces at Ruda; remain north of PL Silver.<br>**Purpose:** Defeat the central Red defense and posture for Selin.<br>**Role:** **Corps main effort; 62nd Brigade division main effort.** | Remain uncommitted; priority to 6th Division. Be prepared to exploit destruction of the Ruda force, counterattack toward Kasar, or reinforce PP South. | Priority to 6th Division and 62nd Brigade. Isolate Ruda, interdict reinforcement from Selin, displace artillery by echelon, and build support for Phase IV. | Ruda force destroyed or combat ineffective; rear secure; 61st ready to accept corridor security; 62nd and 63rd postured toward Selin. |
 | **IV - Destroy Red forces at Selin** | **Task:** Retain Veyra, Novar, and Eren.<br>**Purpose:** Preserve the southern crossing defense and western support base. | **Task:** Retain assigned crossings.<br>**Purpose:** Preserve the crossing network and support the 6th Division rear. | **Task:** Attack along Axis Brown to destroy Red forces at Selin while the 61st Brigade secures the Kasar-Ruda corridor.<br>**Purpose:** Defeat the eastern-southern Red defense and set conditions for the guard.<br>**Role:** **Corps main effort; 63rd Brigade division main effort.** | Remain uncommitted; priority to 6th Division. Be prepared to reinforce Selin, secure the corridor, or protect guard occupation. | Priority to 6th Division and 63rd Brigade. Isolate Selin, protect the attack's northern flank, preserve Phase V ammunition, and prepare withdrawal support. | Selin force destroyed or combat ineffective; 6th Division able to establish guard; GL Steel and PL Bronze effective; crossing defense prepared. |
 | **V - Guard and defend** | **Task:** Establish the southern crossing defense and receive withdrawing guard forces.<br>**Purpose:** Deny Red penetration west of the Arven and preserve Veyra. | **Task:** Establish the northern and central crossing defense and receive withdrawing guard forces.<br>**Purpose:** Deny Red penetration west of the Arven and preserve PP South. | **Task:** Guard along GL Steel with 63rd Brigade north of PL Bronze, 62nd Brigade south, and 61st Brigade in reserve.<br>**Purpose:** Detect, disrupt, and delay the counterattack while preserving freedom to disengage.<br>**Role:** **Corps main effort during guard establishment and conduct.** | Remain uncommitted near the crossing network. Be prepared to counterattack a penetration, reinforce a crossing sector, or cover guard withdrawal. | Initial fires priority 63rd, 62nd, 61st, shifting to the unit in contact or disengaging. Sustain withdrawal, artillery echeloning, battle handover, and restoration of a mobile reserve. | Guard provides warning and delay; fight transfers to crossing defense; crossings remain controlled; corps retains a mobile response. |
 
@@ -611,7 +611,7 @@ This annex synchronizes subordinate tasks, purposes, main-effort transitions, fi
 
 | Phase | Essential fire-support task | Purpose | Effect / measure |
 | --- | --- | --- | --- |
-| I | Suppress and obscure crossing defenses; conduct counterfire | Enable seizure of crossing sites and PP South | Main-effort brigade reaches and secures OBJ South with crossing trafficable |
+| I | Suppress and obscure crossing defenses; conduct counterfire | Enable seizure of crossing sites and PP South | Main-effort brigade reaches and secures Central Link Bridge with crossing trafficable |
 | II | Protect PP South and isolate Kasar | Preserve passage momentum and prevent reinforcement or withdrawal | Passage completes; Kasar defenders cannot mass against 61st Brigade |
 | III | Isolate Ruda and interdict reinforcement from Selin | Enable 62nd Brigade to destroy the Ruda force | Red cannot reinforce or withdraw organized combat power through the Ruda-Selin route |
 | IV | Isolate Selin and protect the northern flank | Enable 63rd Brigade to destroy the Selin force | Selin defenders are fixed and the attack is protected from a northern counterattack |

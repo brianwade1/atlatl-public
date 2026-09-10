@@ -6,13 +6,13 @@
 
 - **Issuing headquarters:** 1st Ordan Mechanized Division
 - **Place of issue:** Division Main Command Post, Veyra support area
-- **Date-time group:** 12 September 2030, 0600 local
+- **Date-time group:** 12 September 2031, 0600 local
 - **Time zone used throughout:** Local Ordan time
 - **Effective:** On receipt
 - **Scenario duration:** 18 turns / 9 days; 12 hours per turn
 - **Parent order:** WCO JLC OPORD B-00, OPERATION STEADFAST ACCORD
 - **Supported corps tasks:** B-C1, B-C2, B-C5, B-C6
-- **References:** B-00; `blue_master_synchronization_crosswalk.md`; `ordan_basin_scenario.md`; `ordan_basin_order_of_battle.md`; Ordan Basin Area of Operations map; approved Blue operational graphics
+- **References:** B-00; [Blue master synchronization crosswalk](blue_master_synchronization_crosswalk.md); [scenario specification](../../ordan_basin_scenario.md); [order of battle](../../game/order_of_battle.md); [Ordan Basin AO map](../../map/ordan_basin_ao.map.json); [Blue operational graphics](Blue_operational_graphics.pdf)
 
 ### Task Organization
 
@@ -32,7 +32,7 @@ The division exercises operational control over its three maneuver brigades. The
 
 The division area of interest extends from the Lestaran support routes west of Veyra east through Novar and Eren to Ruda and Selin. It includes the division boundary with the 3rd Compact Armored Division to the north, the 6th Compact Mechanized Division's eastern attack and Phase V guard sectors, and the Mora approaches to the south.
 
-The division must monitor Red movement from Ruda toward Novar, from Selin toward Eren, and through the southern approaches toward Veyra. Actions against the 3rd Division at OBJ Dalen or OBJ South may expose the division northern flank or congest the crossing network.
+The division must monitor Red movement from Ruda toward Novar, from Selin toward Eren, and through the southern approaches toward Veyra. Actions against the 3rd Division at Dalen or Central Link Bridge may expose the division northern flank or congest the crossing network.
 
 ### b. Area of Operations
 
@@ -82,7 +82,7 @@ The corps purpose is to deny Karsovia the position required to partition Orda or
 
 #### (2) Adjacent and Supporting Units
 
-- **3rd Compact Armored Division:** Corps main effort in Phase I. It seizes OBJ North, OBJ Dalen/Central Link Bridge, and OBJ South, controls PP South, and retains the northern and central crossing set.
+- **3rd Compact Armored Division:** Corps main effort in Phase I. It seizes North Pass Bridge, Dalen, and Central Link Bridge, controls PP South, and retains the northern and central crossing set.
 - **6th Compact Mechanized Division:** Follows and supports in Phase I and becomes the corps main effort in Phases II-V. It destroys Red forces at Kasar, Ruda, and Selin, then guards along Guard Line Steel.
 - **7th Coalition Armored Brigade:** Corps reserve. It may reinforce the division or counterattack a Red penetration on corps order.
 - **Ordan civil and security authorities:** Protect government facilities, assist movement control, and manage displaced civilians where conditions permit.
@@ -105,7 +105,7 @@ None. The 7th Coalition Armored Brigade remains under corps control unless a cor
 
 ## 2. Mission
 
-Beginning 12 September 2030 at 0600 local, the **1st Ordan Mechanized Division attacks from AA Hammer along Axis White to secure Veyra and seize Novar and Eren, then retains the capital and assigned Arven crossings and establishes the southern portion of the corps defense in order to preserve the elected government, deny Red penetration west of the Arven, and protect the corps southern flank.**
+Beginning 12 September 2031 at 0600 local, the **1st Ordan Mechanized Division attacks from AA Hammer along Axis White to secure Veyra and seize Novar and Eren, then retains the capital and assigned Arven crossings and establishes the southern portion of the corps defense in order to preserve the elected government, deny Red penetration west of the Arven, and protect the corps southern flank.**
 
 ## 3. Execution
 
@@ -223,7 +223,7 @@ Essential fire-support tasks are to suppress crossing defenders in Phase I; disr
 
 #### (1) Effective Time and Phase Control
 
-- This order is effective on receipt. Phase I begins 12 September 2030 at 0600 local.
+- This order is effective on receipt. Phase I begins 12 September 2031 at 0600 local.
 - Corps controls phase transitions. Brigades continue their essential tasks during transition until handover is confirmed.
 - The division commander may recommend transition and may adjust internal priorities without abandoning a corps task.
 
