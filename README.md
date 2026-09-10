@@ -67,7 +67,7 @@ The server runs one game and prints the final blue score. If you see a number pr
 - `server/` - simulation engine, game server, scenarios, AI registry, AI implementations, Gymnasium interface, training examples
 - `browser/` - browser GUI, map editor, unit placement tool, random scenario tool, replay viewer
 - `docs/` - repo guide, protocol notes, Gymnasium notes, order-of-battle (oob) examples
-- `scenarios/` - self-contained authored scenario packages, including their playable game files
+- [`scenarios/`](scenarios/README.md) - self-contained authored scenario packages, including their playable game files, background material, maps, orders of battle, and player orders
 
 ## Running the server
 
@@ -106,25 +106,27 @@ Useful options:
 - `--scenarioSeed` and `--scenarioCycle` control generated scenarios.
 - `--redNeuralNet` and `--blueNeuralNet` pass model files to neural AIs.
 
-## Common workflows
+## Scenarios
 
-### Packaged scenarios
+The [`scenarios/`](scenarios/README.md) folder contains complete, fictional operational settings for play, study, and modification. Unlike the smaller test scenarios and procedural generators under `server/`, each package brings together a playable `.scn` file, narrative background, maps, an order of battle, and side-specific operations orders and graphics.
 
-The two repository-packaged scenarios have stable aliases:
+Two authored scenarios are included:
+
+- **Defense of the Lydian Republic** - an outnumbered coalition corps defends four objectives against a Vostian field army.
+- **The Race for the Ordan Basin** - Western Compact and Karsovian forces compete for control of seven neutral cities.
+
+Launch either scenario from the repository root using its stable alias:
 
 ```bash
 python main.py lydian-republic
 python main.py ordan-basin
 ```
 
-They can also be launched by their paths from the repository root:
+With no AI options, both sides are human-controlled. Add `--redAI NAME` or `--blueAI NAME` to assign an AI to a side, and use `--nReps N` to choose the number of completed games.
 
-```bash
-python main.py scenarios/Lydian_Republic/game/defense_of_the_lydian_republic.scn
-python main.py scenarios/Ordan_Basin/game/race_for_the_ordan_basin.scn
-```
+The `.scn` files remain in their respective `game/` directories and do not need to be copied into `server/scenarios/`. See the [authored scenarios README](scenarios/README.md) for package contents, setup and play guidance, recommended reading by role, and instructions for editing or adding scenarios.
 
-In either form, add `--redAI`, `--blueAI`, or other normal options as needed. The `.scn` files remain in their respective `game/` directories.
+## Common workflows
 
 ### AI vs AI
 
