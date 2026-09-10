@@ -47,7 +47,8 @@ Preserve the road network, bridges, and essential infrastructure in Aradesh and 
 ### e. Assumptions
 
 - The 22nd Division fixes forces near Velin and the Maren Bridge sufficiently to protect the Phase II attack on Belas.
-- Exact brigade boundaries, routes, clearing limits, retain areas, and guard sectors not shown on the approved overlay remain `TBD—SCENARIO DESIGN`.
+- The approved operational graphics establish the division’s Aradesh–Belas sector, primary axes, objectives, phase lines, and southern Aradesh Plain–PL Jab guard sector. The 14th Armored Brigade owns the Aradesh attack and forward clearing task before assuming the guard; the 15th Armored Brigade clears south of Aradesh, seizes Belas, and retains it; the 23rd Mechanized Brigade isolates Aradesh and then retains it and its supporting route.
+- A brigade’s clearing limit is the depicted division boundary laterally and the current phase line in depth unless changed by authenticated order. Retain areas include the named objective, its immediate approaches, and the route connecting it to the division. The division commander selects exact legal assembly hexes and movement routes during setup and records them in the backbrief.
 - Phase windows are estimates; conditions and authenticated orders govern transitions.
 
 ## 2. Mission
@@ -187,7 +188,7 @@ Keep separate routes to Aradesh, Belas, and the guard sector where possible. Rec
 
 ### c. Atlatl Abstraction
 
-Sustainment, engineers, reconnaissance, air defense, aviation, EW/cyber, and medical functions are incorporated or adjudicated narratively and do not create additional counters unless implemented by scenario control.
+Sustainment, engineers, reconnaissance, air defense, aviation, EW/cyber, and medical functions are incorporated into parent formations and do not create additional counters or game effects in baseline play.
 
 ## 5. Command and Signal
 

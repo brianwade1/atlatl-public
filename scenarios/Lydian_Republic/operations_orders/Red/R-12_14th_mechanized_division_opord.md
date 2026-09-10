@@ -44,8 +44,9 @@ Preserve the Northwest Bridge and its road approaches when operationally practic
 
 ### e. Assumptions
 
-- The Northwest Bridge is usable unless scenario control confirms otherwise.
-- Exact brigade boundaries, routes, passage points, and guard sectors not shown on the approved overlay remain `TBD—SCENARIO DESIGN`.
+- The Northwest Bridge is usable unless its status changes through implemented Atlatl mechanics. Any optional bridge rule must be agreed before setup.
+- The approved operational graphics establish the division’s Drovna Heights–Northwest Bridge sector, primary axis, objective, phase lines, and northern PL Jab guard sector. The 21st Mechanized Brigade operates on the primary axis, seizes the bridge, and later guards; the 31st Infantry Brigade clears the supporting route and restrictive terrain, secures the bridge approaches, and then retains the crossing.
+- During setup, the division commander selects legal assembly hexes and routes within the depicted division sector. Exact passage points are selected and recorded before the affected movement; they must preserve mutual support, bridge access, the division seam, and an artillery displacement route.
 - Phase windows are estimates; conditions and authenticated orders govern transitions.
 
 ## 2. Mission
@@ -179,7 +180,7 @@ Restricted routes require movement control and rapid recovery of disabled vehicl
 
 ### c. Atlatl Abstraction
 
-Sustainment, engineers, reconnaissance, air defense, aviation, EW/cyber, and medical functions are incorporated or adjudicated narratively and do not create additional counters unless implemented by scenario control.
+Sustainment, engineers, reconnaissance, air defense, aviation, EW/cyber, and medical functions are incorporated into parent formations and do not create additional counters or game effects in baseline play.
 
 ## 5. Command and Signal
 

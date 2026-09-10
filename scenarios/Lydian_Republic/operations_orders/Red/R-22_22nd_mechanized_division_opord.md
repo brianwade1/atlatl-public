@@ -46,7 +46,8 @@ Preserve the Maren Bridge, Velin road network, and essential infrastructure when
 
 - The 24th Mechanized Brigade can perform corps-reserve duties without changing its organic relationship to the division.
 - If the corps commits the 24th Brigade before Phase IV, the corps will direct a replacement guard plan.
-- Exact brigade routes, fixing limits, objective boundaries, and guard sectors not shown on the approved overlay remain `TBD—SCENARIO DESIGN`.
+- The approved operational graphics establish the division’s Maren Lowlands–Velin sector, primary axis, objective, phase lines, and southern PL Jab guard sector. The 32nd Infantry Brigade advances on a firm route selected through the Maren Lowlands; its Phase II fixing area is limited to Velin, the Maren Bridge approaches, and enemy routes north within the depicted division sector. In Phase III it seizes Velin and its immediate approaches, then retains them. The 24th Mechanized Brigade remains corps reserve until released to guard the southern PL Jab sector in Phase IV.
+- The division commander selects exact legal assembly hexes and movement routes during setup and records them in the backbrief. Any order committing the 24th Mechanized Brigade before Phase IV supplies its route, objective or area, limit of advance, termination criteria, and follow-on posture.
 - Phase windows are estimates; conditions and authenticated orders govern transitions.
 
 ## 2. Mission
@@ -189,7 +190,7 @@ Control movement on restricted lowland routes and keep at least one route open t
 
 ### c. Atlatl Abstraction
 
-Sustainment, engineers, reconnaissance, air defense, aviation, EW/cyber, and medical functions are incorporated or adjudicated narratively and do not create additional counters unless implemented by scenario control.
+Sustainment, engineers, reconnaissance, air defense, aviation, EW/cyber, and medical functions are incorporated into parent formations and do not create additional counters or game effects in baseline play.
 
 ## 5. Command and Signal
 

@@ -55,7 +55,7 @@ All four begin under Blue control. The `cityScore` value of 60 is divided equall
 
 ## Runtime Use
 
-Place `defense_of_the_lydian_republic.scn` in `server/scenarios/`, or retain this folder as the authored source and copy the file there when deploying. The Atlatl launcher loads named `.scn` files from that directory.
+From the repository root, launch the scenario with `python main.py lydian-republic`. The stable alias loads `defense_of_the_lydian_republic.scn` from this directory, so the file does not need to be copied into `server/scenarios/`. An explicit path also works: `python main.py scenarios/Lydian_Republic/game/defense_of_the_lydian_republic.scn`.
 
 Use `browser/unit-placement.html` only if you want to change the default starting positions or author a variant. Load the complete scenario directly for normal play; the separate `oob.json` is not required once the `.scn` has been loaded.
 

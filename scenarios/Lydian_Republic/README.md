@@ -8,9 +8,19 @@ This directory contains the complete authored package for **Defense of the Lydia
 
 ## Quick Start
 
-1. Copy [`defense_of_the_lydian_republic.scn`](game/defense_of_the_lydian_republic.scn) into the repository's [`server/scenarios/`](../../server/scenarios/) directory.
-2. Launch Atlatl and load the named scenario.
-3. Blue repositions first, Red repositions second, and regular play begins with Blue.
+From the repository root, launch the scenario by its stable alias:
+
+```bash
+python main.py lydian-republic
+```
+
+The scenario can also be launched directly from its package path:
+
+```bash
+python main.py scenarios/Lydian_Republic/game/defense_of_the_lydian_republic.scn
+```
+
+The `.scn` file does not need to be copied into `server/scenarios/`. Blue repositions first, Red repositions second, and regular play begins with Blue.
 
 The `.scn` file contains everything required for normal play. The standalone map and order-of-battle files are authoring sources for editing and variant creation.
 

@@ -22,11 +22,13 @@ The group is represented by one aggregate artillery formation in Atlatl. Command
 
 The group supports operations across the Aradesh Plain, Maren Lowlands, Aradesh, Belas, Velin, the Maren Bridge approaches, and the 12th Corps portion of PL Jab. Open ground favors observation but exposes firing positions. Marsh and restricted roads in the Maren sector constrain displacement. As the corps advances, the Aradesh–Belas and Velin directions separate; the aggregate artillery formation cannot assume full simultaneous coverage of every objective, guard sector, and route.
 
-Exact firing positions, ranges, target-reference points, support areas, routes, and other map-dependent controls not shown on the approved overlay remain `TBD—SCENARIO DESIGN`.
+The Atlatl artillery counter has a maximum attack range of two hexes. Named support areas are broad maneuver areas rather than fixed hexes: the eastern Aradesh support area during Phase I; the Aradesh–Belas approach during Phase II; positions supporting the Velin approach and the southern Aradesh Plain guard during Phase III; and positions supporting the central and southern PL Jab guards during Phase IV.
+
+At setup and before each displacement, the Red player selects a legal firing hex and route that keep the current priority action within two hexes, remain inside the 12th Corps sector, preserve a feasible displacement route, and avoid blocking the Aradesh–Belas, Maren, reserve, bridge, or sustainment routes. Target-reference points are planning aids and create no separate engine effect.
 
 ### b. Weather and Light
 
-The R-20 forecast applies. Dry conditions through Turn 6 favor observation and displacement. Rain during Turns 7–12 increases dependence on firm roads, slows movement and resupply, and raises the risk of congestion between artillery, maneuver, reserve, and sustainment traffic. Fog can conceal displacement but delay target acquisition. Weather effects not native to Atlatl are narrative or consistently adjudicated.
+The R-20 forecast applies. Dry conditions through Turn 6 favor observation and displacement. Rain during Turns 7–12 increases dependence on firm roads, slows movement and resupply, and raises the risk of congestion between artillery, maneuver, reserve, and sustainment traffic. Fog can conceal displacement but delay target acquisition. Weather effects not native to Atlatl provide planning context only and cause no additional baseline game modifier.
 
 ### c. Enemy Forces
 
@@ -45,7 +47,7 @@ Preserve essential infrastructure and routes in Aradesh, Belas, Velin, and at th
 ### f. Assumptions
 
 - The group remains one aggregate counter and cannot provide full simultaneous support to separated Aradesh, Belas, Velin, and guard actions.
-- Range, target eligibility, movement, and combat effects follow Atlatl mechanics and agreed scenario adjudication.
+- Range, target eligibility, movement, and combat effects follow Atlatl mechanics; unmodeled effects have no baseline game effect.
 - The corps commander authenticates changes in priority of fires.
 - A phase transition does not by itself release the 24th Mechanized Brigade or change fires priority.
 
@@ -139,6 +141,7 @@ The corps commander directs priority shifts and resolves competition among Arade
 - Avoid unnecessary lateral movement between Belas and Velin directions during restricted weather.
 - Displace when the current position loses required range, route access, survivability, or ability to support the next directed action.
 - Report displacement start, estimated completion, coverage retained, and any support gap.
+- Detailed dispersion, local security, survey, and technical survivability measures remain internal to the aggregate counter; the player represents their operational effect through legal counter movement and positioning.
 
 ### e. Tasks to Organic Capabilities
 
@@ -164,8 +167,8 @@ The corps commander directs priority shifts and resolves competition among Arade
 - Do not promise full simultaneous support to separated Aradesh, Belas, Velin, guard, and reserve actions.
 - Maintain enough flexibility during Phase III to respond to the southern counterattack without unintentionally abandoning the Velin priority.
 - Confirm friendly locations before fires near seams, bridges, retains, handovers, populated areas, or uncertain front lines.
-- Do not assume effects beyond Atlatl mechanics or agreed adjudication.
-- Unresolved firing positions, routes, boundaries, ranges, and control measures remain `TBD—SCENARIO DESIGN`.
+- Do not assume effects beyond Atlatl mechanics. Any optional house rule or controller inject must be agreed before play.
+- The approved operational graphics govern depicted corps boundaries, objectives, phase lines, and guard sectors. Firing hexes and displacement routes remain player decisions under Paragraphs 1.a and 3.d; no additional fires control measure is required for baseline play.
 
 #### (3) CCIR
 
@@ -189,7 +192,7 @@ Coordinate artillery traffic with maneuver, reserve, bridge, and sustainment mov
 
 ### c. Atlatl Abstraction
 
-Detailed ammunition, survey, target acquisition, maintenance, recovery, air defense, local security, and medical functions remain incorporated in the artillery counter and are adjudicated narratively.
+Detailed ammunition, survey, target acquisition, maintenance, recovery, air defense, local security, and medical functions remain incorporated in the artillery counter. They provide planning context but create no additional baseline game action or modifier.
 
 ## 5. Command and Signal
 
@@ -201,7 +204,7 @@ The group remains under 12th Maneuver Corps control in general support. The corp
 
 ### b. Signal
 
-Primary communications use corps fires and command networks; alternate and contingency means remain `TBD—SCENARIO DESIGN`. Priority changes, reserve commitment, counterattack warnings, displacement, and support gaps have precedence. Under degraded communications, continue the last authenticated priority, do not infer a reserve release, commitment, or priority shift, and avoid fires near uncertain friendly locations.
+Primary communications use 12th Corps fires and command networks. Alternate means use supported-division networks and liaison, with field-army or adjacent-corps relay coordinated through corps headquarters. Contingency means use prearranged report schedules, unit relay, and messenger. Priority changes, reserve commitment, counterattack warnings, displacement, and support gaps have precedence. Under degraded communications, continue the last authenticated priority, do not infer a reserve release, commitment, or priority shift, and avoid fires near uncertain friendly locations.
 
 ## Acknowledgment
 

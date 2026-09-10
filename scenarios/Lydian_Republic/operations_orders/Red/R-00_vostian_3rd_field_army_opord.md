@@ -5,7 +5,7 @@
 > **FOR WARGAMING AND EDUCATIONAL USE ONLY — ENTIRELY FICTIONAL**
 
 - **Issuing headquarters:** Vostian 3rd Field Army
-- **Place of issue:** Field Army Main Command Post, eastern Vostian support area (`TBD—SCENARIO DESIGN`)
+- **Place of issue:** Field Army Main Command Post, off-map east of the Vostian border.
 - **Date-time group:** 18 May 2030, 0600 local
 - **Time zone:** Local Lydian time
 - **Effective:** On receipt
@@ -61,7 +61,7 @@ The area of interest also includes Lydian and RDC Coalition reserve assembly are
 - **Maren Lowlands:** Marshes and drainage features channel movement onto firm routes. This restricts maneuver but creates a southern route toward Velin and the coalition flank.
 - **Arel River belt:** Crossings near Kirov, Belas (`hex-5-7`), and Velin (`hex-5-11`) are decisive. A usable crossing provides access to central Lydia and prevents the coalition from using the river as an uninterrupted defensive barrier.
 - **Road network:** The field army’s tempo depends on controlling junctions, securing penetration shoulders, and preventing route conflicts between maneuver, artillery, and support counters.
-- Exact boundaries, axes, start hexes, crossing hexes, phase lines, and support areas remain `TBD—SCENARIO DESIGN` until confirmed on the final overlay.
+- Exact boundaries, axes, start hexes, crossing hexes, phase lines, and support areas are displayed in the operational overlay.
 
 #### (2) Weather and Light
 
@@ -80,7 +80,7 @@ Forecast issued 18 May 2030 at 0600 local. BMNT and EENT are nautical twilight.
 | 26 May | 17–18 | Warm; isolated afternoon thunderstorms | 25°C / 77°F | 12°C / 54°F | 40%; 2–10 mm / 0.10–0.40 in, locally higher | 0402 | 0528 | 2032 | 2157 |
 | 27 May | 19–20 | Early showers, then clearing | 21°C / 70°F | 11°C / 52°F | 30%; 1–3 mm / 0.04–0.12 in | 0400 | 0527 | 2033 | 2159 |
 
-Dry conditions through Turn 6 favor concentration and armored tempo. Rain during Turns 7–12 will increasingly channel heavy forces onto roads, slow artillery displacement and sustainment, and complicate exploitation through the Maren Lowlands and across bridge approaches. Turns 9–10 present the greatest risk of congestion and operational separation. The Drovna Heights may be 3–5°C (5–9°F) cooler with persistent fog. Turn 13 fog may conceal movement while delaying identification of coalition reserves. Turn 17 thunderstorms may create localized observation, communications, or route effects. Weather effects not native to Atlatl are narrative or consistently adjudicated; neither side receives an automatic modifier.
+Dry conditions through Turn 6 favor concentration and armored tempo. Rain during Turns 7–12 will increasingly channel heavy forces onto roads, slow artillery displacement and sustainment, and complicate exploitation through the Maren Lowlands and across bridge approaches. Turns 9–10 present the greatest risk of congestion and operational separation. The Drovna Heights may be 3–5°C (5–9°F) cooler with persistent fog. Turn 13 fog may conceal movement while delaying identification of coalition reserves. Turn 17 thunderstorms may create localized observation, communications, or route effects. Weather effects not native to Atlatl provide planning context only and cause no additional baseline game modifier.
 
 ### c. Enemy Forces
 
@@ -114,7 +114,7 @@ The strategic purpose is to convert Vostia’s temporary advantage in readiness 
 
 #### (2) Supporting Actors and Capabilities
 
-Separatist organizations may provide local information, route knowledge, and limited support to control of facilities, but they are not playable counters and do not replace Vostian formations. Long-range fires, reconnaissance, aviation, air defense, engineering, electronic warfare, cyber, logistics, and medical support are incorporated into parent formations or adjudicated by scenario control.
+Separatist organizations may provide local information, route knowledge, and limited support to control of facilities, but they are not playable counters and do not replace Vostian formations. Long-range fires, reconnaissance, aviation, air defense, engineering, electronic warfare, cyber, logistics, and medical support are incorporated into parent formations and do not create separate baseline actions or modifiers.
 
 No additional playable reserve or follow-on formation exists beyond the approved OOB. The field-army-directed reserve is created by designating the organic 12th Armored Brigade during Phase IV; no new counter is created.
 
@@ -132,7 +132,7 @@ None at scenario start. Cross-attachment between corps requires field-army direc
 - Kirov, Aradesh, and the Arel crossings remain under coalition/Lydian control and usable unless setup states otherwise.
 - Additional coalition forces do not arrive as playable counters during the immediate scenario unless introduced by event.
 - A corps may hold an organic brigade as its reserve without creating a new counter.
-- Bridge status changes only through implemented mechanics or scenario-control confirmation.
+- Bridge status changes only through implemented Atlatl mechanics. Any optional bridge rule must be agreed before setup.
 
 ## 2. Mission
 
@@ -367,7 +367,7 @@ Priority is the 12th Corps decisive formation, corps artillery, formations retai
 
 ### e. Medical and Casualty Evacuation
 
-Casualty evacuation moves east along secured lines of communication. When a route is cut, the affected corps establishes an alternate through its own or the adjacent corps area. Detailed medical functions are incorporated and adjudicated narratively.
+Casualty evacuation moves east along secured lines of communication. When a route is cut, the affected corps establishes an alternate through its own or the adjacent corps area. Detailed medical functions are incorporated into parent formations and provide planning context only in baseline play.
 
 ### f. Personnel, Detainees, and Civilians
 
@@ -375,7 +375,7 @@ Corps report displaced populations, detainee concentrations, or local-security d
 
 ### g. Atlatl Abstraction
 
-Headquarters, supply, medical, engineers, reconnaissance, air defense, aviation, airpower, cyber/EW, and detailed recovery are not separate counters. These functions guide priorities and scenario adjudication without creating additional game actions unless implemented by the scenario.
+Headquarters, supply, medical, engineers, reconnaissance, air defense, aviation, airpower, cyber/EW, and detailed recovery are not separate counters. These functions guide priorities but create no additional baseline game actions or modifiers.
 
 ## 5. Command and Signal
 
@@ -430,7 +430,7 @@ This annex synchronizes the tasks and purposes of the 7th and 12th Maneuver Corp
 - Each corps artillery group remains under parent-corps control in general support. Priorities of fires change by phase as directed in Paragraph 3.d.
 - The 12th Armored Brigade serves as the 7th Corps reserve during Phases I–III and transitions to field-army-directed reserve at the start of Phase IV or earlier on order.
 - The 24th Mechanized Brigade serves as the 12th Corps reserve during Phases I–III and is released to the 22nd Mechanized Division for the Phase IV guard.
-- Exact axes, boundaries, release points, passage lanes, support areas, and limits of advance not depicted on the approved overlay remain `TBD—SCENARIO DESIGN`.
+- The approved operational graphics establish the phase lines, objectives, corps and division sectors, primary axes, and guard sectors. Exact movement routes, reserve release points, passage lanes, and mission-specific limits of advance are assigned by the controlling headquarters during setup or in the applicable commitment order. PL Jab is the field army’s standing limit of advance unless changed by authenticated order.
 - Every corps reports immediately when it cannot perform its current matrix task or when a decision or phase-transition condition occurs.
 
 ## 3. Field Army Synchronization Matrix

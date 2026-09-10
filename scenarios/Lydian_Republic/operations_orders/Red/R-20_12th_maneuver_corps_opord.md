@@ -5,7 +5,7 @@
 > **FOR WARGAMING AND EDUCATIONAL USE ONLY — ENTIRELY FICTIONAL**
 
 - **Issuing headquarters:** 12th Maneuver Corps
-- **Place of issue:** Corps Main Command Post, central Vostian–Lydian support area (`TBD—SCENARIO DESIGN`)
+- **Place of issue:** 12th Maneuver Corps Main Command Post, off-map east of the Aradesh Plain.
 - **Date-time group:** 18 May 2030, 0600 local
 - **Time zone:** Local Lydian time
 - **Effective:** On receipt
@@ -48,11 +48,12 @@ The corps area of interest extends from the Vostian frontier west across the Ara
 - **Maren Lowlands:** Marsh and drainage features channel movement toward Velin and north into the Aradesh Plain. The lowlands are both an avenue for the corps supporting effort and the principal counterattack threat to the southern Aradesh Plain.
 - **Maren Bridge and Velin:** Coalition forces near the bridge and city can interfere with the attack on Belas. Velin (`hex-5-11`) is the corps Phase III objective and anchors the southern Phase IV guard.
 - **PL Punch, PL Hook, and PL Jab:** These phase lines control westward progression, objective handovers, artillery displacement, and transition to guard.
-- Exact division boundaries, axes, guard sectors, release points, and support areas not shown on the approved overlay remain `TBD—SCENARIO DESIGN`.
+- The approved operational graphics establish the division sectors, primary axes, objectives, phase lines, and guard sectors. The 18th Armored Division owns the Aradesh–Belas sector and the central guard against forces moving north from the Maren Lowlands. The 22nd Mechanized Division owns the Maren Lowlands–Velin sector and the southern PL Jab guard sector.
+- Each division selects exact movement routes and local support areas within its depicted sector during setup and records them in its backbrief. The 24th Mechanized Brigade has no standing release point; each commitment order assigns its assembly area, route, release point, objective or area, limit of advance, termination criteria, and return or follow-on posture.
 
 #### (2) Weather and Light
 
-The R-00 weather forecast applies. Dry conditions through Turn 6 favor the attack on Aradesh and clearing south of the city. Rain during Turns 7–12 channels heavy formations onto roads, slows artillery displacement, and increases congestion around Belas, the Maren Bridge, and Velin approaches. Fog may conceal movement but delay warning of a counterattack from the Maren Lowlands. Weather effects not native to Atlatl are narrative or consistently adjudicated.
+The R-00 weather forecast applies. Dry conditions through Turn 6 favor the attack on Aradesh and clearing south of the city. Rain during Turns 7–12 channels heavy formations onto roads, slows artillery displacement, and increases congestion around Belas, the Maren Bridge, and Velin approaches. Fog may conceal movement but delay warning of a counterattack from the Maren Lowlands. Weather effects not native to Atlatl provide planning context only and cause no additional baseline game modifier.
 
 ### c. Enemy Forces
 
@@ -78,7 +79,7 @@ The Vostian 3rd Field Army attacks west to seize Aradesh, Kirov, OBJ Bridge, Bel
 
 - **7th Maneuver Corps:** Supporting effort north of the seam. It develops and fixes northern forces, seizes Kirov and the Northwest Bridge, and prevents interference with this corps.
 - **12th Corps Artillery Group:** General support to the corps with phase-specific priorities in Paragraph 3.d.
-- Other reconnaissance, aviation, engineering, air defense, EW/cyber, sustainment, and medical capabilities are incorporated into parent formations or adjudicated narratively.
+- Other reconnaissance, aviation, engineering, air defense, EW/cyber, sustainment, and medical capabilities are incorporated into parent formations and provide planning context only in baseline play.
 
 ### e. Civil Considerations
 
@@ -93,7 +94,7 @@ None at scenario start. Cross-attachment with the 7th Corps requires field army 
 - Aradesh, Belas, Velin, the Maren Bridge, and approaches to PL Jab begin under Lydian or RDC Coalition control.
 - The 7th Corps maintains enough northern pressure to prevent major reinforcement into this sector.
 - The 24th Mechanized Brigade can serve as corps reserve during Phases I–III without changing its organic relationship.
-- Bridge status changes only through implemented mechanics or scenario-control confirmation.
+- Bridge status changes only through implemented Atlatl mechanics. Any optional bridge rule must be agreed before setup.
 
 ## 2. Mission
 
@@ -278,7 +279,7 @@ Recovery priority is the phase main effort, artillery, retained objectives, guar
 
 ### d. Atlatl Abstraction
 
-Sustainment, engineers, reconnaissance, air defense, aviation, EW/cyber, and medical functions are incorporated or adjudicated narratively and do not create additional counters unless implemented by scenario control.
+Sustainment, engineers, reconnaissance, air defense, aviation, EW/cyber, and medical functions are incorporated into parent formations and do not create additional counters or game effects in baseline play.
 
 ## 5. Command and Signal
 

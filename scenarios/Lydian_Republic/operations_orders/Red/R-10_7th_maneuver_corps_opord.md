@@ -5,7 +5,7 @@
 > **FOR WARGAMING AND EDUCATIONAL USE ONLY — ENTIRELY FICTIONAL**
 
 - **Issuing headquarters:** 7th Maneuver Corps
-- **Place of issue:** Corps Main Command Post, northern Vostian–Lydian support area (`TBD—SCENARIO DESIGN`)
+- **Place of issue:** 7th Maneuver Corps Main Command Post, off-map northeast of the Drovna Heights.
 - **Date-time group:** 18 May 2030, 0600 local
 - **Time zone:** Local Lydian time
 - **Effective:** On receipt
@@ -48,11 +48,12 @@ The corps area of interest extends from the Vostian frontier west through the no
 - **Northwest Bridge:** The bridge north of Kirov is OBJ Bridge. It controls a northern crossing and route needed to secure the corps flank and retain freedom of movement.
 - **PL Punch, PL Hook, and PL Jab:** These phase lines control the corps’ westward progression and transition from movement to contact to objective attacks and guard.
 - **Corps seam:** The southern boundary with the 12th Corps must remain covered to prevent coalition forces from moving between corps or striking the main effort’s northern flank.
-- Exact division boundaries, axes, guard sectors, release points, and support areas not shown on the approved overlay remain `TBD—SCENARIO DESIGN`.
+- The approved operational graphics establish the division sectors, primary axes, objectives, phase lines, and Phase IV guard sectors. The 14th Mechanized Division owns the northern Drovna Heights–Northwest Bridge sector and the northern PL Jab guard sector. The 11th Armored Division owns the Kirov–northern Aradesh Plain sector, the southern division seam, and the remainder of the corps PL Jab guard sector.
+- Each division selects exact movement routes and local support areas within its depicted sector during setup and records them in its backbrief. The 12th Armored Brigade has no standing release point; each commitment order assigns its assembly area, route, release point, objective or area, limit of advance, termination criteria, and return or follow-on posture.
 
 #### (2) Weather and Light
 
-The R-00 weather forecast applies. Dry conditions through Turn 6 favor the opening movement to contact and armored clearing operations. Rain during Turns 7–12 increases reliance on roads and junctions, slows artillery displacement, and restricts maneuver in the Drovna Heights. Fog may conceal movement but can delay identification of counterattacking forces. Weather effects not native to Atlatl are narrative or consistently adjudicated.
+The R-00 weather forecast applies. Dry conditions through Turn 6 favor the opening movement to contact and armored clearing operations. Rain during Turns 7–12 increases reliance on roads and junctions, slows artillery displacement, and restricts maneuver in the Drovna Heights. Fog may conceal movement but can delay identification of counterattacking forces. Weather effects not native to Atlatl provide planning context only and cause no additional baseline game modifier.
 
 ### c. Enemy Forces
 
@@ -78,7 +79,7 @@ The Vostian 3rd Field Army attacks west to seize Aradesh, Kirov, OBJ Bridge, Bel
 
 - **12th Maneuver Corps:** Field army main effort south of the corps seam. It seizes Aradesh, Belas, and Velin. The corps prevents northern coalition forces from interfering with those attacks.
 - **7th Corps Artillery Group:** General support to the corps with phase-specific priorities established in Paragraph 3.d.
-- Other reconnaissance, aviation, engineering, air defense, EW/cyber, sustainment, and medical capabilities are incorporated into parent formations or adjudicated narratively.
+- Other reconnaissance, aviation, engineering, air defense, EW/cyber, sustainment, and medical capabilities are incorporated into parent formations and provide planning context only in baseline play.
 
 ### e. Civil Considerations
 
@@ -93,7 +94,7 @@ None at scenario start. Cross-attachment with the 12th Corps requires field army
 - Kirov, OBJ Bridge, and the approaches to PL Jab begin under Lydian or RDC Coalition control.
 - The 12th Corps maintains sufficient pressure to prevent major coalition reinforcement of this sector.
 - The 12th Armored Brigade can serve as corps and later field-army-directed reserve without creating another counter or changing its organic relationship.
-- Bridge status changes only through implemented mechanics or scenario-control confirmation.
+- Bridge status changes only through implemented Atlatl mechanics. Any optional bridge rule must be agreed before setup.
 
 ## 2. Mission
 
@@ -269,7 +270,7 @@ Recovery priority is the main-effort division, artillery, retained objectives, a
 
 ### d. Atlatl Abstraction
 
-Sustainment, engineers, reconnaissance, air defense, aviation, EW/cyber, and medical functions are incorporated or adjudicated narratively and do not create additional counters unless implemented by scenario control.
+Sustainment, engineers, reconnaissance, air defense, aviation, EW/cyber, and medical functions are incorporated into parent formations and do not create additional counters or game effects in baseline play.
 
 ## 5. Command and Signal
 

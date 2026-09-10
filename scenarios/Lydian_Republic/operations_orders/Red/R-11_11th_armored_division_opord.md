@@ -47,7 +47,8 @@ Preserve Kirov’s road network and essential infrastructure when consistent wit
 ### e. Assumptions
 
 - The 12th Armored Brigade can perform corps- and field-army-directed reserve duties without changing its organic relationship.
-- Exact brigade boundaries, routes, assembly areas, and guard sectors not shown on the approved overlay remain `TBD—SCENARIO DESIGN`.
+- The approved operational graphics establish the division sector, primary axis toward Kirov, phase lines, objective, and Phase IV guard sector. The 11th Armored Brigade operates on the primary axis and later guards the forward sector; the 13th Mechanized Brigade clears the supporting sector and southern seam before retaining Kirov; the 12th Armored Brigade remains available for higher-headquarters reserve duties.
+- During setup, the division commander selects legal assembly hexes and movement routes within the depicted division sector and records them in the backbrief. Any reserve commitment order supplies the exact route, release point, objective or area, limit of advance, and return or follow-on posture.
 - Phase windows are estimates; conditions and authenticated orders govern transitions.
 
 ## 2. Mission
@@ -187,7 +188,7 @@ Keep primary and alternate routes through Kirov open. Recovery priority follows 
 
 ### c. Atlatl Abstraction
 
-Sustainment, engineers, reconnaissance, air defense, aviation, EW/cyber, and medical functions are incorporated or adjudicated narratively and do not create additional counters unless implemented by scenario control.
+Sustainment, engineers, reconnaissance, air defense, aviation, EW/cyber, and medical functions are incorporated into parent formations and do not create additional counters or game effects in baseline play.
 
 ## 5. Command and Signal
 
