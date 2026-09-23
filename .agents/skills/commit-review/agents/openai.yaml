@@ -1,0 +1,4 @@
+interface:
+  display_name: "Commit Review"
+  short_description: "Recommend commit files and a message without committing"
+  default_prompt: "Use $commit-review to review pending changes, recommend files to include, and draft a Conventional Commits 1.0.0 message. Leave staging and committing to me."
