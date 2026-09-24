@@ -1,13 +1,14 @@
+from pathlib import Path
+
 from portabletorch import PortableTorch
-import torch
 import model
 
-# Create torch model and save file
+# Create torch model
 m = model.Model()
-torch.save(m.state_dict(),"model.pt")
 # Add extra data. Read model.py to get shape info.
-dirname = "mymodel"
-model_path = "model.py"
+demo_dir = Path(__file__).resolve().parent
+dirname = str(demo_dir / "models" / "simple")
+model_path = str(demo_dir / "model.py")
 input_shape = (2)
 output_shape = (1)
 # Create portable torch model
@@ -23,7 +24,7 @@ p = PortableTorch(
     comment="Simplest example. No extra files (dependencies) or arguments to the model constructor of either type (args nor kwargs)."
 )
 # Save to directory
-p.save("mymodel")
+p.save(dirname)
 # Test
 p.print()
 p.test()

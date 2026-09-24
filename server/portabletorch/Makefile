@@ -1,12 +1,14 @@
-simple_test: simple_copy test
-cnn_test: cnn_copy test
-simple_copy:
-	cp simple_test.py create_test.py
-cnn_copy:
-	cp cnn_test.py create_test.py
-test :
-	python create_test.py
-	mv mymodel testdir
-	cd testdir; python read_test.py;
-clean : 
-	rm -rf __pycache__ mymodel model.pt testdir/mymodel testdir/__pycache__ create_test.py
+PYTHON ?= uv run python
+
+.PHONY: simple_test cnn_test clean
+
+simple_test:
+	$(PYTHON) simple_demo.py
+	$(PYTHON) testdir/read_demo.py simple
+
+cnn_test:
+	$(PYTHON) cnn_demo.py
+	$(PYTHON) testdir/read_demo.py cnn
+
+clean:
+	rm -rf __pycache__ models testdir/__pycache__

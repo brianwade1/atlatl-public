@@ -73,6 +73,7 @@ ppo_save.zip
 dataset.pt
 solution.pkl
 mymodel/
+/server/portabletorch/models/
 
 # Generated replay outputs
 /server/replay*.js

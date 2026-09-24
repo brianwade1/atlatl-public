@@ -1,16 +1,14 @@
+from pathlib import Path
+
 from portabletorch import PortableTorch
-import torch
-#import model
 import cnn
 
-# Create torch model and save file
-#m = model.Model()
+# Create torch model
 m = cnn.CNN(15)
-torch.save(m.state_dict(),"model.pt")
-# Add extra data. Read model.py to get shape info.
-dirname = "mymodel"
-#model_path = "model.py"
-model_path = "cnn.py"
+# Add extra data. Read cnn.py to get shape info.
+demo_dir = Path(__file__).resolve().parent
+dirname = str(demo_dir / "models" / "cnn")
+model_path = str(demo_dir / "cnn.py")
 #input_shape = (2)
 input_shape = (1,15,5,5)
 output_shape = (1)
@@ -29,7 +27,7 @@ p = PortableTorch(
     #comment="Simplest example. No extra files (dependencies) or arguments to the model constructor of either type (args nor kwargs).")
     comment="Convolutional example with one positional argument in constructor")
 # Save to directory
-p.save("mymodel")
+p.save(dirname)
 # Test
 p.print()
 p.test()
