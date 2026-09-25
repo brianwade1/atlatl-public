@@ -6,13 +6,24 @@ import subprocess
 import sys
 
 import pytest
+from pytest_playwright import pytest_playwright as playwright_plugin
 
 from tests.support.imports import REPO_ROOT, TESTS_DIR, server_imports
 from tests.support.isolation import content_manifest, manifest_changes
+from tests.support import builders
+from tests.support.isolation import isolated_rng, finite_random, preserve_globals
 
 
 _MANIFEST = pytest.StashKey[dict]()
 _GIT_DIFF = pytest.StashKey[bytes]()
+
+# The synchronous driver's loop remains running until playwright.stop().
+# Scope the plugin dependency chain per test so pytest-asyncio can run in any
+# collection order. Reuse plugin bodies/options/artifact handling unchanged.
+for _fixture_name in ("playwright", "browser_type", "launch_browser", "browser",
+                      "browser_context_args"):
+    globals()[_fixture_name] = pytest.fixture(scope="function")(
+        getattr(playwright_plugin, _fixture_name).__wrapped__)
 
 
 def protected_git_diff():
@@ -78,3 +89,124 @@ def http_base_url():
 
     with serve_test_files() as url:
         yield url
+
+
+@pytest.fixture
+def make_map():
+    return builders.make_map
+
+
+@pytest.fixture
+def make_unit():
+    return builders.make_unit
+
+
+@pytest.fixture
+def make_scenario():
+    return builders.make_scenario
+
+
+@pytest.fixture
+def make_state():
+    return builders.make_state
+
+
+FIXTURE_FILES = {
+    "hex_geometry": "maps/hex_geometry.json",
+    "movement_corridors": "scenarios/movement_corridors.json",
+    "combat_duel": "scenarios/combat_duel.json",
+    "setup_exchange": "scenarios/setup_exchange.json",
+    "city_scoring": "scenarios/city_scoring.json",
+    "fog_sequence": "observations/fog_sequence.json",
+    "rectangular_features": "observations/rectangular_features.json",
+    "tiny_episode": "scenarios/tiny_episode.json",
+    "hierarchy_units": "scenarios/hierarchy_units.json",
+    "protocol_messages": "protocol/protocol_messages.json",
+    "replay_sequences": "replay/replay_sequences.json",
+}
+
+
+def _json_fixture(path):
+    @pytest.fixture
+    def fixture():
+        return builders.load_fixture(path)
+    return fixture
+
+
+for _name, _path in FIXTURE_FILES.items():
+    globals()[_name] = _json_fixture(_path)
+
+
+@pytest.fixture
+def rng():
+    with isolated_rng():
+        yield
+
+
+@pytest.fixture
+def detection_draws(engine_imports, monkeypatch):
+    from tests.support.imports import import_server
+
+    def install(values):
+        monkeypatch.setattr(import_server("unit"), "random", finite_random(values))
+    return install
+
+
+@pytest.fixture
+def global_guard():
+    """Register additional globals/AI counters before changing them."""
+    from contextlib import ExitStack
+
+    with ExitStack() as stack:
+        def guard(*attributes):
+            stack.enter_context(preserve_globals(*attributes))
+        yield guard
+
+
+@pytest.fixture
+def engine_globals(engine_imports, global_guard, monkeypatch):
+    from tests.support.imports import import_server
+
+    monkeypatch.setenv("ATLATL_NEURAL", "0")
+    modules = {name: import_server(name) for name in (
+        "mobility", "combat", "airegistry", "scenario_gen_reg",
+        "current_game_access", "messageserver")}
+    attributes = [(modules["mobility"], "cost"), (modules["mobility"], "stackingLimit")]
+    attributes += [(modules["combat"], name) for name in (
+        "range", "sight", "pDetect", "ineffectiveThreshold", "firepower_scaling",
+        "firepower", "defensivefp", "terrain_multiplier")]
+    attributes += [(modules["airegistry"], "ai_registry"),
+                   (modules["scenario_gen_reg"], "scenario_generator_registry"),
+                   (modules["current_game_access"], "server"),
+                   (modules["messageserver"], "SLEEP_TIME"),
+                   (modules["messageserver"].ClientWrapper, "next_id")]
+    # These light AI modules are already imported by the registry.
+    for name in ("ai.gym_ai_surrogate", "ai.multigym_ai"):
+        attributes.append((sys.modules[name], "action_count"))
+    # Optional modules stay opt-in. Preserve them if the consumer loaded them.
+    for name in ("ai.neural", "ai.azero"):
+        if name in sys.modules:
+            attributes.append((sys.modules[name], "action_count"))
+    server_module = sys.modules.get("server")
+    if server_module is not None and getattr(server_module, "__file__", None) == str(REPO_ROOT / "server/server.py"):
+        attributes.extend((server_module, name) for name in ("server", "gym_ai"))
+    global_guard(*attributes)
+    return modules
+
+
+@pytest.fixture
+def model_and_numeric_data(tmp_path):
+    import numpy as np
+
+    data = builders.load_fixture("models/numeric.json")
+    archive = tmp_path / "tiny.npz"
+    try:
+        np.savez(archive, matrix=np.array(data["matrix"], dtype=np.float32),
+                 results=np.array([[1., 3.], [2., 4.]], dtype=np.float32),
+                 timesteps=np.array([10, 20], dtype=np.int64))
+        data["archive"] = archive
+        data["data_file"] = TESTS_DIR / "fixtures/models/sample.data"
+        data["model_source"] = TESTS_DIR / "fixtures/models/tiny_cpu.py"
+        yield data
+    finally:
+        archive.unlink(missing_ok=True)

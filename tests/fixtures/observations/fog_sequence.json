@@ -1,0 +1,835 @@
+{
+  "note": "Sight radius 2, pDetect=1. Removed enemy remains represented with ineffective=true and null ground-truth hex; unseen opponents use fog. Removed red cannot detect blue.",
+  "scenario": {
+    "map": {
+      "hexes": [
+        {
+          "x_offset": 0,
+          "y_offset": 0,
+          "x_grid": 2,
+          "y_grid": 2,
+          "terrain": "clear",
+          "setup": null,
+          "edges": [
+            "edge-1-1-3-1",
+            "edge-3-1-4-2",
+            "edge-4-2-3-3",
+            "edge-3-3-1-3",
+            "edge-1-3-0-2",
+            "edge-0-2-1-1"
+          ]
+        },
+        {
+          "x_offset": 0,
+          "y_offset": 1,
+          "x_grid": 2,
+          "y_grid": 4,
+          "terrain": "clear",
+          "setup": null,
+          "edges": [
+            "edge-3-3-1-3",
+            "edge-3-3-4-4",
+            "edge-4-4-3-5",
+            "edge-3-5-1-5",
+            "edge-1-5-0-4",
+            "edge-0-4-1-3"
+          ]
+        },
+        {
+          "x_offset": 0,
+          "y_offset": 2,
+          "x_grid": 2,
+          "y_grid": 6,
+          "terrain": "clear",
+          "setup": null,
+          "edges": [
+            "edge-3-5-1-5",
+            "edge-3-5-4-6",
+            "edge-4-6-3-7",
+            "edge-3-7-1-7",
+            "edge-1-7-0-6",
+            "edge-0-6-1-5"
+          ]
+        },
+        {
+          "x_offset": 0,
+          "y_offset": 3,
+          "x_grid": 2,
+          "y_grid": 8,
+          "terrain": "clear",
+          "setup": null,
+          "edges": [
+            "edge-3-7-1-7",
+            "edge-3-7-4-8",
+            "edge-4-8-3-9",
+            "edge-3-9-1-9",
+            "edge-1-9-0-8",
+            "edge-0-8-1-7"
+          ]
+        },
+        {
+          "x_offset": 0,
+          "y_offset": 4,
+          "x_grid": 2,
+          "y_grid": 10,
+          "terrain": "clear",
+          "setup": null,
+          "edges": [
+            "edge-3-9-1-9",
+            "edge-3-9-4-10",
+            "edge-4-10-3-11",
+            "edge-3-11-1-11",
+            "edge-1-11-0-10",
+            "edge-0-10-1-9"
+          ]
+        }
+      ],
+      "edges": [
+        {
+          "id": "edge-1-1-3-1",
+          "xa_grid": 1,
+          "ya_grid": 1,
+          "xb_grid": 3,
+          "yb_grid": 1,
+          "type": "normal"
+        },
+        {
+          "id": "edge-3-1-4-2",
+          "xa_grid": 3,
+          "ya_grid": 1,
+          "xb_grid": 4,
+          "yb_grid": 2,
+          "type": "normal"
+        },
+        {
+          "id": "edge-4-2-3-3",
+          "xa_grid": 4,
+          "ya_grid": 2,
+          "xb_grid": 3,
+          "yb_grid": 3,
+          "type": "normal"
+        },
+        {
+          "id": "edge-3-3-1-3",
+          "xa_grid": 3,
+          "ya_grid": 3,
+          "xb_grid": 1,
+          "yb_grid": 3,
+          "type": "normal"
+        },
+        {
+          "id": "edge-1-3-0-2",
+          "xa_grid": 1,
+          "ya_grid": 3,
+          "xb_grid": 0,
+          "yb_grid": 2,
+          "type": "normal"
+        },
+        {
+          "id": "edge-0-2-1-1",
+          "xa_grid": 0,
+          "ya_grid": 2,
+          "xb_grid": 1,
+          "yb_grid": 1,
+          "type": "normal"
+        },
+        {
+          "id": "edge-3-3-4-4",
+          "xa_grid": 3,
+          "ya_grid": 3,
+          "xb_grid": 4,
+          "yb_grid": 4,
+          "type": "normal"
+        },
+        {
+          "id": "edge-4-4-3-5",
+          "xa_grid": 4,
+          "ya_grid": 4,
+          "xb_grid": 3,
+          "yb_grid": 5,
+          "type": "normal"
+        },
+        {
+          "id": "edge-3-5-1-5",
+          "xa_grid": 3,
+          "ya_grid": 5,
+          "xb_grid": 1,
+          "yb_grid": 5,
+          "type": "normal"
+        },
+        {
+          "id": "edge-1-5-0-4",
+          "xa_grid": 1,
+          "ya_grid": 5,
+          "xb_grid": 0,
+          "yb_grid": 4,
+          "type": "normal"
+        },
+        {
+          "id": "edge-0-4-1-3",
+          "xa_grid": 0,
+          "ya_grid": 4,
+          "xb_grid": 1,
+          "yb_grid": 3,
+          "type": "normal"
+        },
+        {
+          "id": "edge-3-5-4-6",
+          "xa_grid": 3,
+          "ya_grid": 5,
+          "xb_grid": 4,
+          "yb_grid": 6,
+          "type": "normal"
+        },
+        {
+          "id": "edge-4-6-3-7",
+          "xa_grid": 4,
+          "ya_grid": 6,
+          "xb_grid": 3,
+          "yb_grid": 7,
+          "type": "normal"
+        },
+        {
+          "id": "edge-3-7-1-7",
+          "xa_grid": 3,
+          "ya_grid": 7,
+          "xb_grid": 1,
+          "yb_grid": 7,
+          "type": "normal"
+        },
+        {
+          "id": "edge-1-7-0-6",
+          "xa_grid": 1,
+          "ya_grid": 7,
+          "xb_grid": 0,
+          "yb_grid": 6,
+          "type": "normal"
+        },
+        {
+          "id": "edge-0-6-1-5",
+          "xa_grid": 0,
+          "ya_grid": 6,
+          "xb_grid": 1,
+          "yb_grid": 5,
+          "type": "normal"
+        },
+        {
+          "id": "edge-3-7-4-8",
+          "xa_grid": 3,
+          "ya_grid": 7,
+          "xb_grid": 4,
+          "yb_grid": 8,
+          "type": "normal"
+        },
+        {
+          "id": "edge-4-8-3-9",
+          "xa_grid": 4,
+          "ya_grid": 8,
+          "xb_grid": 3,
+          "yb_grid": 9,
+          "type": "normal"
+        },
+        {
+          "id": "edge-3-9-1-9",
+          "xa_grid": 3,
+          "ya_grid": 9,
+          "xb_grid": 1,
+          "yb_grid": 9,
+          "type": "normal"
+        },
+        {
+          "id": "edge-1-9-0-8",
+          "xa_grid": 1,
+          "ya_grid": 9,
+          "xb_grid": 0,
+          "yb_grid": 8,
+          "type": "normal"
+        },
+        {
+          "id": "edge-0-8-1-7",
+          "xa_grid": 0,
+          "ya_grid": 8,
+          "xb_grid": 1,
+          "yb_grid": 7,
+          "type": "normal"
+        },
+        {
+          "id": "edge-3-9-4-10",
+          "xa_grid": 3,
+          "ya_grid": 9,
+          "xb_grid": 4,
+          "yb_grid": 10,
+          "type": "normal"
+        },
+        {
+          "id": "edge-4-10-3-11",
+          "xa_grid": 4,
+          "ya_grid": 10,
+          "xb_grid": 3,
+          "yb_grid": 11,
+          "type": "normal"
+        },
+        {
+          "id": "edge-3-11-1-11",
+          "xa_grid": 3,
+          "ya_grid": 11,
+          "xb_grid": 1,
+          "yb_grid": 11,
+          "type": "normal"
+        },
+        {
+          "id": "edge-1-11-0-10",
+          "xa_grid": 1,
+          "ya_grid": 11,
+          "xb_grid": 0,
+          "yb_grid": 10,
+          "type": "normal"
+        },
+        {
+          "id": "edge-0-10-1-9",
+          "xa_grid": 0,
+          "ya_grid": 10,
+          "xb_grid": 1,
+          "yb_grid": 9,
+          "type": "normal"
+        }
+      ],
+      "paths": [],
+      "fogOfWar": true
+    },
+    "units": [
+      {
+        "longName": "A",
+        "faction": "blue",
+        "type": "infantry",
+        "currentStrength": 100,
+        "hex": "hex-0-0",
+        "canMove": true,
+        "ineffective": false,
+        "detected": false
+      },
+      {
+        "longName": "A",
+        "faction": "red",
+        "type": "infantry",
+        "currentStrength": 100,
+        "hex": "hex-0-4",
+        "canMove": false,
+        "ineffective": false,
+        "detected": false
+      }
+    ],
+    "score": {
+      "maxPhases": 4,
+      "cityScore": 0,
+      "lossPenalty": -2
+    }
+  },
+  "frames": [
+    {
+      "name": "before",
+      "truth": {
+        "units": [
+          {
+            "longName": "A",
+            "faction": "blue",
+            "type": "infantry",
+            "currentStrength": 100,
+            "hex": "hex-0-0",
+            "canMove": true,
+            "ineffective": false,
+            "detected": false
+          },
+          {
+            "longName": "A",
+            "faction": "red",
+            "type": "infantry",
+            "currentStrength": 100,
+            "hex": "hex-0-4",
+            "canMove": false,
+            "ineffective": false,
+            "detected": false
+          }
+        ],
+        "status": {
+          "onMove": "blue",
+          "phaseCount": 0,
+          "score": 0,
+          "cityOwner": {},
+          "setupMode": false,
+          "isTerminal": false
+        }
+      },
+      "observations": {
+        "blue": {
+          "units": [
+            {
+              "longName": "A",
+              "faction": "blue",
+              "type": "infantry",
+              "currentStrength": 100,
+              "hex": "hex-0-0",
+              "canMove": true,
+              "ineffective": false,
+              "detected": false
+            },
+            {
+              "longName": "A",
+              "faction": "red",
+              "type": "infantry",
+              "currentStrength": 100,
+              "hex": "fog",
+              "canMove": false,
+              "ineffective": false,
+              "detected": false
+            }
+          ],
+          "status": {
+            "onMove": "blue",
+            "phaseCount": 0,
+            "score": 0,
+            "cityOwner": {},
+            "setupMode": false,
+            "isTerminal": false
+          }
+        },
+        "red": {
+          "units": [
+            {
+              "longName": "A",
+              "faction": "blue",
+              "type": "infantry",
+              "currentStrength": 100,
+              "hex": "fog",
+              "canMove": true,
+              "ineffective": false,
+              "detected": false
+            },
+            {
+              "longName": "A",
+              "faction": "red",
+              "type": "infantry",
+              "currentStrength": 100,
+              "hex": "hex-0-4",
+              "canMove": false,
+              "ineffective": false,
+              "detected": false
+            }
+          ],
+          "status": {
+            "onMove": "blue",
+            "phaseCount": 0,
+            "score": 0,
+            "cityOwner": {},
+            "setupMode": false,
+            "isTerminal": false
+          }
+        }
+      }
+    },
+    {
+      "name": "boundary",
+      "truth": {
+        "units": [
+          {
+            "longName": "A",
+            "faction": "blue",
+            "type": "infantry",
+            "currentStrength": 100,
+            "hex": "hex-0-0",
+            "canMove": true,
+            "ineffective": false,
+            "detected": true
+          },
+          {
+            "longName": "A",
+            "faction": "red",
+            "type": "infantry",
+            "currentStrength": 100,
+            "hex": "hex-0-2",
+            "canMove": false,
+            "ineffective": false,
+            "detected": true
+          }
+        ],
+        "status": {
+          "onMove": "blue",
+          "phaseCount": 0,
+          "score": 0,
+          "cityOwner": {},
+          "setupMode": false,
+          "isTerminal": false
+        }
+      },
+      "observations": {
+        "blue": {
+          "units": [
+            {
+              "longName": "A",
+              "faction": "blue",
+              "type": "infantry",
+              "currentStrength": 100,
+              "hex": "hex-0-0",
+              "canMove": true,
+              "ineffective": false,
+              "detected": true
+            },
+            {
+              "longName": "A",
+              "faction": "red",
+              "type": "infantry",
+              "currentStrength": 100,
+              "hex": "hex-0-2",
+              "canMove": false,
+              "ineffective": false,
+              "detected": true
+            }
+          ],
+          "status": {
+            "onMove": "blue",
+            "phaseCount": 0,
+            "score": 0,
+            "cityOwner": {},
+            "setupMode": false,
+            "isTerminal": false
+          }
+        },
+        "red": {
+          "units": [
+            {
+              "longName": "A",
+              "faction": "blue",
+              "type": "infantry",
+              "currentStrength": 100,
+              "hex": "hex-0-0",
+              "canMove": true,
+              "ineffective": false,
+              "detected": true
+            },
+            {
+              "longName": "A",
+              "faction": "red",
+              "type": "infantry",
+              "currentStrength": 100,
+              "hex": "hex-0-2",
+              "canMove": false,
+              "ineffective": false,
+              "detected": true
+            }
+          ],
+          "status": {
+            "onMove": "blue",
+            "phaseCount": 0,
+            "score": 0,
+            "cityOwner": {},
+            "setupMode": false,
+            "isTerminal": false
+          }
+        }
+      }
+    },
+    {
+      "name": "out-of-sight",
+      "truth": {
+        "units": [
+          {
+            "longName": "A",
+            "faction": "blue",
+            "type": "infantry",
+            "currentStrength": 100,
+            "hex": "hex-0-0",
+            "canMove": true,
+            "ineffective": false,
+            "detected": false
+          },
+          {
+            "longName": "A",
+            "faction": "red",
+            "type": "infantry",
+            "currentStrength": 100,
+            "hex": "hex-0-3",
+            "canMove": false,
+            "ineffective": false,
+            "detected": false
+          }
+        ],
+        "status": {
+          "onMove": "blue",
+          "phaseCount": 0,
+          "score": 0,
+          "cityOwner": {},
+          "setupMode": false,
+          "isTerminal": false
+        }
+      },
+      "observations": {
+        "blue": {
+          "units": [
+            {
+              "longName": "A",
+              "faction": "blue",
+              "type": "infantry",
+              "currentStrength": 100,
+              "hex": "hex-0-0",
+              "canMove": true,
+              "ineffective": false,
+              "detected": false
+            },
+            {
+              "longName": "A",
+              "faction": "red",
+              "type": "infantry",
+              "currentStrength": 100,
+              "hex": "fog",
+              "canMove": false,
+              "ineffective": false,
+              "detected": false
+            }
+          ],
+          "status": {
+            "onMove": "blue",
+            "phaseCount": 0,
+            "score": 0,
+            "cityOwner": {},
+            "setupMode": false,
+            "isTerminal": false
+          }
+        },
+        "red": {
+          "units": [
+            {
+              "longName": "A",
+              "faction": "blue",
+              "type": "infantry",
+              "currentStrength": 100,
+              "hex": "fog",
+              "canMove": true,
+              "ineffective": false,
+              "detected": false
+            },
+            {
+              "longName": "A",
+              "faction": "red",
+              "type": "infantry",
+              "currentStrength": 100,
+              "hex": "hex-0-3",
+              "canMove": false,
+              "ineffective": false,
+              "detected": false
+            }
+          ],
+          "status": {
+            "onMove": "blue",
+            "phaseCount": 0,
+            "score": 0,
+            "cityOwner": {},
+            "setupMode": false,
+            "isTerminal": false
+          }
+        }
+      }
+    },
+    {
+      "name": "removed",
+      "truth": {
+        "units": [
+          {
+            "longName": "A",
+            "faction": "blue",
+            "type": "infantry",
+            "currentStrength": 100,
+            "hex": "hex-0-0",
+            "canMove": true,
+            "ineffective": false,
+            "detected": false
+          },
+          {
+            "longName": "A",
+            "faction": "red",
+            "type": "infantry",
+            "currentStrength": 100,
+            "hex": null,
+            "canMove": false,
+            "ineffective": true,
+            "detected": false
+          }
+        ],
+        "status": {
+          "onMove": "blue",
+          "phaseCount": 0,
+          "score": 0,
+          "cityOwner": {},
+          "setupMode": false,
+          "isTerminal": false
+        }
+      },
+      "observations": {
+        "blue": {
+          "units": [
+            {
+              "longName": "A",
+              "faction": "blue",
+              "type": "infantry",
+              "currentStrength": 100,
+              "hex": "hex-0-0",
+              "canMove": true,
+              "ineffective": false,
+              "detected": false
+            },
+            {
+              "longName": "A",
+              "faction": "red",
+              "type": "infantry",
+              "currentStrength": 100,
+              "hex": "fog",
+              "canMove": false,
+              "ineffective": true,
+              "detected": false
+            }
+          ],
+          "status": {
+            "onMove": "blue",
+            "phaseCount": 0,
+            "score": 0,
+            "cityOwner": {},
+            "setupMode": false,
+            "isTerminal": false
+          }
+        },
+        "red": {
+          "units": [
+            {
+              "longName": "A",
+              "faction": "blue",
+              "type": "infantry",
+              "currentStrength": 100,
+              "hex": "fog",
+              "canMove": true,
+              "ineffective": false,
+              "detected": false
+            },
+            {
+              "longName": "A",
+              "faction": "red",
+              "type": "infantry",
+              "currentStrength": 100,
+              "hex": null,
+              "canMove": false,
+              "ineffective": true,
+              "detected": false
+            }
+          ],
+          "status": {
+            "onMove": "blue",
+            "phaseCount": 0,
+            "score": 0,
+            "cityOwner": {},
+            "setupMode": false,
+            "isTerminal": false
+          }
+        }
+      }
+    },
+    {
+      "name": "reappearance",
+      "truth": {
+        "units": [
+          {
+            "longName": "A",
+            "faction": "blue",
+            "type": "infantry",
+            "currentStrength": 100,
+            "hex": "hex-0-0",
+            "canMove": true,
+            "ineffective": false,
+            "detected": true
+          },
+          {
+            "longName": "A",
+            "faction": "red",
+            "type": "infantry",
+            "currentStrength": 100,
+            "hex": "hex-0-1",
+            "canMove": false,
+            "ineffective": false,
+            "detected": true
+          }
+        ],
+        "status": {
+          "onMove": "blue",
+          "phaseCount": 0,
+          "score": 0,
+          "cityOwner": {},
+          "setupMode": false,
+          "isTerminal": false
+        }
+      },
+      "observations": {
+        "blue": {
+          "units": [
+            {
+              "longName": "A",
+              "faction": "blue",
+              "type": "infantry",
+              "currentStrength": 100,
+              "hex": "hex-0-0",
+              "canMove": true,
+              "ineffective": false,
+              "detected": true
+            },
+            {
+              "longName": "A",
+              "faction": "red",
+              "type": "infantry",
+              "currentStrength": 100,
+              "hex": "hex-0-1",
+              "canMove": false,
+              "ineffective": false,
+              "detected": true
+            }
+          ],
+          "status": {
+            "onMove": "blue",
+            "phaseCount": 0,
+            "score": 0,
+            "cityOwner": {},
+            "setupMode": false,
+            "isTerminal": false
+          }
+        },
+        "red": {
+          "units": [
+            {
+              "longName": "A",
+              "faction": "blue",
+              "type": "infantry",
+              "currentStrength": 100,
+              "hex": "hex-0-0",
+              "canMove": true,
+              "ineffective": false,
+              "detected": true
+            },
+            {
+              "longName": "A",
+              "faction": "red",
+              "type": "infantry",
+              "currentStrength": 100,
+              "hex": "hex-0-1",
+              "canMove": false,
+              "ineffective": false,
+              "detected": true
+            }
+          ],
+          "status": {
+            "onMove": "blue",
+            "phaseCount": 0,
+            "score": 0,
+            "cityOwner": {},
+            "setupMode": false,
+            "isTerminal": false
+          }
+        }
+      }
+    }
+  ]
+}

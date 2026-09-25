@@ -4,6 +4,99 @@ Current invocation (2026-09-24): `uv run pytest` from the repository root.
 The root `pytest.ini` and installed project plugins supersede the test-local
 configuration/overlay commands in the historical entries below.
 
+## 2026-09-25 — S02 completed
+
+Implemented **S02 — Build fixtures and isolation helpers**. S01-S02 are complete;
+S03-S17 remain open. The root plan checklist and current test/fixture READMEs
+are updated. Revision at start: `295e98303e7e4ac66cc1af3233908e7479d97193`.
+The pre-existing untracked `demo_script.txt` was preserved. All implementation
+changes are under `tests/`; only `test_plan.md` changed at the root. Dependencies,
+root pytest configuration and production directories were not modified.
+
+### Deliverables
+
+- Pure fresh portable builders and function-scoped factory fixtures for maps,
+  units, scenarios and states, with explicit defaults and deep-copy ownership.
+- All twelve S02 fixture families, with adjacent explanations and documented
+  schemas in [fixtures/README.md](fixtures/README.md). Geometry centers, vertices
+  and neighbors are hand-tabulated independently of production geometry.
+  Movement fixtures cover exact/over-budget, blocked and alternative routes;
+  a scripted four-phase episode has independently calculated final score 50.
+- Python/NumPy RNG restoration, optional CPU Torch seed/settings restoration,
+  finite detection draws patched at `unit.random`, and nonzero finite browser
+  draws. No training, GPU requirement, model download or random action selection.
+- Global preservation retains nested dict/list/set identities and table aliases,
+  including registry option dictionaries. Fixtures protect rule tables, both
+  registries, current-game binding, transport IDs/sleep and loaded AI counters;
+  explicit guards cover late-loaded server/gym bindings and PortableTorch count.
+- Recording function clients, finite async iterators/WebSocket doubles, finite
+  dispenser and game tree, and controlled prediction collaborator. Consumers
+  use the real ClientWrapper to validate wire/callback signatures.
+- Immediate task registration, bounded cancel/await cleanup, synchronous owned
+  loop cleanup/restoration, test-local numeric archives removed at teardown,
+  fixed child hash seed, inherited model-path filtering and captured subprocess
+  diagnostics. Failure-path consumers deliberately raise then check restoration.
+- Browser boundaries installed before navigation/imports, real DOM/SVG nodes,
+  unchanged `/browser/map.js` import, same-page navigation reloads, separate
+  player contexts and strict console/page/request/dialog capture. Error-capture
+  consumers intentionally provoke each error and assert that it fails.
+
+Added **72 collected cases**: 55 fixture consumers, 10 isolation/double consumers,
+6 browser consumers and 1 isolated CPU-model preflight. Existing 14 S01 cases
+remain. Terrain/type, coordinate parity/subsets, factions, city ownership,
+registry options and action-index cases use parametrization. Cooperating engine
+consumers and real browser/ML boundaries are marked integration; isolated helper
+and geometry operations are marked unit. This validates fixtures and isolation,
+not completion of the later engine/UI/protocol/ML behavioral steps.
+
+### Validation and resolved harness problems
+
+Commands ran from the root with the existing Windows/Python 3.14.4 project
+environment and installed plugins. Environment settings:
+
+```powershell
+$env:UV_CACHE_DIR = Join-Path (Get-Location) 'tests/.cache/uv'
+$env:PYTHONDONTWRITEBYTECODE = '1'
+```
+
+| Command | Result |
+| --- | --- |
+| `uv run --offline --no-sync pytest tests/server_unit/test_fixtures.py -q` (sandbox) | 46 passed, 1 setup error, 3 warnings: existing Windows temp/cache permission restriction. |
+| `uv run --offline --no-sync pytest tests -q` (first full run, approved outside sandbox) | 76 passed, 2 failed: sync Playwright/pytest-asyncio loop conflict; associated teardown warnings. |
+| Same full command after lifecycle correction and expanded inputs | 85 passed in 58.96s. |
+| `uv run --offline --no-sync pytest -q` (final core cases) | **78 passed in 28.46s**. |
+| `uv run --offline --no-sync pytest tests -q` (final complete suite) | **86 passed in 58.54s**, including Chromium, async consumers and CPU Torch subprocess. |
+
+Successful final runs had **0 failed, 0 warnings, 0 skipped, 0 XFAIL, 0 XPASS
+and 0 deselected**. Final whitespace validation: `git diff --check` passed.
+No production defect was confirmed and no expected-failure marker was added.
+
+**Documented deviation:** retaining pytest-playwright's session-scoped sync
+driver left its event loop active when later pytest-asyncio cases ran, producing
+`Runner.run() cannot be called from a running event loop`. The harness now
+reuses the plugin's fixture bodies/options/artifact handling but scopes the
+driver/browser dependency chain per function. This costs browser launches but
+releases the loop before subsequent async tests, without changing event-loop
+internals, suppressing errors or relying on collection order. The full suite
+executes browser cases before async cases and passes with this correction.
+
+The small manually authored geometry map intentionally omits serialized edges;
+both real loaders construct them. The ordinary builder supplies complete edges
+for renderable scenarios. This distinction is documented so future edge
+serialization tests do not accidentally use an incomplete oracle.
+
+No launcher smoke command was needed for these test-only changes. The tiny
+episode does exercise a bounded headless engine game directly, with exact legal
+actions, terminal phase count and score assertions. Full replay playback, broad
+combat behavior, GPU, macOS, Linux and other browsers remain unverified.
+
+Every configured run checked **315 protected files** with no added, removed or
+changed files and unchanged protected Git diff. The final report is
+`tests/.artifacts/protected-paths.json`. Temporary/cache/browser artifacts remain
+under ignored test-local directories; no production replay/log/model was written.
+
+Next step: **S03 — Test server map geometry, serialization, and rule tables**.
+
 ## 2026-09-23 — S01 completed
 
 The request's “501” is interpreted as **S01 — Establish the harness and baseline**
