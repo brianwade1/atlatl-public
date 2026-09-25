@@ -1,0 +1,5 @@
+# Application dependencies remain in the repository's existing environment.
+pytest==9.1.1
+pytest-asyncio
+pytest-playwright
+pytest-cov
