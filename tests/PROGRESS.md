@@ -4,6 +4,64 @@ Current invocation (2026-09-24): `uv run pytest` from the repository root.
 The root `pytest.ini` and installed project plugins supersede the test-local
 configuration/overlay commands in the historical entries below.
 
+## 2026-09-25 — S03 completed
+
+Implemented **S03 — Server geometry, serialization, and rule tables**. S01–S03
+are complete; S04–S17 remain open. Starting revision:
+`50be5e0a5a350112e223400f0e2d8b0d1a50ede1`. Preserved the pre-existing untracked
+`demo_script.txt`. Changes are limited to `tests/` and root `test_plan.md`;
+no dependencies, configuration or production files changed.
+
+Added **92 unit cases** in the three planned files:
+
+- `server_unit/test_map_geometry.py`: independent positive/negative coordinate
+  vectors and cube round trips; all six directions for both parities; reciprocal
+  directions, corner/edge truncation and non-neighbors; distinct Euclidean and
+  hex distances; ordered vertices; empty/single/rectangular grids, cities and setup.
+- `server_unit/test_map_serialization.py`: explicit portable hex/edge fields,
+  generic loaders, forward edge reuse, JSON round trips and input/output ownership;
+  replacement of hex/edge indexes; separate minimal K01/K02 reproductions for
+  reverse lookup, duplicate shared edges, path export/load, cached dimensions,
+  retained hexes and stale path references. Nine individual strict xfails match
+  only documented wrong signatures via `KnownDefect`.
+- `server_unit/test_rule_tables.py`: independent numeric constants for all 24
+  mobility and 24 terrain-multiplier combinations, all 16 attacker/target pairs
+  for both offensive and defensive firepower, every range/sight/scalar rule,
+  table domains and explicitly named characterization of shared row identities.
+
+Reused S02's independent vertex fixture and portable builders. No production
+behavior is mocked or patched. K01/K02 are now runtime-confirmed for Python;
+browser portions and K03–K18 remain unconfirmed. Updated KNOWN_ISSUES with exact
+nodes, commands, expected contracts and observed signatures, README with the
+focused invocation, and the root plan checklist/status.
+
+### Validation
+
+Windows / Python 3.14.4, existing project environment. Both commands used
+`UV_CACHE_DIR=tests/.cache/uv` and `PYTHONDONTWRITEBYTECODE=1`:
+
+| Command | Result |
+| --- | --- |
+| `uv run --offline --no-sync pytest tests/server_unit/test_map_geometry.py tests/server_unit/test_map_serialization.py tests/server_unit/test_rule_tables.py -q` (initial sandbox run) | 83 passed, 8 xfailed, 1 failed, 2 cache-permission warnings in 19.17s. |
+| `uv run --offline --no-sync pytest tests -q` (final, approved outside sandbox) | **169 passed, 9 xfailed in 207.58s**. |
+
+The initial failure was the intentionally narrow path exception matcher: Python
+3.14 includes `and no __dict__ for setting new attributes` in its AttributeError.
+The test now accepts that exact observed message as well as the exact older
+wording, while unrelated exceptions still propagate. No production fix was made.
+The final complete suite includes existing Chromium, async and CPU-model checks:
+**0 failed, 0 warnings, 0 skipped, 0 XPASS, 0 deselected**. S03 contributes 83
+passes and 9 expected failures; all 86 pre-existing cases still pass.
+
+The protection report checks **315 files**, with no added, removed or changed
+protected files and unchanged protected Git diff. `git diff --check` passed.
+No launcher smoke game was needed for test-only work; the full suite includes
+the existing deterministic bounded engine episode. Browser behavior for these
+new cases, other operating systems and other Python versions remain unverified.
+No coverage percentage is claimed. Generated artifacts remain ignored under tests.
+
+Next step: **S04 — Test server units, movement, targeting, and detection**.
+
 ## 2026-09-25 — S02 completed
 
 Implemented **S02 — Build fixtures and isolation helpers**. S01-S02 are complete;

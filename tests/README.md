@@ -10,7 +10,7 @@ Pytest automatically discovers the repository-root [pytest.ini](../pytest.ini).
 The project environment now includes pytest, pytest-asyncio, pytest-playwright,
 and pytest-cov, so no dependency overlay or explicit configuration path is needed.
 
-S01 and S02 are implemented. Test code, fixture data, and generated artifacts remain under
+S01–S03 are implemented. Test code, fixture data, and generated artifacts remain under
 `tests/`; pytest configuration lives at the repository root. Never edit `server/`,
 `browser/`, or `scenarios/` to satisfy these tests. See [PROGRESS.md](PROGRESS.md)
 for verified results and [KNOWN_ISSUES.md](KNOWN_ISSUES.md) for the defect policy.
@@ -49,8 +49,11 @@ platforms and browsers remain unverified.
 # Original assertions after pytest migration: five cases.
 uv run pytest tests/test_scenario_loading.py -v
 
-# Default lightweight suite: original baseline and server_unit harness checks.
+# Default core suite: original baseline, harness checks, and engine unit tests.
 uv run pytest
+
+# S03 geometry, serialization, and all combat/mobility coefficients.
+uv run pytest tests/server_unit/test_map_geometry.py tests/server_unit/test_map_serialization.py tests/server_unit/test_rule_tables.py
 
 # Check default and full discovery without running tests.
 uv run pytest --collect-only -q
@@ -127,8 +130,11 @@ Harness tests verify guard failures against a disposable tree, import restoratio
 HTTP routing, and subprocess settings. They establish infrastructure, not game
 rule coverage. No simulation changes or headless-game integration were added in
 S01. S02 supplies fixtures and consumer checks; subsequent steps add full
-behavioral coverage. Its scripted four-phase game runs directly through the
-engine and does not invoke the stochastic launcher smoke scenario.
+behavioral coverage. S03 adds 92 cases (83 passing contracts/characterizations
+and 9 strict expected failures for K01/K02). Each expected failure matches only
+the documented wrong signature; unrelated exceptions fail and fixes produce
+strict XPASS failures for review. The scripted S02 four-phase game runs directly
+through the engine and does not invoke the stochastic launcher smoke scenario.
 
 Use `rng` for Python/NumPy seed isolation. ML subprocesses use
 `isolated_rng(torch_module=torch)` to preserve CPU RNG, deterministic-algorithm
