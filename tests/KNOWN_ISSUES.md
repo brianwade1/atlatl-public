@@ -2,9 +2,11 @@
 
 S03 runtime-confirmed the Python map defects grouped under **K01** and **K02**
 in `../test_plan.md`. S04 confirms the serialization/detection side effect in
-K05 as characterization, without an expected failure. The remaining K03–K18
-items and browser portions of K01/K02 remain an investigation queue, not
-expected failures. Production files remain unchanged.
+K05 as characterization, without an expected failure. S05 also confirms K03,
+K04, the status/reference portion of K05, and the search-key portion of K16
+as characterizations below. The other portions of K03–K18 and browser portions
+of K01/K02 remain an investigation queue, not expected failures. Production
+files remain unchanged.
 
 ## K01 — Edge identity and path serialization/loading
 
@@ -55,7 +57,7 @@ with `uv run pytest tests/server_unit/test_unit_state.py tests/server_unit/test_
   export. Serialization mutates detection and may change enemy locations from
   `fog` to visible. All other fields remain exposed for hidden enemies.
   `Unit.portableCopy` omits detection and does not invoke this update.
-  Status sharing and scenario-factory portions of K05 await S05/S06.
+  Status sharing is covered by S05 below; scenario-factory portions await S06.
 - `test_unit_visibility.py::test_live_unplaced_enemy_characterization`
   (`updateDetectionStatus`/`toPortable`): a live unplaced red unit paired with a
   placed blue unit raises `AttributeError: 'NoneType' object has no attribute
@@ -77,6 +79,67 @@ with `uv run pytest tests/server_unit/test_unit_state.py tests/server_unit/test_
 Movement's independent shortest-path oracle agrees with the current rule tables
 for the tested occupied/rough/water alternative routes. No movement defect or
 new issue ID was confirmed by S04.
+
+## S05 characterizations and input limitations
+
+These passing characterizations record the existing implementation, not approved
+future rules. No new xfails are introduced: the plan explicitly calls for probing
+and triaging these behaviors, and does not establish replacement contracts.
+Run `uv run pytest tests/server_unit/test_status.py tests/server_unit/test_game_setup.py tests/server_unit/test_game_actions.py tests/server_unit/test_game_combat.py tests/server_unit/test_game_observations.py tests/server_unit/test_game_state_key.py -q`.
+
+- **K03, setup validation:**
+  `test_game_setup.py::test_setup_validation_gaps_characterization`
+  accepts a move onto an occupied friendly hex (both units remain there), an
+  exchange with an enemy located inside the mover's setup zone (positions swap),
+  and an ineffective, unplaced mover (it gets a hex while remaining ineffective).
+  Expected validation constraints need a future rule decision. Wrong-faction
+  moves and destinations/exchanges outside the faction's zone are rejected.
+- **K03, terminal calls:**
+  `test_game_actions.py::test_terminal_transition_characterization` passes an
+  already-terminal phase-one state again: phase becomes two, faction alternates,
+  and the terminal flag stays true. No terminal guard exists; callers must stop
+  issuing transitions. Tests use the existing private legality methods and do
+  not introduce a public `is_legal` contract.
+- **K04, overkill:**
+  `test_game_combat.py::test_overkill_credit_characterization` (both factions)
+  fires strength-100 infantry at strength-60 artillery in marsh. Calculated
+  damage is 150, remaining strength is -90, and the target is removed. Credit is
+  +150 for red losses or -300 for blue losses, rather than credit capped at the
+  remaining 60. Capping damage/credit is a future scoring decision. Separate
+  passing contracts verify ordinary below-threshold cleanup credits the full
+  original strength, and exactly 50 strength remains effective.
+- **K05, references:**
+  `test_game_observations.py::test_parameters_shared_reference_characterization`
+  confirms `parameters()` returns the original scenario; changing its units
+  affects future initial states. `test_observation_both_players_and_fog_modes`
+  confirms observation status is the input status object, while observation
+  units are fresh and their detection updates do not mutate input units.
+  `test_status.py::test_construction_and_portable_ownership` confirms Status
+  exports its owner dictionary by reference but imports it with a copy.
+- **K16, search-key limitations:**
+  `test_game_state_key.py::test_omitted_fields_collide_characterization` confirms
+  collisions for strength 100 versus 100.9, names, detection, ineffective flags,
+  ordinary on-move faction, terminal flags, scoring parameters, fog and setup-zone
+  metadata. `test_second_stacked_unit_omitted_characterization` confirms only
+  the first occupant is represented (reordering different occupants changes
+  the key). `test_unused_terrain_exception_characterization` records exact
+  `KeyError('unused')`. These restrict use as a search key; full state identity
+  is not an established contract. The unrelated abstract-state portion of K16
+  remains for S14.
+- `test_status.py::test_advance_past_limit_characterization` records inconsistent
+  handling of manually supplied at/past-limit states: `matchComplete` returns
+  true, but advancing a nonterminal flag past the limit does not set it true.
+  Ordinary sequential play terminates exactly at the configured limit.
+  `test_advance_phase_flags_and_terminal_boundary` records that final flags are
+  retained because the terminal return precedes the usual flag reset.
+- `test_game_actions.py::test_off_faction_flag_characterization` and
+  `test_status.py::test_phase_complete_counts_off_faction_characterization`
+  record that availability trusts `canMove`, even for the off-move faction in
+  inconsistent input. Normal transitions set those flags correctly.
+- Malformed fields/unknown setup IDs raise exact `KeyError`s; unknown ordinary
+  action IDs are rejected with the ordinary legality exception. Extra action
+  fields are ignored. These are characterized input limits, not a promised
+  structured validation API.
 
 ## Failure policy and environment notes
 

@@ -58,6 +58,9 @@ uv run pytest tests/server_unit/test_map_geometry.py tests/server_unit/test_map_
 # S04 unit state, occupancy, movement, targeting, and deterministic detection.
 uv run pytest tests/server_unit/test_unit_state.py tests/server_unit/test_unit_movement.py tests/server_unit/test_unit_visibility.py
 
+# S05 status, setup, actions, combat, observations and search keys.
+uv run pytest tests/server_unit/test_status.py tests/server_unit/test_game_setup.py tests/server_unit/test_game_actions.py tests/server_unit/test_game_combat.py tests/server_unit/test_game_observations.py tests/server_unit/test_game_state_key.py
+
 # Check default and full discovery without running tests.
 uv run pytest --collect-only -q
 uv run pytest tests --collect-only -q
@@ -148,6 +151,15 @@ use pytest's restoring monkeypatch fixture; randomness uses finite draws at
 `unit.random`. Passing characterizations for duplicate IDs, live unplaced units,
 partial observations and serialization side effects are documented in
 [KNOWN_ISSUES.md](KNOWN_ISSUES.md); S04 adds no expected failures.
+
+S05 adds 149 cases: 148 unit cases and one scripted setup-to-terminal integration
+sequence. The six files above cover public accessors, setup, legal/invalid actions,
+phase and city timing, all 16 attacker/target pairings, damage thresholds, scoring
+signs, state isolation, fog observations and search keys. `game_factory` constructs
+the real engine with finite detection draws; combat expectations are literal
+hand calculations and table overrides use restoring monkeypatches. Characterized
+validation gaps, overkill, shared references and key limitations are recorded in
+[KNOWN_ISSUES.md](KNOWN_ISSUES.md); S05 adds no expected failures.
 
 Use `rng` for Python/NumPy seed isolation. ML subprocesses use
 `isolated_rng(torch_module=torch)` to preserve CPU RNG, deterministic-algorithm

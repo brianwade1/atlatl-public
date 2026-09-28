@@ -4,6 +4,74 @@ Current invocation (2026-09-24): `uv run pytest` from the repository root.
 The root `pytest.ini` and installed project plugins supersede the test-local
 configuration/overlay commands in the historical entries below.
 
+## 2026-09-28 — S05 completed
+
+Implemented **S05 — Game transitions, setup, combat, phases, and scoring**.
+S01–S05 are complete; S06–S17 remain open. Starting revision:
+`bc1c10eaa92b85a04d42cbdd2b82484aae4abf03`. Preserved the pre-existing untracked
+`demo_script.txt`. Changes are limited to `tests/` and root `test_plan.md`.
+
+Added **149 passing cases** (148 unit cases and one integration sequence) in
+the six planned files:
+
+- `server_unit/test_status.py`: defaults/configuration, portable ownership,
+  kill-score signs and configurable penalties, city-share division, neutral and
+  vacated cities, capture, zero-city maps, phase availability, faction flags,
+  phase limits and elimination behavior.
+- `server_unit/test_game_setup.py`: both factions' placement, friendly exchange,
+  setup passes without score/phase increments, rejection/input preservation,
+  malformed fields, setup validation gaps, and a scripted setup-to-terminal
+  sequence with exact full states and a final score of 24.
+- `server_unit/test_game_actions.py`: legal action filtering and exhaustion,
+  ordinary moves and automatic/explicit phase advance, delayed city capture,
+  invalid actions, malformed/unknown IDs, extra fields, terminal calls,
+  off-faction flags and independent successor branches.
+- `server_unit/test_game_combat.py`: all 16 attacker/target type pairings,
+  terrain effects, both firing factions, fractional strengths, below/equal/above
+  the 50 threshold, defensive clamp, overkill, action consumption, rebuilt
+  occupancy, last-shooter phase advance and elimination without termination.
+- `server_unit/test_game_observations.py`: fresh initial units/city ownership,
+  public accessors, parameter aliasing, both players with/without fog and within/
+  outside sight, deterministic detection draws and status reference behavior.
+- `server_unit/test_game_state_key.py`: literal readable keys, represented fields,
+  terrain and city-owner codes, omitted/truncated fields, stacked-unit ordering
+  and the unsupported `unused` terrain exception.
+
+Added a local `game_factory` fixture in `server_unit/conftest.py`, using existing
+builders and finite detection draws. No production behavior is mocked. Combat
+expectations are hand-calculated constants; the defensive-fire rule override
+uses pytest's restoring monkeypatch. The setup episode is explicitly marked
+integration; single-operation cases are marked unit.
+
+KNOWN_ISSUES documents K03/K04, K05 reference behavior and K16 key limitations
+as passing characterizations, not approved future rules. Replacement validation,
+overkill scoring and key-identity contracts remain future design decisions.
+No new issue IDs or xfails were needed. README and the plan status are updated.
+
+### Validation
+
+Windows / Python 3.14.4, existing project environment. Commands used
+`UV_CACHE_DIR=tests/.cache/uv` and `PYTHONDONTWRITEBYTECODE=1`:
+
+| Command | Result |
+| --- | --- |
+| `uv run --offline --no-sync pytest tests/server_unit/test_status.py tests/server_unit/test_game_setup.py tests/server_unit/test_game_actions.py tests/server_unit/test_game_combat.py tests/server_unit/test_game_observations.py tests/server_unit/test_game_state_key.py -q` | Initial implementation: **130 passed in 58.33s**; one sandbox cache-permission warning. |
+| `uv run --offline --no-sync pytest tests -q` (approved outside sandbox) | Final implementation: **402 passed, 9 existing xfailed in 492.51s**. |
+
+The final full run includes all 149 S05 cases after adding the remaining type
+pairings and malformed setup cases, plus the existing Chromium, async and CPU
+model checks. It has **0 failed, 0 warnings, 0 skipped, 0 XPASS and 0 deselected**.
+All 253 previous passing cases and nine K01/K02 expected failures retain their
+outcomes. The protection report checks **315 files**, with no additions,
+removals or content changes and unchanged protected Git diff. `git diff --check`
+passed. No dependencies, configuration or production files changed.
+
+No launcher smoke game was needed for test-only work; the suite includes the
+new bounded setup-to-terminal sequence and the previous deterministic engine
+episode. Other platforms and Python versions remain unverified.
+
+Next step: **S06 — Scenarios, registries, and dispensers**.
+
 ## 2026-09-25 — S04 completed
 
 Implemented **S04 — Server units, movement, targeting, and detection**.
