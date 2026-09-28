@@ -4,7 +4,9 @@ S03 runtime-confirmed the Python map defects grouped under **K01** and **K02**
 in `../test_plan.md`. S04 confirms the serialization/detection side effect in
 K05 as characterization, without an expected failure. S05 also confirms K03,
 K04, the status/reference portion of K05, and the search-key portion of K16
-as characterizations below. The other portions of K03–K18 and browser portions
+as characterizations below. S06 confirms factory sharing/RNG effects under K05
+and repeated city placement/hierarchy collisions under K06. The other portions
+of K03–K18 and browser portions
 of K01/K02 remain an investigation queue, not expected failures. Production
 files remain unchanged.
 
@@ -57,7 +59,7 @@ with `uv run pytest tests/server_unit/test_unit_state.py tests/server_unit/test_
   export. Serialization mutates detection and may change enemy locations from
   `fog` to visible. All other fields remain exposed for hidden enemies.
   `Unit.portableCopy` omits detection and does not invoke this update.
-  Status sharing is covered by S05 below; scenario-factory portions await S06.
+  Status sharing is covered by S05 below; scenario-factory portions by S06 below.
 - `test_unit_visibility.py::test_live_unplaced_enemy_characterization`
   (`updateDetectionStatus`/`toPortable`): a live unplaced red unit paired with a
   placed blue unit raises `AttributeError: 'NoneType' object has no attribute
@@ -140,6 +142,59 @@ Run `uv run pytest tests/server_unit/test_status.py tests/server_unit/test_game_
   action IDs are rejected with the ordinary legality exception. Extra action
   fields are ignored. These are characterized input limits, not a promised
   structured validation API.
+
+## S06 characterizations and input limitations
+
+Affected suite: `tests/server_unit/test_scenario_factories.py`. Run
+`uv run pytest tests/server_unit/test_scenario_factories.py -q`.
+These passing characterizations describe existing behavior; they do not approve
+it as a future contract or invent graceful validation. No new xfails are added.
+
+- **K05, loaded/shared data:**
+  `test_file_factory_utf8_eager_loading_and_shared_object` confirms eager UTF-8
+  parsing and the same mutable object on each call, even after the file is
+  deleted. `test_flip_colors_values_and_shallow_sharing` confirms fresh outer
+  scenario/unit dictionaries but shared map, score and nested unit metadata.
+  `test_balance_alternates_and_cycles_generated_pairs` confirms balanced pairs
+  retain that sharing, and cycle length counts generated scenarios, not the
+  additional flipped returns. Consumers needing isolation must deep-copy.
+- **K05, RNG:** `test_rng_restored_before_serialization_characterization` checks
+  all three families: construction preserves the caller's RNG; successful
+  generation restores it before serialization, which then consumes two draws
+  per opposing pair when all are in sight. `test_detection_uses_ambient_rng_not_scenario_seed`
+  produces identical maps/placements from a fixed scenario seed but false versus
+  true detection flags from ambient seeds 0 and 4. Balanced flipped returns
+  consume no draws. Empty-unit generation also preserves caller RNG.
+- **K06, cities:** `test_city_attempts_can_repeat_and_invasion_score_is_configurable`
+  requests ten city placements into a two-cell red region and gets two unique
+  cities. `test_square_city_attempts_are_not_unique_city_counts` confirms the
+  same distinction for clear/hierarchy generators. `num_cities` is a count of
+  placement attempts, not guaranteed unique objectives.
+- **K06, hierarchy occupancy:**
+  `test_hierarchy_cross_branch_collisions_characterization` uses seed 7, size 10,
+  two parents, depth three and branching three. All 36 units exist, and each
+  sibling leaf group occupies three unique cells, but different branches share
+  cells. Candidate removal is local to each leaf group, not faction-wide.
+  Unique faction-wide occupancy is not guaranteed; a correction remains future
+  production work.
+- `test_invalid_inputs_bounded_and_rng_leak` checks exact exception types and
+  matching messages in ten-second subprocesses. Clear size 3 and hierarchy size
+  9 raise the minimum-size `Exception`; reversed count bounds raise `ValueError`;
+  clear/invasion over-capacity and invasion city placement with no free red cells
+  raise `IndexError`. Hierarchy depth zero/one raises `TypeError` adding `None`
+  to an integer, depth five and excessive leaf branching raise `IndexError`.
+  Invasion height one with seed 7 raises `KeyError('hex-0--1')`. Every tested
+  failure leaves caller RNG changed, rather than restoring it.
+- `test_nonpositive_counts_produce_empty_units_characterization` records accepted
+  negative clear/invasion counts and zero hierarchy branching producing no units.
+  `test_setup_regions` (the `unknown` side case) records
+  that unknown side names fall through to the east/west middle strip.
+- `test_file_factory_defers_schema_consumption` loads schema-incomplete JSON
+  successfully. Missing `map` fails during `Game` construction; missing `units`
+  fails only on `initial_state()`. Loading is not schema validation.
+- `test_game_dispenser.py::test_current_game_without_server_characterization`
+  records `AttributeError` before a server is bound. Singleton tests restore the
+  previous binding after every case.
 
 ## Failure policy and environment notes
 

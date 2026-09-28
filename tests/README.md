@@ -10,7 +10,7 @@ Pytest automatically discovers the repository-root [pytest.ini](../pytest.ini).
 The project environment now includes pytest, pytest-asyncio, pytest-playwright,
 and pytest-cov, so no dependency overlay or explicit configuration path is needed.
 
-S01–S04 are implemented. Test code, fixture data, and generated artifacts remain under
+S01–S06 are implemented. Test code, fixture data, and generated artifacts remain under
 `tests/`; pytest configuration lives at the repository root. Never edit `server/`,
 `browser/`, or `scenarios/` to satisfy these tests. See [PROGRESS.md](PROGRESS.md)
 for verified results and [KNOWN_ISSUES.md](KNOWN_ISSUES.md) for the defect policy.
@@ -60,6 +60,9 @@ uv run pytest tests/server_unit/test_unit_state.py tests/server_unit/test_unit_m
 
 # S05 status, setup, actions, combat, observations and search keys.
 uv run pytest tests/server_unit/test_status.py tests/server_unit/test_game_setup.py tests/server_unit/test_game_actions.py tests/server_unit/test_game_combat.py tests/server_unit/test_game_observations.py tests/server_unit/test_game_state_key.py
+
+# S06 scenario loading, generators, registries and game dispensers.
+uv run pytest tests/server_unit/test_scenario_factories.py tests/server_unit/test_scenario_registry.py tests/server_unit/test_game_dispenser.py
 
 # Check default and full discovery without running tests.
 uv run pytest --collect-only -q
@@ -160,6 +163,16 @@ the real engine with finite detection draws; combat expectations are literal
 hand calculations and table overrides use restoring monkeypatches. Characterized
 validation gaps, overkill, shared references and key limitations are recorded in
 [KNOWN_ISSUES.md](KNOWN_ISSUES.md); S05 adds no expected failures.
+
+S06 adds 100 passing cases (94 unit, six integration) across the three files
+above. Coverage includes temporary scenario paths and UTF-8 loading, exact
+regions, shallow color flips, all three generator families, seed zero, cycles,
+balanced pairs, hierarchy names, city attempts, registry consumers and dispenser
+identity. Placement comparisons exclude only `detected`; separate tests verify
+ambient detection draws and caller RNG effects. Invalid inputs and hierarchy
+collisions run in subprocesses with ten-second timeouts. K05/K06 and unsupported
+input behavior are characterized in [KNOWN_ISSUES.md](KNOWN_ISSUES.md), with no
+new xfails. Packaged scenarios are only read; generated inputs stay test-local.
 
 Use `rng` for Python/NumPy seed isolation. ML subprocesses use
 `isolated_rng(torch_module=torch)` to preserve CPU RNG, deterministic-algorithm

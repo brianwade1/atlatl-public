@@ -4,6 +4,71 @@ Current invocation (2026-09-24): `uv run pytest` from the repository root.
 The root `pytest.ini` and installed project plugins supersede the test-local
 configuration/overlay commands in the historical entries below.
 
+## 2026-09-28 — S06 completed
+
+Implemented **S06 — Scenarios, registries, and dispensers**. S01–S06 are
+complete; S07–S17 remain open. Starting revision:
+`6a8a3f15cf1daacc83ece8b028ef2b13f43a98ca`. Preserved the pre-existing untracked
+`demo_script.txt`. Changes are limited to `tests/` and root `test_plan.md`.
+
+Added **100 passing cases** (94 unit, six integration):
+
+- `server_unit/test_scenario_factories.py` (89): temporary path forms including
+  spaces/home/custom directories and cwd independence; UTF-8/eager/shared loading;
+  missing/invalid/incomplete files; exact setup/rectangle regions; shallow color
+  flips; three-family seeded sequences and cycles including seed zero; balanced
+  pairs; dimensions, counts, names, depths/branching, placement, terrain, scoring,
+  fog and ownership; ambient detection RNG and failure-state leakage; repeated
+  city attempts and hierarchy collisions. Invalid inputs/collisions use bounded
+  subprocesses with ten-second timeouts and test-owned working directories.
+- `server_unit/test_scenario_registry.py` (six): registry structure/signatures,
+  one representative of each family through real Game consumption, and both
+  read-only packaged aliases accepting unused generator options. Large default
+  hierarchy/clear generators are not exercised. The original alias and launcher
+  baseline tests remain unchanged.
+- `server_unit/test_game_dispenser.py` (five): fresh Games/maps for successive
+  generator calls, shared scenario parameters, exact constant-game identity,
+  error propagation and current-game binding/replacement/restoration.
+
+Reused existing isolation, builder and subprocess helpers. Placement sequences
+exclude only detection flags; separate tests explicitly verify detection and
+RNG effects. Coordinate/count/name expectations are independent of generation;
+setup helper expectations are literal ID tables. No production methods are
+replaced to satisfy assertions. Rule overrides use restoring monkeypatches.
+
+Updated KNOWN_ISSUES with K05 factory sharing/RNG behavior and K06 repeated city
+placement/cross-branch occupancy, plus unsupported-input exception signatures.
+These are passing characterizations, not newly approved rules; no new xfails
+or production fixes were introduced. Updated README commands and plan status.
+
+### Validation
+
+Windows / Python 3.14.4, existing project environment, with
+`UV_CACHE_DIR=tests/.cache/uv`. Commands use `python -B` and the existing harness
+also disables subprocess bytecode. Let `S06` denote these exact paths:
+
+```text
+tests/server_unit/test_scenario_factories.py tests/server_unit/test_scenario_registry.py tests/server_unit/test_game_dispenser.py
+```
+
+| Command | Result |
+| --- | --- |
+| `uv run python -B -m pytest S06 -q` (initial sandbox run, before final additions) | 55 passed, 28 setup errors, 30 warnings; Windows denied pytest temp/cache access. |
+| Same command outside sandbox (initial implementation) | 82 passed, one failed expectation: invasion height one produces `hex-0--1`, not `hex-0-1`; corrected the characterization to the observed negative-row lookup. |
+| `uv run python -B -m pytest S06 -q` (final, approved outside sandbox) | **100 passed in 8.92s**. |
+| `uv run python -B -m pytest tests -q` (approved outside sandbox) | **502 passed, 9 existing xfailed in 95.33s**. |
+
+The final full run includes existing Chromium, async and CPU model tests. It
+has **0 failed, 0 warnings, 0 skipped, 0 XPASS and 0 deselected**. All previous
+402 passing tests and nine K01/K02 expected failures retain their outcomes.
+The protection report checks **315 files**, with no added/removed/changed files
+and unchanged protected Git diff. `git diff --check` passed. No dependencies,
+configuration or production files changed. No launcher smoke game was needed
+for test-only work; existing bounded engine episodes ran in the full suite.
+Other platforms and Python versions remain unverified.
+
+Next step: **S07 — Message transport, game-server routing and initialization**.
+
 ## 2026-09-28 — S05 completed
 
 Implemented **S05 — Game transitions, setup, combat, phases, and scoring**.
