@@ -4,6 +4,72 @@ Current invocation (2026-09-24): `uv run pytest` from the repository root.
 The root `pytest.ini` and installed project plugins supersede the test-local
 configuration/overlay commands in the historical entries below.
 
+## 2026-09-28 — S07 completed
+
+Implemented **S07 — Message transport, game-server routing, and initialization**.
+S01–S07 are complete; S08–S17 remain open.
+Starting revision: `05ba3f0ea5e9384560962cfcbf6d5fc48c0d0127`.
+Preserved the pre-existing untracked `demo_script.txt`. Changes are limited to
+`tests/` and root `test_plan.md`.
+
+Added **129 unit cases**, all marked `core`, `unit`, and `protocol`:
+
+- `server_unit/test_message_clients.py` (13): unique/resettable IDs, separate
+  queues, JSON wire delivery, awaited socket sends, function returns/callbacks,
+  FIFO order, absent responses, malformed JSON, callback type rejection,
+  unsupported return shapes and verbose truncation.
+- `server_unit/test_message_routing.py` (11): exact send/broadcast/relay
+  recipients and serialization, empty recipients, registration before inbound
+  messages, clean/malformed/exceptional closure, retained disconnected clients,
+  event-driven function processing, and constructor/run socket scheduling
+  inside a child-owned running loop with and without socket startup.
+- `server_unit/test_gameserver_protocol.py` (52): constructor forwarding,
+  parameter/role/observation order, both turns and same-faction continuation,
+  single transitions, debug metadata, every protocol state, wrong/missing
+  types/roles/clients/actions, game error propagation, reset/next-game/pause,
+  duplicate assignments and stale authorization, all combinations of terminal
+  faction/repetition mode (-1/0/1)/auto-next, two-game repetition accounting,
+  score output, exit ordering and faction-correct log routing.
+- `server_unit/test_server_init.py` (53): generator/file selection, both/no
+  faction clients, all AI options/shared models, current-game registration
+  before exactly one run, replay/log/socket options, zero seed/cycle, repeated
+  initialization and same-alias leakage, all blue/red Gym aliases, accessors
+  and reset/submit/resume order, invalid initialization and neural import gating.
+
+`support/server_init_boundary.py` supplies subprocess-only inert constructors
+and import boundaries. It executes real initialization and registry gating;
+actual model imports remain S15/S16. The subprocess helper forces neural off
+at process startup, so gating probes explicitly set/unset the environment
+inside the fresh child before importing. Transport tests reuse S02 doubles and
+task ownership; no sleeps are used as readiness checks. Constructor children
+have ten-second process deadlines, two-second loop watchdogs, and task/loop
+cleanup. GameServer tests restore the actual SIGINT handler; stop/exit calls
+use inert boundaries. No production behavior is patched to make an assertion
+pass. Real socket exchange and replay-file validation remain S08.
+
+Recorded K07/K08 and exact input limitations in KNOWN_ISSUES as passing
+characterizations, consistent with S04–S06. No new xfails, production fixes,
+dependencies or configuration changes. README includes the S07 run command.
+
+Validation on Windows/Python 3.14.4 with the existing project environment and
+`UV_CACHE_DIR=tests/.cache/uv`. Let `S07` mean the four files listed above:
+
+| Command | Result |
+| --- | --- |
+| `uv run python -B -m pytest S07 -q` (sandbox) | 74 passed, 55 setup errors, 57 warnings; Windows denied pytest temporary-directory access. |
+| Same command with approved execution outside sandbox | **129 passed in 38.05s**, no failures, warnings, skips, xfails or deselections. |
+| `uv run python -B -m pytest tests -q` (approved outside sandbox) | **631 passed, 9 existing xfailed in 568.30s**. |
+
+The full run includes existing Chromium, async and CPU model tests, with
+**0 failed, 0 warnings, 0 skipped, 0 XPASS and 0 deselected**. All previous 502
+passing cases and nine K01/K02 expected failures retain their outcomes.
+Both protection reports checked **315 files**, with no additions, removals,
+content changes or protected Git diff changes. `git diff --check` passed.
+No launcher smoke game was needed for test-only work; existing bounded engine
+episodes ran in the full suite. Other platforms/Python versions remain unverified.
+
+Next step: **S08 — Engine/client/WebSocket integration and replay writing**.
+
 ## 2026-09-28 — S06 completed
 
 Implemented **S06 — Scenarios, registries, and dispensers**. S01–S06 are

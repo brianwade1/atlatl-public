@@ -5,8 +5,9 @@ in `../test_plan.md`. S04 confirms the serialization/detection side effect in
 K05 as characterization, without an expected failure. S05 also confirms K03,
 K04, the status/reference portion of K05, and the search-key portion of K16
 as characterizations below. S06 confirms factory sharing/RNG effects under K05
-and repeated city placement/hierarchy collisions under K06. The other portions
-of K03–K18 and browser portions
+and repeated city placement/hierarchy collisions under K06. S07 confirms K07
+initialization leakage and K08 role/disconnect lifecycle behavior. The other
+unverified portions of K03–K18 and browser portions
 of K01/K02 remain an investigation queue, not expected failures. Production
 files remain unchanged.
 
@@ -195,6 +196,73 @@ it as a future contract or invent graceful validation. No new xfails are added.
 - `test_game_dispenser.py::test_current_game_without_server_characterization`
   records `AttributeError` before a server is bound. Singleton tests restore the
   previous binding after every case.
+
+## S07 characterizations: K07 initialization and K08 client lifecycle
+
+Run `uv run pytest tests/server_unit/test_server_init.py tests/server_unit/test_gameserver_protocol.py tests/server_unit/test_message_routing.py -q`.
+These are passing characterizations of current limitations, not desired future
+contracts. No new xfails or production fixes are introduced.
+
+- **K07, registry option leakage:**
+  `test_server_init.py::test_repeated_initialization_registry_leak_characterization`
+  sets model/depth/search/sub-AI options and seed 9/cycle 2, then initializes
+  again with omitted AI options and seed/cycle zero. The previous AI options
+  and generator seed/cycle persist in the shared registry dictionaries.
+  `test_same_alias_cross_faction_option_leak_characterization` also reproduces
+  blue's depth option leaking to red when both use one alias. Independent calls
+  and factions should not inherit caller-specific options unintentionally.
+- **K07, zero options:** `test_generator_zero_options_characterization[0-0]`
+  observes neither zero option passed to a fresh generator constructor. Seed
+  zero is valid in the generators (S06), but `server.init` tests truthiness.
+- **K07, Gym selection:** `test_gym_surrogate_selection_characterization`
+  verifies all eight blue aliases. Red only registers `gym`, `gymx2`, and
+  `multigym`; red `gym12/13/14/16/18` leave `gym_ai` undefined in a fresh process
+  (`NameError: name 'gym_ai' is not defined`).
+  `test_gym_last_recognized_role_and_stale_binding_characterization` shows the
+  last recognized role wins, and a later initialization with no Gym alias
+  retains the previous instance. Symmetric selection and clearing stale state
+  remain future production work.
+- **K07, import gating:** `test_neural_import_gating` executes the actual
+  launcher/registry import logic with inert AI import boundaries. The registry
+  enables optional aliases only for environment value `"1"`; launcher argv
+  detection enables them for recognized neural names or separate neural-model
+  flags. The `equals-form-characterization` case confirms
+  `--blueNeuralNet=test.zip` does not enable imports. The registry itself does
+  not inspect argv. These tests do not assert a Torch-free import: `multigym_ai`
+  is imported even with neural aliases disabled. Real model imports remain S15/S16.
+- **K08, duplicate roles and stale authorization:**
+  `test_gameserver_protocol.py::test_duplicate_roles_and_same_client_characterization`
+  shows a second blue request replacing blue's recipient while leaving the
+  old client's reverse mapping. One client can then hold both recipient roles,
+  with only its last role in the reverse map; the superseded blue client can
+  still submit an action. The last role request also controls `auto_next_game`.
+  `test_next_game_from_every_state_and_stale_reverse_maps` confirms next-game
+  clears role recipients but retains `{0: "blue", 1: "red"}` reverse mappings.
+  Exclusive assignment and consistent cleanup are not currently enforced.
+- **K08, disconnect retention:**
+  `test_message_routing.py::test_socket_registration_parse_and_disconnect_characterization`
+  covers clean, malformed-JSON, and exceptional termination. Every case retains
+  the wrapper in `server.clients`. A later send to its closed socket propagates
+  the boundary error rather than removing the entry. Actual socket integration
+  and WebSocket-specific close exceptions remain S08.
+
+Other protocol/input characterizations:
+
+- Reset requests are rejected during role assignment, despite the protocol
+  notes saying "at any time". During either turn or game over they send fresh
+  observations before broadcasting reset, preserve roles and repetition count,
+  and accept an unassigned requester. Next-game and gym-pause are also accepted
+  from an unassigned client in all four protocol states.
+- Unknown/missing message fields raise ordinary exceptions or `KeyError`;
+  unassigned action clients raise `KeyError` for the client ID. Illegal game
+  actions propagate their game exception without updating state or observations.
+- Function return strings are JSON-decoded without object validation: `null`
+  and arrays enter the queue, while an empty string is ignored. Callback
+  submissions require a dictionary. Empty debug dictionaries are omitted.
+- Initialization reports an unknown blue alias with `KeyError`, an unknown red
+  alias with an explanatory `Exception`, and red shared-model selection without
+  blue with `UnboundLocalError` mentioning `blue_ai`. The tests preserve these
+  exact distinctions rather than assuming a structured validation API.
 
 ## Failure policy and environment notes
 

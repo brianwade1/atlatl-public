@@ -64,6 +64,9 @@ uv run pytest tests/server_unit/test_status.py tests/server_unit/test_game_setup
 # S06 scenario loading, generators, registries and game dispensers.
 uv run pytest tests/server_unit/test_scenario_factories.py tests/server_unit/test_scenario_registry.py tests/server_unit/test_game_dispenser.py
 
+# S07: transport, protocol routing, and isolated server initialization.
+uv run pytest tests/server_unit/test_message_clients.py tests/server_unit/test_message_routing.py tests/server_unit/test_gameserver_protocol.py tests/server_unit/test_server_init.py
+
 # Check default and full discovery without running tests.
 uv run pytest --collect-only -q
 uv run pytest tests --collect-only -q
@@ -173,6 +176,23 @@ ambient detection draws and caller RNG effects. Invalid inputs and hierarchy
 collisions run in subprocesses with ten-second timeouts. K05/K06 and unsupported
 input behavior are characterized in [KNOWN_ISSUES.md](KNOWN_ISSUES.md), with no
 new xfails. Packaged scenarios are only read; generated inputs stay test-local.
+
+S07 adds transport and game-server unit tests in the four files above. Socket
+iteration/send and game transitions use controlled collaborators; these are not
+real WebSocket integration tests. Function-client tasks use events, bounded
+waits and cancellation/await teardown. Constructor/run tests use a child-owned
+loop with a watchdog, fake socket context, and explicit task/loop cleanup.
+GameServer tests restore the SIGINT handler and replace transport, exit and
+loop-stop boundaries so the pytest runner survives unchanged.
+
+Initialization tests run in fresh ten-second subprocesses using
+`support/server_init_boundary.py`: fake AI constructors, scenario/dispenser
+factories and an inert GameServer capture arguments and registration order.
+Neural-gating probes execute the real registry with inert AI import boundaries;
+they do not exercise actual optional model imports or claim Torch-free startup.
+K07/K08 and unsupported-message behavior are characterized in
+[KNOWN_ISSUES.md](KNOWN_ISSUES.md). Real sockets, full games through transport,
+and replay output validation remain S08.
 
 Use `rng` for Python/NumPy seed isolation. ML subprocesses use
 `isolated_rng(torch_module=torch)` to preserve CPU RNG, deterministic-algorithm
