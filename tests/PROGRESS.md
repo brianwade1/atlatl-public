@@ -4,6 +4,65 @@ Current invocation (2026-09-24): `uv run pytest` from the repository root.
 The root `pytest.ini` and installed project plugins supersede the test-local
 configuration/overlay commands in the historical entries below.
 
+## 2026-09-25 — S04 completed
+
+Implemented **S04 — Server units, movement, targeting, and detection**.
+S01–S04 are complete; S05–S17 remain open. Starting revision:
+`36beedec3c6f03ed4d4ffd5378617e5ef6384ec6`. Preserved the pre-existing untracked
+`demo_script.txt`. Changes are limited to `tests/` and root `test_plan.md`.
+
+Added **84 passing unit cases** in the three planned files:
+
+- `server_unit/test_unit_state.py`: constructor/default flags, fractional strength,
+  registration and faction filtering, empty/unplaced units, duplicate-ID
+  characterization, placement/removal/replacement, stacking limits, faction action
+  flags, visible-hidden-visible occupancy, ineffective removal, fog input rejection
+  and independent portable copies that omit detection.
+- `server_unit/test_unit_movement.py`: both movement entry points, all four unit
+  types and six terrain types, exact and exceeded budgets, occupied destinations
+  and intermediates, increased stacking, boundaries/origin exclusion/uniqueness,
+  alternative routes checked against independent Bellman-Ford relaxation over a
+  literal six-cell graph; fire filters, both parities, artillery range two, and
+  controlled thresholds distinguishing Euclidean distance from hex-step distance.
+- `server_unit/test_unit_visibility.py`: below/equal/above probability draws,
+  independent detection directions, retained detection at the sight boundary,
+  clearing outside sight and reacquisition, friendly/ineffective/empty groups,
+  asymmetric observer sight, exact white/blue/red export fields, export side effects,
+  removed-unit masking and live-unplaced-unit exception characterizations.
+
+Added a small `unit_world` fixture to load real map/unit objects using the S02
+builders and portable movement fixtures. No production algorithm is mocked.
+Rule overrides use restoring monkeypatch fixtures and detection draws are finite
+at the production lookup site. The shortest-path oracle agreed on all tested
+default-rule routes. No new defect ID or xfail was added. KNOWN_ISSUES records
+K05's confirmed serialization side effect and unsupported-input characterizations;
+other K05 portions remain for S05/S06. README and the plan checklist are updated.
+
+### Validation
+
+Windows / Python 3.14.4, existing project environment. Test commands used
+`UV_CACHE_DIR=tests/.cache/uv` and `PYTHONDONTWRITEBYTECODE=1`:
+
+| Command | Result |
+| --- | --- |
+| `uv run --offline --no-sync pytest tests/server_unit/test_unit_state.py tests/server_unit/test_unit_movement.py tests/server_unit/test_unit_visibility.py -q` | **84 passed in 4.58s**; one sandbox cache-permission warning. |
+| `uv run --offline --no-sync pytest tests -q` (approved outside sandbox) | **253 passed, 9 existing xfailed in 62.54s**. |
+
+The full suite includes existing Chromium, async and CPU-model checks, with
+**0 failed, 0 warnings, 0 skipped, 0 XPASS and 0 deselected**. All 169 previous
+passing cases and nine K01/K02 expected failures retain their outcomes.
+The protection report checks **315 files**, with no additions, removals or content
+changes and unchanged protected Git diff. `git diff --check` passed.
+
+A documentation-edit helper initially invoked uv without the test-local cache
+environment and failed before running Python because the default AppData cache
+was inaccessible; rerunning through the existing environment's Python succeeded.
+No dependency or configuration changes were required. No launcher smoke game
+was needed for test-only work; the full suite includes the existing bounded
+deterministic engine episode. Other platforms and Python versions are unverified.
+
+Next step: **S05 — Test game transitions, setup, combat, phases, and scoring**.
+
 ## 2026-09-25 — S03 completed
 
 Implemented **S03 — Server geometry, serialization, and rule tables**. S01–S03

@@ -1,6 +1,6 @@
 # Test plan for `server/` and `browser/`
 
-Prepared: 2026-09-23. Status updated: 2026-09-25. Framework: **pytest**. This is an implementation roadmap; S01–S03 are complete, and S04–S17 remain open. Check off a step only after its completion criteria are met and its results are recorded.
+Prepared: 2026-09-23. Status updated: 2026-09-25. Framework: **pytest**. This is an implementation roadmap; S01–S04 are complete, and S05–S17 remain open. Check off a step only after its completion criteria are met and its results are recorded.
 
 For work across days and sessions, use this plan for scope and step status, [tests/PROGRESS.md](tests/PROGRESS.md) for dated implementation details, validation results, deviations, blockers, and the next task, [tests/KNOWN_ISSUES.md](tests/KNOWN_ISSUES.md) for confirmed defects, and [tests/README.md](tests/README.md) for current run commands. Read these records at the start of each session and update the progress log before ending it; do not rely on conversation history alone.
 
@@ -11,7 +11,7 @@ For work across days and sessions, use this plan for scope and step status, [tes
 - [x] **S01 — Establish the test harness, baseline, and write restrictions.**
 - [x] **S02 — Build deterministic fixtures and isolation helpers.**
 - [x] **S03 — Test server map geometry, serialization, and rule tables.**
-- [ ] **S04 — Test server units, movement, targeting, and detection.**
+- [x] **S04 — Test server units, movement, targeting, and detection.**
 - [ ] **S05 — Test game transitions, setup, combat, phases, and scoring.**
 - [ ] **S06 — Test scenario loading, generators, registries, and game dispensers.**
 - [ ] **S07 — Unit-test message transport, game-server routing, and server initialization.**
@@ -90,7 +90,7 @@ The default pytest collection targets only the lightweight core. When an optiona
 
 **Status: COMPLETE.** Implemented on 2026-09-23; root-configuration follow-up verified on 2026-09-24. Original baseline assertions were preserved and migrated to five pytest cases. The harness includes strict configuration, import/subprocess helpers, test-local HTTP serving, a Chromium module-load check, and protected-directory manifests. Default and full discovery were verified. Latest validation: `uv run pytest` — **13 passed**; `uv run pytest tests -q` — **14 passed**, including Chromium, with no warnings or failures. All 315 protected files remained unchanged.
 
-The user-approved root `pytest.ini` and installed project plugins replace the original configuration location and overlay workflow specified below. See [tests/PROGRESS.md](tests/PROGRESS.md) for the case mapping, exact validation commands, environment versions, and completion evidence, and [tests/README.md](tests/README.md) for current usage. No additional S01 implementation work remains. S02 is also complete; S03 is also complete; S04 is next.
+The user-approved root `pytest.ini` and installed project plugins replace the original configuration location and overlay workflow specified below. See [tests/PROGRESS.md](tests/PROGRESS.md) for the case mapping, exact validation commands, environment versions, and completion evidence, and [tests/README.md](tests/README.md) for current usage. No additional S01 implementation work remains. S02 is also complete; S03 is also complete; S04 is also complete; S05 is next.
 
 **Priority:** P0. **Dependencies:** none. **Deliverables:** pytest configuration and fixtures, test-local documentation, baseline and issue records.
 
@@ -147,7 +147,7 @@ tests/
 
 ## S02 — Build fixtures and isolation helpers
 
-**Status: COMPLETE (2026-09-25).** Fresh builders, all twelve reusable fixture families, RNG/global/task/loop isolation, finite boundary doubles, browser error capture, and CPU model inputs are implemented. Consumer checks verify independent geometry/score oracles, failure-path cleanup, and real engine/browser compatibility. See [tests/PROGRESS.md](tests/PROGRESS.md) for commands, results and the documented function-scoped Playwright lifecycle deviation; [tests/fixtures/README.md](tests/fixtures/README.md) documents schemas. S03 is also complete; S04 is next.
+**Status: COMPLETE (2026-09-25).** Fresh builders, all twelve reusable fixture families, RNG/global/task/loop isolation, finite boundary doubles, browser error capture, and CPU model inputs are implemented. Consumer checks verify independent geometry/score oracles, failure-path cleanup, and real engine/browser compatibility. See [tests/PROGRESS.md](tests/PROGRESS.md) for commands, results and the documented function-scoped Playwright lifecycle deviation; [tests/fixtures/README.md](tests/fixtures/README.md) documents schemas. S03 is also complete; S04 is also complete; S05 is next.
 
 **Priority:** P0. **Dependencies:** S01. **Deliverables:** `support/builders.py`, isolation helpers, and documented fixture schemas.
 
@@ -188,7 +188,7 @@ K01/K02 edge, path, cached-dimension and replacement defects. Both parities,
 negative coordinates, all directions, boundary truncation, distinct distances,
 portable JSON round trips, map queries and every rule-table coefficient are covered.
 See [tests/PROGRESS.md](tests/PROGRESS.md) for validation and
-[tests/KNOWN_ISSUES.md](tests/KNOWN_ISSUES.md) for exact reproductions. S04 is next.
+[tests/KNOWN_ISSUES.md](tests/KNOWN_ISSUES.md) for exact reproductions. S04 is also complete; S05 is next.
 
 **Priority:** P0. **Dependencies:** S02. **Proposed files:** `server_unit/test_map_geometry.py`, `test_map_serialization.py`, `test_rule_tables.py`.
 
@@ -204,6 +204,15 @@ See [tests/PROGRESS.md](tests/PROGRESS.md) for validation and
 **Completion:** both column parities, all terrain/unit combinations, JSON round trips, empty maps, reloads, and distinct distance definitions have assertions; confirmed edge/path/cache issues have reproductions and issue IDs.
 
 ## S04 — Server units, movement, targeting, and detection
+
+**Status: COMPLETE (2026-09-25).** Added 84 passing cases in the three proposed
+files, covering identity/flags, occupancy lifecycle, movement budgets and an
+independent shortest-path oracle, geometric fire eligibility, partial observations,
+finite detection draws and observer serialization. Unsupported inputs and K05's
+serialization side effect are explicit characterizations; no new xfails were added.
+Full validation: **253 passed, 9 existing xfailed**, with all 315 protected files
+unchanged. See [tests/PROGRESS.md](tests/PROGRESS.md) and
+[tests/KNOWN_ISSUES.md](tests/KNOWN_ISSUES.md). S05 is next.
 
 **Priority:** P0. **Dependencies:** S03. **Proposed files:** `server_unit/test_unit_state.py`, `test_unit_movement.py`, `test_unit_visibility.py`.
 

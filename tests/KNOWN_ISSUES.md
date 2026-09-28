@@ -1,8 +1,10 @@
 # Confirmed issues
 
 S03 runtime-confirmed the Python map defects grouped under **K01** and **K02**
-in `../test_plan.md`. K03–K18 and the browser portions of K01/K02 remain an
-investigation queue, not expected failures. Production files remain unchanged.
+in `../test_plan.md`. S04 confirms the serialization/detection side effect in
+K05 as characterization, without an expected failure. The remaining K03–K18
+items and browser portions of K01/K02 remain an investigation queue, not
+expected failures. Production files remain unchanged.
 
 ## K01 — Edge identity and path serialization/loading
 
@@ -39,6 +41,42 @@ contracts have individual strict xfails. Run
 Loading does replace hex/edge indexes, and dimensions are correct if not previously
 queried; passing tests cover those distinctions. These findings do not establish
 the behavior of browser map replacement.
+
+## S04 characterizations and input limitations
+
+These passing tests record existing behavior; they do not approve these
+limitations as future requirements or introduce new strict xfails. Reproduce
+with `uv run pytest tests/server_unit/test_unit_state.py tests/server_unit/test_unit_visibility.py -q`.
+
+- **K05, serialization portion confirmed:**
+  `test_unit_visibility.py::test_observer_fields_and_serialization_side_effect`
+  (white/blue/red) makes two successive exports with finite draws at probability
+  0.5. Draws 0.9 leave both units undetected; draws 0.1 detect both on the next
+  export. Serialization mutates detection and may change enemy locations from
+  `fog` to visible. All other fields remain exposed for hidden enemies.
+  `Unit.portableCopy` omits detection and does not invoke this update.
+  Status sharing and scenario-factory portions of K05 await S05/S06.
+- `test_unit_visibility.py::test_live_unplaced_enemy_characterization`
+  (`updateDetectionStatus`/`toPortable`): a live unplaced red unit paired with a
+  placed blue unit raises `AttributeError: 'NoneType' object has no attribute
+  'x_grid'`. Both detection flags have already been cleared. A lone unplaced
+  unit serializes successfully, and ineffective unplaced units are skipped.
+  These are input limitations; no graceful handling contract is assumed.
+- `test_unit_state.py::test_duplicate_ids_characterization`: loading the same
+  faction/name twice replaces the indexed unit but leaves the original in its
+  old occupancy list. Valid inputs require unique IDs.
+- `test_unit_state.py::test_hex_full_characterization`: an absent occupancy key
+  returns false even with stacking limit zero; a present empty list returns
+  true at zero. Normal limit-one and temporarily increased capacity are covered.
+- `test_unit_state.py::test_partial_observation_visible_hidden_visible`:
+  strength, action and ineffective flags update, but `detected` is not copied.
+  Hidden and ineffective units leave occupancy, and visible reappearance restores
+  it without duplicates. `test_fog_is_not_ground_truth_input` separately records
+  `KeyError('fog')` when a partial observation is passed to `fromPortable`.
+
+Movement's independent shortest-path oracle agrees with the current rule tables
+for the tested occupied/rough/water alternative routes. No movement defect or
+new issue ID was confirmed by S04.
 
 ## Failure policy and environment notes
 

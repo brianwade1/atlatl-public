@@ -102,6 +102,23 @@ def make_unit():
 
 
 @pytest.fixture
+def unit_world(engine_imports):
+    """Load fresh real map/unit objects without serialization or detection draws."""
+    from tests.support.imports import import_server
+
+    def build(units=(), *, map_input=None, **map_options):
+        geometry = import_server("map")
+        module = import_server("unit")
+        board = geometry.MapData()
+        geometry.fromPortable(
+            builders.make_map(**map_options) if map_input is None else map_input, board)
+        data = module.UnitData()
+        module.fromPortable(units, data, board)
+        return module, board, data
+    return build
+
+
+@pytest.fixture
 def make_scenario():
     return builders.make_scenario
 

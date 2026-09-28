@@ -10,7 +10,7 @@ Pytest automatically discovers the repository-root [pytest.ini](../pytest.ini).
 The project environment now includes pytest, pytest-asyncio, pytest-playwright,
 and pytest-cov, so no dependency overlay or explicit configuration path is needed.
 
-S01–S03 are implemented. Test code, fixture data, and generated artifacts remain under
+S01–S04 are implemented. Test code, fixture data, and generated artifacts remain under
 `tests/`; pytest configuration lives at the repository root. Never edit `server/`,
 `browser/`, or `scenarios/` to satisfy these tests. See [PROGRESS.md](PROGRESS.md)
 for verified results and [KNOWN_ISSUES.md](KNOWN_ISSUES.md) for the defect policy.
@@ -54,6 +54,9 @@ uv run pytest
 
 # S03 geometry, serialization, and all combat/mobility coefficients.
 uv run pytest tests/server_unit/test_map_geometry.py tests/server_unit/test_map_serialization.py tests/server_unit/test_rule_tables.py
+
+# S04 unit state, occupancy, movement, targeting, and deterministic detection.
+uv run pytest tests/server_unit/test_unit_state.py tests/server_unit/test_unit_movement.py tests/server_unit/test_unit_visibility.py
 
 # Check default and full discovery without running tests.
 uv run pytest --collect-only -q
@@ -135,6 +138,16 @@ and 9 strict expected failures for K01/K02). Each expected failure matches only
 the documented wrong signature; unrelated exceptions fail and fixes produce
 strict XPASS failures for review. The scripted S02 four-phase game runs directly
 through the engine and does not invoke the stochastic launcher smoke scenario.
+
+S04 adds 84 passing unit cases across unit state, movement and visibility. Use
+`unit_world` to construct fresh real map/unit objects from portable builders or
+an explicit `map_input`, without invoking serialization/detection. Movement
+expectations use literal destination sets plus independent Bellman-Ford costs
+on a hand-written neighbor graph. Probability, sight, range and stacking overrides
+use pytest's restoring monkeypatch fixture; randomness uses finite draws at
+`unit.random`. Passing characterizations for duplicate IDs, live unplaced units,
+partial observations and serialization side effects are documented in
+[KNOWN_ISSUES.md](KNOWN_ISSUES.md); S04 adds no expected failures.
 
 Use `rng` for Python/NumPy seed isolation. ML subprocesses use
 `isolated_rng(torch_module=torch)` to preserve CPU RNG, deterministic-algorithm
