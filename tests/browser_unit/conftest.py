@@ -1,5 +1,7 @@
 import pytest
 
+from tests.support.browser_models import model_page  # noqa: F401
+
 from tests.support.browser_helpers import checked_page
 from tests.support.imports import TESTS_DIR
 

@@ -10,7 +10,7 @@ Pytest automatically discovers the repository-root [pytest.ini](../pytest.ini).
 The project environment now includes pytest, pytest-asyncio, pytest-playwright,
 and pytest-cov, so no dependency overlay or explicit configuration path is needed.
 
-S01–S08 are implemented. Test code, fixture data, and generated artifacts remain under
+S01–S09 are implemented. Test code, fixture data, and generated artifacts remain under
 `tests/`; pytest configuration lives at the repository root. Never edit `server/`,
 `browser/`, or `scenarios/` to satisfy these tests. See [PROGRESS.md](PROGRESS.md)
 for verified results and [KNOWN_ISSUES.md](KNOWN_ISSUES.md) for the defect policy.
@@ -74,10 +74,13 @@ uv run pytest tests/server_integration -q
 uv run pytest --collect-only -q
 uv run pytest tests --collect-only -q
 
-# Explicit browser smoke test, including console/page-error checks.
+# Browser models and harness, including console/page-error checks.
 uv run pytest tests/browser_unit -m browser --browser chromium
 
-# All currently implemented tests, including the browser smoke test.
+# S09 shared Python/JavaScript geometry, movement, targeting and combat audit.
+uv run pytest tests/browser_integration -q
+
+# All currently implemented tests, including browser model contracts.
 uv run pytest tests
 
 # Python coverage; this does not instrument browser JavaScript.
@@ -96,8 +99,8 @@ Default discovery collects only `tests/test_scenario_loading.py` and
 select `tests/browser_unit` or `tests/browser_integration` for browser tests,
 `tests/server_integration` for real protocol/CLI/replay checks, `tests/ml` for ML
 checks, and `tests/scripts` for isolated demonstrations. The ML suite currently
-contains one CPU-model fixture preflight; browser integration and scripts remain
-empty. Empty selections return pytest's nonzero exit status.
+contains one CPU-model fixture preflight; browser integration contains S09
+model compatibility checks, and scripts remains empty. Empty selections return pytest's nonzero exit status.
 Executable examples and cached dependency tests are outside default discovery;
 pytest also excludes the dot-prefixed cache/temp/artifact directories.
 
@@ -223,6 +226,25 @@ exact-signature strict xfails; Unicode-only names pass. Actual JavaScript
 execution and viewer/action-log compatibility remain S13. Generated replay files
 stay in pytest's disposable directory; S13 can reuse `running_server` and
 `read_replay` to generate fresh inputs without changing `browser/replay.js`.
+
+
+S09 adds model tests in `browser_unit/test_map_model.py`, `test_unit_model.py`,
+`test_rule_data.py`, and shared contracts in `browser_integration/test_engine_parity.py`.
+Run all S09 cases with:
+
+```text
+uv run pytest tests/browser_unit/test_map_model.py tests/browser_unit/test_unit_model.py tests/browser_unit/test_rule_data.py tests/browser_integration -q
+```
+
+`support/browser_models.py` loads six original ES modules over HTTP in a fresh
+page/context. The game Map uses the test-only `GameMap` alias so the JavaScript
+built-in Map remains available. Only SVG symbol creation is replaced by a
+recording boundary: S09 makes no rendering claim. Same-page replacement tests
+never reset the modules between loads. Exact-signature strict xfails distinguish
+confirmed defects from unsupported-input/display-format characterizations.
+See [BROWSER_COMPATIBILITY.md](BROWSER_COMPATIBILITY.md) for shared fixture scope,
+semantic serialization comparisons and the separate firepower-difference audit.
+Actual SVG/page/replay workflows remain S10-S13.
 
 Use `rng` for Python/NumPy seed isolation. ML subprocesses use
 `isolated_rng(torch_module=torch)` to preserve CPU RNG, deterministic-algorithm

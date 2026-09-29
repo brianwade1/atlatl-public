@@ -8,8 +8,8 @@ as characterizations below. S06 confirms factory sharing/RNG effects under K05
 and repeated city placement/hierarchy collisions under K06. S07 confirms K07
 initialization leakage and K08 role/disconnect lifecycle behavior. S08 confirms
 K08 over real sockets, K09 replay escaping, and K19 AI-process startup below. The other
-unverified portions of K03–K18 and browser portions
-of K01/K02 remain an investigation queue, not expected failures. Production
+unverified portions of K03–K18 remain an investigation queue, not expected
+failures. S09 confirms browser K01/K02/K10 plus K20/K21 below. Production
 files remain unchanged.
 
 ## K01 — Edge identity and path serialization/loading
@@ -343,3 +343,91 @@ pytest-asyncio cases to fail with `Runner.run() cannot be called from a running
 event loop`. The test-local conftest now reuses the plugin's driver/browser
 fixture bodies with function scope, so teardown stops the driver before the next
 test. This is a harness lifecycle issue, not a production defect or an xfail.
+
+## S09 browser confirmations (2026-09-29)
+
+Run `uv run pytest tests/browser_unit/test_map_model.py tests/browser_unit/test_unit_model.py tests/browser_unit/test_rule_data.py -q`.
+All required-contract failures use individual strict xfails with
+`raises=KnownDefect`, raised only after matching the exact wrong signature.
+Unrelated errors fail normally; a corrected implementation produces strict XPASS.
+The node names below are within the indicated file (Chromium parametrization is
+added by pytest-playwright).
+
+### K01: browser edge/path identity
+
+In `browser_unit/test_map_model.py`:
+
+| Node | Required result | Observed signature |
+| --- | --- | --- |
+| `test_adjacent_hexes_share_reversed_edge` | 11 edges; shared object on adjacent hexes | 12 edges; distinct `edge-3-3-1-3` / `edge-1-3-3-3` objects |
+| `test_load_preserves_shared_edge_reference_and_type` | Shared river object on both hexes, 11 edges | Different objects, river on forward side, normal on reverse side, 12 edges |
+| `test_reversed_path_replacement_has_single_identity` | One replacement path; removing it clears both endpoint slots | Both directed path IDs survive replacement; removal deletes both index keys but leaves the replacement object in both slots |
+
+Same-direction path replacement, reciprocal endpoint references, either initial
+orientation, serialization/reload, reversed removal and absent removal pass.
+Nonadjacent endpoints are an unsupported-input characterization: the path is
+accepted, with `a.paths.null` and `b.paths[3]` set. Removal clears the index and
+numeric slot but retains the named `null` property; no adjacency-validation
+requirement is imposed here.
+
+### K02: browser same-page replacement
+
+In `browser_unit/test_map_model.py`:
+
+- `test_load_replaces_hexes_and_dimensions[False/True]`: after a 3x4 grid,
+  loading 1x1/empty replaces the hex array (1/0 entries) but leaves 12 indexed
+  hexes, dimensions 4x3, and the old `hex-3-2` object. Expected indexes and
+  dimensions describe only the replacement.
+- `test_replacement_clears_paths[load/grid]`: a road remains indexed and points
+  at its old hex objects after loading/creating 1x1. Expected no paths. New hex
+  and edge objects are correctly created, and new endpoint slots are empty.
+- The passing `test_grid_replaces_hex_and_edge_indexes` distinguishes grid
+  creation (which clears both indexes) from portable loading (which retains
+  the hex index). No module reset occurs between these operations.
+
+### K10: path palette identifiers
+
+`browser_unit/test_rule_data.py::test_path_palette_id_maps_to_path_style[road/path]`
+expects `path-type-road` / `path-type-path`, but receives `edge-type-road` /
+`edge-type-path`. Name slicing itself still yields road/path and those names have
+path styles. The defect is the category prefix, caused by constructing EdgeType
+objects. Actual palette click/renderer consequences remain S10/S11.
+
+### K20: browser unit replacement retains old indexes and occupancy
+
+`browser_unit/test_unit_model.py::test_repeated_load_replaces_indexes[fromPortable/fromPortable2]`
+loads Alpha at hex-0-0, then New at hex-0-1 in the same page. Required: one current
+unit/index entry, empty old occupancy, and New at its destination. Observed:
+`Unit.units` has one unit, but both old/new IDs remain indexed, the old object
+remains at hex-0-0, and the new object occupies hex-0-1. This can block later
+placement/movement. No `Unit.init` is inserted between loads.
+
+Passing `test_same_id_reload_duplicates_occupancy_characterization` records the
+related same-ID case: one array entry and one index entry, but both distinct old
+and new objects in occupancy. Calling `Unit.init` explicitly resets all three
+collections; normal movement, removal and observation updates pass.
+
+Other passing input/format characterizations in `test_unit_model.py`:
+
+- Both loaders ignore incoming canMove/ineffective flags at construction and
+  supply false until observations are applied; rich versus server display
+  defaults are tested separately.
+- Unplaced export raises `TypeError: Cannot read properties of null (reading 'id')`.
+- Passing `fog` to a loader raises `TypeError: Cannot read properties of undefined (reading 'id')`;
+  apply fog using `partialObsUpdate` instead.
+
+See [BROWSER_COMPATIBILITY.md](BROWSER_COMPATIBILITY.md) for the independently
+checked shared behavior and separate firepower difference audit. No full
+firepower-parity requirement or xfail is introduced.
+
+### K21: negative odd-column centers differ across languages
+
+`browser_integration/test_engine_parity.py::test_coordinate_conversion_contract`
+uses the literal S03 vectors in `fixtures/browser_contract.json`.
+Run `uv run pytest tests/browser_integration -q -k coordinate_conversion`.
+For offset `[-1,0]`, expected/Python center is `[-1,3]`, browser returns `[-1,1]`;
+for `[-3,2]`, expected/Python is `[-7,7]`, browser returns `[-7,5]`. Each vector
+has its own strict exact-signature xfail. Positive columns, negative rows and
+negative even columns pass. Browser `% 2` is a signed remainder, unlike Python's
+modulo for negative odd columns. These are portable coordinate inputs; normal
+nonnegative generated grids are unaffected. No production change was made.

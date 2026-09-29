@@ -33,3 +33,13 @@ edges for browser rendering, but must never supply geometry expected values.
 Consumer tests validate that data loads and the independent oracles are coherent.
 The full behavioral matrices, negative contracts, playback workflows and model
 persistence tests remain in S03-S16.
+
+
+S09 adds [browser_contract.json](browser_contract.json), loaded directly by the
+browser/engine integration tests. `geometry` embeds the S02/S03 hand-tabulated
+map/oracles; `coordinates` and `distances` retain explicit S03 vectors.
+`cost`, `stackingLimit`, and `range` are literal rule expectations, with
+`impassable` representing Infinity. `movement` and `fire` cases reference named
+portable `maps` and carry portable units plus literal expected target IDs.
+The stacking override is per case; observation application is explicit in the
+browser consumer. Expected values never come from either production engine.

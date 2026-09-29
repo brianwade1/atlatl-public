@@ -1,5 +1,79 @@
 # Test implementation progress
 
+## 2026-09-29 — S09 completed
+
+Implemented **S09 — Browser models and Python–JavaScript compatibility**.
+S01–S09 are complete; S10–S17 remain open.
+Starting revision: `2b1b3603dd5493f9506da82767d3d00ea0991e69`.
+Preserved the existing untracked `demo_script.txt`. All edits are within `tests/`
+or root `test_plan.md`; no application, dependency or configuration changes.
+
+Added **93 cases** (80 passing, 13 strict expected failures):
+
+- `browser_unit/test_map_model.py` (19): public geometry, dimensions, lookup,
+  defaults/setup, serialization/malformed JSON, both path orientations,
+  replacement/removal, reversed shared edges, and same-page grid/load state.
+- `browser_unit/test_unit_model.py` (16): constructor registration, occupancy,
+  init/remove, both loader formats, defaults, setup placement/exhaustion,
+  ordered observation movement/fog/reappearance/removal, unplaced export,
+  loader fog input and repeated loads with distinct/same IDs.
+- `browser_unit/test_rule_data.py` (5): every palette ID/name, supported style
+  entry, default fill and exact path-prefix defect cases.
+- `browser_integration/test_engine_parity.py` (53): shared JSON oracles against
+  both implementations (33 movement, 10 fire, 7 coordinate vectors, combined
+  geometry/rules, semantic serialization, combat difference audit). These carry
+  `browser` and `integration`; the other 40 carry `browser` and `unit`.
+  Movement/fire matrices live in the shared suite to exercise identical fixtures
+  in both languages without duplicating browser cases.
+
+`support/browser_models.py` imports original Map, Unit, Mobility, Combat,
+Terrain and Style ES modules over the local HTTP harness. GameMap is a test-only
+alias, preserving native JavaScript Map. SVGUnitSymbol.create is the only model
+collaborator replaced, by a recording boundary; no model behavior is patched.
+Fresh pages isolate tests, but same-page replacement probes perform no hidden
+reset between operations. Existing console/page-error/network/dialog checks
+remain active. Drawing and actual page workflows remain S10 onward.
+
+`fixtures/browser_contract.json` contains independent S03 geometry vectors,
+normalized infinity, all mobility/range coefficients, and S04 movement/fire
+cases including terrain, occupied/intermediate hexes, alternate routes, stacking,
+fog/ineffective targets, artillery and Euclidean distance. Named maps avoid
+repeated inputs. Semantic map/unit assertions distinguish browser metadata and
+Python's unsupported path loading. `BROWSER_COMPATIBILITY.md` records the absent
+browser infantry firepower row and all six differing coefficients separately
+from required live-behavior parity.
+
+Confirmed K01/K02 browser defects, K10 path palette IDs, new K20 unit replacement
+leaks and K21 negative-odd coordinate mismatch have exact-signature strict xfails.
+Unsupported inputs and constructor/display defaults are passing characterizations,
+not newly imposed requirements. See KNOWN_ISSUES.md for individual reproductions.
+
+Validation on Windows/Python 3.14.4 and Chromium, using the installed project
+environment and `UV_CACHE_DIR=tests/.cache/uv`:
+
+- First sandbox run: 79 setup errors (Playwright Windows pipe WinError 5), two
+  environment warnings; no model assertions executed. Approved outside-sandbox
+  execution was required, as in earlier steps.
+- Initial harness run: 79 failures because assigning the game Map to window.Map
+  broke Playwright's native Map use. Fixed only the test alias. A single-case
+  diagnostic reproduced the same error. No production defect was inferred.
+- Corrected initial S09: **70 passed, 9 xfailed in 64.52s** (79 cases).
+- A full-suite collection attempt found a wrong named-map reference in the new
+  stacking case; corrected `armor-clear` to the deduplicated `infantry-clear`.
+- Full regression: `uv run --no-sync python -B -m pytest tests -q --tb=short --maxfail=3`:
+  **727 passed, 23 xfailed in 208.01s**, 750 collected, including CPU model and
+  real server integrations. The seven final coordinate cases were added after
+  this collection and checked in the focused final run below.
+- Final S09: `uv run --no-sync python -B -m pytest tests/browser_unit/test_map_model.py tests/browser_unit/test_unit_model.py tests/browser_unit/test_rule_data.py tests/browser_integration -q --tb=short`:
+  **80 passed, 13 xfailed in 75.33s**, all 93 final S09 cases.
+
+Successful runs had zero unexpected failures, warnings, skips, XPASS or
+deselections. Protected manifests checked all 315 files with no additions,
+removals, content changes or protected Git diff changes. `git diff --check` and
+local Markdown link/content checks passed. No live application code changed;
+the full existing bounded server integrations provide the simulation regression.
+No rendering or cross-platform claim is made. Next task: **S10**.
+
 Current invocation (2026-09-24): `uv run pytest` from the repository root.
 The root `pytest.ini` and installed project plugins supersede the test-local
 configuration/overlay commands in the historical entries below.
