@@ -10,7 +10,7 @@ Pytest automatically discovers the repository-root [pytest.ini](../pytest.ini).
 The project environment now includes pytest, pytest-asyncio, pytest-playwright,
 and pytest-cov, so no dependency overlay or explicit configuration path is needed.
 
-S01–S06 are implemented. Test code, fixture data, and generated artifacts remain under
+S01–S08 are implemented. Test code, fixture data, and generated artifacts remain under
 `tests/`; pytest configuration lives at the repository root. Never edit `server/`,
 `browser/`, or `scenarios/` to satisfy these tests. See [PROGRESS.md](PROGRESS.md)
 for verified results and [KNOWN_ISSUES.md](KNOWN_ISSUES.md) for the defect policy.
@@ -67,6 +67,9 @@ uv run pytest tests/server_unit/test_scenario_factories.py tests/server_unit/tes
 # S07: transport, protocol routing, and isolated server initialization.
 uv run pytest tests/server_unit/test_message_clients.py tests/server_unit/test_message_routing.py tests/server_unit/test_gameserver_protocol.py tests/server_unit/test_server_init.py
 
+# S08: real function/WebSocket games, CLI/AI children, and replay files.
+uv run pytest tests/server_integration -q
+
 # Check default and full discovery without running tests.
 uv run pytest --collect-only -q
 uv run pytest tests --collect-only -q
@@ -91,10 +94,10 @@ on failures under `tests/.artifacts/playwright`. Shared temporary files live in
 Default discovery collects only `tests/test_scenario_loading.py` and
 `tests/server_unit/`. `-m browser` alone does not expand collection. Explicitly
 select `tests/browser_unit` or `tests/browser_integration` for browser tests,
-`tests/server_integration` for future protocol checks, `tests/ml` for future ML
+`tests/server_integration` for real protocol/CLI/replay checks, `tests/ml` for ML
 checks, and `tests/scripts` for isolated demonstrations. The ML suite currently
-contains one CPU-model fixture preflight; server integration, browser integration
-and scripts remain empty. Empty selections return pytest's nonzero exit status.
+contains one CPU-model fixture preflight; browser integration and scripts remain
+empty. Empty selections return pytest's nonzero exit status.
 Executable examples and cached dependency tests are outside default discovery;
 pytest also excludes the dot-prefixed cache/temp/artifact directories.
 
@@ -192,7 +195,34 @@ Neural-gating probes execute the real registry with inert AI import boundaries;
 they do not exercise actual optional model imports or claim Torch-free startup.
 K07/K08 and unsupported-message behavior are characterized in
 [KNOWN_ISSUES.md](KNOWN_ISSUES.md). Real sockets, full games through transport,
-and replay output validation remain S08.
+and replay output validation are covered separately in S08.
+
+S08 adds 24 integration cases in `server_integration/` (including three strict
+expected failures for K09/K19). `support/integration_server.py` starts a real
+GameServer/MessageServer in an owned child, reports an ephemeral loopback port
+only after the real bind, and cleans up sockets, tasks, logs and the loop.
+The parent records stdout/stderr and enforces deadlines with terminate/kill
+fallbacks for only its own children. No readiness retries can turn a failed
+game into a pass. Completed games must close replay logs through production
+`do_exit`; the helper closes interrupted-game logs during teardown.
+
+The shared literal episode oracle checks every parameter and observation,
+including the independently calculated score 50, two-game reset and fresh role
+requests. Real sockets cover both factions, mixed function/socket clients,
+wrong-turn errors, malformed JSON and retained disconnected clients. CLI tests
+use the active interpreter, both passive AIs, `--nReps 1`, seed 1729, and explicit
+test-local replay paths; aliases are small read-only engine checks.
+
+AI-process tests expose the Python 3.14 direct-startup loop error separately
+from working exchanges with a test-only existing-loop bootstrap. Graceful server
+closure currently raises `ConnectionClosedOK` in the AI child. The replay reader
+decodes JSON inside the writer's JavaScript envelope without evaluating code.
+Blue/red fog perspectives, action inclusion, fresh parameters per game, and
+complete file closure are covered. Apostrophe/backslash escaping defects have
+exact-signature strict xfails; Unicode-only names pass. Actual JavaScript
+execution and viewer/action-log compatibility remain S13. Generated replay files
+stay in pytest's disposable directory; S13 can reuse `running_server` and
+`read_replay` to generate fresh inputs without changing `browser/replay.js`.
 
 Use `rng` for Python/NumPy seed isolation. ML subprocesses use
 `isolated_rng(torch_module=torch)` to preserve CPU RNG, deterministic-algorithm

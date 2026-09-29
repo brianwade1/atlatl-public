@@ -6,7 +6,8 @@ K05 as characterization, without an expected failure. S05 also confirms K03,
 K04, the status/reference portion of K05, and the search-key portion of K16
 as characterizations below. S06 confirms factory sharing/RNG effects under K05
 and repeated city placement/hierarchy collisions under K06. S07 confirms K07
-initialization leakage and K08 role/disconnect lifecycle behavior. The other
+initialization leakage and K08 role/disconnect lifecycle behavior. S08 confirms
+K08 over real sockets, K09 replay escaping, and K19 AI-process startup below. The other
 unverified portions of K03–K18 and browser portions
 of K01/K02 remain an investigation queue, not expected failures. Production
 files remain unchanged.
@@ -263,6 +264,63 @@ Other protocol/input characterizations:
   alias with an explanatory `Exception`, and red shared-model selection without
   blue with `UnboundLocalError` mentioning `blue_ai`. The tests preserve these
   exact distinctions rather than assuming a structured validation API.
+
+## S08: real socket lifecycle (K08)
+
+`server_integration/test_websocket_game.py::test_disrupted_socket_retention_characterization`
+checks both wrong-turn directions, malformed JSON, and clean disconnect in
+separate real-server children. Wrong-turn and malformed input close the offending
+connection with WebSocket code **1011**, log the corresponding exception, and
+leave the game state unchanged by the rejected message. Clean disconnect emits
+no error. In every case the server retains both client wrappers and both reverse
+role mappings. These are passing characterizations of current behavior, not a
+new cleanup contract. The harness closes all sockets and owns server shutdown;
+its process cleanup does not imply production removes disconnected clients.
+
+## K09 — Replay strings lack the JavaScript escaping layer
+
+Reproduce with `uv run pytest tests/server_integration/test_replay_writer.py -q`.
+`test_replay_name_has_safe_javascript_string_envelope[apostrophe]` and
+`[backslash]` are individual strict `KnownDefect` xfails. The desired contract is
+that names survive both the outer JavaScript string and inner JSON decoding.
+
+- A name `O'Brien` is emitted literally inside a single-quoted JavaScript
+  string, terminating that string early.
+- A name containing `A\B` is emitted with the JSON `\\` escape but without the
+  additional JavaScript escaping layer. JavaScript consumes that layer, leaving
+  JSON with invalid escape `\B`.
+
+The tests first verify complete blue/red replay envelopes and JSON payloads,
+then raise `KnownDefect` only for the exact unescaped `json.dumps` writer output.
+The Unicode-only name passes. These are lexical checks; real JavaScript syntax
+evaluation and viewer loading remain S13. No Python `eval` is used. Ordinary,
+fog, two-game, and optional-action replays pass message/order checks. Action-log
+compatibility with the viewer is also deferred to S13.
+
+## K19 — Standalone AI startup requires a pre-existing event loop
+
+Reproduce with `uv run pytest tests/server_integration/test_ai_process.py -q`.
+`test_ai_uri_response_and_no_response_messages[direct-cli]` starts the actual
+CLI against a bound local server with `--uri`. On Python 3.14 it exits **1**
+before any connection or message with:
+
+```text
+RuntimeError: There is no current event loop in thread 'MainThread'.
+```
+
+Expected: a valid AI/role/URI connects and exchanges messages. The individual
+strict xfail raises `KnownDefect` only for that exact error, exit status, Python
+version, and zero-message signature. Unknown-AI lookup independently produces
+`KeyError: 's08-unknown-ai'` and exit 1 (passing characterization).
+
+The `existing-loop-bootstrap` case creates a loop before executing the unchanged
+script with `runpy`; it validates actual `--uri`, role response, pass responses,
+and no response to wrong-turn observations, reset, and terminal observations.
+`test_ai_process_plays_real_server_with_existing_loop` completes the tiny game
+against a real GameServer/function opponent, receiving six messages and score 50.
+This bootstrap is explicitly not a claim that the direct CLI works. Both tests
+also characterize the uncaught **ConnectionClosedOK** and exit 1 on a normal
+server close; graceful client exit remains future production work.
 
 ## Failure policy and environment notes
 

@@ -4,6 +4,86 @@ Current invocation (2026-09-24): `uv run pytest` from the repository root.
 The root `pytest.ini` and installed project plugins supersede the test-local
 configuration/overlay commands in the historical entries below.
 
+## 2026-09-28 — S08 completed
+
+Implemented **S08 — Engine/client/WebSocket integration and replay writing**.
+S01–S08 are complete; S09–S17 remain open.
+Starting revision: `7a9e243ca226d9b6d7425d92210eab05de6c321e`.
+Preserved the pre-existing untracked `demo_script.txt`. All changes are under
+`tests/` or root `test_plan.md`; dependencies and pytest configuration are unchanged.
+
+Added **24 integration cases**, marked `integration` and `protocol`, in the
+explicitly selected `server_integration/` suite:
+
+- `test_function_clients.py` (2): real Game, scenario-generator dispenser,
+  GameServer and MessageServer complete one/two tiny games through function
+  clients. A literal independent oracle checks every parameter/observation,
+  score 50, repetition count, role reassignment, and fresh units/actions.
+- `test_websocket_game.py` (6): two real WebSocket clients and mixed
+  function/WebSocket play complete the same episode. Separate children check
+  both wrong-turn directions, malformed JSON, and clean disconnect, including
+  close code 1011, unchanged rejected-action state and retained client mappings.
+- `test_server_cli.py` (5): actual bounded CLI runs use both passive AIs,
+  `--nReps 1`, seed 1729 and temporary blue/red replay paths. Generator,
+  production bare filename and temporary explicit path all finish. The two
+  packaged aliases get small read-only loader/dispenser/engine checks.
+- `test_ai_process.py` (4): unknown alias, direct Python 3.14 startup, actual
+  `--uri`/response/no-response exchanges, and a complete GameServer game against
+  the separate AI. Working cases use an explicitly documented existing-loop
+  bootstrap; direct startup remains a strict K19 xfail. Normal peer closure
+  propagates ConnectionClosedOK/exit 1 and is characterized separately.
+- `test_replay_writer.py` (7): complete blue/red arrays, two-game parameters,
+  action inclusion/exclusion and order, fog perspectives, Unicode, and strict
+  K09 xfails for apostrophe/backslash JavaScript-string escaping.
+
+`support/integration_server.py` provides child ownership, real ephemeral bind
+readiness, bounded waits, stdout/stderr capture, watchdog, task/socket/loop/log
+cleanup, and terminate/kill fallback for only owned children. The thin serve
+wrapper delegates to the real library and reports its actual bound port; it
+does not replace transport or routing. Completed episodes must close replay
+files in production `do_exit`, before helper cleanup. Child reports verify no
+remaining tasks and closed loops/logs. `support/episode_assertions.py` supplies
+the literal timeline and JSON-only replay-envelope reader. No checked-in replay
+is overwritten. JavaScript execution and viewer compatibility remain S13.
+
+Validation uses Windows/Python 3.14.4, the existing project environment,
+`UV_CACHE_DIR=tests/.cache/uv`, and `uv run python -B -m pytest`:
+
+- Initial sandbox run: seven setup errors and nine warnings from the previously
+  documented Windows temporary-directory/cache permissions, before test bodies.
+- Initial outside-sandbox run: two passes and five failures exposed a test-helper
+  shutdown deadlock. Cancelling WebSocket internals before closing sockets was
+  incorrect. The helper now cancels application handlers, explicitly closes
+  their sockets, waits for the real server to close, then cancels remaining tasks.
+  These harness failures were fixed, not skipped or converted to xfails.
+- Intermediate expanded suite: **17 passed, 2 xfailed in 14.34s** (19 cases).
+- AI-process suite: **3 passed, 1 xfailed in 9.06s**.
+- Full regression, `uv run python -B -m pytest tests -q`: **652 passed,
+  12 xfailed in 792.41s**, including Chromium and the CPU model preflight.
+- Final S08 run in reverse file order (websocket, CLI, replay, function, AI):
+  **21 passed, 3 xfailed in 25.01s**. Exact command:
+
+```text
+uv run python -B -m pytest tests/server_integration/test_websocket_game.py tests/server_integration/test_server_cli.py tests/server_integration/test_replay_writer.py tests/server_integration/test_function_clients.py tests/server_integration/test_ai_process.py -q
+```
+
+Both final runs used approved execution outside the Windows sandbox and had
+**0 failed, 0 warnings, 0 skipped, 0 XPASS and 0 deselected**. The previous 631
+passing cases and nine K01/K02 expected failures retain their results; S08 adds
+21 passes and three expected failures. The reverse-order run also verifies the
+final stricter CLI stderr and socket-error-count assertions. Both protection
+reports checked **315 files** with no added, removed or changed protected files
+and no protected Git diff change. `git diff --check` passed. Owned children exit
+or are reaped by their context managers; successful server reports contain zero
+pending tasks and closed loops/logs. No additional launcher smoke was needed:
+S08 itself runs three bounded headless CLI games plus transport games.
+
+K08/K09/K19 details and exact reproductions are in [KNOWN_ISSUES.md](KNOWN_ISSUES.md).
+README documents the explicit S08 run command and lifecycle/format limitations.
+No production fixes were made. Other platforms/Python versions remain unverified.
+
+Next step: **S09 — Browser map/unit models and Python–JavaScript compatibility**.
+
 ## 2026-09-28 — S07 completed
 
 Implemented **S07 — Message transport, game-server routing, and initialization**.
