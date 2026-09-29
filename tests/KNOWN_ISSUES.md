@@ -9,7 +9,8 @@ and repeated city placement/hierarchy collisions under K06. S07 confirms K07
 initialization leakage and K08 role/disconnect lifecycle behavior. S08 confirms
 K08 over real sockets, K09 replay escaping, and K19 AI-process startup below. The other
 unverified portions of K03–K18 remain an investigation queue, not expected
-failures. S09 confirms browser K01/K02/K10 plus K20/K21 below. Production
+failures. S09 confirms browser K01/K02/K10 plus K20/K21 below. S10 adds SVG
+reproductions for K10/K13 and geometry issues K22/K23. Production
 files remain unchanged.
 
 ## K01 — Edge identity and path serialization/loading
@@ -391,7 +392,10 @@ In `browser_unit/test_map_model.py`:
 expects `path-type-road` / `path-type-path`, but receives `edge-type-road` /
 `edge-type-path`. Name slicing itself still yields road/path and those names have
 path styles. The defect is the category prefix, caused by constructing EdgeType
-objects. Actual palette click/renderer consequences remain S10/S11.
+objects. S10's `test_svg_rendering.py::test_palette_path_identifiers` confirms
+the same wrong IDs in the actual generated palette. Its passing companion
+dispatches mousedown to every item with recording controller callbacks and
+verifies styles/order. Actual editing consequences remain S11.
 
 ### K20: browser unit replacement retains old indexes and occupancy
 
@@ -431,3 +435,49 @@ has its own strict exact-signature xfail. Positive columns, negative rows and
 negative even columns pass. Browser `% 2` is a signed remainder, unlike Python's
 modulo for negative odd columns. These are portable coordinate inputs; normal
 nonnegative generated grids are unaffected. No production change was made.
+
+## K13 — SVG symbol and marker lifecycle defects
+
+Run `uv run pytest tests/browser_unit/test_svg_markers.py tests/browser_unit/test_unit_symbols.py -q`.
+All cases below are individual strict xfails that raise `KnownDefect` only for
+the listed wrong result. Other exceptions, browser errors and assertion failures
+remain failures. Tests use fresh pages, with no reset between lifecycle steps.
+
+| Test (file) | Required result | Confirmed wrong signature |
+| --- | --- | --- |
+| `test_company_symbol_creation` (unit_symbols) | Company creates a bar and strength label. | `ReferenceError: strokeWidth is not defined`. |
+| `test_new_map_drops_detached_marker_references[setup/city]` (svg_markers) | Marker indexes contain only current-map nodes. | After 2x1 → 1x1 replacement, `hex-0-1` remains indexed with `isConnected=false`; setup remove-all also leaves it. |
+| `test_city_replacement_removes_previous_pair` (svg_markers) | Re-adding a city's pair detaches the old pair. | Four circles remain; old blue stays attached and visible after the current blue is hidden. |
+| `test_marking_without_live_visible_units[empty/ineffective/hidden]` (svg_markers) | Hex highlighting works without a live visible symbol to measure. | `TypeError: Cannot read properties of null (reading 'transform')`. |
+| `test_marker_dimensions_follow_unit_size_after_new_map` (svg_markers) | Redrawn action markers follow the current symbol size. | Doubling symbol scale from 0.6 to 1.2 after map replacement preserves old marker dimensions (width 3.102). |
+| `test_repeated_selection_does_not_leave_orphan` (unit_symbols) | Select twice, clear once leaves no selection rectangle. | One extra child remains; the first rectangle is still attached. |
+| `test_unselect_without_prior_selection` (unit_symbols) | Initial unselect is harmless. | `TypeError: Cannot read properties of null (reading 'remove')`. |
+
+Passing companions cover setup replacement/removal and model updates, faction
+visibility (neutral cities start with both circles hidden), ordinary action-mark
+clearing/redrawing, and balanced select/unselect cycles. Repeating unselect
+*after* an initial selection passes. Hidden/ineffective symbol removal and
+reattachment also pass. The public `selectionMarker` property is not used as an
+oracle because production keeps the actual selection in a closure.
+
+## K22 — Transformed bounding boxes omit rotation/skew extents
+
+`browser_unit/test_svg_util.py::test_transformed_bbox_encloses_all_corners`
+uses an attached rectangle `(1,2,3,4)` with native SVG transforms. At 90-degree
+rotation, the enclosing box must be `[-6,1,4,3]`; current output is `[-2,1,0,0]`
+within floating-point tolerance. For `skewX(45)`, expected `[3,2,7,4]`, actual
+`[3,2,3,4]`. The helper transforms corners but derives dimensions from only one
+horizontal and one vertical difference. Separate strict xfails match each wrong
+signature. Identity, positive scale and translation pass.
+
+## K23 — Vertical layout spacers apply positioning twice
+
+`browser_unit/test_svg_util.py::test_layout_spaces_stay_centered_at_nonzero_anchor`
+adds a 4x2 rectangle, a small space and a big space at anchor `(10,5)`.
+Expected boxes: `[8,5,4,2]`, `[9,7,2,0.5]`, `[9,7.5,2,2]`.
+Actual: `[8,5,4,2]`, `[18,14,2,0.5]`, `[18,15,2,2]`.
+The spacer rectangle contains the anchor/offset, then `add` applies them again
+as a translation. Invisible spaces contribute to native group bounds, so the
+frame and fitted viewport can include inflated space. A strict exact-signature
+xfail preserves the desired centering contract; ordinary rectangles, labels,
+offset growth, order and frame containment have passing coverage.

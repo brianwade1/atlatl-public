@@ -10,7 +10,7 @@ Pytest automatically discovers the repository-root [pytest.ini](../pytest.ini).
 The project environment now includes pytest, pytest-asyncio, pytest-playwright,
 and pytest-cov, so no dependency overlay or explicit configuration path is needed.
 
-S01–S09 are implemented. Test code, fixture data, and generated artifacts remain under
+S01–S10 are implemented. Test code, fixture data, and generated artifacts remain under
 `tests/`; pytest configuration lives at the repository root. Never edit `server/`,
 `browser/`, or `scenarios/` to satisfy these tests. See [PROGRESS.md](PROGRESS.md)
 for verified results and [KNOWN_ISSUES.md](KNOWN_ISSUES.md) for the defect policy.
@@ -79,6 +79,9 @@ uv run pytest tests/browser_unit -m browser --browser chromium
 
 # S09 shared Python/JavaScript geometry, movement, targeting and combat audit.
 uv run pytest tests/browser_integration -q
+
+# S10 native SVG utilities, rendering, viewport, markers, and symbols.
+uv run pytest tests/browser_unit/test_svg_util.py tests/browser_unit/test_svg_rendering.py tests/browser_unit/test_svg_markers.py tests/browser_unit/test_unit_symbols.py -q
 
 # All currently implemented tests, including browser model contracts.
 uv run pytest tests
@@ -244,7 +247,29 @@ never reset the modules between loads. Exact-signature strict xfails distinguish
 confirmed defects from unsupported-input/display-format characterizations.
 See [BROWSER_COMPATIBILITY.md](BROWSER_COMPATIBILITY.md) for shared fixture scope,
 semantic serialization comparisons and the separate firepower-difference audit.
-Actual SVG/page/replay workflows remain S10-S13.
+Actual SVG rendering is covered by S10 below; page/replay workflows remain S11-S13.
+
+S10 adds 99 browser cases across the four files in the command above.
+`browser_support/svg.js` loads original rendering/model modules; `svg_page`
+uses a fresh context, fixed 1000x800 viewport, attached SVG elements and native
+`getBBox`/transforms over HTTP. Unlike the S09 model fixture, it does not replace
+symbol creation. Small literal inputs and numeric tolerances are the main
+oracles; `browser/sample-oobs/oob-all-symbols.json` is a read-only compatibility
+smoke input. Screenshots and traces remain diagnostics.
+
+Coverage includes fitted bounds and zoom clamping/restoration, rectangular maps,
+primitives/layout, all view factories, palette generation, terrain/debug colors,
+setup/city/action markers, all 28 symbol switch aliases, echelons, brightness,
+observations, movement and selection. Controller callbacks are recording
+boundaries only in wiring tests; DOM events verify callback registration, not
+full editing or live-play behavior. Play-view root mousedown currently invokes
+UnitPlacementControl, while hex callbacks invoke HumanPlayerControl.
+
+K10/K13/K22/K23 have narrowly matched strict xfails; see KNOWN_ISSUES.md for
+reproductions. The test HTTP server has a 128-connection listen backlog to
+accommodate parallel module imports on Windows; no request retries or ignored
+browser errors are introduced. Production renderers and geometry APIs remain
+unchanged. Editing, placement workflows, live play and replay remain S11–S13.
 
 Use `rng` for Python/NumPy seed isolation. ML subprocesses use
 `isolated_rng(torch_module=torch)` to preserve CPU RNG, deterministic-algorithm

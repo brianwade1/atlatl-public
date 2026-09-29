@@ -1,5 +1,73 @@
 # Test implementation progress
 
+## 2026-09-29 — S10 completed
+
+Implemented **S10 — SVG utilities, rendering, markers, and viewport**.
+S01–S10 are complete; S11–S17 remain open.
+Starting revision: `aaf78e6acd81480a9a758a242ff12bfd5df492f1`.
+Preserved the existing untracked `demo_script.txt`. All changes are under
+`tests/` or root `test_plan.md`; production and dependency files are unchanged.
+
+Added **99 browser unit cases: 85 passing and 14 strict expected failures**:
+
+- `browser_unit/test_svg_util.py` (42): coordinate conversion, roots, primitive
+  attributes/text/styles, attached layouts and frames, native transformed bounds,
+  fit padding/style, empty/legacy paths, 27 zoom/clamp/restore combinations and
+  two rendered rectangular maps. Rotation/skew and spacer positioning have
+  separate exact-signature defect cases.
+- `browser_unit/test_svg_rendering.py` (7): map shapes/IDs, edge/path styles,
+  handlers, setup/city rendering, path removal, complete/partial debug colors,
+  terrain restoration, repeated factories and generated palette items.
+- `browser_unit/test_svg_markers.py` (10): setup replacement/model/removal,
+  neutral/per-faction city visibility, new-map indexes, repeated city creation,
+  action geometry/callback/clear/redraw, no-visible-unit cases and resized symbols.
+- `browser_unit/test_unit_symbols.py` (40): all 28 type/alias switch cases,
+  echelon branches, unsupported-type/echelon characterizations, labels/strength,
+  movement, observations, fog/ineffective removal/reappearance, faction/global
+  brightness, selection cycles and the read-only sample OOB smoke check.
+
+The test-only `browser_support/svg.js` imports original modules with no renderer
+replacement. `svg_page` uses a fresh HTTP page/context, fixed 1000x800 viewport,
+and native SVG geometry. Controller callbacks are recording boundaries in
+factory/palette wiring tests; DOM events verify their installation. Play-view
+root mousedown currently uses UnitPlacementControl, while hex events use
+HumanPlayerControl. This is wiring characterization, not full S11/S12 behavior.
+Numeric tolerances avoid font-dependent snapshots. Console/page errors, failed
+requests and unexpected dialogs remain checked. No screenshot is a test oracle.
+
+Confirmed K13 company/marker/selection defects and K10 generated path palette
+IDs. Added K22 transformed bounds and K23 double-positioned layout spacers.
+All expected failures match only the documented result or exact exception;
+unrelated errors fail and fixes produce strict XPASS. See KNOWN_ISSUES.md.
+
+Validation on Windows/Python 3.14.4 with Chromium and the installed environment,
+using `UV_CACHE_DIR=tests/.cache/uv`:
+
+- Initial sandbox run: 96 setup errors and two environment warnings; Windows
+  denied Playwright subprocess pipes. No browser assertions executed. Subsequent
+  runs used approved execution outside the sandbox.
+- First browser run: 79 passed, 12 xfailed, three failures in test coordinate
+  expectations, and four setup/teardown errors from two refused module imports.
+  Corrected the expectations from grid coordinates. Increased the test HTTP
+  server listen backlog from five to 128 for parallel imports; no retries or
+  suppression of browser errors were added.
+- Corrected focused run (98 cases): 85 passed, 13 xfailed, one Playwright
+  `Tracing.stop: file data stream has unexpected number of bytes` teardown error.
+  Test source was edited during this run, which may explain the trace-export
+  failure. Final validation kept test sources fixed; the error did not recur.
+- Final full regression: `uv run python -B -m pytest tests -q --tb=short`:
+  **817 passed, 39 xfailed in 946.75s**, 856 cases, including all final 99 S10
+  cases, S09 browser parity, real server integrations and CPU model checks.
+  Zero unexpected failures/errors, warnings, skips, XPASS or deselections.
+
+The final protection report checked **315 files**, with no added, removed or
+changed protected files and no protected Git diff change. No separate headless
+game was needed for test-only changes; existing bounded server integrations ran
+in the full regression. Cross-platform/browser-engine behavior remains unverified.
+The test plan, README commands and known-issue records are updated.
+
+Next task: **S11 — Map editing, unit placement, and scenario creation pages**.
+
 ## 2026-09-29 — S09 completed
 
 Implemented **S09 — Browser models and Python–JavaScript compatibility**.

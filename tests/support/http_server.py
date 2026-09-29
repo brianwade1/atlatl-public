@@ -38,7 +38,12 @@ class TestRequestHandler(SimpleHTTPRequestHandler):
 
 @contextmanager
 def serve_test_files():
-    server = ThreadingHTTPServer(("127.0.0.1", 0), TestRequestHandler)
+    # Chromium can request the whole SVG module graph at once. A five-connection
+    # listen backlog can refuse parallel imports on Windows even on loopback.
+    class ModuleHTTPServer(ThreadingHTTPServer):
+        request_queue_size = 128
+
+    server = ModuleHTTPServer(("127.0.0.1", 0), TestRequestHandler)
     thread = Thread(target=server.serve_forever, kwargs={"poll_interval": 0.05},
                     name="atlatl-test-http", daemon=True)
     thread.start()
