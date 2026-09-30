@@ -1,5 +1,70 @@
 # Test implementation progress
 
+## 2026-09-30 - S12 completed
+
+Implemented S12 live-play controls and browser/server communication. Starting
+revision: `a842e1dd6fb79e1a3655662284b8fc071d82df9d`. Preserved the pre-existing
+untracked `demo_script.txt`. All changes are in `tests/` and root `test_plan.md`.
+
+Added 37 cases: 31 browser unit cases and six browser/server integration cases.
+
+- `browser_unit/test_play_protocol.py` (16): socket open/close/error and private
+  message callbacks, initial map/unit rendering, both role buttons, every
+  exported sender, waiting/input/terminal controls, score/phase/on-move text,
+  setup/city markers, brightness, fog/killed units, reset observation semantics,
+  malformed/unknown messages, phase lookup and smaller next-game parameters.
+- `browser_unit/test_human_controls.py` (15): waiting/exhausted selection,
+  friendly selection, move/fire/self markers, single sends, resetGuiState and
+  End Phase, setup move/exchange/rejected destinations, direct-hex error and
+  explicit wrong-faction/terminal/stale-mode probes.
+- `browser_integration/test_live_game.py` (6): two browser contexts and browser
+  versus scripted function AI, complete move/fire/pass episodes with all wire
+  messages matching the independent S02 oracle and final score 50; setup move,
+  setup passes, reset restoring positions and retaining roles, next-game role
+  reassignment, native fog disappearance/reappearance, and both Reset and Next
+  Game after terminal state followed by a second completed game.
+- `support/live_play.py`: unchanged play.html over the existing HTTP fixture;
+  existing recording socket for unit tests and a native WebSocket constructor
+  wrapper for real transport. The wrapper changes only the exact hardcoded URL
+  to the owned ephemeral loopback endpoint and records incoming messages.
+
+Six individual strict expected failures cover four newly documented issues:
+K26 wrong phaseCount nesting, K27 direct-hex undefined moveTargets, K28 missing
+faction/terminal selection guards (two cases), K29 observation/next-parameters
+stale selection mode (two cases). Only matching wrong signatures raise
+KnownDefect; unrelated errors fail and fixes produce strict XPASS. Browser
+console, request and uncaught-error checks stay active. Production is unchanged.
+
+Validation on Windows/Python 3.14.4 and Chromium, with the installed project
+environment and `UV_CACHE_DIR=tests/.cache/uv`:
+
+- Initial sandbox run: 30 setup errors and two environment warnings from blocked
+  Windows Playwright subprocess pipes. No behavioral assertions ran.
+- First approved unit run: 25 passed, four xfailed, one strict XPASS. Inspection
+  showed visible map replacement works; removed the speculative xfail and kept
+  the replacement contract passing. Stale controller state is a separate K29
+  reproduction, not a visible-map failure.
+- Initial real-transport run: four passed in 5.99s.
+- Expanded focused run: 29 passed, six xfailed in 37.35s (35 cases). Two terminal
+  restart cases were then added for the full regression run.
+
+- Final full regression: `uv run pytest tests -q --tb=short`: **889 passed,
+  50 xfailed in 510.55s**, 939 cases total. Includes all 37 S12 cases: **31 passed
+  and six strict expected failures**. Zero unexpected failures/errors, warnings,
+  skips, XPASS or deselections. Output: ignored `tests/.artifacts/s12-full.txt`.
+- Final protection report: all **315 files** unchanged, no added/removed files,
+  and unchanged protected Git diff. Local Markdown links resolve and
+  `git diff --check` passes.
+
+S01-S12 are complete; S13-S17 remain open.
+
+No separate launcher smoke was needed for test-only changes; the full suite
+includes bounded engine/CLI integrations. No dependency changes, production
+patches, fixed-port listeners, screenshots as oracles, or fixed browser sleeps
+were introduced. Owned server reports verify completed repetitions, closed
+logs/loop and zero pending tasks. Alternate browsers/platforms and replay viewer
+behavior remain unverified. Next task: S13, replay playback and compatibility.
+
 ## 2026-09-29 — S11 completed
 
 Implemented **S11 — Editors and scenario creation pages**. S01–S11 are complete;

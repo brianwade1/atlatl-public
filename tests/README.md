@@ -10,7 +10,7 @@ Pytest automatically discovers the repository-root [pytest.ini](../pytest.ini).
 The project environment now includes pytest, pytest-asyncio, pytest-playwright,
 and pytest-cov, so no dependency overlay or explicit configuration path is needed.
 
-S01–S11 are implemented. Test code, fixture data, and generated artifacts remain under
+S01–S12 are implemented. Test code, fixture data, and generated artifacts remain under
 `tests/`; pytest configuration lives at the repository root. Never edit `server/`,
 `browser/`, or `scenarios/` to satisfy these tests. See [PROGRESS.md](PROGRESS.md)
 for verified results and [KNOWN_ISSUES.md](KNOWN_ISSUES.md) for the defect policy.
@@ -252,7 +252,7 @@ confirmed defects from unsupported-input/display-format characterizations.
 See [BROWSER_COMPATIBILITY.md](BROWSER_COMPATIBILITY.md) for shared fixture scope,
 semantic serialization comparisons and the separate firepower-difference audit.
 Actual SVG rendering is covered by S10 below and creation pages by S11;
-live-play/replay workflows remain S12-S13.
+live play is covered by S12 below; replay remains S13.
 
 S10 adds 99 browser cases across the four files in the command above.
 `browser_support/svg.js` loads original rendering/model modules; `svg_page`
@@ -274,8 +274,8 @@ K10/K13/K22/K23 have narrowly matched strict xfails; see KNOWN_ISSUES.md for
 reproductions. The test HTTP server has a 128-connection listen backlog to
 accommodate parallel module imports on Windows; no request retries or ignored
 browser errors are introduced. Production renderers and geometry APIs remain
-unchanged. Editing and placement workflows are covered by S11 below; live play
-and replay remain S12–S13.
+unchanged. Editing and placement workflows are covered by S11 below and live
+play by S12; replay remains S13.
 
 S11 adds 46 cases across the five files listed above. Controllers use original
 exported handlers with attached real elements and DOM events. Page workflows
@@ -330,3 +330,31 @@ uv run pytest tests/server_unit/test_fixtures.py tests/server_unit/test_isolatio
 # Explicit CPU model preflight; missing Torch fails rather than skips.
 uv run pytest tests/ml
 ```
+
+
+S12 covers live-play socket callbacks, exact outbound messages, controller
+selection/actions, and observation rendering in 31 browser unit cases, plus six
+real browser/server integration cases. Run just S12 with:
+
+```text
+uv run pytest tests/browser_unit/test_play_protocol.py tests/browser_unit/test_human_controls.py tests/browser_integration/test_live_game.py -q
+```
+
+`support/live_play.py` loads unchanged `play.html` over HTTP. Unit cases install
+the existing recording WebSocket before Play.init and invoke private message
+handling through its assigned callback. Actual SVG/model behavior is retained.
+A delegating spy observes phase initialization without replacing its behavior.
+Six exact-signature strict xfails document K26–K29; other errors fail normally.
+
+Integration cases use two fresh browser contexts or a browser against the
+existing scripted function client, a real GameServer and native WebSockets.
+A constructor wrapper substitutes only the exact hardcoded localhost:9999 URL
+with the owned server's ephemeral loopback endpoint and records incoming JSON;
+it does not replace messages or transport. DOM mousedown events exercise unit,
+hex and marker listeners; ordinary control buttons use Playwright clicks.
+Complete episodes match the independent S02 message/score oracle (score 50).
+Setup, role swapping, reset, next-game, terminal restart and deterministic
+sight-range fog transitions have end-to-end coverage. All owned servers finish
+bounded repetitions and report task/loop/log cleanup. Conditions and messages
+are awaited with deadlines, without browser sleeps. Generated logs stay under
+pytest's disposable directory. Replay viewer coverage remains S13.

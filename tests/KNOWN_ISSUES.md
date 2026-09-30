@@ -538,3 +538,53 @@ survives. An empty OOB generates a map successfully. Replacing an unplaced OOB
 leaves old unit index entries (K20), but exports and occupancy contain only the
 new unit. Test Input and the all-symbols sample are display smoke checks, not
 claims that every legacy symbol type is engine-playable.
+
+
+## K26 — Live play looks up phaseCount at the wrong level
+
+`browser_unit/test_play_protocol.py::test_phase_lookup` delivers two real-shaped
+observations with `status.phaseCount` 0 then 1. A delegating brightness spy sees
+two calls for the first message (newPhase and the ordinary update), then only one
+for the second. `observation.phaseCount` remains undefined, so newPhase does not
+run again. The strict xfail requires four total calls; only the observed total
+of three raises KnownDefect. Phase text, brightness and setup marker visibility
+still update through the ordinary observation path. This is not a claim that
+the displayed phase is wrong.
+
+## K27 — Direct live-play hex movement throws
+
+`browser_unit/test_human_controls.py::test_direct_hex_move` selects an eligible
+blue unit, then invokes the exported hex handler on an attached destination
+hex. It throws exactly `ReferenceError: moveTargets is not defined` and sends
+no action. The strict xfail expects a move action. No missing globals are
+injected. Normal marker movement has separate passing DOM-event and real-server
+coverage. The later undefined fireTargets/SVGUnitSymbol references are not
+reached by this reproduction.
+
+## K28 — Live selection lacks faction and terminal guards
+
+Two `test_ineligible_selection` cases supply an otherwise movable enemy or a
+terminal observation whose onMove still matches the local faction. Both select
+the ineligible unit and draw action markers. Strict xfails match that selected
+ID, nonzero markers and no outbound action; desired behavior is no markers.
+The terminal End Phase button is correctly disabled. These UI defects do not
+establish that the server accepts illegal actions.
+
+## K29 — Observations and next-game parameters leave controller selection active
+
+`test_observation_resets_selection_mode` selects blue A, receives a new-phase
+observation, then clicks blue B. Marks clear, but mode remains TakeAction and
+selectedUnit remains blue A; the next selection is ignored. The separate
+`test_next_parameters_allow_fresh_selection` replaces the map and units while
+selected, chooses a role again and clicks blue New. The old blue A object is
+still selected and no markers appear. Each strict xfail matches the exact old
+ID and absent markers. Desired behavior permits a fresh selection.
+
+Ordinary next-game rendering does replace visible map cells and current unit
+indexes, as verified by `test_next_parameters_replace_map`; this does not assert
+that all module indexes are cleared (see K02/K13). Explicit resetGuiState and
+End Phase restore selection mode. Reset's dedicated message handler is a no-op;
+real reset works because the server sends a fresh observation first. Socket
+error events only log, and close events update status text: no reconnect or
+error-control disabling contract is claimed. Unknown messages throw their exact
+string and malformed JSON throws SyntaxError through the assigned socket callback.
