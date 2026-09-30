@@ -1,5 +1,23 @@
 # Test harness
 
+S13 replay coverage is in `browser_unit/test_playback.py` and
+`browser_integration/test_replay_roundtrip.py`. Run it with:
+
+```text
+uv run pytest tests/browser_unit/test_playback.py tests/browser_integration/test_replay_roundtrip.py -q
+```
+
+`support/playback.py` supplies arrays of JSON message strings, original modules
+in the HTTP harness, an explicit animation-frame queue, and SVG/model assertions.
+Real-page tests route only the replay.js request to fixture or freshly generated
+server content; the checked-in file is never replaced. Real server logs cover
+both perspectives, fog and two completed games, compared with transcripts,
+the independent episode oracle and Python terminal state. Controls run through
+native clicks, with separate native-animation completion coverage. Debug colors,
+malformed inputs, action-log limitations, stale indexes and narrow strict xfails
+for K09/K30/K31/K32 are documented in [KNOWN_ISSUES.md](KNOWN_ISSUES.md).
+No score/phase UI is assumed for playback.html.
+
 From the repository root, run the default core suite with:
 
 ```text
@@ -10,7 +28,7 @@ Pytest automatically discovers the repository-root [pytest.ini](../pytest.ini).
 The project environment now includes pytest, pytest-asyncio, pytest-playwright,
 and pytest-cov, so no dependency overlay or explicit configuration path is needed.
 
-S01–S12 are implemented. Test code, fixture data, and generated artifacts remain under
+S01–S13 are implemented. Test code, fixture data, and generated artifacts remain under
 `tests/`; pytest configuration lives at the repository root. Never edit `server/`,
 `browser/`, or `scenarios/` to satisfy these tests. See [PROGRESS.md](PROGRESS.md)
 for verified results and [KNOWN_ISSUES.md](KNOWN_ISSUES.md) for the defect policy.
@@ -230,8 +248,8 @@ decodes JSON inside the writer's JavaScript envelope without evaluating code.
 Blue/red fog perspectives, action inclusion, fresh parameters per game, and
 complete file closure are covered. Apostrophe/backslash escaping defects have
 exact-signature strict xfails; Unicode-only names pass. Actual JavaScript
-execution and viewer/action-log compatibility remain S13. Generated replay files
-stay in pytest's disposable directory; S13 can reuse `running_server` and
+execution and viewer/action-log compatibility are covered by S13 above. Generated replay files
+stay in pytest's disposable directory; S13 reuses `running_server` and
 `read_replay` to generate fresh inputs without changing `browser/replay.js`.
 
 
@@ -252,7 +270,7 @@ confirmed defects from unsupported-input/display-format characterizations.
 See [BROWSER_COMPATIBILITY.md](BROWSER_COMPATIBILITY.md) for shared fixture scope,
 semantic serialization comparisons and the separate firepower-difference audit.
 Actual SVG rendering is covered by S10 below and creation pages by S11;
-live play is covered by S12 below; replay remains S13.
+live play is covered by S12 below; replay is covered by S13 above.
 
 S10 adds 99 browser cases across the four files in the command above.
 `browser_support/svg.js` loads original rendering/model modules; `svg_page`
@@ -275,7 +293,7 @@ reproductions. The test HTTP server has a 128-connection listen backlog to
 accommodate parallel module imports on Windows; no request retries or ignored
 browser errors are introduced. Production renderers and geometry APIs remain
 unchanged. Editing and placement workflows are covered by S11 below and live
-play by S12; replay remains S13.
+play by S12; replay is covered by S13 above.
 
 S11 adds 46 cases across the five files listed above. Controllers use original
 exported handlers with attached real elements and DOM events. Page workflows
@@ -357,4 +375,4 @@ Setup, role swapping, reset, next-game, terminal restart and deterministic
 sight-range fog transitions have end-to-end coverage. All owned servers finish
 bounded repetitions and report task/loop/log cleanup. Conditions and messages
 are awaited with deadlines, without browser sleeps. Generated logs stay under
-pytest's disposable directory. Replay viewer coverage remains S13.
+pytest's disposable directory. Replay viewer coverage is in S13 above.

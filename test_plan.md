@@ -1,6 +1,6 @@
 # Test plan for `server/` and `browser/`
 
-Prepared: 2026-09-23. Status updated: 2026-09-30. Framework: **pytest**. This is an implementation roadmap; S01–S12 are complete, and S13–S17 remain open. Check off a step only after its completion criteria are met and its results are recorded.
+Prepared: 2026-09-23. Status updated: 2026-09-30. Framework: **pytest**. This is an implementation roadmap; S01–S13 are complete, and S14–S17 remain open. Check off a step only after its completion criteria are met and its results are recorded.
 
 For work across days and sessions, use this plan for scope and step status, [tests/PROGRESS.md](tests/PROGRESS.md) for dated implementation details, validation results, deviations, blockers, and the next task, [tests/KNOWN_ISSUES.md](tests/KNOWN_ISSUES.md) for confirmed defects, and [tests/README.md](tests/README.md) for current run commands. Read these records at the start of each session and update the progress log before ending it; do not rely on conversation history alone.
 
@@ -20,7 +20,7 @@ For work across days and sessions, use this plan for scope and step status, [tes
 - [x] **S10 — Test SVG utilities, rendering, markers, and viewport behavior.**
 - [x] **S11 — Test map editing, unit placement, and scenario creation pages.**
 - [x] **S12 — Test live-play controls and browser/server communication.**
-- [ ] **S13 — Test replay playback and server-to-viewer compatibility.**
+- [x] **S13 — Test replay playback and server-to-viewer compatibility.**
 - [ ] **S14 — Test AI decisions, search algorithms, and hierarchy helpers.**
 - [ ] **S15 — Test observations, rewards, Gymnasium wrappers, and agent adapters.**
 - [ ] **S16 — Test model persistence, AlphaZero helpers, and ancillary scripts.**
@@ -90,7 +90,7 @@ The default pytest collection targets only the lightweight core. When an optiona
 
 **Status: COMPLETE.** Implemented on 2026-09-23; root-configuration follow-up verified on 2026-09-24. Original baseline assertions were preserved and migrated to five pytest cases. The harness includes strict configuration, import/subprocess helpers, test-local HTTP serving, a Chromium module-load check, and protected-directory manifests. Default and full discovery were verified. Latest validation: `uv run pytest` — **13 passed**; `uv run pytest tests -q` — **14 passed**, including Chromium, with no warnings or failures. All 315 protected files remained unchanged.
 
-The user-approved root `pytest.ini` and installed project plugins replace the original configuration location and overlay workflow specified below. See [tests/PROGRESS.md](tests/PROGRESS.md) for the case mapping, exact validation commands, environment versions, and completion evidence, and [tests/README.md](tests/README.md) for current usage. No additional S01 implementation work remains. S02 is also complete; S03 is also complete; S04 is also complete; S05 is also complete; S06 is also complete; S07 is also complete; S08 is also complete; S09 is also complete; S10 is also complete; S11 is also complete; S12 is also complete; S13 is next.
+The user-approved root `pytest.ini` and installed project plugins replace the original configuration location and overlay workflow specified below. See [tests/PROGRESS.md](tests/PROGRESS.md) for the case mapping, exact validation commands, environment versions, and completion evidence, and [tests/README.md](tests/README.md) for current usage. No additional S01 implementation work remains. S02 is also complete; S03 is also complete; S04 is also complete; S05 is also complete; S06 is also complete; S07 is also complete; S08 is also complete; S09 is also complete; S10 is also complete; S11 is also complete; S12 is also complete; S13 is also complete; S14 is next.
 
 **Priority:** P0. **Dependencies:** none. **Deliverables:** pytest configuration and fixtures, test-local documentation, baseline and issue records.
 
@@ -147,7 +147,7 @@ tests/
 
 ## S02 — Build fixtures and isolation helpers
 
-**Status: COMPLETE (2026-09-25).** Fresh builders, all twelve reusable fixture families, RNG/global/task/loop isolation, finite boundary doubles, browser error capture, and CPU model inputs are implemented. Consumer checks verify independent geometry/score oracles, failure-path cleanup, and real engine/browser compatibility. See [tests/PROGRESS.md](tests/PROGRESS.md) for commands, results and the documented function-scoped Playwright lifecycle deviation; [tests/fixtures/README.md](tests/fixtures/README.md) documents schemas. S03 is also complete; S04 is also complete; S05 is also complete; S06 is also complete; S07 is also complete; S08 is also complete; S09 is also complete; S10 is also complete; S11 is also complete; S12 is also complete; S13 is next.
+**Status: COMPLETE (2026-09-25).** Fresh builders, all twelve reusable fixture families, RNG/global/task/loop isolation, finite boundary doubles, browser error capture, and CPU model inputs are implemented. Consumer checks verify independent geometry/score oracles, failure-path cleanup, and real engine/browser compatibility. See [tests/PROGRESS.md](tests/PROGRESS.md) for commands, results and the documented function-scoped Playwright lifecycle deviation; [tests/fixtures/README.md](tests/fixtures/README.md) documents schemas. S03 is also complete; S04 is also complete; S05 is also complete; S06 is also complete; S07 is also complete; S08 is also complete; S09 is also complete; S10 is also complete; S11 is also complete; S12 is also complete; S13 is also complete; S14 is next.
 
 **Priority:** P0. **Dependencies:** S01. **Deliverables:** `support/builders.py`, isolation helpers, and documented fixture schemas.
 
@@ -188,7 +188,7 @@ K01/K02 edge, path, cached-dimension and replacement defects. Both parities,
 negative coordinates, all directions, boundary truncation, distinct distances,
 portable JSON round trips, map queries and every rule-table coefficient are covered.
 See [tests/PROGRESS.md](tests/PROGRESS.md) for validation and
-[tests/KNOWN_ISSUES.md](tests/KNOWN_ISSUES.md) for exact reproductions. S04 is also complete; S05 is also complete; S06 is also complete; S07 is also complete; S08 is also complete; S09 is also complete; S10 is also complete; S11 is also complete; S12 is also complete; S13 is next.
+[tests/KNOWN_ISSUES.md](tests/KNOWN_ISSUES.md) for exact reproductions. S04 is also complete; S05 is also complete; S06 is also complete; S07 is also complete; S08 is also complete; S09 is also complete; S10 is also complete; S11 is also complete; S12 is also complete; S13 is also complete; S14 is next.
 
 **Priority:** P0. **Dependencies:** S02. **Proposed files:** `server_unit/test_map_geometry.py`, `test_map_serialization.py`, `test_rule_tables.py`.
 
@@ -212,7 +212,7 @@ finite detection draws and observer serialization. Unsupported inputs and K05's
 serialization side effect are explicit characterizations; no new xfails were added.
 Full validation: **253 passed, 9 existing xfailed**, with all 315 protected files
 unchanged. See [tests/PROGRESS.md](tests/PROGRESS.md) and
-[tests/KNOWN_ISSUES.md](tests/KNOWN_ISSUES.md). S05 is also complete; S06 is also complete; S07 is also complete; S08 is also complete; S09 is also complete; S10 is also complete; S11 is also complete; S12 is also complete; S13 is next.
+[tests/KNOWN_ISSUES.md](tests/KNOWN_ISSUES.md). S05 is also complete; S06 is also complete; S07 is also complete; S08 is also complete; S09 is also complete; S10 is also complete; S11 is also complete; S12 is also complete; S13 is also complete; S14 is next.
 
 **Priority:** P0. **Dependencies:** S03. **Proposed files:** `server_unit/test_unit_state.py`, `test_unit_movement.py`, `test_unit_visibility.py`.
 
@@ -237,7 +237,7 @@ state isolation, observations and search keys. K03/K04, K05 references and K16
 key limitations are documented characterizations; no new xfails. Full suite:
 **402 passed, 9 existing xfailed**, with all 315 protected files unchanged.
 See [tests/PROGRESS.md](tests/PROGRESS.md) for validation and
-[tests/KNOWN_ISSUES.md](tests/KNOWN_ISSUES.md) for findings. S06 is also complete; S07 is also complete; S08 is also complete; S09 is also complete; S10 is also complete; S11 is also complete; S12 is also complete; S13 is next.
+[tests/KNOWN_ISSUES.md](tests/KNOWN_ISSUES.md) for findings. S06 is also complete; S07 is also complete; S08 is also complete; S09 is also complete; S10 is also complete; S11 is also complete; S12 is also complete; S13 is also complete; S14 is next.
 
 **Priority:** P0. **Dependencies:** S03–S04. **Proposed files:** `server_unit/test_status.py`, `test_game_setup.py`, `test_game_actions.py`, `test_game_combat.py`, `test_game_observations.py`, `test_game_state_key.py`.
 
@@ -275,7 +275,7 @@ setup/terrain/scoring/fog/ownership, bounded invalid-input probes, registry
 consumers, dispenser identity and singleton restoration. K05 sharing/RNG and K06
 city/occupancy behavior are explicit characterizations, with no new xfails.
 See [tests/PROGRESS.md](tests/PROGRESS.md) for validation and
-[tests/KNOWN_ISSUES.md](tests/KNOWN_ISSUES.md) for reproductions. S07 is also complete; S08 is also complete; S09 is also complete; S10 is also complete; S11 is also complete; S12 is also complete; S13 is next.
+[tests/KNOWN_ISSUES.md](tests/KNOWN_ISSUES.md) for reproductions. S07 is also complete; S08 is also complete; S09 is also complete; S10 is also complete; S11 is also complete; S12 is also complete; S13 is also complete; S14 is next.
 
 **Priority:** P1. **Dependencies:** S02 and S05. **Proposed files:** `server_unit/test_scenario_factories.py`, `test_scenario_registry.py`, `test_game_dispenser.py`.
 
@@ -302,7 +302,7 @@ and no new xfails were introduced. Full validation: **631 passed, 9 existing
 xfailed**, including Chromium, async and CPU model cases; all 315 protected
 files remained unchanged. See [tests/PROGRESS.md](tests/PROGRESS.md) for commands,
 isolation details and results, and [tests/KNOWN_ISSUES.md](tests/KNOWN_ISSUES.md)
-for reproductions. S08 is also complete; S09 is also complete; S10 is also complete; S11 is also complete; S12 is also complete; S13 is next.
+for reproductions. S08 is also complete; S09 is also complete; S10 is also complete; S11 is also complete; S12 is also complete; S13 is also complete; S14 is next.
 
 **Priority:** P0/P1. **Dependencies:** S02, S05–S06. **Proposed files:** `server_unit/test_message_clients.py`, `test_message_routing.py`, `test_gameserver_protocol.py`, `test_server_init.py`.
 
@@ -334,7 +334,7 @@ Full validation: **652 passed, 12 xfailed** (nine existing, three new), with no
 unexpected failures, warnings, skips or XPASS. All 315 protected files remained
 unchanged. See [tests/PROGRESS.md](tests/PROGRESS.md) for commands and cleanup
 validation, and [tests/KNOWN_ISSUES.md](tests/KNOWN_ISSUES.md) for exact defect
-signatures. S09 is also complete; S10 is also complete; S11 is also complete; S12 is also complete; S13 is next.
+signatures. S09 is also complete; S10 is also complete; S11 is also complete; S12 is also complete; S13 is also complete; S14 is next.
 
 **Priority:** P0/P1. **Dependencies:** S05–S07. **Proposed files:** `server_integration/test_function_clients.py`, `test_websocket_game.py`, `test_server_cli.py`, `test_replay_writer.py`; subprocess bootstrap under `tests/support/`.
 
@@ -359,7 +359,7 @@ geometry/movement/fire oracles, semantic formats and a separate combat-table
 audit. See [tests/PROGRESS.md](tests/PROGRESS.md) for validation,
 [tests/KNOWN_ISSUES.md](tests/KNOWN_ISSUES.md) for reproductions and
 [tests/BROWSER_COMPATIBILITY.md](tests/BROWSER_COMPATIBILITY.md) for differences.
-Production directories remain unchanged. S10 is also complete; S11 is also complete; S12 is also complete; S13 is next.
+Production directories remain unchanged. S10 is also complete; S11 is also complete; S12 is also complete; S13 is also complete; S14 is next.
 
 **Priority:** P0. **Dependencies:** S02–S04 and the browser harness. **Proposed files:** `browser_unit/test_map_model.py`, `test_unit_model.py`, `test_rule_data.py`; `browser_integration/test_engine_parity.py`.
 
@@ -414,7 +414,7 @@ same-page reloads. Five exact-signature strict xfails cover K10/K24/K25; repeat
 load and unsupported-input characterizations are documented separately. See
 [tests/PROGRESS.md](tests/PROGRESS.md) for validation and
 [tests/KNOWN_ISSUES.md](tests/KNOWN_ISSUES.md) for reproductions. Production files
-remain unchanged. S12 is also complete; S13 is next.
+remain unchanged. S12 is also complete; S13 is also complete; S14 is next.
 
 **Priority:** P0/P1. **Dependencies:** S09–S10. **Proposed files:** `browser_unit/test_editor_controls.py`, `test_placement_controls.py`; `browser_integration/test_map_editor_page.py`, `test_unit_placement_page.py`, `test_random_scenario_page.py`.
 
@@ -440,7 +440,7 @@ episodes through native WebSockets. Latest full regression: **889 passed,
 50 xfailed**, with no unexpected failures, errors, warnings, skips or XPASS.
 All 315 protected files remain unchanged. See [tests/PROGRESS.md](tests/PROGRESS.md),
 [tests/KNOWN_ISSUES.md](tests/KNOWN_ISSUES.md) and [tests/README.md](tests/README.md)
-for validation, exact defect signatures and commands. S13 is next.
+for validation, exact defect signatures and commands. S13 is also complete; S14 is next.
 
 **Priority:** P0. **Dependencies:** S07–S10. **Proposed files:** `browser_unit/test_play_protocol.py`, `test_human_controls.py`; `browser_integration/test_live_game.py`.
 
@@ -458,6 +458,18 @@ for validation, exact defect signatures and commands. S13 is next.
 **Completion:** a real browser action reaches the engine, produces the correct transition, and renders the returned observation; both factions, setup, fog, terminal, reset, and next-game have end-to-end coverage.
 
 ## S13 — Replay playback and writer/viewer compatibility
+
+**Status: COMPLETE (2026-09-30).** Added 34 cases: 22 browser unit and 12
+browser integration cases, with 27 passed and seven strict expected failures.
+Covers initialization, observation rendering, multi-game replacement, native and
+controlled animation, page controls, debug colors, malformed inputs, real server
+logs for both perspectives with fog, terminal-state comparisons and escaped names.
+K09/K30/K31/K32 have precise reproductions; K31/K32 refine the K12 investigation.
+Full regression: **915 passed, 57 xfailed, one failure** in an existing WebSocket
+readiness-file read (Windows PermissionError). Its unchanged six-case module
+subsequently passed. All 315 protected files remained unchanged. See
+[tests/PROGRESS.md](tests/PROGRESS.md) for exact commands/results and
+[tests/KNOWN_ISSUES.md](tests/KNOWN_ISSUES.md) for limitations. S14 is next.
 
 **Priority:** P0/P1. **Dependencies:** S08–S10. **Proposed files:** `browser_unit/test_playback.py`, `browser_integration/test_replay_roundtrip.py`.
 

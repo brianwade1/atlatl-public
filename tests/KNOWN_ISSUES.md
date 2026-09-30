@@ -1,5 +1,62 @@
 # Confirmed issues
 
+S13 confirms the replay limitations anticipated by K09/K12. The new focused
+reproductions below use K30 for duplicate animation loops, K31 for repeated
+initialization, and K32 for the orders-color exception. K31/K32 refine the
+original K12 investigation item; they are not additional independent defects.
+
+## K30 - Playback starts multiple animation loops
+
+`browser_unit/test_playback.py::test_repeated_play_has_one_frame_loop` and
+`browser_integration/test_replay_roundtrip.py::test_repeated_play_button` call
+Play twice without advancing the controlled animation queue. Two observations
+are consumed and two callbacks are queued. Stop followed by draining both
+callbacks stops playback. Desired behavior is one queued loop and one consumed
+observation. Strict xfails match exactly the two callbacks and second observation.
+The real page uses native button clicks; only requestAnimationFrame is controlled.
+
+## K31 - Playback.init retains the message index (K12 reproduction)
+
+`test_repeated_init_restarts_replay` calls init twice on the same module instance.
+The second call tries to read parameters from an observation and throws exactly
+`Cannot read properties of undefined (reading 'map')`; the displayed units remain
+unchanged. Its strict xfail expects initialization to restart the replay. The
+harness never changes the private message index.
+
+## K32 - Orders coloring assigns an undeclared variable (K12 reproduction)
+
+`test_orders_present_level` supplies either an empty level or a level with one
+orange hex. Both set the control to 0 and restore terrain, then throw exactly
+`ReferenceError: echelonColorData is not defined`. The strict xfails expect the
+requested level's colors. Missing debug, empty debug and absent levels cycle
+0/1/2/0 successfully and render white. No global variable is injected to bypass
+the exception. Available-level cycling remains blocked by this defect.
+
+## S13 replay format and lifecycle characterizations
+
+These passing observations document current limitations, not approved contracts:
+
+- Empty replay and malformed initial JSON throw SyntaxError during init.
+  Malformed later JSON throws on stepping. Parameters-only input initializes
+  and returns false on Step; a final dangling parameters record rebuilds the
+  scenario then tries to parse undefined and throws SyntaxError (K12).
+- Unknown message types and generated action-inclusive logs throw exactly
+  `Cannot read properties of undefined (reading 'type')`. The index remains at
+  that entry. Ordinary observation-only logs play to completion (K09).
+- Switching to a smaller second scenario removes old visible units and action
+  markers but retains old unit-index and occupancy objects (K20). Current unit
+  list, visible map and observations match the new scenario.
+- Debug is cleared by an observation without debug. Partial false-color maps
+  paint unspecified cells white; Terrain Color restores terrain fills.
+
+The K09 escaped-name browser cases route freshly written JavaScript unchanged
+to playback.html. Apostrophes cause `Unexpected identifier 'Brien'` followed by
+`replayData is not defined`; backslashes survive JavaScript as an invalid JSON
+escape, causing a JSON SyntaxError before any hex renders. Each has a narrow
+KnownDefect strict xfail; Unicode names execute and play through. This extends
+S08's lexical checks with actual JavaScript execution. Console/network errors
+remain failures. The checked-in replay is read only for a three-step smoke test.
+
 S03 runtime-confirmed the Python map defects grouped under **K01** and **K02**
 in `../test_plan.md`. S04 confirms the serialization/detection side effect in
 K05 as characterization, without an expected failure. S05 also confirms K03,

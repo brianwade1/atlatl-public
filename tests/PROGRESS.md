@@ -1,5 +1,77 @@
 # Test implementation progress
 
+## 2026-09-30 - S13 completed
+
+Implemented replay playback and writer/viewer compatibility on starting revision
+`25cee5792cf13abc2fa6bcd7dbbbe5c5b42022bf`. Preserved the pre-existing untracked
+`demo_script.txt`. All changes are under `tests/` or in root `test_plan.md`.
+
+Added 34 cases: 22 browser unit and 12 browser integration cases.
+
+- `browser_unit/test_playback.py`: initial parameters and echelon control,
+  every observation's position/strength/effective/fog state and brightness,
+  exhaustion without mutation, controlled animation frames, pause/resume/step,
+  repeated Play and init, smaller next-game parameters, visible replacement
+  versus retained indexes/occupancy, debug clearing, partial/empty/missing color
+  maps, terrain restoration, missing/present echelon levels, cycling, malformed
+  JSON, empty/parameters-only/dangling-parameters inputs and unknown/action entries.
+- `browser_integration/test_replay_roundtrip.py`: original playback.html with
+  routed replay.js content, fresh real-server two-game logs for both perspectives
+  with and without fog, each displayed observation compared with the log,
+  transcript and terminal Python state, independent score-50 episode oracle,
+  Play/Stop/Step and color buttons, native animation completion, repeated clicks,
+  generated action-inclusive logs, apostrophe/backslash/Unicode names, and a
+  bounded three-step read-only smoke check of the checked-in replay.
+- `support/playback.py`: JSON-string replay arrays, original module loading over
+  HTTP, controlled requestAnimationFrame queue, exception capture and real SVG
+  position/text/fill/visibility assertions. No production behavior is patched.
+
+Seven strict expected failures cover K09 escaping (two), K30 duplicate loops
+(two), K31 retained initialization index (one) and K32 undeclared orders-color
+variable (two). K31/K32 are precise reproductions of the older K12 investigation
+item. Only documented wrong signatures raise KnownDefect; fixes cause strict
+XPASS and other errors fail. Action logs and malformed inputs are explicit
+unsupported-input characterizations. K20 stale indexes/occupancy are retained
+as characterization; visible replacement works. Orders colors for a present
+level remain blocked by K32, with missing-level cycling tested independently.
+
+Validation on Windows/Python 3.14.4 and Chromium, using the installed project
+environment and `UV_CACHE_DIR=tests/.cache/uv`:
+
+- Initial sandbox run: 31 setup errors from blocked Windows Playwright pipes,
+  two cache warnings, and one test-source escape warning corrected immediately.
+  No behavioral assertions ran.
+- First approved focused run: 23 passed, six xfailed, two failed. Both failures
+  were the new helper comparing Python `50.0` text with JavaScript `50`; corrected
+  the numeric display expectation without changing production.
+- Expanded focused run: **26 passed, seven xfailed in 54.88s** (33 cases), no
+  warnings or unexpected failures. Added the missing-echelon/next-observation
+  case and tightened the backslash error signature for the final regression.
+- Final full regression: `uv run pytest tests -q --tb=short`: **915 passed,
+  57 xfailed, one failed in 1225.35s** (973 cases). All 34 S13 cases completed:
+  **27 passed and seven strict expected failures**. No warnings, skips, XPASS,
+  errors or deselections. Output: ignored `tests/.artifacts/s13-full.txt`.
+- The failure was the unchanged S08
+  `test_complete_websocket_game[function-and-websocket]`: Windows raised
+  PermissionError reading the child's temporary `ready.json`, before connecting.
+  This run therefore was not wholly green; no game assertion failed in that
+  case. Reran the unchanged affected module with
+  `uv run pytest tests/server_integration/test_websocket_game.py -q --tb=short`:
+  **six passed in 2.50s**, no warnings/failures/skips/xfails. The permission
+  failure did not reproduce; its cause is not established. No retry loop,
+  exception suppression, source change or weakened deadline was added.
+  Output: ignored `tests/.artifacts/s13-websocket-recheck.txt`.
+- Full-run protection report: all **315 files** unchanged, no additions/removals,
+  unchanged protected Git diff. Local Markdown links resolve and
+  `git diff --check` passes.
+
+S01-S13 are complete; S14-S17 remain open.
+
+No dependency changes, production fixes, replay-file replacements, fixed-port
+listeners or fixed browser sleeps were introduced. Server reports verify finite
+completed repetitions, closed logs/loop and zero pending tasks. Other browser
+engines/platforms remain unverified. S14 is the next planned implementation step.
+
 ## 2026-09-30 - S12 completed
 
 Implemented S12 live-play controls and browser/server communication. Starting
