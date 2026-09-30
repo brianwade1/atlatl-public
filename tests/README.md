@@ -10,7 +10,7 @@ Pytest automatically discovers the repository-root [pytest.ini](../pytest.ini).
 The project environment now includes pytest, pytest-asyncio, pytest-playwright,
 and pytest-cov, so no dependency overlay or explicit configuration path is needed.
 
-S01–S10 are implemented. Test code, fixture data, and generated artifacts remain under
+S01–S11 are implemented. Test code, fixture data, and generated artifacts remain under
 `tests/`; pytest configuration lives at the repository root. Never edit `server/`,
 `browser/`, or `scenarios/` to satisfy these tests. See [PROGRESS.md](PROGRESS.md)
 for verified results and [KNOWN_ISSUES.md](KNOWN_ISSUES.md) for the defect policy.
@@ -83,6 +83,9 @@ uv run pytest tests/browser_integration -q
 # S10 native SVG utilities, rendering, viewport, markers, and symbols.
 uv run pytest tests/browser_unit/test_svg_util.py tests/browser_unit/test_svg_rendering.py tests/browser_unit/test_svg_markers.py tests/browser_unit/test_unit_symbols.py -q
 
+# S11 editor/placement controllers and all three creation pages.
+uv run pytest tests/browser_unit/test_editor_controls.py tests/browser_unit/test_placement_controls.py tests/browser_integration/test_map_editor_page.py tests/browser_integration/test_unit_placement_page.py tests/browser_integration/test_random_scenario_page.py -q
+
 # All currently implemented tests, including browser model contracts.
 uv run pytest tests
 
@@ -103,7 +106,8 @@ select `tests/browser_unit` or `tests/browser_integration` for browser tests,
 `tests/server_integration` for real protocol/CLI/replay checks, `tests/ml` for ML
 checks, and `tests/scripts` for isolated demonstrations. The ML suite currently
 contains one CPU-model fixture preflight; browser integration contains S09
-model compatibility checks, and scripts remains empty. Empty selections return pytest's nonzero exit status.
+model compatibility checks and S11 creation-page workflows, and scripts remains
+empty. Empty selections return pytest's nonzero exit status.
 Executable examples and cached dependency tests are outside default discovery;
 pytest also excludes the dot-prefixed cache/temp/artifact directories.
 
@@ -247,7 +251,8 @@ never reset the modules between loads. Exact-signature strict xfails distinguish
 confirmed defects from unsupported-input/display-format characterizations.
 See [BROWSER_COMPATIBILITY.md](BROWSER_COMPATIBILITY.md) for shared fixture scope,
 semantic serialization comparisons and the separate firepower-difference audit.
-Actual SVG rendering is covered by S10 below; page/replay workflows remain S11-S13.
+Actual SVG rendering is covered by S10 below and creation pages by S11;
+live-play/replay workflows remain S12-S13.
 
 S10 adds 99 browser cases across the four files in the command above.
 `browser_support/svg.js` loads original rendering/model modules; `svg_page`
@@ -269,7 +274,30 @@ K10/K13/K22/K23 have narrowly matched strict xfails; see KNOWN_ISSUES.md for
 reproductions. The test HTTP server has a 128-connection listen backlog to
 accommodate parallel module imports on Windows; no request retries or ignored
 browser errors are introduced. Production renderers and geometry APIs remain
-unchanged. Editing, placement workflows, live play and replay remain S11–S13.
+unchanged. Editing and placement workflows are covered by S11 below; live play
+and replay remain S12–S13.
+
+S11 adds 46 cases across the five files listed above. Controllers use original
+exported handlers with attached real elements and DOM events. Page workflows
+load unchanged HTML over HTTP, exercise controls, inspect SVG/model changes,
+copy JSON, parse the SVG data URI as XML, and send an exported scenario through
+the real Python loader, initial state and one legal setup pass.
+
+`support/creation_pages.py` supplies small fresh map/OOB inputs and prompt/copy
+boundary recording. Ordinary error checks remain active. Defect probes allow
+only a single exact page error, raising `KnownDefect` after checking all other
+browser errors; fixes produce strict XPASS. A separate Chromium clipboard smoke
+test grants clipboard permissions to the loopback origin and calls the real
+clipboard API. Other browsers/clipboard environments remain unverified.
+
+Generation uses a finite nonzero random sequence and covers default 10×10,
+nonsquare 8×12 and same-page regeneration, plus a small-dimension defect probe.
+Repeat loads, cancellation, malformed JSON, empty/insufficient OOBs, score/fog
+controls, Test Input and sample symbols have explicit coverage. Known K01 edge
+identity is excluded only from geographic-content comparisons; its dedicated
+tests remain in S03/S09. K10/K24/K25 have five individual strict xfails. K20
+replacement effects and unsupported inputs are named characterizations, not
+approved future contracts. See KNOWN_ISSUES.md for exact signatures.
 
 Use `rng` for Python/NumPy seed isolation. ML subprocesses use
 `isolated_rng(torch_module=torch)` to preserve CPU RNG, deterministic-algorithm

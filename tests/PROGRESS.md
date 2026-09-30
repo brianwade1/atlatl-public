@@ -1,5 +1,78 @@
 # Test implementation progress
 
+## 2026-09-29 — S11 completed
+
+Implemented **S11 — Editors and scenario creation pages**. S01–S11 are complete;
+S12–S17 remain open. Starting revision:
+`eaf8f7c57511bbecb38f62921c506197f8e65246`. Preserved the existing untracked
+`demo_script.txt`. Changes are confined to `tests/` and root `test_plan.md`.
+
+Added **46 cases (18 browser unit and 28 browser integration/workflow cases)**:
+
+- `browser_unit/test_editor_controls.py` (13): all fill/edge palettes, setup
+  replace/erase, drag continuation and mouse-up, consecutive path segments,
+  replacement/removal and SVG styling, independent K10 palette identity, Shift
+  zoom without painting and normal editing afterward.
+- `browser_unit/test_placement_controls.py` (5): select, move, exchange,
+  same-unit selection, selection termination, occupancy and symbol transforms,
+  Shift ignoring selection/movement, and occupied-hex stacking characterization.
+- `browser_integration/test_map_editor_page.py` (4): rows/columns/width,
+  DOM-driven painting, map load/cancel/reload/malformed input, intercepted copy,
+  actual Chromium clipboard, and SVG data URI decoded and parsed as XML.
+- `browser_integration/test_unit_placement_page.py` (17): map/OOB/scenario
+  controls, automatic placement, movement/exchange, fitting and native Shift
+  zoom, numeric score/fog export, real Python loader/initial state/legal setup
+  pass, empty/insufficient setup inputs, every prompt's cancellation or malformed
+  input behavior, repeated loads, score/fog restoration, Test Input and sample
+  symbols. Engine round-trip assertions cover setup, positions, faction/type,
+  strength, scoring and fog; display-only metadata is preserved in exported JSON.
+- `browser_integration/test_random_scenario_page.py` (7): finite random sequence,
+  default 10×10 and nonsquare 8×12 generation twice per page, city/setup geography,
+  unique occupancy, rich metadata, small-map defect, repeated/canceled/malformed
+  OOB loading and successful empty-OOB generation.
+
+`support/creation_pages.py` supplies fresh builder inputs and only prompt/copy
+boundary replacements. Original modules and HTML remain unchanged. Attached
+real SVG elements receive controller/DOM events; selected workflows also use
+native mouse clicks. The real clipboard smoke grants loopback-origin browser
+permissions. Geographic-content comparisons exclude edge identity only because
+K01 has dedicated S03/S09 tests. Fixed random draws are finite and nonzero;
+engine RNG changes are isolated. Temporary exported scenarios remain test-local.
+
+Five individual strict xfails cover K10 palette IDs, K24 ignored scenario
+settings/canceled scenario prompt/empty OOB, and K25 small-map city placement.
+Only exact signatures raise `KnownDefect`; unrelated errors fail and fixes
+produce strict XPASS. K20 stale occupancy/index effects and unsupported-input
+behavior are explicitly named characterizations. No production fixes were made.
+
+Validation on Windows/Python 3.14.4 and Chromium, installed project environment,
+with `UV_CACHE_DIR=tests/.cache/uv`:
+
+- First sandbox invocation: 41 setup errors and two environment warnings;
+  Playwright could not create Windows subprocess pipes. No assertions ran.
+- First approved focused run: 29 passed, five xfailed, seven test assertion
+  failures. Corrected the selection marker oracle (root sibling, not symbol
+  child) and geographic comparisons (known K01 edge reorientation).
+- Expanded focused run: 39 passed, five xfailed, one test assertion failure.
+  Corrected the tiny-map zoom expectation: fitting below the target size clamps
+  zoom. Added a separate native large-map zoom test.
+- Final placement-file run: **14 passed, three xfailed in 16.74s**, including the
+  Python round trip and native zoom.
+- Final full regression: `uv run python -B -m pytest tests -q --tb=short`:
+  **858 passed, 44 xfailed in 330.90s**, 902 cases total. This includes all final
+  S11 cases: **41 passed and five strict expected failures**. Zero unexpected
+  failures/errors, warnings, skips, XPASS or deselections.
+
+The final protection report checked **315 files**, with no added, removed or
+changed protected files and no protected Git diff change. Local Markdown links
+in all four edited documentation files resolve; `git diff --check` passes.
+
+No separate launcher smoke is needed for test-only changes; the full suite
+includes the existing bounded headless integrations. Native clipboard support
+and parser-error strings were verified only in Chromium on this Windows host.
+No browser coverage percentage is claimed. Next task: **S12**, live-play controls
+and browser/server communication.
+
 ## 2026-09-29 — S10 completed
 
 Implemented **S10 — SVG utilities, rendering, markers, and viewport**.

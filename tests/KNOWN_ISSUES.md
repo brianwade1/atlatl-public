@@ -11,7 +11,8 @@ K08 over real sockets, K09 replay escaping, and K19 AI-process startup below. Th
 unverified portions of K03–K18 remain an investigation queue, not expected
 failures. S09 confirms browser K01/K02/K10 plus K20/K21 below. S10 adds SVG
 reproductions for K10/K13 and geometry issues K22/K23. Production
-files remain unchanged.
+files remain unchanged. S11 confirms K24 creation-page input/settings defects,
+K25 small-map random geography, and page-level K20 lifecycle behavior below.
 
 ## K01 — Edge identity and path serialization/loading
 
@@ -395,7 +396,10 @@ path styles. The defect is the category prefix, caused by constructing EdgeType
 objects. S10's `test_svg_rendering.py::test_palette_path_identifiers` confirms
 the same wrong IDs in the actual generated palette. Its passing companion
 dispatches mousedown to every item with recording controller callbacks and
-verifies styles/order. Actual editing consequences remain S11.
+verifies styles/order. S11's `test_editor_controls.py` independently checks the
+palette IDs before any path-model call. Road/path painting, consecutive segments,
+same-direction replacement and erase work despite the wrong prefix: both
+prefixes have the same length, and the palette binds the path handler directly.
 
 ### K20: browser unit replacement retains old indexes and occupancy
 
@@ -481,3 +485,56 @@ as a translation. Invisible spaces contribute to native group bounds, so the
 frame and fitted viewport can include inflated space. A strict exact-signature
 xfail preserves the desired centering contract; ordinary rectangles, labels,
 offset growth, order and frame containment have passing coverage.
+
+## K24 — Unit placement page settings and prompt failures
+
+Run `uv run pytest tests/browser_integration/test_unit_placement_page.py -q`.
+Three individual strict xfails express desired contracts:
+
+| Test | Expected | Confirmed wrong signature |
+| --- | --- | --- |
+| `test_scenario_restores_score_and_fog` | Export preserves loaded score `{maxPhases:8, lossPenalty:-3, cityScore:12}` and fog `true`. | Export uses form defaults `{maxPhases:20, lossPenalty:-2, cityScore:24}` and fog `false`; unit positions load correctly. |
+| `test_cancel_scenario_prompt` | Cancel leaves the scenario unchanged without an error. | Export is unchanged, but the handler throws `Cannot read properties of null (reading 'map')`. |
+| `test_empty_oob` | Empty OOB loads and exports an empty unit list without an error. | Unit list is empty, but the handler throws `Cannot read properties of undefined (reading 'hex')`. |
+
+The test-local page guard recognizes only the exact error and requires exactly
+one occurrence. All other console errors, request failures and exceptions fail.
+No error means the desired assertions run normally, yielding strict XPASS when
+the bug is fixed. The score/fog case raises `KnownDefect` only for the complete
+documented wrong output. No production behavior is replaced to hide these bugs.
+
+Passing characterizations (not endorsed future requirements):
+
+- Reloading a scenario preserves previously edited form settings instead of
+  applying incoming score/fog values.
+- Repeated OOB/scenario loading leaves four occupied unit objects while exporting
+  only the two current units (K20). Loading a map alone removes the symbols but
+  retains two exportable units whose hex references point to the previous map.
+- Insufficient faction setup cells throws `No available setup hex for unit`
+  after placing the blue unit; the red unit remains unplaced. The test checks
+  this partial state and does not attempt an unsupported unplaced-unit export.
+- Malformed `{` JSON throws the exact Chromium parser error and preserves the
+  previous export on all placement load controls and the map editor. Random OOB
+  loading similarly preserves the previous unit list.
+- Direct placement onto an occupied hex stacks both editor units; clicking the
+  other unit symbol exchanges them. These are editor operations, not gameplay
+  legality checks.
+
+## K25 — Random scenario geography assumes a minimum map size
+
+`browser_integration/test_random_scenario_page.py::test_small_dimensions`
+loads a two-unit rich OOB, chooses 3×3 and supplies a finite sequence of `0.25`
+random draws through the native Generate control. The grid has nine hexes, but
+east-city placement looks up an out-of-map hex and throws exactly
+`Cannot read properties of undefined (reading 'setTerrain')`. A strict xfail
+expects generation to complete with placed units. No retries or generator patch
+are used. The supported 10×10 and nonsquare 8-row/12-column maps generate and
+export twice on the same page with valid terrain, city/setup geography and unique
+faction-appropriate unit placement. These two shapes do not establish support
+for every rectangular dimension.
+
+Random-page characterizations: exports omit score settings; rich display metadata
+survives. An empty OOB generates a map successfully. Replacing an unplaced OOB
+leaves old unit index entries (K20), but exports and occupancy contain only the
+new unit. Test Input and the all-symbols sample are display smoke checks, not
+claims that every legacy symbol type is engine-playable.
