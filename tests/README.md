@@ -1,5 +1,26 @@
 # Test harness
 
+S14 AI coverage is documented alias by alias in [AI_MATRIX.md](AI_MATRIX.md).
+Run its focused tests from the repository root:
+
+```text
+uv run pytest tests/server_unit/test_ai_protocol.py tests/server_unit/test_ai_heuristics.py tests/server_unit/test_ai_setup.py tests/server_unit/test_ai_scoring.py tests/server_unit/test_ai_simon.py tests/server_unit/test_ai_search.py tests/server_unit/test_abstract_state.py tests/server_integration/test_ai_games.py tests/ml/test_dlalphabeta.py -q --tb=short
+```
+
+`support/ai_contract.py` copies registry kwargs, sends real JSON messages and
+validates actions with the real engine (including its separate setup validator).
+The default core run includes the seven S14 server unit modules. Complete seeded
+AI/passive games run in finite test-local subprocesses; select the integration
+file explicitly. MCTS budgets are small and nonzero, with controlled memory
+reports. Simon recursion and perfect-game reconstruction have child deadlines.
+CPU neural search is isolated in `ml/`, uses a fixed-valued callable and real
+Torch, and fails if its dependencies are missing. No training or production
+model files are needed. S15/S16 adapter limitations are named in the matrix.
+
+Strict expected failures reproduce stale plans, the MCTS queue disconnect,
+debug-color conversion and abstraction defects. See
+[KNOWN_ISSUES.md](KNOWN_ISSUES.md) for exact signatures; these are not source fixes.
+
 S13 replay coverage is in `browser_unit/test_playback.py` and
 `browser_integration/test_replay_roundtrip.py`. Run it with:
 
@@ -28,7 +49,7 @@ Pytest automatically discovers the repository-root [pytest.ini](../pytest.ini).
 The project environment now includes pytest, pytest-asyncio, pytest-playwright,
 and pytest-cov, so no dependency overlay or explicit configuration path is needed.
 
-S01–S13 are implemented. Test code, fixture data, and generated artifacts remain under
+S01–S14 are implemented. Test code, fixture data, and generated artifacts remain under
 `tests/`; pytest configuration lives at the repository root. Never edit `server/`,
 `browser/`, or `scenarios/` to satisfy these tests. See [PROGRESS.md](PROGRESS.md)
 for verified results and [KNOWN_ISSUES.md](KNOWN_ISSUES.md) for the defect policy.

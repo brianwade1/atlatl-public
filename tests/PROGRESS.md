@@ -1,5 +1,108 @@
 # Test implementation progress
 
+## 2026-10-01 - S14 completed (implemented September 30)
+
+Starting revision: `22159cb58a438b50c78021d6567566803b0a9151`. Preserved the
+pre-existing untracked `demo_script.txt`. Changes are limited to `tests/` and
+root `test_plan.md`; no dependencies, production modules or scenario data change.
+
+Added the explicit [AI registry matrix](AI_MATRIX.md), seven server unit modules,
+one bounded engine/AI integration module, one CPU neural search module, and the
+shared `support/ai_contract.py` contract helper.
+
+- Protocol: all 30 ordinary aliases in both roles, role requests, replacement
+  parameters, off-turn/terminal silence, setup/pass behavior and real-engine
+  action validation. MCTS aliases have separate queue/search defect probes.
+  Registry kwargs are copied; optional aliases have named S15/S16 limitations.
+- Heuristics: posture and mode overrides, fire/weakest-target priorities, random
+  move/fire boundaries, no eligible units, city/friend distances, assault strength,
+  escape/encirclement, coordinated fire, remaining-phase scores and safe movement.
+- Setup/fog: permitted cells, occupied exchange, pass order, insufficient cells,
+  queue replacement, enemy prototype limits, exact small-epsilon diffusion,
+  sight culling, normalization/zero mass, uniform setup support and hidden units.
+- Search/scoring: real SciPy directed terrain paths including unreachable water,
+  per-type costs, finite scores, object/portable round trips, wait versus pass,
+  fixed/random/greedy/full plans, Q versus successor boundaries, branch isolation,
+  full/partial blue-max/red-min choices, finite UCT, Agenda/minimax/transpositions
+  and timed perfect-game reconstruction. Simon helper and recursive entry points
+  use hand-solvable positions; recursion runs in ten-second children.
+- Hierarchy: weighted centers, ineffective/zero groups, containing hexes, grouping,
+  faction-preserving abstraction, clamping/non-mutation, parent distances,
+  crowding, commander modes, two abstract levels and playback-shaped debug data.
+- Integration: every ordinary alias runs a seed-1729 four-phase game against
+  passive in an owned 20-second child with a 32-action bound. No playing-strength
+  assertion or fixed stochastic trajectory is required.
+- ML: real CPU Torch/hexagdly import, fixed-valued inference, terminal scores,
+  cutoff/pruning, both faction signs, invalid depth/root errors, and actual depth
+  convention. Feature encoding is a collaborator boundary reserved for S15.
+
+Strict expected failures document K33 stale plans, K34 disconnected MCTS search
+queue, K35 color conversion, K36 undefined abstraction global (K16 reproduction),
+and K37 containing-hex lattice boundary. Only exact documented wrong signatures
+raise KnownDefect; fixes produce strict XPASS. Ordinary MCTS adapter games remain
+blocked by K34, with the real search exercised independently. Callback and neural
+model adapters remain assigned to S15/S16, not silently skipped.
+
+Environment: Windows, Python 3.14.4, pytest 9.1.1, pytest-asyncio 1.4.0,
+pytest-playwright 0.9.0, pytest-cov 7.1.0, Torch 2.12.1 and SciPy 1.18.0.
+Commands use `UV_CACHE_DIR=tests/.cache/uv` and the installed project environment.
+
+Validation history:
+
+- Initial protocol/search run: 136 passed, nine xfailed, one setup error and
+  three cache/temp warnings. The error was Windows sandbox access to pytest's
+  existing temporary directory. Subsequent executions use approved normal access.
+- Initial helper/setup/abstraction run: 162 passed, 28 xfailed, six failed.
+  Corrected fog fixtures lacking an opponent, an external-center fixture that
+  accidentally changed map dimensions, and separated the independently verified
+  K37 geometric defect from ordinary aggregation assertions.
+- Focused scoring and ML run: **30 passed in 7.93s**. Corrected manually built
+  states to mark the opposing faction immobile before ordered-search checks.
+- One redirected development run was interrupted before results were emitted;
+  no validation credit is taken for it. A baseline command with
+  `-p no:cacheprovider` stopped before collection under strict configuration
+  (`Unknown config option: cache_dir`); corrected to a separate cache path.
+
+Final successful execution results, retrieved when work resumed October 1:
+
+- Combined S14 run of the nine files in the README command: **389 passed,
+  40 xfailed in 873.60s** (429 cases). This includes all 30 complete seeded games
+  and the CPU neural case. Thirteen final edge cases were added after collection.
+- Final completion run: **132 passed, two xfailed in 273.20s** (134 cases).
+  This includes all 13 added edge cases (11 passing, two strict K35 failures),
+  reruns all 60 on-turn alias/role cases, all 29 scoring cases, all 30 games and
+  both hidden-enemy cases after strengthening the shared action assertion.
+  Those 121 reruns overlap the combined run; they are not counted twice.
+- Final collection: **442 cases** in 0.53s, recorded in ignored
+  `tests/.artifacts/s14-collection.txt`. Distinct S14 outcomes are therefore
+  **400 passed, 42 xfailed**: 411 core cases, 30 engine integrations and one ML
+  case. All final collected cases have execution evidence in the runs above.
+- Existing core regression, excluding the seven new modules: **623 passed,
+  nine xfailed in 763.55s** (632 cases). It ran in a separate test-local temp/cache
+  directory while S14 validation continued; no source or shared fixture changed.
+
+All three successful execution runs had **zero failures, errors, warnings,
+skips, XPASS and deselected cases**. The complete browser, pre-existing transport
+integration and optional ML suites were not rerun for this tests-only change.
+Windows/CPU is verified; other operating systems and accelerators are not claimed.
+The existing core and new S14 suites were validated separately, not as a single
+default-core invocation after the final additions.
+
+Exact supplemental commands (the combined command is in README):
+
+```text
+uv run pytest tests/server_unit tests/test_scenario_loading.py --ignore=tests/server_unit/test_ai_protocol.py --ignore=tests/server_unit/test_ai_search.py --ignore=tests/server_unit/test_ai_heuristics.py --ignore=tests/server_unit/test_ai_setup.py --ignore=tests/server_unit/test_ai_scoring.py --ignore=tests/server_unit/test_ai_simon.py --ignore=tests/server_unit/test_abstract_state.py --basetemp=tests/.tmp/s14-baseline -o cache_dir=tests/.cache/s14-baseline -q --tb=short
+
+uv run pytest tests/server_unit/test_ai_protocol.py::test_on_turn_action_applies tests/server_unit/test_ai_scoring.py tests/server_integration/test_ai_games.py tests/server_unit/test_ai_setup.py::test_hidden_enemy_observation_legal_action tests/server_unit/test_abstract_state.py::test_command_distance_and_parent_center tests/server_unit/test_abstract_state.py::test_aggregate_strength_includes_ineffective_member_characterization tests/server_unit/test_ai_simon.py::test_three_unit_pending_plan_applies_in_order tests/server_unit/test_ai_heuristics.py::test_burt_friend_distance_includes_self_characterization tests/server_unit/test_ai_heuristics.py::test_mixed_infinite_debug_distances tests/server_unit/test_ai_heuristics.py::test_dijkstra_debug_colors tests/server_unit/test_ai_heuristics.py::test_tactical_no_enemy_passes tests/server_unit/test_ai_search.py::test_minimax_prunes_inferior_branch_without_changing_value --basetemp=tests/.tmp/s14-final -o cache_dir=tests/.cache/s14-final -q --tb=short
+```
+
+The protection report checks **315 unchanged files**, no additions/removals and
+no protected Git diff change. Generated outputs remain ignored under `tests/`.
+All 49 local Markdown links in the plan and affected test documentation resolve;
+`git diff --check` passes. No dependency/configuration updates were needed.
+S01-S14 are complete; **S15 is next**. No staging or committing is performed.
+
+
 ## 2026-09-30 - S13 completed
 
 Implemented replay playback and writer/viewer compatibility on starting revision

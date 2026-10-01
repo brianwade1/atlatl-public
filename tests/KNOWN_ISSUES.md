@@ -1,5 +1,83 @@
 # Confirmed issues
 
+## S14 AI/search issues
+
+S14 adds exact-signature strict probes K33-K37. Production code remains unchanged.
+The registry coverage and deferred model/callback cases are in [AI_MATRIX.md](AI_MATRIX.md).
+
+### K33 - New parameters and reset retain pending plans
+
+`server_unit/test_ai_protocol.py::test_new_parameters_clear_pending_plan` seeds
+a recognizable old-unit move, sends reset followed by fresh parameters, and
+checks that the queue is empty. `pass-agg-fp`, `pass-agg-state`, `stomp`,
+`simon-says`, `pass-agg-setup`, `pass-agg-setup-fog` and `mcts1k` retain the exact
+old list. Only equality with that specific stale move raises KnownDefect.
+The base implementation backs the first two cases. Simon clears its separate
+setup queue on reset but retains `best_action_list`. The setup-demo queue and
+fog distributions do rebuild on new parameters; those have passing tests.
+
+### K34 - MCTS adapter never fills its action queue
+
+`server_unit/test_ai_search.py::test_mcts_search_result_is_emitted` covers all
+three aliases with a recording search boundary. It returns `[{'type': 'pass'}]`,
+but `AI.process` stores it in `im`, then raises `IndexError: pop from empty list`
+while reading `actionQueue`. The probe checks the exact exception, both fields,
+and all search arguments before raising KnownDefect. A separate eight-rollout
+real search confirms legal search output followed by the same queue error.
+The algorithm itself has passing finite-tree tests; completed adapter games and
+its setup action contract remain blocked. Defaults of 1,000/10,000 rollouts are
+overridden only through constructor options, never by patching the decision.
+
+### K35 - Debug color conversion loses one digit per RGB channel
+
+`test_ai_heuristics.py::test_debug_colors_are_six_digits` and
+`test_ai_setup.py::test_fog_colors` cover unequal, tied and supported infinite
+distance inputs. Several AI helpers concatenate `s[-2]` instead of both hex
+digits, yielding exactly three hexadecimal digits after `#`. These are valid
+CSS shorthand strings, but lose the intended eight-bit channel values. Each
+probe matches only that three-digit signature, then requires six digits; other
+errors fail normally. The hierarchy palette functions use a different converter
+and produce six-digit colors in passing debug/echelon tests. This is independent
+of playback's K32 undeclared-variable error. Dijkstra's unreachable-cell palette
+has the same shortened RGB output. A separate mixed finite/infinite pass-agg
+probe matches exactly `ValueError: cannot convert float NaN to integer`: its hue
+calculation reaches infinity minus infinity before RGB formatting.
+
+### K36 - Abstract scenario serialization depends on a demo global (K16)
+
+`server_unit/test_abstract_state.py::test_create_scenario_uses_argument` calls
+`createScenario` with real UnitData. It raises exactly
+`NameError: name 'abstate' is not defined`; the desired JSON uses the supplied
+unit data. K36 is a focused reproduction of the abstraction portion of K16,
+not an independent newly discovered issue.
+
+### K37 - Containing-hex lookup chooses the wrong row at a lattice boundary
+
+`test_containing_hex_odd_column_right_boundary` passes Euclidean position
+`(4.5, 3*sqrt(3))`. This lies inside hex `(1, 1)`, whose center is
+`(3, 3*sqrt(3))` and right vertex is `(5, 3*sqrt(3))`. The rectangular-lattice
+boundary adjustment returns `(1, 0)`, one row above. Only that exact wrong
+coordinate raises KnownDefect. Center, nearby offsets and an even-column
+horizontal boundary have separate passing cases. Weighted group centers can
+land at this point, so the error affects abstraction as well as direct geometry.
+
+### S14 characterized input limits
+
+- Setup helpers raise `IndexError: pop from empty list` with fewer setup cells
+  than units. Tests supply an opponent for fog agents to isolate this limit.
+- Fog distributions require an enemy prototype; an own-unit-only world raises
+  `AttributeError` naming `opforUnitProto`. Zero probability mass itself returns
+  all zeros without division; normalization mutates and returns the live map.
+- Abstract strength includes ineffective members if at least one effective
+  member gives the group a center; an all-ineffective group is omitted.
+- Both Burt variants include the actor itself in their nearest-friend search;
+  distance at the actor's own location is consequently zero.
+- `simple-movement`'s registered default has no mode. Focused mode tests pass
+  explicit options; default-alias legality does not establish capture behavior.
+- Fully observed tactical tests do not establish general fog support. Only the
+  two declared fog agents have hidden-opponent/distribution coverage in S14.
+
+
 S13 confirms the replay limitations anticipated by K09/K12. The new focused
 reproductions below use K30 for duplicate animation loops, K31 for repeated
 initialization, and K32 for the orders-color exception. K31/K32 refine the
