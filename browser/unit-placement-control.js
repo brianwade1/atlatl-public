@@ -25,7 +25,11 @@ function getViewBoxControl() {
 }
 
 function fitMapToContent() {
-    getViewBoxControl().fitToContent(SVGCreateView.svg);
+    if (SVGUtil && SVGUtil.viewManager) {
+        SVGUtil.viewManager.init(SVGCreateView.svg);
+    } else {
+        getViewBoxControl().fitToContent(SVGCreateView.svg);
+    }
 }
 UnitPlacementControl.fitMapToContent = fitMapToContent;
 

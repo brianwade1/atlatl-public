@@ -1,5 +1,7 @@
 <html>
 <meta charset="utf-8"/>
+<title>Atlatl - Map Editor</title>
+<link rel="stylesheet" href="layout.css"/>
 <script src="map.js" type="module"></script>
 <script src="svg-create-view.js" type="module"></script>
 <script src="svg-util.js" type="module"></script>
@@ -116,21 +118,28 @@ window.save = save;
 
 
 <body>
+  <div id="top-bar">
+    <label for="width">Hex Width: </label>
+    <input type="text" name="width" class="enter" value="5" size="3" id="width"/>
+    <label for="rows">Rows: </label>
+    <input type="text" name="rows" class="enter" value="10" size="3" id="rows"/>
+    <label for="columns">Cols: </label>
+    <input type="text" name="cols" class="enter" value="10" size="3" id="cols"/>
+    <input id="draw" type="button" value="Draw Grid" onclick="draw();" />
+    <input id="randomize" type="button" value="Randomize" onclick="randomize();" />
+    <input id="copy" type="button" value="Copy JSON" onclick="copy();" />
+    <input id="load" type="button" value="Load JSON" onclick="load();" />
+    <input id="save" type="button" value="Create SVG" onclick="save();" />
+    <a href="" id="link" style="font-size:12px;">Save SVG</a>
 
-<label for="width">Hex Width: </label>
-<input type="text" name="width" class="enter" value="5" size="4" id="width"/>
-<label for="rows">Rows: </label>
-<input type="text" name="rows" class="enter" value="10" size="4" id="rows"/>
-<label for="columns">Columns: </label>
-<input type="text" name="cols" class="enter" value="10" size="4" id="cols"/>
-<input id="draw" type="button" value="Draw Empty Grid" onclick="draw();" />
-<input id="randomize" type="button" value="Randomize" onclick="randomize();" />
-<input id="copy" type="button" value="Copy JSON to Clipboard" onclick="copy();" />
-<input id="load" type="button" value="Load JSON" onclick="load();" />
-<input id="save" type="button" value="Create SVG" onclick="save();" />
-<a href="" id="link">Right-click to save SVG</a>
-<span>Tip: Shift + left-click the map to toggle between the full map and a zoomed-in area.</span>
-<br/>
+    <div class="view-controls">
+      <input id="toggle-fit" type="button" value="🔎 Full View (Scroll)" onclick="toggleFitScreen();" title="Toggle between fitting whole map on screen and scrollable full size"/>
+      <input id="zoom-out" type="button" value="➖" onclick="zoomOut();" title="Zoom Out"/>
+      <span id="zoom-level">Fit</span>
+      <input id="zoom-in" type="button" value="➕" onclick="zoomIn();" title="Zoom In"/>
+    </div>
+  </div>
 
+  <div id="map-container" class="fit-mode"></div>
 </body>
 </html>
