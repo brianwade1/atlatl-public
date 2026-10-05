@@ -1,5 +1,10 @@
 # Test harness
 
+S16 adds CPU persistence, architectures, AlphaZero and ancillary scripts. Run
+`uv run pytest tests/ml tests/scripts -q --tb=short` for the combined suites.
+See [S16_MATRIX.md](S16_MATRIX.md) for coverage and controlled boundaries.
+No checked-in model is trained or loaded. K48-K51 are strict defect tests.
+
 S15 observation/reward/Gym and neural adapter coverage runs in the explicit ML
 suite. Dependencies are required when selected; no tests silently skip a missing
 Torch, Gymnasium, SB3 or other required import. Run from the repository root:
@@ -27,7 +32,7 @@ Gym seeding, and invokes the real Gymnasium/SB3 checkers. K38-K47 are precise
 strict expected failures (see [KNOWN_ISSUES.md](KNOWN_ISSUES.md)), including
 checker failures and signed score bounds. The harness does not cast or clip
 observations to hide these contract violations. Real GPU execution and checkpoint
-persistence are outside S15; model persistence/AlphaZero helpers remain S16.
+persistence are outside S15; S16 CPU persistence/AlphaZero coverage is described above.
 
 S14 AI coverage is documented alias by alias in [AI_MATRIX.md](AI_MATRIX.md).
 Run its focused tests from the repository root:

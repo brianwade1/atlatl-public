@@ -1,5 +1,56 @@
 # Test implementation progress
 
+## 2026-10-05 - S16 completed
+
+Starting revision: `73980d750bbd292c2711c15e96d2de6198219572`. Preserved the
+pre-existing untracked `demo_script.txt`. Changes are confined to `tests/` and
+root `test_plan.md`; no production, dependency, scenario or saved-model edits.
+
+Added 72 S16 cases across six ML modules, one focused defect module and four
+script modules, plus the fresh-interpreter `support/s16.py` helper.
+**68 passing cases and four strict expected failures (K48-K51).** See
+[S16_MATRIX.md](S16_MATRIX.md) for all sixteen plan items, controlled external
+boundaries, interface/data exclusions and characterization limits.
+
+Real CPU Torch/hexagdly persistence/inference/training-helper checks use tiny
+test-owned artifacts, fixed weights/seeds and one thread. NumPy/SciPy and HTTP
+checks use real dependencies. SB3 training, logging and absolute demo output
+boundaries are recording doubles; unchanged scripts execute in bounded children.
+No training jobs, production checkpoint loading or symlinks were needed.
+
+Validation used `UV_CACHE_DIR=tests/.cache/uv` and `uv run --no-sync pytest`:
+
+- Focused S16 run across all new modules: **68 passed, 3 xfailed in 69.34s**.
+  This run preceded the fourth Coach defect case.
+- Final defect/statistics follow-up: **1 passed, 4 xfailed in 5.23s**; this
+  verifies the added Coach case and strengthened paired-test assertions.
+  Overlapping cases are not counted twice.
+- Independent sixteen-channel literal oracle: **1 passed, 26 deselected**.
+- Existing model/import-isolation/fixture/scenario regressions: **72 passed in
+  16.93s**, using `tests/ml/test_fixture_model.py`, `test_dlalphabeta.py`,
+  `tests/server_unit/test_fixtures.py`, `test_isolation.py` and
+  `tests/test_scenario_loading.py`, with `--basetemp=tests/.tmp/s16-regression-final`.
+- Final focused collection: **72 tests collected**, no executable examples
+  accidentally collected.
+- Optional full ML/script and default-core runs were stopped at approximately
+  58% and 27% after substantially longer runtime. They showed passes/expected
+  failures only before termination, but are incomplete and are not counted as
+  successful full regressions. Final targeted checks above provide completion
+  evidence. Those two runners initially shared the configured basetemp; all
+  later focused checks used distinct directories. No concurrent-run reliability
+  claim is made.
+
+These successful checks had no failures, errors, skips or XPASS. Initial sandbox
+execution produced 55 setup errors from pytest's existing temporary-directory
+WinError 5 restriction; normal-access execution resolved it. First normal-access
+S16 run had 53 passes and two test-authoring failures: patched TCPServer before
+http.server import, and an incorrect significance expectation for [1,2,3] versus
+zero. Both were corrected and rerun. All process output stays test-local.
+
+Protection reports check 315 files with no additions/removals/content changes
+and no protected Git diff change. Browser workflow and cross-platform/GPU runs
+are not claimed. S17 is the next task.
+
 ## 2026-10-01 - S15 completed
 
 Starting revision: `e8e315a3e5729a04397f1d84457cb0206cc07f85`. Preserved the

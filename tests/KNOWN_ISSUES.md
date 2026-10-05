@@ -1,5 +1,28 @@
 # Confirmed issues
 
+## S16 persistence and AlphaZero findings
+
+| ID | Reproduction | Expected / exact current signature |
+| --- | --- | --- |
+| K48 | `ml/test_alphazero_defects.py::test_observation_uses_current_state` | Moving blue A from (2,2) to (0,0) and reducing strength to 40 should produce .4 at the new cell and zero at the old one. nnetObservation produces 1 at the old cell and zero at the new one because it constructs units from parameters. |
+| K49 | `ml/test_alphazero_defects.py::test_arena_uses_faction_on_move` | A two-action game changing faction should call each player once. Arena calls player1 twice and player2 zero times; curPlayer never updates. |
+| K50 | `ml/test_alphazero_defects.py::test_hidden_configuration_preserved` | Constructing dlalphabeta.CNN with hidden=[8] should preserve the caller's list. It becomes [3200,8], allowing subsequent construction to accumulate input dimensions. |
+| K51 | `ml/test_alphazero_defects.py::test_episode_targets_follow_acting_faction` | A two-action blue/red episode ending at raw Blue score 10 should assign targets [10,-10]. Coach produces [10,10] because curPlayer never updates. |
+
+These four tests raise KnownDefect only after matching the exact wrong output;
+strict unexpected passes require review. No production fixes were made.
+
+Additional S16 characterizations: PortableTorch missing source/weights raises
+UnboundLocalError; CNN train helpers require a caller-installed device; the
+451-action adapter still maps pass to 150; red observation score is not negated;
+Coach never updates curPlayer during episodes; AtlatlNNet forces dropout active
+even in eval mode; NNetWrapper missing checkpoint and playAndScore both-act
+branches raise TypeError by raising strings. Neither-agent progress loops until
+an external deadline; the test detects ten unchanged iterations at an observation
+boundary. gym_main imports Gymnasium as gym_interface and fails because
+Gymnasium has no GymEnvironment. These are recorded existing limitations, not
+newly approved contracts. The tests do not patch these behaviors to make them pass.
+
 ## S15 observation, fog and Gym issues
 
 S15 reproduces K38-K47 without changing production files. Every expected failure
