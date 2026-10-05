@@ -1,5 +1,34 @@
 # Test harness
 
+S15 observation/reward/Gym and neural adapter coverage runs in the explicit ML
+suite. Dependencies are required when selected; no tests silently skip a missing
+Torch, Gymnasium, SB3 or other required import. Run from the repository root:
+
+```text
+uv run pytest tests/ml -q --tb=short
+```
+
+The six S15 modules are `ml/test_observation_features.py`, `test_fog_features.py`,
+`test_gym_surrogate.py`, `test_gym_environment.py`, `test_multigym.py`, and
+`test_neural_adapters.py`. Existing S02/S14 ML tests also run with this command.
+Core discovery remains lightweight and does not select `tests/ml` by default.
+
+Coverage includes exact rectangular feature/channel oracles, all discrete indices
+0-18 for both roles and column parities, boundary/interior positions, artillery's
+outer fire ring, both reward implementations, every Gym surrogate variant,
+multigym selection, league routing, and controlled model/search boundaries.
+`support/neural_adapters.py` isolates collision-prone model adapter imports and
+CPU batch inference; it never loads a production checkpoint or starts training.
+
+`support/gym_episode.py` runs actual engine/function transport/Gym episodes in
+45-second children, with at most eight steps per episode and explicit teardown.
+It tests both factions, restart, dtype/shape/values/reward/info, scenario RNG versus
+Gym seeding, and invokes the real Gymnasium/SB3 checkers. K38-K47 are precise
+strict expected failures (see [KNOWN_ISSUES.md](KNOWN_ISSUES.md)), including
+checker failures and signed score bounds. The harness does not cast or clip
+observations to hide these contract violations. Real GPU execution and checkpoint
+persistence are outside S15; model persistence/AlphaZero helpers remain S16.
+
 S14 AI coverage is documented alias by alias in [AI_MATRIX.md](AI_MATRIX.md).
 Run its focused tests from the repository root:
 
@@ -49,7 +78,7 @@ Pytest automatically discovers the repository-root [pytest.ini](../pytest.ini).
 The project environment now includes pytest, pytest-asyncio, pytest-playwright,
 and pytest-cov, so no dependency overlay or explicit configuration path is needed.
 
-S01–S14 are implemented. Test code, fixture data, and generated artifacts remain under
+S01–S15 are implemented. Test code, fixture data, and generated artifacts remain under
 `tests/`; pytest configuration lives at the repository root. Never edit `server/`,
 `browser/`, or `scenarios/` to satisfy these tests. See [PROGRESS.md](PROGRESS.md)
 for verified results and [KNOWN_ISSUES.md](KNOWN_ISSUES.md) for the defect policy.

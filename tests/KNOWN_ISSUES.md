@@ -1,5 +1,58 @@
 # Confirmed issues
 
+## S15 observation, fog and Gym issues
+
+S15 reproduces K38-K47 without changing production files. Every expected failure
+uses `strict=True, raises=KnownDefect` and recognizes only the signature below.
+Unexpected exceptions remain failures; a fix produces strict XPASS. Run
+`uv run pytest tests/ml -q --tb=short` to include the real library checkers.
+K38/K40/K41 are focused confirmations of planning candidate K14; K44-K47
+confirm parts of candidate K15. These IDs separate independent failure signatures.
+
+| ID | Reproduction | Desired behavior and confirmed wrong result |
+| --- | --- | --- |
+| K38 | `ml/test_observation_features.py::test_torch_forwards_flip` | Forward `flipFactions=True` to NumPy encoding. Torch returns the exact unflipped tensor, including strength, ownership and score channels. |
+| K39 | `ml/test_fog_features.py::test_distribution_friendly_only` | No enemies should yield a finite zero distribution. Friendly-only initialization raises `AttributeError: 'OpforDistrib' object has no attribute 'opforUnitProto'`. Completely empty input works. |
+| K40 | `ml/test_fog_features.py::test_newly_hidden_without_prior_hidden` | A first disappearing enemy should produce finite mass. With one visible enemy and no previously hidden enemies, `add` raises `ZeroDivisionError: division by zero`, leaving mass 1. |
+| K41 | `ml/test_fog_features.py::test_newly_hidden_keys_are_hex_ids` | Distribution keys must remain hex ID strings. With one previously hidden enemy and one newly hidden enemy, `add` inserts the previous Hex object as a key with mass 2 and total 4. `move` then raises `KeyError` for that exact object. |
+| K42 | `ml/test_fog_features.py::test_initially_hidden_distribution` | An initially hidden enemy should be supported. Construction dereferences its missing hex and raises `AttributeError: 'NoneType' object has no attribute 'id'`. |
+| K43 | `ml/test_gym_surrogate.py::test_zero_initial_strength` (both modules) | Reward should remain finite when no friendly strength survives initially. Both Boron implementations set original strength to 0 and raise `ZeroDivisionError: division by zero`, including on terminal reward. |
+| K44 | `ml/test_gym_surrogate.py::test_red_reward_sign` (both modules) | Shape reward from the learner's perspective while preserving raw blue-perspective score in info. Red's improvement from score 0 to -10 is clipped to reward 0 instead of earning 10. The raw score correctly remains -10. |
+| K45 | `ml/test_gym_environment.py::test_real_library_checker` | Real Gymnasium and SB3 checkers reject float64 reset observations against the declared float32 Box. The probe checks the exact Gym assertion or SB3 dtype message, shape, finite in-range values, and failed containment. No casting or patched checker is used. |
+| K46 | `ml/test_gym_environment.py::test_real_signed_score_space` | Declared observation bounds must accommodate signed score channels. A real gym18 episode with a red-owned city ends with negative raw score; the whole score channel equals score/1000 and lies below the declared zero lower bound. This range defect is separate from K45. |
+| K47 | `ml/test_multigym.py::test_multigym_observation_tracks_current_state` | Observation tensors should reflect incoming state. After a unit moves and falls to strength 40 with score 12, local units/last_score update but the tensor is exactly equal to its initial value because `self.state` is never updated. |
+
+Additional passing characterizations, not approved future requirements:
+
+- Surrogate parameter handling clears its callback; the next observation restores
+  it. Attempted-mover bookkeeping is initialized at the ordinary phase boundary.
+  `action_result` consumes reward once but retains terminal status and raw score.
+- Out-of-range/noninteger discrete actions mark the selected mover attempted
+  before raising. Negative indices use Python indexing; calling with no remaining
+  mover raises the exact missing-`uniqueId` AttributeError. Wait can return None
+  when another mover remains. All emitted actions in the exhaustive supported
+  index tests are accepted by the real engine.
+- FadingTrailFeature and normalized distribution results expose mutable internal
+  data. `fractionHiddenOpforFeature` returns `(hidden, total)` counts.
+- Multigym reports three features but actually returns 17; its wrapper hardcodes
+  17. Repeated `setSubAIs` appends agents, including the wrapper's second call.
+  Parameters reach all subagents; the selected agent receives the latest
+  observation on demand. A subagent returning None triggers JSON decoding's
+  TypeError. Production terminal messages return no action.
+- Both wrappers deliberately set `nReps=-1`; `reset(seed=...)` seeds Gym's RNG,
+  but does not forward a seed/options to the server. A recording real scenario
+  generator continues the independently predicted Python RNG sequence across
+  repeated equal Gym seeds. `close`/`render` are no-ops; the child harness cancels
+  and awaits owned tasks, closes the loop and restores the signal handler.
+- League construction forwards the first environment's spaces without validating
+  consistency; empty environments, mismatched weights and step-before-reset have
+  explicit exception characterizations. Closing/rendering does not reach children.
+- From a disposable working directory, the `portabletorch` namespace lacks
+  `PortableTorch`; file-loading constructors in dl_alpha_beta/state_eval_gpu raise
+  that exact AttributeError. Separate adapter probes replace only the persistence
+  boundary and test shared models, CPU inference, batch sizes, score direction,
+  action sequence ordering, and search calls. Real checkpoint tests remain S16.
+
 ## S14 AI/search issues
 
 S14 adds exact-signature strict probes K33-K37. Production code remains unchanged.

@@ -1,5 +1,80 @@
 # Test implementation progress
 
+## 2026-10-01 - S15 completed
+
+Starting revision: `e8e315a3e5729a04397f1d84457cb0206cc07f85`. Preserved the
+pre-existing untracked `demo_script.txt`. All changes are under `tests/` or in
+root `test_plan.md`. No dependencies, production code, scenarios, replays or
+model files changed. S16 is the next task.
+
+Added six ML modules, ML-local import fixtures, and two subprocess helpers.
+**789 new cases: 776 passed, 13 strict expected failures.** The two existing
+S02/S14 ML cases remain passing. All optional dependencies are required when
+this suite is selected; collection does not load executable demos or models.
+
+| S15 items | Implemented coverage |
+| --- | --- |
+| 1-3 | `test_observation_features.py`: all factories, ineffective/missing units, 17 literal base channels on the asymmetric rectangle, each terrain, appended shape validation, input preservation, faction swap/score negation, float32 Torch output, K38 forwarding probe. |
+| 4 | Exact pass/move/fire actor and target masks, unknown and unplaced actors; fire target resolved through the target unit. |
+| 5-6 | `test_fog_features.py`: decay across observations, ignored friendlies/dead/unplaced enemies, mutable result identity, hidden/total counts, diffusion, culling, normalization, repeated updates, empty/friendly-only data, initially/newly hidden enemies and finite nonnegative mass. K39-K42 reproduce separate initialization/update failures. |
+| 7 | `test_gym_surrogate.py`: both modules/roles through parameters, callback reset/restoration, setup, wait, pause, terminal, reward consumption, reset and fresh parameters. |
+| 8 | 608 index/role/parity/location/target cases cover indices 0-18; 72 artillery cases verify the full fire ring. Literal independent coordinate tables plus real engine legality/transition checks. Additional wait/remaining-mover, fully blocked, exhausted, negative/out-of-range/noninteger cases. |
+| 9 | AI, AIx2, AITwelve, AI13, AI14, AI16, AI17 and AI18 exact channel tensors, metadata, both factions, empty mover masks, remaining-phase versus elapsed-phase features, doubled coordinates. |
+| 10 | Both copies of NoNegativesRewArt/BoronRewArt, negative discount, strength ratio, terminal bonus, fresh reward state and consumption; K43 zero strength and K44 red reward sign. Raw score remains separate. |
+| 11 | `test_gym_environment.py`: both Args/wrappers, roles, opponent model, nReps=-1, 7/19/subagent action spaces, feature/doubled shapes, [0,1] float32 declarations, no-op actions, reset/step tuples, seeded Gym RNG, close/render. |
+| 12-13 | Real tiny episodes/restarts for both factions through actual engine and function transport, at most eight steps per episode, 45-second child deadlines, explicit task/loop/signal cleanup. Real Gymnasium/SB3 checker failures (K45) and independent signed score bound probe (K46); no casts/clips. Recording scenario generator proves equal Gym seeds do not restart Python generator randomness. |
+| 14-15 | `test_multigym.py`: constructor and repeated subagent setup, parameter/latest-observation forwarding, index selection, JSON results, invalid/no-action cases, DQN/PPO production prediction versus training pause, metadata characterization, stale tensor K47. League weighted selection, next-reset switching, space/metadata identity, mismatches/empty data and no-op close/render. |
+| 16 | `test_neural_adapters.py` and `support/neural_adapters.py`: PPO/DQN/default loaders, all neural feature subclasses, doubled coordinates, real legal translated move/fire, exhausted movers, dl_alpha_beta constructor/shared/search contracts, state_eval_gpu CPU/shared model identity, bounded multi-batch inference, blue max/red min, reversed queues and partial-ply first action. AlphaZero model/checkpoint/search/translation boundaries are controlled in a fresh child; actual helper internals/checkpoint persistence remain S16. Missing options and the cwd-dependent PortableTorch namespace failure are explicit probes. |
+
+Environment: Windows, Python 3.14.4, pytest 9.1.1, NumPy 2.5.0, Torch 2.12.1,
+Gymnasium 1.3.0 and Stable-Baselines3 2.9.0. No training, GPU execution, real
+checkpoint loading or browser run was needed. External model loading/search
+boundaries are recording doubles; CPU tensor inference and the Gym checkers use
+the installed real libraries. PortableTorch/AlphaZero adapters execute in fresh
+children to contain flat-module collisions and import-time global state.
+
+Validation commands used `UV_CACHE_DIR=tests/.cache/uv`:
+
+```text
+uv run python -B -m pytest tests/ml -q --tb=short --basetemp=tests/.tmp/s15-final -o cache_dir=tests/.cache/s15-final
+uv run python -B -m pytest tests/ml -k "not test_all_discrete_actions and not test_all_artillery_fire_offsets" -q --tb=short --basetemp=tests/.tmp/s15-supplement -o cache_dir=tests/.cache/s15-supplement
+uv run python -B -m pytest tests/server_unit/test_fixtures.py tests/server_unit/test_isolation.py tests/server_unit/test_game_observations.py tests/server_unit/test_game_actions.py tests/server_unit/test_game_combat.py -q --tb=short --basetemp=tests/.tmp/s15-core -o cache_dir=tests/.cache/s15-core
+```
+
+- Full ML: **778 passed, 13 xfailed in 165.83s**, zero deselected.
+- Supplemental final assertion/classification check: **98 passed, 13 xfailed,
+  680 deselected in 48.97s**. Rechecks all non-matrix cases, including explicit
+  ownership forwarding and repeated fully culled updates; these outcomes overlap
+  the full run and are not counted twice.
+- Focused existing core regression: **152 passed in 26.34s**.
+- Commit-review follow-up corrected the K46 probe's success path so repaired
+  bounds can produce strict XPASS. Reran
+  `uv run python -B -m pytest tests/ml/test_gym_environment.py::test_real_signed_score_space -q --tb=short --basetemp=tests/.tmp/s15-score-review -o cache_dir=tests/.cache/s15-score-review`:
+  **one xfailed in 2.53s**, no unexpected failures or warnings. This overlaps
+  the full suite count; production bounds remain unchanged.
+- All three runs: zero unexpected failures, errors, warnings, skips or XPASS.
+  Ignored output transcripts are `tests/.artifacts/s15-{final,supplement,core}.txt`.
+- The complete browser, transport, script and default core suites were not rerun.
+  No cross-platform or accelerator result is claimed.
+
+Development results retained separately: first observation/fog/surrogate run had
+655 passed, six xfailed and five failures, plus two Windows cache warnings.
+Four failures came from importing multigym before its circular registry dependency;
+the tests now use normal registry-first initialization. One was a Python 3.14
+exception-text mismatch (`division by zero`, not `float division by zero`). A
+subsequent wrapper/adapter run hit WinError 5 on test-local temporary directories
+and could not complete pytest cleanup. Normal-access validation resolved those
+environment errors. The first full normal-access run had 687 passed and 13
+xfailed before the additional artillery/channel/queue/RNG cases were added.
+
+K38-K47 have exact-signature `KnownDefect` probes and documented desired behavior
+in [KNOWN_ISSUES.md](KNOWN_ISSUES.md). Characterizations are labeled separately;
+no production fix or test-side replacement of the asserted behavior was made.
+Before/after harness manifests verify **315 protected files**, no added/removed/
+changed files and unchanged protected Git diff. Scratch files/caches/child work
+directories remain ignored under `tests/`. Documentation paths and diff whitespace
+were checked before read-only commit review. No staging or commit was performed.
+
 ## 2026-10-01 - S14 completed (implemented September 30)
 
 Starting revision: `22159cb58a438b50c78021d6567566803b0a9151`. Preserved the

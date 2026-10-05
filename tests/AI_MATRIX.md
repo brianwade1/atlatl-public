@@ -1,5 +1,15 @@
 # S14 AI coverage matrix
 
+S15 follow-up: callback, observation, reward and wrapper contracts below now have
+coverage in `ml/test_gym_surrogate.py`, `test_gym_environment.py`, and
+`test_multigym.py`. `ml/test_neural_adapters.py` covers the neural base and all
+feature subclasses with controlled PPO/DQN loaders, and bounded children cover
+dl_alpha_beta, state_eval_gpu (CPU), and azero constructor/search/action boundaries.
+The S15 rows below identify their assigned scope, not still-unimplemented work.
+Individual packaged checkpoint aliases are not loaded; persistence, real models
+and AlphaZero helper internals remain S16. AI17 is tested directly despite having
+no registry alias. See K38-K47 for S15 failures and characterizations.
+
 `support/ai_contract.py` lists aliases explicitly; `test_registry_matrix_is_complete`
 checks the live non-neural registry and the neural-gated assignments in its AST.
 New aliases therefore require an explicit coverage/limitation decision. Constructor
@@ -92,13 +102,13 @@ protocol response, not a registered alias.
 | hex14dqn | dqn=true, doubledCoordinates=false, policy model | S15 |
 | hex18dqn | dqn=true, doubledCoordinates=false, policy model | S15 |
 | mando-fun-lab3 | ai/mandofun_c0.zip, dqn=true, doubledCoordinates=false | S15; no packaged checkpoint loading |
-| alphazero | neuralNet=temp | S16 AlphaZero adapter |
-| dlalphabeta | debug=false, neural callable/model | Adapter deferred; search tested in ml/test_dlalphabeta.py |
+| alphazero | neuralNet=temp | S15 controlled adapter; S16 helper internals/model integration |
+| dlalphabeta | debug=false, neural callable/model | S15 controlled adapter; search tested in ml/test_dlalphabeta.py |
 | state-eval-gpu | partialPly=false, GPU/model | S15/S16 optional model adapter |
 | state-eval-gpu-pp | partialPly=true, GPU/model | S15/S16 optional model adapter |
-| pascal | ai/pass-v-pass-g3, depthLimit="1", debug=false | Model-loading adapter deferred; shared search tested |
-| ibarra-m3 | ai/A5b_M3, depthLimit="1", debug=false | Model-loading adapter deferred; shared search tested |
-| ibarra-lx3 | ai/A5b_LX3, depthLimit="1", debug=false | Model-loading adapter deferred; shared search tested |
+| pascal | ai/pass-v-pass-g3, depthLimit="1", debug=false | S15 controlled common adapter; packaged model not loaded |
+| ibarra-m3 | ai/A5b_M3, depthLimit="1", debug=false | S15 controlled common adapter; packaged model not loaded |
+| ibarra-lx3 | ai/A5b_LX3, depthLimit="1", debug=false | S15 controlled common adapter; packaged model not loaded |
 
 The CPU neural search case imports real Torch/hexagdly in a bounded child and fails
 if dependencies are absent. Its fixed-valued callable and observation boundary
