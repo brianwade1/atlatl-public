@@ -13,6 +13,8 @@ from tests.support.isolation import content_manifest, manifest_changes
 from tests.support import builders
 from tests.support.isolation import isolated_rng, finite_random, preserve_globals
 
+pytest_plugins = ['tests.support.coverage_plugin']
+
 
 _MANIFEST = pytest.StashKey[dict]()
 _GIT_DIFF = pytest.StashKey[bytes]()
@@ -37,7 +39,8 @@ def pytest_configure(config):
     sys.dont_write_bytecode = True
     os.environ["PYTHONDONTWRITEBYTECODE"] = "1"
     os.environ["PLAYWRIGHT_BROWSERS_PATH"] = str(TESTS_DIR / ".cache/ms-playwright")
-    os.environ["COVERAGE_FILE"] = str(TESTS_DIR / ".artifacts/.coverage")
+    os.environ.setdefault("COVERAGE_FILE", str(TESTS_DIR / ".artifacts/.coverage"))
+    os.environ.setdefault("ATLATL_COVERAGE_ROOT", str(REPO_ROOT))
     (TESTS_DIR / ".artifacts").mkdir(exist_ok=True)
     runtime_temp = TESTS_DIR / ".tmp/runtime"
     runtime_temp.mkdir(parents=True, exist_ok=True)

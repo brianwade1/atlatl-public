@@ -34,13 +34,16 @@ def server_imports():
     finally:
         sys.path[:] = original_path
         for name, module in list(sys.modules.items()):
-            filename = getattr(module, "__file__", None)
-            local = filename and Path(filename).resolve().is_relative_to(SERVER_DIR)
             if name in original_modules:
                 if module is not original_modules[name]:
                     sys.modules[name] = original_modules[name]
-            elif local:
-                del sys.modules[name]
+            else:
+                # Existing entries are restored by identity above; only newly
+                # imported modules need a source-directory lookup. Resolving
+                # thousands of unchanged dependency paths dominated teardown.
+                filename = getattr(module, "__file__", None)
+                if filename and Path(filename).resolve().is_relative_to(SERVER_DIR):
+                    del sys.modules[name]
         for name, module in original_modules.items():
             if name not in sys.modules:
                 sys.modules[name] = module

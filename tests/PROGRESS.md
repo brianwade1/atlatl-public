@@ -1,5 +1,237 @@
 # Test implementation progress
 
+## 2026-10-05 - S17 completed
+
+Starting revision: `9b60920393d04edbdabf56dce27039b6f61889e0`. Preserved the
+pre-existing untracked `demo_script.txt`. Changes are limited to tests and the
+root plan. No application dependency, CI, production or scenario changes.
+
+Added five harness gate cases in `server_unit/test_regression_process.py`,
+the daily runner and opt-in Chromium CDP collector. Absolute Python coverage
+paths and `patch = subprocess` work through the existing child helper despite
+changed cwd. A child-only `Status.dscoreKill` probe checks actual measured body
+lines, not just module import. Browser reports union function hits across pages
+and retain per-case raw counts. [REGRESSION.md](REGRESSION.md) documents daily
+commands, artifacts, budgets, repeatability and readiness limitations.
+
+Environment: Windows 11, Python 3.14.4, pytest 9.1.1, pytest-cov 7.1.0,
+coverage 7.16.1, pytest-asyncio 1.4.0, pytest-playwright 0.9.0, Playwright 1.63.0.
+Commands set `UV_CACHE_DIR=tests/.cache/uv` and used `uv run --no-sync python -B`.
+Initial sandbox execution hit the established WinError 5 pytest temp/cleanup
+restriction; normal-access execution succeeded. This is not a production defect.
+
+Targeted validation:
+
+- `-m pytest tests/server_unit/test_regression_process.py tests/server_unit/test_harness.py -q --basetemp=tests/.tmp/s17-targeted-final`: **12 passed in 1.52s** before the union-count case.
+- Final five gates: **5 passed in 1.73s**.
+- Finalized gates twice normally, then `--reverse-order`, each with distinct
+  `s17-final-repeat-N` basetemp: **5 passed in 0.84s / 0.89s / 0.86s**.
+- Syntax/relative documentation-link checks pass. Protection reports check
+  **315 files**, with no content or protected Git diff changes.
+
+First core coverage run: **994 passed, 51 strict xfailed in 425.21s**.
+Preserved baseline reports: ignored
+`tests/.artifacts/core-before-import-cleanup/python.json` and `html/`.
+
+| Engine module | Statements | Branches |
+| --- | --- | --- |
+| map.py | 96.74% | 96.30% |
+| unit.py | 100.00% | 97.37% |
+| status.py | 100.00% | 100.00% |
+| game.py | 89.21% | 87.74% |
+
+Initial core measurements over 74 discovered Python files were **59.14%
+statements / 57.12% branches**. Final reports explicitly include namespace
+directories (87 Python files) with zero-hit optional sources, as described below.
+No exclusions or numeric
+fail-under gate were introduced. Most game.py missing lines are its standalone
+10,000-transition demonstration; remaining gaps include ordinary exchange and
+two state-key type branches. The proposed 90% statement target is not yet met
+for that file. This is a coverage gap, not a new confirmed production defect.
+
+The slow-case report identified repeated source-path resolution of unchanged
+modules during `support/imports.py::server_imports` teardown. Moved the same
+provenance check into the newly imported-module branch; existing entries still
+restore by identity, and new engine modules still undergo real path checks.
+`test_harness.py`, `test_isolation.py`, `test_fixtures.py`, `test_game_setup.py`
+and `test_game_state_key.py`: **119 passed in 9.04s**, including exception cleanup
+and alias/global restoration. No cache of potentially stale module origins was
+introduced. Old repeat/full runners were stopped as owned process trees; their
+unfinished passes are not counted. Final runs restart all three passes on the
+completed harness and finalized five S17 gates.
+
+Final core command: `uv run --no-sync python -B -m tests.support.regression core --repeat --coverage`.
+
+| Pass | Collected | Result | Duration |
+| --- | --- | --- | --- |
+| normal 1 | 1048 | 997 passed / 51 xfailed | 124.59s |
+| normal 2 | 1048 | 997 passed / 51 xfailed | 137.32s |
+| reverse | 1048 | 997 passed / 51 xfailed | 134.30s |
+
+Each has zero failed/errors/skipped/XPASS/deselected. JUnit case sets are
+identical across all three passes, as are whole-source statement/branch
+measurements. Engine measurements match the table above.
+Final reports are under `tests/.artifacts/core-1`, `core-2` and `core-3`;
+the complete console log is `tests/.artifacts/s17-core-final.log`.
+
+Reporting correction: coverage's default discovery omitted 13 unimported source
+files beneath namespace directories (`ai/*/cnn.py`, `portabletorch/`, `sbl3/`).
+Enabled `[report] include_namespace_packages = True` so core/full share all
+**87 Python files / 9875 statements / 3776 branches**. Added the missing files
+as zero-hit entries to the saved core data and regenerated HTML/JSON without
+rerunning tests or changing measured executions. All three corrected core
+reports agree: **55.25% statements / 55.67% branches**. Console logs retain
+the initial discovery totals; saved JSON/HTML are the authoritative corrected
+reports. The final child probe verifies both measured production body lines and
+an unexecuted namespace CNN's empty line set: **5 gates passed in 1.09s**.
+
+First full pass: **2165 passed, 116 strict xfailed in 814.53s**, 2281 cases;
+zero failures/errors/skips/XPASS/deselections. It already imported all namespace
+sources: **85.98% statements / 77.78% branches**, with the same four engine
+measurements as core. A subsequent collector refinement uses CDP script-source
+hashes to distinguish inline HTML blocks sharing offsets. The strengthened
+union test and real HTTP placement-page/module probe produced **20 passed,
+3 K24 xfailed in 28.89s**, with **18 browser reports across 20 script paths**.
+The final reverse-pass browser report uses that source-hash identity; earlier
+full passes loaded the original URL/offset collector. Generated replay inputs
+routed at `/browser/replay.js` are excluded from the final function report;
+the original replay viewer/page code remains measured. Test behavior and node IDs
+are unchanged; hashes improve reporting identity, not assertions on game rules.
+
+Final full command: `uv run --no-sync python -B -m tests.support.regression full --repeat --coverage`.
+
+| Pass | Collected | Result | Duration |
+| --- | --- | --- | --- |
+| normal 1 | 2281 | 2165 passed / 116 xfailed | 814.53s |
+| normal 2 | 2281 | 2165 passed / 116 xfailed | 813.18s |
+| reverse | 2281 | 2165 passed / 116 xfailed | 820.50s |
+
+All three have zero failed/errors/skipped/XPASS/deselected/warnings. JUnit records
+match for every individual case outcome, including each XFAIL reason. All three
+Python reports match exactly: **8491/9875 statements (85.98%)** and
+**2937/3776 branches (77.78%)**, across **87 files**. Coverage includes subprocess
+execution; no blanket claim is made about the behavior of mocked external model
+or training boundaries. Real engine/server/browser/replay integrations all ran.
+
+Authoritative Chromium report: `tests/.artifacts/full-3/javascript/summary.json`;
+**316 browser cases**, **25 original script paths**, **270 executed / 288 observed
+V8 function ranges**. Counts include top-level ranges and loaded inline handlers;
+they are not statement/branch coverage. Routed replay input data is excluded.
+Raw per-case JSON retains source hashes and counts. A focused real playback
+probe passed in **1.23s**, and its report confirms playback.js execution and
+replay.js exclusion.
+
+Final artifact-isolation follow-up limits JavaScript cleanup/aggregation to
+collector-owned hashed case files and summary.json, preserving unrelated JSON.
+The strengthened gate plus a real module-load coverage smoke passed **6 cases
+in 2.14s**. Runner Playwright diagnostics now also use a distinct per-pass output
+directory, alongside the already separate workspaces, JUnit and coverage files.
+Final gates/module smoke with the distinct Playwright path and JavaScript
+coverage directory: **6 passed in 1.62s**, using
+`--basetemp=tests/.tmp/s17-artifacts-final --output=tests/.artifacts/s17-artifacts-final/playwright --js-coverage-dir=tests/.artifacts/s17-artifacts-final/javascript`.
+
+| Browser source | Executed / observed function ranges |
+| --- | --- |
+| combat.js | 2 / 2 |
+| human-player-control.js | 6 / 8 |
+| map-editor-control.js | 13 / 14 |
+| map-editor.html | 9 / 9 |
+| map.js | 34 / 35 |
+| mobility.js | 2 / 2 |
+| play.html | 7 / 7 |
+| play.js | 26 / 26 |
+| playback.html | 8 / 8 |
+| playback.js | 12 / 13 |
+| random-scenario.html | 9 / 12 |
+| style.js | 2 / 2 |
+| svg-city-marker.js | 6 / 6 |
+| svg-create-view.js | 5 / 5 |
+| svg-gui.js | 5 / 5 |
+| svg-map-editor-palette.js | 3 / 3 |
+| svg-map-view.js | 5 / 5 |
+| svg-setup-marker.js | 7 / 7 |
+| svg-unit-symbol.js | 38 / 42 |
+| svg-util.js | 26 / 26 |
+| terrain.js | 7 / 9 |
+| test-data.js | 2 / 2 |
+| unit-placement-control.js | 7 / 9 |
+| unit-placement.html | 13 / 15 |
+| unit.js | 16 / 16 |
+
+Final successful sessions report **315 protected files unchanged**, no added or
+removed files and unchanged protected Git diffs. Owned test runners completed
+with status zero; no Python test/server children remain. Artifacts and caches
+remain ignored under tests; the user's demo file is preserved. No production
+defect was added or fixed by S17. Existing issues remain individually documented.
+
+Coverage core/full
+runners use independent workspaces and ran concurrently; timings are diagnostic
+host measurements, not isolated performance benchmarks. Production behavior
+tests remained unchanged. Extra S17 gate cases were finalized during initial
+passes and separately repeated above. Linux/macOS, secondary browsers and GPU
+remain unverified. Optional mutation diagnostics were not performed.
+
+S01–S17 are complete for the selected scope. Next work is maintaining these
+commands during the planned core changes, reviewing K01–K51 and characterized
+behavior, closing the measured game.py coverage gap where useful, and adding
+cross-platform/secondary-browser evidence when those environments are available.
+
+## S17 source-to-test manifest
+
+Case IDs are stable pytest node IDs, including parametrization IDs. The paths
+below are relative to `tests/`; a file prefix owns every collected test in that
+file. Comma-separated filenames inherit the preceding directory prefix;
+semicolons switch suites explicitly. This supplements dated case/result records below, [AI_MATRIX.md](AI_MATRIX.md)
+and [S16_MATRIX.md](S16_MATRIX.md). State **implemented** means the selected
+contracts/characterizations exist, not that every source branch is correct.
+All issue IDs link to [KNOWN_ISSUES.md](KNOWN_ISSUES.md), where exact reproductions
+and characterization limits are maintained. Runtime results follow separately.
+
+| Module / major callable group | Case-ID file prefixes | Type | State / issues |
+| --- | --- | --- | --- |
+| server/map.py geometry, neighbors, distances | server_unit/test_map_geometry.py | unit | implemented |
+| server/map.py portable data, indexes, edges/paths | server_unit/test_map_serialization.py | unit | implemented; K01/K02 |
+| server/combat.py, mobility.py semantic tables | server_unit/test_rule_tables.py | unit | implemented |
+| server/unit.py construction, copies, occupancy | server_unit/test_unit_state.py | unit | implemented; K05 characterization |
+| server/unit.py movement, fire targets | server_unit/test_unit_movement.py | unit | implemented |
+| server/unit.py detection/fog | server_unit/test_unit_visibility.py | unit | implemented; K05 characterization |
+| server/status.py phases, city ownership, scoring | server_unit/test_status.py | unit | implemented |
+| server/game.py setup/exchanges | server_unit/test_game_setup.py | unit | implemented; K03 characterization |
+| server/game.py transitions/actions | server_unit/test_game_actions.py | unit/integration | implemented; K03 characterization |
+| server/game.py combat thresholds/scoring | server_unit/test_game_combat.py | unit | implemented; K04 characterization |
+| server/game.py observations, keys | server_unit/test_game_observations.py, test_game_state_key.py | unit | implemented; K05/K16 characterization |
+| server/scenario.py loaders/generators | server_unit/test_scenario_factories.py; test_scenario_loading.py | unit/integration | implemented; K05/K06 characterization |
+| server/scenario_gen_reg.py, game_dispenser.py | server_unit/test_scenario_registry.py, test_game_dispenser.py | unit/integration | implemented |
+| server/messageserver.py wrappers/routing/tasks | server_unit/test_message_clients.py, test_message_routing.py | unit | implemented; K08 characterization |
+| server/gameserver.py, current_game_access.py protocol | server_unit/test_gameserver_protocol.py | unit | implemented; K08 characterization |
+| server/server.py initialization, airegistry.py registration | server_unit/test_server_init.py, test_ai_protocol.py | unit/isolated subprocess | implemented; K07 characterization |
+| server transport/function clients/replays | server_integration/test_websocket_game.py, test_function_clients.py, test_replay_writer.py | integration | implemented; K09/K19 |
+| server/server.py CLI, ai_process.py | server_integration/test_server_cli.py, test_ai_process.py | integration | implemented; startup/closure characterizations |
+| server/abstract_state.py, mctsearch.py, solver.py | server_unit/test_abstract_state.py, test_ai_search.py | unit | implemented; K16/K35–K37 |
+| server/ai/ heuristic/setup/fog/hierarchy/scoring modules | server_unit/test_ai_protocol.py, test_ai_heuristics.py, test_ai_setup.py, test_ai_simon.py, test_ai_scoring.py; server_integration/test_ai_games.py | unit/integration | implemented alias matrix; K33–K37 |
+| server/observation.py channels/masks/fog | ml/test_observation_features.py, test_fog_features.py | unit | implemented; K38–K42 |
+| server/gym_interface.py, multigym.py, league_env.py | ml/test_gym_environment.py, test_multigym.py | unit/integration | implemented; K43–K47 |
+| server/ai/gym_ai_surrogate.py, multigym_ai.py | ml/test_gym_surrogate.py | unit/integration | implemented |
+| server/ai/neural.py, azero.py, dl_alpha_beta.py, state_eval_gpu.py | ml/test_neural_adapters.py | unit/CPU integration | implemented; checkpoint alias loading excluded |
+| server/dlalphabeta.py, bundled ai CNNs | ml/test_dlalphabeta.py, test_network_shapes.py, test_alphazero_defects.py | unit/CPU integration | implemented; K50 |
+| server/portabletorch/ persistence, model/CNN, demos | ml/test_portabletorch.py, test_network_shapes.py; scripts/test_examples.py | unit/CPU integration/isolated scripts | implemented; demo writes/training boundaries controlled |
+| server/azg/ game/observations | ml/test_alphazero_game.py, test_alphazero_defects.py | unit/integration | implemented; K48 |
+| server/azg/ MCTS, Arena, Coach, networks, utilities, main | ml/test_alphazero_search.py, test_alphazero_training_helpers.py, test_alphazero_orchestration.py, test_alphazero_defects.py | unit/CPU integration | implemented; K49/K51; abstract Game/NeuralNet and empty initializers excluded |
+| server/sbl3/ examples, gym_main.py | scripts/test_examples.py | isolated scripts | implemented; recording training boundaries; no real training claim |
+| server/stats.py, read_log.py | scripts/test_stats.py, test_read_log.py | unit/integration | implemented |
+| browser/webserver.py | scripts/test_browser_webserver.py | integration | implemented |
+| browser/map.js, unit.js, combat.js, mobility.js, terrain.js, style.js | browser_unit/test_map_model.py, test_unit_model.py, test_rule_data.py; browser_integration/test_engine_parity.py | unit/integration | implemented; K01/K02/K10/K20/K21 |
+| browser/svg-util.js, svg-gui.js, svg-map-view.js, svg-create-view.js | browser_unit/test_svg_util.py, test_svg_rendering.py | browser unit | implemented; K22 |
+| browser/svg-map-editor-palette.js, svg-city-marker.js, svg-setup-marker.js | browser_unit/test_svg_rendering.py, test_svg_markers.py; browser_integration/test_map_editor_page.py | browser unit/workflow | implemented; K10/K22/K23 |
+| browser/svg-unit-symbol.js | browser_unit/test_unit_symbols.py | browser unit | implemented; K13 |
+| browser/map-editor-control.js, map-editor.html | browser_unit/test_editor_controls.py; browser_integration/test_map_editor_page.py | browser unit/workflow | implemented; K24 |
+| browser/unit-placement-control.js, unit-placement.html, random-scenario.html | browser_unit/test_placement_controls.py; browser_integration/test_unit_placement_page.py, test_random_scenario_page.py | browser unit/workflow | implemented; K25 |
+| browser/play.js, human-player-control.js, play.html | browser_unit/test_play_protocol.py, test_human_controls.py; browser_integration/test_live_game.py | browser unit/integration/workflow | implemented; K26–K29 |
+| browser/playback.js, playback.html, replay.js inputs | browser_unit/test_playback.py; browser_integration/test_replay_roundtrip.py | browser unit/integration/workflow | implemented; K09/K30–K32 |
+| browser/test-data.js, sample OOBs, server/scenarios, model artifacts | targeted fixture/loader/compatibility consumers above | read-only inputs | no blanket runtime assertion; GPU/real packaged checkpoints unverified |
+| S17 runner/report isolation and child coverage | server_unit/test_regression_process.py | unit/integration | S17-001 isolation; S17-002 child lines; S17-003 nonzero/empty exit propagation (2 cases); S17-004 unioned browser counts |
+
+
 ## 2026-10-05 - S16 completed
 
 Starting revision: `73980d750bbd292c2711c15e96d2de6198219572`. Preserved the

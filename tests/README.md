@@ -1,5 +1,10 @@
 # Test harness
 
+S17 adds [daily regression, coverage and readiness commands](REGRESSION.md).
+Use the test-local runner for separate core/full Python reports, Chromium function
+reports, and normal/normal/reverse repeatability checks. Current measurements and
+source ownership are recorded in [PROGRESS.md](PROGRESS.md).
+
 S16 adds CPU persistence, architectures, AlphaZero and ancillary scripts. Run
 `uv run pytest tests/ml tests/scripts -q --tb=short` for the combined suites.
 See [S16_MATRIX.md](S16_MATRIX.md) for coverage and controlled boundaries.
@@ -163,7 +168,7 @@ uv run pytest tests/browser_unit/test_editor_controls.py tests/browser_unit/test
 uv run pytest tests
 
 # Python coverage; this does not instrument browser JavaScript.
-uv run pytest --cov --cov-config=tests/coverage.ini --cov-report=term-missing --cov-report=html:tests/.artifacts/coverage-html
+uv run python -B -m tests.support.regression core --coverage
 ```
 
 Run commands from the repository root: cache/output/test paths use that directory.
