@@ -155,6 +155,10 @@ def run_server(config):
                     open_socket=config.get("socket", False), n_reps=config.get("reps", 1),
                     blue_log="blue.js", red_log="red.js", log_actions=config.get("log_actions", False))
     loop = gs.message_server.loop
+    # Own startup tasks until teardown. asyncio keeps weak task references;
+    # the socket task awaits a private Future before a client connects, so a
+    # larger scenario's allocations can otherwise collect that pending task.
+    startup_tasks = tuple(asyncio.all_tasks(loop))
     task_errors = []
 
     def record_task_error(loop, context):
@@ -194,6 +198,7 @@ def run_server(config):
         loop.run_until_complete(asyncio.gather(*pending, return_exceptions=True))
         loop.run_until_complete(loop.shutdown_asyncgens())
         loop.run_until_complete(loop.shutdown_default_executor())
+        assert all(task.done() for task in startup_tasks)
         for logfile in (gs.blue_logfile, gs.red_logfile):
             if not logfile.closed:
                 logfile.write("]\n")

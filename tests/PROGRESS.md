@@ -1,5 +1,124 @@
 # Test implementation progress
 
+## 2026-10-05 - S18 completed
+
+Starting revision: `011ac7eeb302a80ddfc02b7b1f0fad687b2d7cad`. Preserved the
+pre-existing root-plan additions and untracked `demo_script.txt`. Implemented
+all six S18 groups with **64 additional cases**, without production changes or
+new expected failures. Test plan and README now describe the completed scope.
+
+| Group | Stable node/file ownership | New cases |
+| --- | --- | --- |
+| S18-A | `server_unit/test_game_sequences.py::test_seeded_legal_sequences_preserve_state_and_phase_invariants` | 6 |
+| S18-B | `server_unit/test_game_sequences.py::test_destroy_capture_recapture_and_terminal_city_scoring` | 2 |
+| S18-C | Both tests in `browser_integration/test_sequence_parity.py` | 48 |
+| S18-D | `server_unit/test_game_sequence_observations.py::test_observing_both_roles_and_roundtripping_preserves_deterministic_sequence` | 4 |
+| S18-E | `test_game_state_key.py::test_remaining_unit_type_encodings` and `test_game_setup.py::test_unknown_setup_action_with_valid_mover_is_rejected` | 3 |
+| S18-F | `browser_integration/test_mixed_live_replay.py::test_mixed_city_combat_fog_live_and_replay` | 1 |
+
+S18-A uses local `random.Random` seeds 7/23/91, two rectangular boards and a
+24-transition budget for six phases. Every action checks input/parameter
+isolation, legal actor availability/faction, occupancy reconstruction, ineffective
+removal, phase/turn progression and spent-actor exclusion. No elimination or
+nonnegative-strength assumption is introduced. Existing S05 branch-isolation
+tests remain in the core regression.
+
+S18-B runs mirrored Blue/Red episodes with literal urban damage and score
+oracles. A 60-strength defender receives 25 damage, is removed at 35, and credits
+60 loss. Capture, counterfire, recapture, leaving the city vacant, and scoring
+that retained ownership at the terminal phase are asserted. Final scores are
+-84 for the Blue attack and -36 for the Red attack.
+
+S18-C uses real browser/Python models with literal movement targets in vertical
+corridors embedded in a 4x3 map. Both column parities, four unit types, clear,
+rough, marsh, water and occupied destinations cover exact 100-point entry and
+two 50-point entries. Separate fire cases check the artillery outer ring,
+friendly/removed exclusions and distance three. Original modules run over HTTP
+with normal page/console checks; renderer boundaries reuse S09's harness.
+
+S18-D compares five-action sequences with/without observations of both roles
+and JSON round trips, for both starting factions and fog settings. Detection is
+deterministic through the existing finite draw fixture. The existing shared
+status reference is explicitly characterized; mutating the JSON-decoded copy
+must not affect the source. Getter purity at arbitrary detection probabilities
+is not claimed. S18-E adds literal mechinf/artillery key strings and rejection
+of an unknown setup action with a valid mover, without patching legality.
+
+S18-F exercises two live browser contexts, native WebSockets, nine DOM actions,
+two removals, city capture/recapture and scout-driven fog reveal/loss. Both
+perspective transcripts and the terminal engine state match
+`support/mixed_episode.py`'s independent oracle: explicit changes, phase/score
+and availability tables, plus odd-q cube distance without engine imports.
+Both generated logs are decoded, then played frame-by-frame through original
+`playback.html` using native Step clicks and SVG/model checks. No checked-in
+replay is changed.
+
+The larger episode initially exposed weak ownership of the socket startup task
+in the test bootstrap: the pending coroutine was collected before a browser
+connected, producing a 503 handshake and GeneratorExit diagnostic. The bootstrap
+now retains all startup tasks until cancellation/cleanup and verifies they are
+done. This changes task ownership only; engine, messages, sockets and viewer
+remain real. Existing live/function/WebSocket regressions pass after this change.
+The initial new replay assertion also assumed initialization consumed the first
+observation; corrected it to Step through every observation, matching S13.
+
+### Validation commands and results
+
+Environment is the existing Windows/Python 3.14.4 project environment with pytest
+9.1.1 and Chromium. Commands use `UV_CACHE_DIR=tests/.cache/uv` and
+`uv run --no-sync python -B -m pytest`. Each successful normal-access run uses
+`-q --tb=short`, a distinct `--basetemp=tests/.tmp/s18-<pass>`,
+`-o cache_dir=tests/.cache/s18-<pass>` and, where listed below,
+`--junitxml=tests/.artifacts/s18-<pass>.xml`.
+
+The **focused selection** is the exact six-path command in README.md, omitting
+`test_mixed_live_replay.py` for the initial three passes (109 collected).
+The **mixed selection** is `tests/browser_integration/test_mixed_live_replay.py
+tests/browser_integration/test_live_game.py
+tests/server_integration/test_function_clients.py
+tests/server_integration/test_websocket_game.py` (15 collected).
+
+| Selection / pass and artifact suffix | Result | Duration |
+| --- | --- | --- |
+| Initial sequence/key/setup selection (`s18-first`) | 57 passed; cache permission warning | 2.26s |
+| Focused normal 1 (`s18-normal`) | 109 passed | 55.71s |
+| Focused normal 2 (`s18-normal2`) | 109 passed | 42.99s |
+| Focused `--reverse-order` (`s18-reverse`) | 109 passed | 45.78s |
+| Default core, no positional paths (`s18-core`) | 1012 passed / 51 existing strict xfailed | 64.76s |
+| Existing parity + function games + replay roundtrip (`s18-integration`) | 62 passed / 5 existing strict xfailed | 68.16s |
+| Mixed selection, normal 1 (`s18-mixed3`) | 15 passed | 16.47s |
+| Mixed selection, normal 2 (`s18-mixed-normal2`) | 15 passed | 15.50s |
+| Mixed selection, `--reverse-order` (`s18-mixed-reverse`) | 15 passed | 18.09s |
+| Final six-path focused selection, `--reverse-order` (`s18-final`) | 110 passed | 53.12s |
+
+The existing integration selection above is exactly
+`tests/browser_integration/test_engine_parity.py
+tests/server_integration/test_function_clients.py
+tests/browser_integration/test_replay_roundtrip.py`.
+All successful normal-access runs have zero failures, errors, skips, XPASS or
+warnings. JUnit case sets match across the initial three 109-case passes.
+After strengthening B to score a vacant city at termination, its complete file
+passed twice normally and once reversed: **8 passed** each (0.25/0.15/0.15s),
+with sandbox-only cache-write warnings. The final combined reverse run records
+the strengthened cases and the finalized bootstrap together in `s18-final.xml`.
+
+Environment attempts are separate from behavior results: disabling pytest's
+cache plugin failed strict configuration because `cache_dir` remained declared
+(zero tests executed); using distinct cache paths with normal Windows access
+resolved warnings. A sandbox parity run had **4 passed / 48 setup errors**:
+Playwright subprocess pipes were denied with WinError 5. Normal-access runs
+executed all 48 browser cases successfully; no skips or xfails conceal this.
+
+Protected-path reports check **315 unchanged files**, no additions/deletions or
+protected Git diff changes. Owned child servers report closed loops/logs and no
+pending tasks; generated logs, caches and JUnit files stay ignored under tests.
+Documentation links and `git diff --check` pass. No coverage percentages were
+remeasured, and the entire optional ML/script suite was not rerun for these
+engine/browser changes. Cross-platform, secondary-browser and optional mutation
+work remains explicitly unverified backlog. Next work: maintain this baseline
+through the planned core updates and review intended changes to existing defects
+and characterizations before treating them as regressions.
+
 ## 2026-10-05 - S17 completed
 
 Starting revision: `9b60920393d04edbdabf56dce27039b6f61889e0`. Preserved the

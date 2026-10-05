@@ -1,5 +1,20 @@
 # Test harness
 
+S18 adds bounded action-sequence invariants, combined combat/city/vacancy scoring,
+observation/JSON round trips, expanded Python–JavaScript action parity, remaining
+state-key/setup rejection branches, and a mixed live/fog/replay episode. Run:
+
+```text
+uv run python -B -m pytest tests/server_unit/test_game_sequences.py tests/server_unit/test_game_sequence_observations.py tests/server_unit/test_game_state_key.py tests/server_unit/test_game_setup.py tests/browser_integration/test_sequence_parity.py tests/browser_integration/test_mixed_live_replay.py -q --tb=short
+```
+
+The selection includes existing key/setup cases as well as the 64 S18 additions.
+Use `--reverse-order` for an alternate-order check. The mixed episode uses actual
+DOM actions, native WebSockets, both player perspectives and generated replays;
+its score/phase/unit oracle imports no engine code. Windows sandbox restrictions
+can prevent Playwright pipe creation; missing execution is an environment failure,
+not a passing or skipped browser test. Results are recorded in PROGRESS.md.
+
 S17 adds [daily regression, coverage and readiness commands](REGRESSION.md).
 Use the test-local runner for separate core/full Python reports, Chromium function
 reports, and normal/normal/reverse repeatability checks. Current measurements and
@@ -88,7 +103,7 @@ Pytest automatically discovers the repository-root [pytest.ini](../pytest.ini).
 The project environment now includes pytest, pytest-asyncio, pytest-playwright,
 and pytest-cov, so no dependency overlay or explicit configuration path is needed.
 
-S01–S15 are implemented. Test code, fixture data, and generated artifacts remain under
+S01–S18 are implemented. Test code, fixture data, and generated artifacts remain under
 `tests/`; pytest configuration lives at the repository root. Never edit `server/`,
 `browser/`, or `scenarios/` to satisfy these tests. See [PROGRESS.md](PROGRESS.md)
 for verified results and [KNOWN_ISSUES.md](KNOWN_ISSUES.md) for the defect policy.

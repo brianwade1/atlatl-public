@@ -22,6 +22,18 @@ def test_literal_key_layout_and_input_isolation(key_input):
     assert (state, params) == before
 
 
+@pytest.mark.parametrize("kind,expected", [
+    ("mechinf", "phase 0 score 0\nc100mbo\t\t\n\t\tc\n"),
+    ("artillery", "phase 0 score 0\nc100abo\t\t\n\t\tc\n"),
+])
+def test_remaining_unit_type_encodings(key_input, kind, expected):
+    key, state, params = key_input
+    state["units"][0]["type"] = kind
+    before = deepcopy((state, params))
+    assert key(state, params) == expected
+    assert (state, params) == before
+
+
 @pytest.mark.parametrize("field,expected", [
     ("terrain", "phase 0 score 0\nr100ibo\t\t\n\t\tc\n"),
     ("position", "phase 0 score 0\nc\t\t\n\t\tc100ibo\n"),

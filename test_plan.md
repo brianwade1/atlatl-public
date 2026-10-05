@@ -1,6 +1,6 @@
 # Test plan for `server/` and `browser/`
 
-Prepared: 2026-09-23. Status updated: 2026-10-05. Framework: **pytest**. This is an implementation roadmap; S01–S17 are complete. Check off a step only after its completion criteria are met and its results are recorded.
+Prepared: 2026-09-23. Status updated: 2026-10-05. Framework: **pytest**. This is an implementation roadmap; S01–S18 are complete. Check off a step only after its completion criteria are met and its results are recorded.
 
 For work across days and sessions, use this plan for scope and step status, [tests/PROGRESS.md](tests/PROGRESS.md) for dated implementation details, validation results, deviations, blockers, and the next task, [tests/KNOWN_ISSUES.md](tests/KNOWN_ISSUES.md) for confirmed defects, and [tests/README.md](tests/README.md) for current run commands. Read these records at the start of each session and update the progress log before ending it; do not rely on conversation history alone.
 
@@ -25,6 +25,7 @@ For work across days and sessions, use this plan for scope and step status, [tes
 - [x] **S15 — Test observations, rewards, Gymnasium wrappers, and agent adapters.**
 - [x] **S16 — Test model persistence, AlphaZero helpers, and ancillary scripts.**
 - [x] **S17 — Establish coverage reports, repeatability checks, and the daily regression process.**
+- [x] **S18 — Strengthen core rule interactions and close selected runtime coverage gaps.**
 
 Suggested order: S01–S08 establish the engine baseline; S09–S13 establish the browser baseline; S14–S16 cover AI/RL and research utilities; S17 is maintained throughout. Complete the harness and fixtures before depending on their results. S09–S11 can begin after S02 without waiting for all server integrations. Prioritize S03–S05 and S09–S13 before major core changes.
 
@@ -706,6 +707,43 @@ Next smallest unfinished task:
 ```
 
 **Final readiness gate:** all P0 behavior cases and the chosen P1 scope pass; all remaining defects/skips are individually identified; no unknown browser errors or leaked processes remain; engine/browser parity and generated-replay playback have real integration coverage; no prohibited file changed. Unimplemented P2 cases remain explicit backlog items rather than being counted as coverage. Coverage percentages support this decision but cannot replace the behavioral gates.
+
+## S18 — Core rule interactions and selected runtime coverage gaps
+
+**Status: COMPLETE.** Added and implemented after the 2026-10-05 review of S01–S17. All six groups have 64 additional passing cases, with normal/reverse-order verification and affected core, live transport and replay regressions. See [tests/PROGRESS.md](tests/PROGRESS.md) for case ownership, exact selections, results and environment failures. The original steps remain complete; this is additional preparation for major core updates, not a reopening of their completion criteria. Cross-platform and optional mutation validation remain backlog items.
+
+**Priority:** P0/P1 as listed below. **Dependencies:** completed S03–S05, S09, S12–S13 and S17. **Change boundary:** implement tests, fixtures, helpers and progress records under `tests/`; update this root plan as needed. Never modify `server/`, `browser/`, or `scenarios/` to implement these cases or repair defects they expose.
+
+### Review baseline and scope
+
+The latest recorded full regression runs contain **2165 passed / 116 strict xfailed**, with identical case outcomes in two normal runs and one reverse-order run. Full Python coverage is **85.98% statements / 77.78% branches**. These are recorded S17 measurements, not new executions from this review. See [tests/PROGRESS.md](tests/PROGRESS.md) and [tests/REGRESSION.md](tests/REGRESSION.md) for evidence and commands.
+
+Extend existing semantic assertions and independent oracles rather than duplicate individual-action tests or pursue uncovered demonstrations solely to raise coverage. Review [tests/KNOWN_ISSUES.md](tests/KNOWN_ISSUES.md) before choosing contracts: required behavior, characterization and known defects must remain distinct. Before production updates, identify which documented defects and characterizations the updates intentionally change; test implementation itself does not authorize those source changes.
+
+### Additional behavior cases
+
+1. **S18-A — Bounded action-sequence invariants (P0).** Add several small, valid scenarios and fixed-seed sequences of actions selected from the real engine's legal actions. At every step, check that the input state remains unchanged, reconstructed occupancy matches placed units, removed units are absent from occupancy, spent units are unavailable for further ordinary actions within the phase, and turn/phase progression follows the existing rules. Exercise movement, fire, pass and exhaustion across multiple units and both factions. Check successor-branch isolation where useful. Keep a hard transition budget; explicit setup sequences must use the separate setup validator because setup enumeration offers only pass. Do not assert monotonic scores, nonnegative remaining strength, elimination-based termination, or unsupported terminal guards. Control detection draws or preserve a recorded RNG state so failures reproduce.
+
+2. **S18-B — Combined combat, capture and scoring episodes (P0).** Add two or three short, hand-calculated episodes combining defender removal, entry into a city, ownership updates at the phase boundary, vacancy and later recapture. Include both factions and a terminal scoring boundary. Assert exact intermediate unit states, availability, ownership, phase counts and Blue-perspective scores; calculate expected damage and score independently of production tables/functions. Reuse existing fixtures where possible. These integration cases protect the composition of already-tested rules.
+
+3. **S18-C — Broader Python–JavaScript action parity (P0).** Extend the shared independent-oracle cases in `browser_integration/test_engine_parity.py` with small rectangular maps, both column parities, all four unit types, occupied destinations, terrain/movement-budget boundaries and artillery's outer fire ring. Compare movement/fire target sets without making ordering a contract. Use common test-owned inputs and independently specified expected targets so agreement alone cannot conceal a shared defect. Preserve documented browser/server differences, including combat-table differences, and use narrowly matched strict xfails only for confirmed defects. Run original browser modules over HTTP and retain console/page-error checks.
+
+4. **S18-D — Observation and serialization between actions (P1).** Compare a direct legal-action sequence with an equivalent sequence that obtains observations for both factions and JSON-round-trips state between actions. Under controlled deterministic detection, compare subsequent legal-action sets and transition outcomes and verify that JSON round trips preserve relevant fields. Separately characterize existing observation/status aliasing and detection/RNG side effects; do not silently impose getter purity or patch the behavior being asserted. If an unexpected side effect violates a chosen contract, reduce it to an exact reproduction and follow the known-defect policy.
+
+5. **S18-E — Selected reachable branch gaps (P1).** Extend `server_unit/test_game_state_key.py` with literal expected encodings for `mechinf` and `artillery`. Add a focused unsupported setup-action rejection case in `server_unit/test_game_setup.py`, using a valid mover so it reaches the action-type rejection branch, and assert that rejection leaves the input unchanged. Saved S17 coverage identifies these runtime gaps. Do not patch legal-action generation to execute the ordinary `exchange` branch: it is not offered by the current generator and rejection already has coverage. Do not add long standalone demonstration runs to meet a percentage target.
+
+6. **S18-F — Mixed-action live browser and replay episode (P1).** Add a bounded real-page episode with multiple units, movement, destruction, city scoring and controlled fog changes. Exercise actual DOM actions and native WebSockets, capture both perspectives, and play the generated logs through the original replay viewer. Compare live observations and replay frames against an independent episode oracle and engine results, including terminal state. Extend existing integration helpers without replacing the authoritative transport, rule logic or viewer. Keep generated replay files under disposable test directories and check ordinary browser errors throughout.
+
+### Implementation order and completion
+
+Start with **S18-A, S18-B, S18-C and S18-E** as the first batch, then implement S18-D and S18-F. Record stable case/node IDs and update the progress log after each batch. Classify engine composition and browser parity/workflows as integration tests rather than claiming they are isolated unit tests.
+
+Run focused cases first, then affected core, transport and browser/replay suites using the existing harness. Repeat the new cases normally and in reverse order with fresh fixtures once stable. Record independent-oracle rationale, exact commands, result counts, deadlines, defect IDs and protected-path reports. S18 is complete when all six behavior groups execute with passing requirements or individually documented strict expected failures, repeatability is verified, and protected files remain unchanged. Unavailable or deferred work must remain explicit; do not count planned cases as implemented coverage.
+
+### Additional validation backlog
+
+- **Cross-platform and secondary-browser validation:** run existing relevant suites on Linux/macOS and Firefox/WebKit when those environments are available. This is additional execution evidence, not a requirement to invent duplicate unit tests. Record unavailable environments as unverified. Chromium CDP coverage does not establish coverage for other browsers.
+- **Optional targeted mutation diagnostics:** assess assertion strength for combat arithmetic/thresholds, movement boundaries, phase advancement and score signs. Use isolated temporary source copies under `tests/.tmp/`, verify import provenance, and never alter protected originals. Record surviving mutations for review rather than claiming test counts alone prove assertion quality. This remains optional and does not block S18 completion.
 
 ## Initial investigation register
 

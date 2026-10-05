@@ -132,3 +132,14 @@ def test_setup_malformed_fields_characterization(setup_game, action, key):
         setup_game.transition(state, action)
     assert caught.value.args == (key,)
     assert state == before
+
+
+@pytest.mark.unit
+def test_unknown_setup_action_with_valid_mover_is_rejected(setup_game):
+    state = setup_game.initial_state()
+    before = deepcopy(state)
+    action = {"type": "unsupported-setup-action", "mover": "blue A"}
+    assert not setup_game._is_legal_setup(state, action)
+    with pytest.raises(Exception, match="^Action is not legal in this state$"):
+        setup_game.transition(state, action)
+    assert state == before
