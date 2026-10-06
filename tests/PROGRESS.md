@@ -1,5 +1,17 @@
 # Test implementation progress
 
+## 2026-10-06 - Completed test plan consolidated
+
+Moved the complete root `test_plan.md` into
+[REGRESSION.md](REGRESSION.md#completed-test-plan-for-server-and-browser),
+after the existing daily regression guide. Preserved the plan's content and
+command examples, adjusted heading levels and relative Markdown links, and
+removed the root file. Updated the current known-issue reference; older progress
+entries naming the root file remain historical records of where it lived.
+No tests, pytest configuration or protected source files changed. Validation is
+limited to content preservation, local documentation links and Git diff checks;
+no test execution is needed for this documentation consolidation.
+
 ## 2026-10-05 - S18 completed
 
 Starting revision: `011ac7eeb302a80ddfc02b7b1f0fad687b2d7cad`. Preserved the
@@ -1428,7 +1440,7 @@ Next step: **S03 — Test server map geometry, serialization, and rule tables**.
 ## 2026-09-23 — S01 completed
 
 The request's “501” is interpreted as **S01 — Establish the harness and baseline**
-in `../test_plan.md`. The root plan is unchanged because implementation is limited
+in the completed plan (now in [REGRESSION.md](REGRESSION.md#completed-test-plan-for-server-and-browser)). The root plan is unchanged because implementation is limited
 to `tests/`. S02–S17 remain unimplemented; scaffolding is not behavioral coverage.
 
 Revision: `581cdc3440a7939db2e0575ae8645ae6406ec10a` plus pre-existing user changes.

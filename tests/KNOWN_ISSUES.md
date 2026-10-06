@@ -212,7 +212,7 @@ S08's lexical checks with actual JavaScript execution. Console/network errors
 remain failures. The checked-in replay is read only for a three-step smoke test.
 
 S03 runtime-confirmed the Python map defects grouped under **K01** and **K02**
-in `../test_plan.md`. S04 confirms the serialization/detection side effect in
+in [the initial investigation register](REGRESSION.md#initial-investigation-register). S04 confirms the serialization/detection side effect in
 K05 as characterization, without an expected failure. S05 also confirms K03,
 K04, the status/reference portion of K05, and the search-key portion of K16
 as characterizations below. S06 confirms factory sharing/RNG effects under K05
