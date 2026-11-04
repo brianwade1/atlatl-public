@@ -3,7 +3,7 @@ export var Playback = {};
 import {Map} from "./map.js";
 import {Unit} from "./unit.js";
 import {SVGCreateView} from "./svg-create-view.js";
-// import {SVGUtil} from "./svg-util.js";
+import {SVGUtil} from "./svg-util.js";
 import {SVGMapView} from "./svg-map-view.js";
 import {SVGUnitSymbol} from "./svg-unit-symbol.js";
 // import {SVGGui} from "./svg-gui.js";
@@ -49,6 +49,10 @@ const TileState = {
       SVGCreateView.createUnitPlacementView(param);
   
       Unit.fromPortable2(scenarioJson.units,a=>{});
+
+        if (SVGCreateView.svg && SVGUtil.viewManager) {
+            SVGUtil.viewManager.init(SVGCreateView.svg);
+        }
   }
   
   var messages;
@@ -130,6 +134,24 @@ const TileState = {
   Playback.next_message = next_message;
   
   function init() {
+      if (typeof replayData === "undefined" || !replayData || !replayData.length) {
+          console.warn("No replayData found in replay.js.");
+          const container = document.getElementById("map-container");
+          if (container) {
+              container.innerHTML = '<div style="color: #e2e8f0; padding: 40px; text-align: center; font-family: sans-serif;">' +
+                  '<h3 style="margin-bottom: 12px; font-size: 18px;">No Replay Data Found</h3>' +
+                  '<p style="color: #94a3b8; font-size: 14px; max-width: 500px; margin: 0 auto 16px auto;">' +
+                  'The replay viewer needs a recorded match log in <code>replay.js</code> to display the map and scenario actions.' +
+                  '</p>' +
+                  '<div style="background: #334155; display: inline-block; padding: 10px 16px; border-radius: 6px; font-size: 13px; text-align: left;">' +
+                  '<strong>How to record and watch a replay:</strong><br/>' +
+                  '1. Run simulation: <code>python main.py city-inf-5 --nReps 1 --replay browser/replay.js</code><br/>' +
+                  '2. Start web server: <code>cd browser && python webserver.py</code><br/>' +
+                  '3. Refresh this page to watch the replay step-by-step.' +
+                  '</div></div>';
+          }
+          return;
+      }
       messages = replayData;
       console.log("num messages = "+messages.length);
       processScenarioJSON(messages[message_index]);

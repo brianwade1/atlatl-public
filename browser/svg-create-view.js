@@ -15,7 +15,10 @@ import {HumanPlayerControl} from "./human-player-control.js";
     SVGCreateView.createMapEditorView = function(param) { 
         SVGCreateView.param = param;
         SVGCreateView.svg = SVGUtil.recreateMysvg();
-        document.body.appendChild(SVGCreateView.svg);       
+        const container = document.getElementById('map-container') || document.body;
+        if (SVGCreateView.svg.parentElement !== container) {
+            container.appendChild(SVGCreateView.svg);
+        }       
         
         SVGCreateView.svg.addEventListener("mouseup",MapEditorControl.svgMouseUpHandler);
         SVGCreateView.svg.addEventListener("mousedown",MapEditorControl.svgMouseDownHandler);
@@ -27,7 +30,10 @@ import {HumanPlayerControl} from "./human-player-control.js";
     SVGCreateView.createUnitPlacementView = function(param) { 
         SVGCreateView.param = param;
         SVGCreateView.svg = SVGUtil.recreateMysvg();
-        document.body.appendChild(SVGCreateView.svg); 
+        const container = document.getElementById('map-container') || document.body;
+        if (SVGCreateView.svg.parentElement !== container) {
+            container.appendChild(SVGCreateView.svg);
+        } 
         
         SVGMapView.add(param, SVGCreateView.svg, UnitPlacementControl.hexMouseOverHandler, UnitPlacementControl.hexMouseDownHandler);
 
@@ -37,7 +43,10 @@ import {HumanPlayerControl} from "./human-player-control.js";
     SVGCreateView.createPlayView = function(param) { 
         SVGCreateView.param = param;
         SVGCreateView.svg = SVGUtil.recreateMysvg();
-        document.body.appendChild(SVGCreateView.svg); 
+        const container = document.getElementById('map-container') || document.body;
+        if (SVGCreateView.svg.parentElement !== container) {
+            container.appendChild(SVGCreateView.svg);
+        } 
         
         SVGMapView.add(param, SVGCreateView.svg, HumanPlayerControl.hexMouseOverHandler, HumanPlayerControl.hexMouseDownHandler);
 

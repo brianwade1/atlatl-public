@@ -10,6 +10,7 @@ import {SVGSetupMarker} from './svg-setup-marker.js'
 import {SVGGui} from './svg-gui.js'
 import {HumanPlayerControl} from './human-player-control.js'
 import {SVGCityMarker} from './svg-city-marker.js'
+import {SVGUtil} from './svg-util.js'
 
 (function() { 
 
@@ -164,6 +165,10 @@ function parametersHandler(msgO) {
 
     Unit.init();
     Unit.fromPortable2(msgO.parameters.units,HumanPlayerControl.unitMouseDownHandler);
+
+    if (SVGCreateView.svg && SVGUtil.viewManager) {
+        SVGUtil.viewManager.init(SVGCreateView.svg);
+    }
 
     // Text field updates
     let span = document.getElementById("onmove");

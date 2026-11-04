@@ -1,19 +1,125 @@
 export var SVGUtil = {};
+window.SVGUtil = SVGUtil;
 
 import {SVGCreateView} from './svg-create-view.js';
 import { Style } from './style.js';
 
 (function() {
     
-    SVGUtil.svgNS = 'http://www.w3.org/2000/svg';
+    const svgNS = 'http://www.w3.org/2000/svg';
+    SVGUtil.svgNS = svgNS;
     
     SVGUtil.recreateMysvg = function() {
         var svg = document.getElementById('mysvg');
         if (svg)  svg.remove();
         svg = makeSvgElement();
-        document.body.appendChild(svg);
+        const container = document.getElementById('map-container') || document.body;
+        container.appendChild(svg);
         return svg;
     }
+
+    SVGUtil.viewManager = {
+        currentZoom: 1.0,
+        isFitMode: true,
+        baseWidth: 1200,
+
+        init: function(svg) {
+            if (!svg) svg = document.getElementById('mysvg');
+            if (!svg) return;
+            this.svg = svg;
+            this.container = document.getElementById('map-container') || svg.parentElement;
+            this.fitToContent(svg);
+            this.setupWheelZoom();
+        },
+
+        fitToContent: function(svg) {
+            if (!svg) svg = this.svg || document.getElementById('mysvg');
+            if (!svg) return;
+            const bbox = svg.getBBox();
+            if (!bbox.width || !bbox.height) return;
+
+            const padding = 1;
+            const vbWidth = bbox.width + 2 * padding;
+            const vbHeight = bbox.height + 2 * padding;
+            const vb = (bbox.x - padding) + " " + (bbox.y - padding) + " " + vbWidth + " " + vbHeight;
+            svg.setAttribute('viewBox', vb);
+            svg.style.aspectRatio = vbWidth + " / " + vbHeight;
+            this.baseWidth = Math.max(1000, vbWidth * 20);
+            this.applyMode();
+        },
+
+        toggleFit: function() {
+            this.isFitMode = !this.isFitMode;
+            this.applyMode();
+        },
+
+        zoomIn: function() {
+            this.isFitMode = false;
+            this.currentZoom = Math.min(3.5, this.currentZoom + 0.25);
+            this.applyMode();
+        },
+
+        zoomOut: function() {
+            this.isFitMode = false;
+            this.currentZoom = Math.max(0.25, this.currentZoom - 0.25);
+            this.applyMode();
+        },
+
+        applyMode: function() {
+            const svg = this.svg || document.getElementById('mysvg');
+            const container = this.container || document.getElementById('map-container');
+            const fitBtn = document.getElementById('toggle-fit');
+            const zoomSpan = document.getElementById('zoom-level');
+            if (!svg || !container) return;
+
+            if (this.isFitMode) {
+                container.classList.add('fit-mode');
+                container.classList.remove('scroll-mode');
+                svg.style.width = '100%';
+                svg.style.height = '100%';
+                svg.style.maxWidth = '100%';
+                svg.style.maxHeight = '100%';
+                svg.style.minWidth = 'unset';
+                svg.style.margin = 'auto';
+                svg.style.display = 'block';
+                if (fitBtn) fitBtn.value = '🔎 Full View (Scroll)';
+                if (zoomSpan) zoomSpan.textContent = 'Fit';
+            } else {
+                container.classList.remove('fit-mode');
+                container.classList.add('scroll-mode');
+                const targetW = Math.round(this.baseWidth * this.currentZoom);
+                svg.style.width = targetW + 'px';
+                svg.style.height = 'auto';
+                svg.style.maxWidth = 'none';
+                svg.style.maxHeight = 'none';
+                svg.style.minWidth = targetW + 'px';
+                svg.style.margin = 'auto';
+                svg.style.display = 'block';
+                if (fitBtn) fitBtn.value = '🔍 Fit to Screen';
+                if (zoomSpan) zoomSpan.textContent = Math.round(this.currentZoom * 100) + '%';
+            }
+        },
+
+        setupWheelZoom: function() {
+            const container = this.container || document.getElementById('map-container');
+            if (!container || container._hasWheelHandler) return;
+            container._hasWheelHandler = true;
+            container.addEventListener('wheel', (evt) => {
+                if (evt.ctrlKey || evt.metaKey) {
+                    evt.preventDefault();
+                    if (evt.deltaY < 0) {
+                        SVGUtil.viewManager.zoomIn();
+                    } else {
+                        SVGUtil.viewManager.zoomOut();
+                    }
+                }
+            }, { passive: false });
+        }
+    };
+
+    window.toggleFitScreen = () => SVGUtil.viewManager.toggleFit();
+    window.zoomIn = () => SVGUtil.viewManager.zoomIn();
+    window.zoomOut = () => SVGUtil.viewManager.zoomOut();
 
     SVGUtil.vbZoomedWidth = 100;
     SVGUtil.vbZoomedHeight = 40;
@@ -104,7 +210,7 @@ import { Style } from './style.js';
     };
 
     function makeSvgElement() {
-        let svg = document.createElementNS(SVGCreateView.svgNS, 'svg');
+        let svg = document.createElementNS(svgNS, 'svg');
         svg.setAttributeNS(null, 'preserveAspectRatio', 'xMidYMid meet');
         svg.setAttributeNS(null, 'viewBox', '0 0 '+SVGUtil.vbZoomedWidth+' '+SVGUtil.vbZoomedHeight);
         svg.setAttributeNS(null, 'id', 'mysvg');

@@ -31,7 +31,11 @@ function getViewBoxControl() {
 }
 
 function fitMapToContent(svg) {
-    getViewBoxControl().fitToContent(svg);
+    if (SVGUtil && SVGUtil.viewManager) {
+        SVGUtil.viewManager.init(svg);
+    } else {
+        getViewBoxControl().fitToContent(svg);
+    }
 }
 MapEditorControl.fitMapToContent = fitMapToContent;
 
